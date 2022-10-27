@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
+import SurveyOptionSetting from "./pages/Survey_Option_Setting";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/survey" element={<Survey/>}/>
+        <Route path="/survey_option_setting" element={<SurveyOptionSetting/>}/>
       </Routes>
     </Router>
   );
