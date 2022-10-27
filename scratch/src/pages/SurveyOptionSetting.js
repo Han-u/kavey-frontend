@@ -1,8 +1,10 @@
+import SurveyTitle from '../components/surveyoptionsetting/SurveyTitle';
+
 function SurveyOptionSetting(params) {
     return (
         <div>
             <div>
-                여기가 타이틀
+                <SurveyTitle title="1. 설문 제목"/>
             </div>
             <div>
                 여기가 기간 설정
