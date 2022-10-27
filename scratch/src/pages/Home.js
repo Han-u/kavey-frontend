@@ -1,4 +1,5 @@
 import HomeComponent1 from "../components/Home/HomeComponent1";
+import React from 'react';
 
 function Home(){
     return (
