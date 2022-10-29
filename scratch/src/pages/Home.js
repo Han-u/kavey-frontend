@@ -1,5 +1,5 @@
 import SurveyNarrative from "../components/Survey/SurveyNarrative";
-import SurveyNarrativeResult from "../components/Survey/SurveyNarrativeResult";
+
 
 function Home(){
     return (
