@@ -1,3 +1,4 @@
+import MultiMake from "../components/Survey/MultiMake/MultiMake";
 function Survey(){
     return (
         <div>
