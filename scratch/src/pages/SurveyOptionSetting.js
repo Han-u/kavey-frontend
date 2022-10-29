@@ -1,8 +1,8 @@
 
 import SurveyGenderAge from "../components/surveyoptionsetting/SurveyGenderAge";
-
-
 import SurveyTitle from '../components/surveyoptionsetting/SurveyTitle';
+import SurveyAccessType from "../components/surveyoptionsetting/SurveyAccessType";
+
 
 function SurveyOptionSetting(params) {
     return (
@@ -14,7 +14,7 @@ function SurveyOptionSetting(params) {
                 여기가 기간 설정
             </div>
             <div>
-                여기가 응답 설정
+                <SurveyAccessType/>
             </div>
             <div>
                 <SurveyGenderAge/>
