@@ -33,8 +33,8 @@ function SurveyGenderAge(props) {
 
     return(
         <div>
-            <h1>4. 인적 사항 질문 추가</h1>
-            <div>
+            <h2>4. 인적 사항 질문 추가</h2>
+            <div >
 
                 <input type={"checkbox"} defaultChecked ={gender} onChange={(e)=>handleGenderChange(e)}/> 성별
                 <input type={"checkbox"} defaultChecked ={age} onChange={(e)=>handleAgeChange(e)}/> 연령대

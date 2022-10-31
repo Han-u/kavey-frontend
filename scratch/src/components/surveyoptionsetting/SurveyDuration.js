@@ -31,7 +31,7 @@ function SurveyDuration() {
   return (
     <div align="center">
       <h2>2. 설문 기간 설정</h2>
-      <h3>기간을 정해주세요</h3>
+      <h4>기간을 정해주세요</h4>
       <div>
         <button onClick={QuickButtonWeek}>7일</button>
         <button onClick={QuickButtonDoubleWeek}>14일</button>
