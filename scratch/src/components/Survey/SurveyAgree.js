@@ -1,32 +1,12 @@
 import {useState} from "react";
-import {Button, ButtonGroup} from "@mui/material";
+import {Button, ButtonGroup, Container, TextField} from "@mui/material";
 
 const styles = {
     container: {
-        border:3,
-        borderStyle: "solid",
-        padding: 15,
-    },
-    container2: {
         display: "flex",
         justifyContent: "center",
         margin: 30
     },
-    questionInput: {
-        width: 300
-    },
-    agree: {
-        display: "flex",
-        justifyContent: "center"
-    },
-    btn: {
-        borderStyle: "solid",
-        padding: 10,
-        margin: 5,
-        cursor: "pointer",
-        backgroundColor: "skyblue",
-
-    }
 }
 
 function SurveyAgree(){
@@ -37,23 +17,24 @@ function SurveyAgree(){
     }
 
     return (
-        <div style={styles.container}>
-            <div style={styles.container2}>
-                <input
-                    value= {title}
-                    type="text"
-                    placeholder="질문을 입력하세요."
-                    style={styles.questionInput}
+        <Container maxWidth='sm' sx={{border: 1, borderRadius: 3}}>
+            <div style={styles.container}>
+                <TextField
+                    value={title}
+                    placeholder="질문을 입력하세요"
                     onChange={onChange}
+                    variant="outlined"
+                    required
+                    sx={{width: 800}}
                 />
             </div>
-            <div style={styles.agree}>
+            <div style={styles.container}>
                 <ButtonGroup varient="outlined" size="large">
                     <Button onClick={onClick}>찬성</Button>
                     <Button onClick={onClick}>반대</Button>
                 </ButtonGroup>
             </div>
-        </div>
+        </Container>
     )
 }
 
