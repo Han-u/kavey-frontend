@@ -39,8 +39,6 @@ function MultiMake(props) {
         console.log("response check",id);
     }
 
-
-
     return (
         <div>
           <QuesctionTitle onSetting= {settingTitle} />

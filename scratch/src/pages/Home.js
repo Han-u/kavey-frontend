@@ -1,12 +1,15 @@
-import SurveyNarrative from "../components/Survey/SurveyNarrative";
-import SurveyRating from "../components/Survey/SurveyRating";
+import SendSurvey from "../components/Survey/SendSurvey/SendSurvey";
 
 function Home(){
     return (
         <div>
-            대충 홈화면이라는뜻
-            <SurveyNarrative/>
-            <SurveyRating/>
+            대충 홈화면
+
+
+            -----------------------------------
+            <SendSurvey/>
+
+
 
 
 
