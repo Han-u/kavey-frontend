@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import "../SendSurvey.css"
 
-
-function Email({key,name,onDelete}){
+function Email({onDelete}){
     return(
-        <div>
-            <input type="checkbox" hello/>
+        <div className="emailListShow">
+            <input type="checkbox" className="inputtype1"/>
 
-            <input type="text" onDoubleClick={(e)=>{
+            <input type="email" className="inputtype2" placeholder="example@gmail.com" onDoubleClick={(e)=>{
                 e.stopPropagation();
             }}/>
 
-            <button onClick={(e)=>{
+            <button className="inputtype3" onClick={(e)=>{
                 onDelete();
                 e.stopPropagation();
             }}>X</button>
