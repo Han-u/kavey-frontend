@@ -9,6 +9,9 @@ export const modals = {
   myModal: loadable(() => import("./Mymodal")),
   
   modalAskReject: loadable(() => import("./ModalAskReject")),
+  modalAskSend: loadable(() => import("./ModalAskSend")),
+  modalAskDelete: loadable(() => import("./ModalAskDelete")),
+  modalAskClose: loadable(() => import("./ModalAskClose")),
   
 };
 
