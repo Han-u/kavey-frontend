@@ -7,14 +7,14 @@
 
 .react-switch-label {
 
-    margin-top: 5px;
-    margin-left: 200px;
+    margin-top: 1.5px;
+    margin-left: px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    width: 50px;
-    height: 24px;
+    width: 55px;
+    height: 27px;
     background: #ff6e6c;
     border-radius: 100px;
     position:absolute ;

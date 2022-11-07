@@ -38,16 +38,16 @@ function SendSurvey(){
 
             <div className="search" >
                 <Switch className="toggle" isOn={value} handleToggle={() => setValue(!value)}/>
-                <button style={{marginLeft : 300 }}onClick={appendEmail} className="Button">추가</button>
-                    <input style={{marginLeft : 750 }} placeholder={"이메일 검색"} maxLength={50} className="input"></input>
+                <button onClick={appendEmail} className="Button" style={{marginLeft:60}}>추가</button>
+                    <input  placeholder={"이메일 검색"} maxLength={50} className="input"></input>
             </div>
             <div className="emailList">
                 <EmailList list={email} onDelete={deleteEmail}></EmailList>
             </div>
             <div className="sendButton">
-                <button className="Button" style={{marginLeft : 130}}>설문링크</button>
-                <button className="Button" style={{marginLeft : 1020 }}>생략</button>
-                <button className="Button" style={{marginLeft : 13 }} onClick={sendSuccess}>전송</button>
+                <button className="Button" >설문링크</button>
+                <button className="Button" >생략</button>
+                <button className="Button"  onClick={sendSuccess}>전송</button>
             </div>
         </div>
     );
