@@ -1,13 +1,13 @@
 import React from "react";
 
-import useModals from "./useModal";
-import { modals } from "./Modals";
+import useModals from "./useModal";     // modal 필요한 컴포넌트에 useModals import 하기 open close 함수 있음
+import { modals } from "./Modals";      // modal 컴포넌트들은 여기다 import 하기 
 
 function ModalTestPage(props) {
   const { openModal } = useModals();
 
   const handleClick = () => {
-    openModal(modals.myModal, {
+    openModal(modals.myModal, {         //확인버튼에서 처리할 로직함수 전달하기
       onSubmit: () => {
         console.log("로직 처리...");
       },

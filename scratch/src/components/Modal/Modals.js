@@ -6,7 +6,7 @@ import { ModalsStateContext } from "./ModalsContext";
 import { ModalsDispatchContext } from "./ModalsContext";
 
 export const modals = {
-  myModal: loadable(() => import("./Mymodal")),
+  myModal: loadable(() => import("./Mymodal")),   //여기다 import하면 필요할때 로드함
   
   modalAskReject: loadable(() => import("./ModalAskReject")),
   modalAskSend: loadable(() => import("./ModalAskSend")),
