@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import SurveyOptionSetting from "./pages/SurveyOptionSetting";
 
+
+import ModalTestPage from "./components/Modal/ModalTestPage";
+
 function App() {
   return (
     <Router>
@@ -14,6 +17,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/survey" element={<Survey/>}/>
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
+        <Route path="/modaltestpage" element={<ModalTestPage/>}/>
       </Routes>
     </Router>
   );
