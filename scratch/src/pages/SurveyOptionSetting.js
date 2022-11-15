@@ -8,8 +8,8 @@ import SurveyDuration from "../components/surveyoptionsetting/SurveyDuration";
 function SurveyOptionSetting(params) {
 
     return (
-        <div align="center">
-            <div style={{width:'600px'}}>
+        <div style={{align:'center'}}>
+            <div style={{width:'600px',margin:'auto'}}>
             <div>
                 <SurveyTitle title="1. 설문 제목"/>
             </div>
@@ -22,7 +22,7 @@ function SurveyOptionSetting(params) {
             <div align="center">
                 <SurveyGenderAge/>
             </div>
-            <div style={{marginTop:'30px'}}>
+            <div align="center" style={{marginTop:'50px'}}>
                 <button>다음으로</button>
             </div>
             </div>
