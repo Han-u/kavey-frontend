@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import EmailList from "./child/EmailList";
 import "./SendSurvey.css"
-import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography} from "@mui/material";
+import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
 var ID=1;
 
 
@@ -12,7 +12,7 @@ function SendSurvey(){
     const appendEmail = () => {
         ID = ID +1;
         setEmail([...email,{id:ID,value:"example"}]);
-        console.log("jojo",{email});
+
     }
 
     const deleteEmail = (id)=> {
@@ -31,17 +31,17 @@ function SendSurvey(){
             </div>
             <div className="search" >
 
-                <button onClick={appendEmail} className="Button2" >피설문자 추가</button>
-                <input  placeholder={"이메일 검색"} maxLength={50} className="input"></input>
-                <button className="Button">검색</button>
+                <Button onClick={appendEmail} className="Button2" >피설문자 추가</Button>
+                <Input  placeholder={"이메일 검색"} maxLength={50} className="input"></Input>
+                <Button className="Button">검색</Button>
             </div>
             <div className="emailList">
                 <EmailList list={email} onDelete={deleteEmail}></EmailList>
             </div>
             <div className="sendButton">
                 <Button className="Button" >설문링크</Button>
-                <button className="Button" >생략</button>
-                <button className="Button"  onClick={sendSuccess}>전송</button>
+                <Button className="Button" >생략</Button>
+                <Button className="Button"  onClick={sendSuccess}>전송</Button>
             </div>
         </div>
     );
