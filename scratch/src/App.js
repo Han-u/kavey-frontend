@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import SurveyOptionSetting from "./pages/SurveyOptionSetting";
 import Management from "./pages/Management";
+import Participant from "./pages/Participant";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/survey" element={<Survey/>}/>
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
         <Route path="management" element={<Management/>}/>
+        <Route path="/participant" element={<Participant/>}/>
       </Routes>
     </Router>
   );
