@@ -1,5 +1,6 @@
 import SendSurvey from "../components/Survey/SendSurvey/SendSurvey";
 
+
 function Home(){
     return (
         <div>
@@ -8,6 +9,7 @@ function Home(){
 
             -----------------------------------
             <SendSurvey/>
+
 
 
 

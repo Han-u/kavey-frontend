@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import EmailList from "./child/EmailList";
 import "./SendSurvey.css"
+import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography} from "@mui/material";
 var ID=1;
 
 
@@ -38,7 +39,7 @@ function SendSurvey(){
                 <EmailList list={email} onDelete={deleteEmail}></EmailList>
             </div>
             <div className="sendButton">
-                <button className="Button" >설문링크</button>
+                <Button className="Button" >설문링크</Button>
                 <button className="Button" >생략</button>
                 <button className="Button"  onClick={sendSuccess}>전송</button>
             </div>
