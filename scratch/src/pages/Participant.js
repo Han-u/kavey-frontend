@@ -1,4 +1,4 @@
-import {Button, Typography} from "@mui/material";
+import {Button, Typography, Menu, MenuItem} from "@mui/material";
 import {useState} from "react";
 import styled from 'styled-components';
 
@@ -56,6 +56,14 @@ function Participant(){
             backgroundColor: 'white'
         }
     };
+    const [anchorEl, setAnchorEl] = useState(null);
+        const open = Boolean(anchorEl);
+        const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+        const addSurveyItem = () => {
+            setAnchorEl(null);
+        };
 
     return (
         <div>
@@ -81,8 +89,33 @@ function Participant(){
                                 </th>
                                 <th className='second-row'>이메일</th>
                                 <th className='second-row'>전송날짜</th>
-                                <th className='second-row'>응답여부</th>
+                                <th className='second-row'><Button
+                                                                                       aria-controls={open ? 'demo-positioned-menu' : undefined}
+                                                                                       aria-haspopup="true"
+                                                                                       aria-expanded={open ? 'true' : undefined}
+                                                                                       onClick={handleClick}
+                                                                                       variant="outlined"
+                                                                                   >
+                                                                                       응답여부
+                                                                                   </Button></th>
                                 <th className='second-row'>응답날짜</th>
+                                <Menu
+                                                            anchorEl={anchorEl}
+                                                            open={open}
+                                                            anchorOrigin={{
+                                                                vertical: 'top',
+                                                                horizontal: 'left',
+                                                            }}
+                                                            transformOrigin={{
+                                                                vertical: 'top',
+                                                                horizontal: 'left',
+                                                            }}
+                                                        >
+                                                            <MenuItem onClick={addSurveyItem}>응답</MenuItem>
+                                                            <MenuItem onClick={addSurveyItem}>미응답</MenuItem>
+                                                            <MenuItem onClick={addSurveyItem}>거절</MenuItem>
+
+                                                        </Menu>
                             </tr>
                             </thead>
                             <tbody>
