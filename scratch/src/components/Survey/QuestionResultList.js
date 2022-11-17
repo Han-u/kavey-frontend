@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 
-import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from '../../redux/slice/SurveyMakeSlice';
+import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from '../../redux/slices/SurveyMakeSlice';
 
 import ObjectResult from './QuestionResultList/ObjectResult';
 import MultipleResult from './QuestionResultList/MultipleResult';

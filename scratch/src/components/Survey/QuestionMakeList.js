@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from '../../redux/slice/SurveyMakeSlice';
+import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from '../../redux/slices/SurveyMakeSlice';
 
 import Make from './QuestionMakeList/Make';
 import MultipleMake from './QuestionMakeList/MultipleMake';
