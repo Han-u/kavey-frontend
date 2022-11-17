@@ -9,6 +9,7 @@ import Management from "./pages/Management";
 import SurveyMake from "./pages/SurveyMake";
 import Participant from "./pages/Participant";
 import SendSurvey from "./pages/SendSurvey";
+import LinkFloating from "./pages/LinkFloating";
 import ModalTestPage from "./components/Modal/ModalTestPage";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/surveymake" element={<SurveyMake/>}/>
         <Route path="/participant" element={<Participant/>}/>
         <Route path="/sendsurvey" element={<SendSurvey/>}/>
+        <Route path="/linkfloating" element={<LinkFloating/>}/>
       </Routes>
     </Router>
   );
