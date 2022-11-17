@@ -9,6 +9,10 @@ export const surveyMakeSlice=createSlice(
     {
         name:'surveyMake',
         initialState:{
+            surveyTitle:"",
+            surveyDesc:"",
+            surveyIsGenderQuestion:true,
+            surveyIsAgeQuestion:true,
             id : 0,
             question:[],
         },

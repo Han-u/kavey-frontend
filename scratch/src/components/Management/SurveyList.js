@@ -21,6 +21,7 @@ function SurveyList(props) {
 
     const handleDelete= (e) =>{
         dispatch(deleteSurvey(e));   
+        // console.log(설문배열출력);
         setAnchorEl(null);
     }
 
