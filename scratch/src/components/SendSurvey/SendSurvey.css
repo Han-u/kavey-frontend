@@ -1,0 +1,32 @@
+.title {
+
+    text-align: center;
+
+}
+
+.inputtype1 {
+
+    width: 20px;
+    height: 20px;
+}
+.inputtype2 {
+    width: 600px;
+    height: 30px;
+}
+.inputtype3 {
+    width: 30px;
+    height: 30px;
+}
+
+.Button {
+    width: 80px;
+    height: 30px;
+}
+.input {
+    width: 280px;
+    height: 20px;
+}
+.Button2 {
+    width: 140px;
+    height: 30px;
+}

@@ -1,29 +1,37 @@
-import { createSlice} from '@reduxjs/toolkit'
+import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
 
 export const OBJECTIVE = "OBEJCTIVE";
 export const MULTIPLE = "MULTIPLE";
 export const TRUEFALSE = "TRUEFALSE";
 export const STAR = "STAR";
 
-export const SurveyMakeSlice=createSlice({
+export const surveyMakeSlice=createSlice(
+    {
         name:'surveyMake',
         initialState:{
+            surveyTitle:"",
+            surveyDesc:"",
+            surveyIsGenderQuestion:true,
+            surveyIsAgeQuestion:true,
             id : 0,
             question:[],
         },
         reducers:{
-            CREATE_OBJECTIVE: (state,action)=>{            
-                console.log(state.id);
-                console.log(state.question);
-                state.question=state.question.concat(
-                    {   
-                        id:state.id+1,
-                        order:state.question.length+1,
-                        type:OBJECTIVE,
-                        title:state.id+1+"번째 질문"
-                    });            
-                },
-            CREATE_MULTIPLE : (state,action) => (
+        CREATE_OBJECTIVE: (state,action) => (
+          {
+              id : state.id+1,
+              question : [...state.question,
+                  {   
+                      id:state.id+1,
+                      order:state.question.length+1,
+                      type:OBJECTIVE,
+                      title:state.id+1+"번째 질문"
+                  }],
+          }
+        ),
+
+
+        CREATE_MULTIPLE : (state,action) => (
             {
                 id : state.id+1,
                 question : [...state.question,
@@ -39,52 +47,48 @@ export const SurveyMakeSlice=createSlice({
         ),  
             UPDATE_MULTIPLE_CANMULTI : (state,action) => {
                 let i = state.question.findIndex(r => r.id === action.questionID);
-                if(state.question[i].canMulti=="true"){
-                    state.question[i].canMulti = "false";
+                let newQuestion = state.question;
+                if(newQuestion[i].canMulti=="true"){
+                    newQuestion[i].canMulti = "false";
                 }
                 else{
-                    state.question[i].canMulti = "true";
+                    newQuestion[i].canMulti = "true";
                 }
-                return ({
-                    id : state.id,
-                    question : state.question,
-                })
-            },            
+                state.question = newQuestion;
+            }, 
+
             UPDATE_MULTIPLE_CREATE_RESPONSE : (state,action) => {
                 let i = state.question.findIndex(r => r.id === action.questionID);
-                let current = state.question[i];
-                let response = state.question[i].response;
+
+                let newQuestion = state.question;
+                let current = newQuestion[i];
+                let response = newQuestion[i].response;
                 response = [...response,{id:response.length+1,title:response.length+1+"번째 선택요소"}]
                 current.response = response;
-                state.question.splice(i,1,current);
+                newQuestion.splice(i,1,current);
                 
-                return ({
-                    id : state.id,
-                    question : state.question,
-                })
+                state.question = newQuestion;
             },            
             UPDATE_MULTIPLE_UPDATE_RESPONSE : (state,action) => {
                 let i = state.question.findIndex(r => r.id === action.questionID);
                 let ii = state.question[i].response.findIndex(r => r.id === action.responseID);
-                state.question[i].response[ii].title = action.value;
-                return ({
-                    id : state.id,
-                    question : state.question,
-                })
+                let newQuestion = state.question;
+                newQuestion[i].response[ii].title = action.value;
+                
+                state.question = newQuestion;
             },
             UPDATE_MULTIPLE_DELETE_RESPONSE : (state,action) => {
                 let i = state.question.findIndex(r => r.id === action.questionID);
                 let ii = state.question[i].response.findIndex(r => r.id === action.responseID);
-                state.question[i].response.splice(ii,1);
+                let newQuestion = state.question;
+
+                newQuestion[i].response.splice(ii,1);
                 
-                state.question[i].response.map((r,index) => {
+                newQuestion[i].response.map((r,index) => {
                     r.id=index+1;
                     return r;
                 })
-                return ({
-                    id : state.id,
-                    question : state.question,
-                })
+                state.question = newQuestion;
             },
             CREATE_TRUEFALSE : (state,action) => (
             {
@@ -115,10 +119,7 @@ export const SurveyMakeSlice=createSlice({
             const newState = {...state};
             const i = newState.question.findIndex(r => r.id === action.id);
             newState.question[i].title = action.value;
-
-            return (
-                newState
-            )
+            state = newState;
         },    
 
         DELETE : (state,action) => {
@@ -130,12 +131,19 @@ export const SurveyMakeSlice=createSlice({
             }
             return newState
         },
-        },
     }
-);
+    }
+
+)
+
+const rootReducer=combineReducers({
+  surveyMake:surveyMakeSlice.reducer,
+  // count:countSlice.reducer,
+})
+
+export const store = configureStore({reducer: rootReducer})
 
 export const {
-    test,
     CREATE_OBJECTIVE,
     CREATE_MULTIPLE,
     UPDATE_MULTIPLE_CANMULTI,
@@ -145,4 +153,4 @@ export const {
     CREATE_TRUEFALSE,
     CREATE_STAR,
     UPDATE_TITLE,
-    DELETE,} = SurveyMakeSlice.actions;
+    DELETE,} = surveyMakeSlice.actions;

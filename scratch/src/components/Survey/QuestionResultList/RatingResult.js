@@ -2,7 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 
-function SurveyRating() {
+
+const styles = {
+  container: {
+      border:3,
+      borderStyle: "solid",
+      padding: 15,
+  },
+}
+
+function RatingResult({id,title}) {
     const [clicked, setClicked] = useState([false, false, false, false, false]);
 
     const StarClick = index => {
@@ -24,7 +33,8 @@ function SurveyRating() {
     };
 
     return (
-        <Wrap>
+        <Wrap style={styles.container}>
+            <h1>{title}</h1>
             <Stars>
                 {ARRAY.map(el => {
                     return (
@@ -42,7 +52,7 @@ function SurveyRating() {
     );
 }
 
-export default SurveyRating;
+export default RatingResult;
 
 const ARRAY = [0, 1, 2, 3, 4];
 

@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux'
 
 function Management(){
     const surveyList=useSelector((state)=>state.surveyList.value);
-    
-
-    
+        
     // const mock = [
     //     {
     //         id:1, status: 'making', title: "설문제목1",

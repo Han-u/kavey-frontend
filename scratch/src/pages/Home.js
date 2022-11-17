@@ -1,16 +1,16 @@
-import SurveyNarrative from "../components/Survey/SurveyNarrative";
-import SurveyRating from "../components/Survey/SurveyRating";
+
+
+import HomeComponent1 from "../components/Home/HomeComponent1";
 
 function Home(){
     return (
         <div>
-            대충 홈화면이라는뜻
-            <SurveyNarrative/>
-            <SurveyRating/>
+            {/* 대충 홈화면면
 
-
-
-
+ */}
+            <HomeComponent1/>
+            {/* -------------------------------
+ */}
 
         </div>
     )

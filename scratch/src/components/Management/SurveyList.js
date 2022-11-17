@@ -2,12 +2,8 @@ import {Box, Button, Chip, Menu, MenuItem, Typography} from "@mui/material";
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import { useDispatch,useSelector } from 'react-redux'
-import {deleteSurvey,copySurvey} from '../redux/SurveyStore';
-import { CREATE_OBJECTIVE ,test} from '../redux/slices/SurveyMakeSlice';
-
+import {deleteSurvey} from "../redux/Slices/SuveyListSlice"
 function SurveyList(props) {
-    const surveyQuestion=useSelector((state)=>state.surveyMake.question);
-    const surveyId=useSelector((state)=>state.surveyMake.id);
 
     const dispatch = useDispatch()
 
@@ -24,13 +20,12 @@ function SurveyList(props) {
     };
 
     const handleDelete= (e) =>{
-        // dispatch(deleteSurvey(e));   
-        dispatch(CREATE_OBJECTIVE());
+        dispatch(deleteSurvey(e));   
+        // console.log(설문배열출력);
         setAnchorEl(null);
     }
 
     const handleCopy= (e) =>{
-        console.log(surveyQuestion);        
         // dispatch(copySurvey(e));      
         setAnchorEl(null);
     }
