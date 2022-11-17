@@ -5,11 +5,11 @@ import ReactModal from "react-modal";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
 ReactModal.setAppElement("#root");
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
