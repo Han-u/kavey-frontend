@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
+    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55]add 모달추가">
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Modal/LinkFloating.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Modal/LinkFloating.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -53,6 +53,14 @@
   }
 }</component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="[SC-55]add 모달추가">
+      <created>1668672334758</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668672334758</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -65,5 +73,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[SC-55]add 모달추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[SC-55]add 모달추가" />
   </component>
 </project>
