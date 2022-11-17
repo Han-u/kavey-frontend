@@ -14,8 +14,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>        
-        <Route path="/modaltestpage" element={<ModalTestPage/>}/>
+        <Route path="/" element={<Home/>}/>
+
       </Routes>
     </Router>
   );
