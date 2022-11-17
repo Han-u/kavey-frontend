@@ -1,16 +1,39 @@
 import {Box, Button, Chip, Menu, MenuItem, Typography} from "@mui/material";
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import { useDispatch,useSelector } from 'react-redux'
+import {deleteSurvey,copySurvey} from '../redux/SurveyStore';
+import { CREATE_OBJECTIVE ,test} from '../redux/slices/SurveyMakeSlice';
 
 function SurveyList(props) {
+    const surveyQuestion=useSelector((state)=>state.surveyMake.question);
+    const surveyId=useSelector((state)=>state.surveyMake.id);
+
+    const dispatch = useDispatch()
+
     const [anchorEl, setAnchorEl] = useState(null);
+
     const open = Boolean(anchorEl);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleDelete= (e) =>{
+        // dispatch(deleteSurvey(e));   
+        dispatch(CREATE_OBJECTIVE());
+        setAnchorEl(null);
+    }
+
+    const handleCopy= (e) =>{
+        console.log(surveyQuestion);        
+        // dispatch(copySurvey(e));      
+        setAnchorEl(null);
+    }
 
     const status = {
         making: '제작중',
@@ -22,7 +45,7 @@ function SurveyList(props) {
         <Box sx={{width: 200, height: 200, margin: 1, backgroundColor: 'lightgray'}}>
             <div style={{padding: 10}}>
                 <Chip label={status[props.data.status]} variant="outlined"
-                      sx={{backgroundColor: 'white', float: 'right'}}/>
+                    sx={{backgroundColor: 'white', float: 'right'}}/>
                 <Typography variant="h6">{props.data.title}</Typography>
                 <div style={{fontSize: 13}}>
                     {props.data.startDt} ~ {props.data.endDt}
@@ -49,6 +72,7 @@ function SurveyList(props) {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
+                        
                     >
                         관리
                     </Button>
@@ -61,8 +85,9 @@ function SurveyList(props) {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleClose}>설문 삭제</MenuItem>
-                        <MenuItem onClick={handleClose}>설문 복제</MenuItem>
+                        <MenuItem onClick={()=>handleDelete(props.data.id)}>설문 삭제</MenuItem>
+                        {props.data.status=='making' ? <MenuItem onClick={handleClose}>설문 수정</MenuItem>:null}
+                        <MenuItem onClick={()=>handleCopy(props.data.id)} >설문 복제</MenuItem>
                         {props.data.status == 'done' ? null: <MenuItem component={Link} to="/subject">설문 참여자 관리</MenuItem>}
                         {props.data.status == 'progress' ?
                             <>

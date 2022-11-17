@@ -12,10 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/survey" element={<Survey/>}/>
-        <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
-        <Route path="management" element={<Management/>}/>
+        <Route path="/" element={<Home/>}/>        
       </Routes>
     </Router>
   );
