@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import EmailList from "./child/EmailList";
-import "./SendSurvey.css"
+import EmailList from "../components/Survey/SendSurvey/child/EmailList";
+import {Link} from 'react-router-dom';
 import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
 var ID=1;
 
@@ -39,7 +39,7 @@ function SendSurvey(){
                 <EmailList list={email} onDelete={deleteEmail}></EmailList>
             </div>
             <div className="sendButton">
-                <Button className="Button" >설문링크</Button>
+                <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
                 <Button className="Button" >생략</Button>
                 <Button className="Button"  onClick={sendSuccess}>전송</Button>
             </div>

@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import SurveyOptionSetting from "./pages/SurveyOptionSetting";
 import LinkFloating from "./pages/LinkFloating";
+import SendSurvey from "./pages/SendSurvey";
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
         <Route path="/survey" element={<Survey/>}/>
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
+        <Route path="/sendsurvey" element={<SendSurvey/>}/>
       </Routes>
     </Router>
   );

@@ -1,4 +1,4 @@
-import SendSurvey from "../components/Survey/SendSurvey/SendSurvey";
+
 
 
 function Home(){
@@ -7,10 +7,7 @@ function Home(){
             대충 홈화면면
 
 
-            -----------------------------------
-            <SendSurvey/>
-
-
+            -------------------------------
 
 
 
