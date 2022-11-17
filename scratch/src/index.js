@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ReactModal from "react-modal";
-
+import { store } from './components/redux/SurveyStore'
+import { Provider } from 'react-redux'
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./App.css";
@@ -10,8 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
 ReactModal.setAppElement("#root");
-import { store } from './components/redux/SurveyStore'
-import { Provider } from 'react-redux'
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

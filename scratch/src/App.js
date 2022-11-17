@@ -6,7 +6,7 @@ import {
 import Home from "./pages/Home";
 import Survey from "./pages/Survey";
 import SurveyOptionSetting from "./pages/SurveyOptionSetting";
-
+import Management from "./pages/Management";
 
 import ModalTestPage from "./components/Modal/ModalTestPage";
 
@@ -15,7 +15,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-
+        <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
+        <Route path="/survey" element={<Survey/>}/>
+        <Route path="/management" element={<Management/>}/>
       </Routes>
     </Router>
   );
