@@ -1,9 +1,10 @@
 import { configureStore ,combineReducers} from '@reduxjs/toolkit'
-import { SurveyListSlice } from './slices/SuveyListSlice';
+import { SurveyListSlice } from "./Slices/SuveyListSlice";
+import { surveyMakeSlice } from "./Slices/SurveyMakeSlice";
 
   const rootReducer=combineReducers({
     surveyList:SurveyListSlice.reducer,
-    // surveyMake:SurveyMakeSlice.reducer,
+    surveyMake:surveyMakeSlice.reducer,
     // count:countSlice.reducer,
   })
 

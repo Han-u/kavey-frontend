@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import EmailList from "../components/Survey/SendSurvey/child/EmailList";
+import EmailList from "../components/SendSurvey/child/EmailList";
 import {Link} from 'react-router-dom';
 import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
 var ID=1;

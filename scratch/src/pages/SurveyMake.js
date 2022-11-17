@@ -10,7 +10,7 @@ import { CREATE_OBJECTIVE,
   CREATE_TRUEFALSE,
   CREATE_STAR,
   UPDATE_TITLE,
-  DELETE }  from '../redux/slices/SurveyMakeSlice';
+  DELETE }  from '../components/redux/Slices/SurveyMakeSlice';
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';

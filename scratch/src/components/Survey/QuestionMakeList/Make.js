@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
 
-import { UPDATE_TITLE } from "../../../redux/slices/SurveyMakeSlice";
+import { UPDATE_TITLE } from "../../redux/Slices/SurveyMakeSlice";
 
 const styles = {
     container: {
