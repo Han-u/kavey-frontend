@@ -10,14 +10,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
 ReactModal.setAppElement("#root");
+import { store } from './components/redux/SurveyStore'
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ModalsProvider>
       <App />
-    </ModalsProvider>
-  </React.StrictMode>
+      </ModalsProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

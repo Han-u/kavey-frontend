@@ -14,9 +14,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/survey" element={<Survey/>}/>
-        <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
+        <Route path="/" element={<Home/>}/>        
         <Route path="/modaltestpage" element={<ModalTestPage/>}/>
       </Routes>
     </Router>
