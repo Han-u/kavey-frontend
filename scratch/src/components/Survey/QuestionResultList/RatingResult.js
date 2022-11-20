@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
+import {useDispatch} from 'react-redux';
+import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+
 
 
 const styles = {
@@ -12,6 +17,8 @@ const styles = {
 }
 
 function RatingResult({id,title}) {
+    const dispatch = useDispatch();
+
     const [clicked, setClicked] = useState([false, false, false, false, false]);
 
     const StarClick = index => {
@@ -30,6 +37,7 @@ function RatingResult({id,title}) {
     const sendReview = () => {
         let score = clicked.filter(Boolean).length;
         console.log({score});
+        dispatch({type:ANSWER,id:id,value:score});
     };
 
     return (

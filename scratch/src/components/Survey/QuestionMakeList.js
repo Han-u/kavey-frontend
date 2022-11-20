@@ -13,13 +13,13 @@ function QuestionMakeList() {
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
-                        return <Make id={r.id} title={r.title+" 주관식"} />
+                        return <Make id={r.order} title={r.title+" 주관식"} />
                     case MULTIPLE:
-                        return <MultipleMake id={r.id} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.response}/>
+                        return <MultipleMake id={r.order} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.response}/>
                     case TRUEFALSE:
-                        return <Make id={r.id} title={r.title+" 찬반"} />
+                        return <Make id={r.order} title={r.title+" 찬반"} />
                     case STAR:
-                        return <Make id={r.id} title={r.title+" 별점"} />
+                        return <Make id={r.order} title={r.title+" 별점"} />
                 }
             }
         )

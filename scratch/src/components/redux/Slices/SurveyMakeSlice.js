@@ -9,10 +9,10 @@ export const surveyMakeSlice=createSlice(
     {
         name:'surveyMake',
         initialState:{
-            surveyTitle:"",
-            surveyDesc:"",
-            surveyIsGenderQuestion:true,
-            surveyIsAgeQuestion:true,
+            //surveyTitle:"",
+            //surveyDesc:"",
+            //surveyIsGenderQuestion:true,
+            //surveyIsAgeQuestion:true,
             id : 0,
             question:[],
         },
@@ -136,12 +136,7 @@ export const surveyMakeSlice=createSlice(
 
 )
 
-const rootReducer=combineReducers({
-  surveyMake:surveyMakeSlice.reducer,
-  // count:countSlice.reducer,
-})
 
-export const store = configureStore({reducer: rootReducer})
 
 export const {
     CREATE_OBJECTIVE,

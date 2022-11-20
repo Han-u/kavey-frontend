@@ -11,6 +11,7 @@ import Participant from "./pages/Participant";
 import SendSurvey from "./pages/SendSurvey";
 import LinkFloating from "../src/components/Modal/LinkFloating";
 import ModalTestPage from "./components/Modal/ModalTestPage";
+import SurveyAnswer from "./pages/SurveyAnswer";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/participant" element={<Participant/>}/>
         <Route path="/sendsurvey" element={<SendSurvey/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
+
+        <Route path="/answer" element={<SurveyAnswer/>}/>
 
       </Routes>
     </Router>

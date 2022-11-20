@@ -1,3 +1,7 @@
+import { useState } from "react";
+
+import {useDispatch} from 'react-redux';
+import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 
 const styles = {
     container: {
@@ -7,12 +11,12 @@ const styles = {
     },
 }
 
-function MultipleResult({id, title,canMulti,response}) {
+function MultipleResult({id, title,canMulti,response}) {    
     return (  
         <div style={styles.container}>
             <h1>{title}</h1>
             <p>{canMulti}</p>
-            <ResponseList list={response}/>
+            <ResponseList question_id={id}list={response}/>
         </div> 
         
     );
@@ -20,14 +24,14 @@ function MultipleResult({id, title,canMulti,response}) {
 
 export default MultipleResult;
 
-
-function ResponseList({list}) {
+function ResponseList({question_id,list}) {
     let responseList;
     if(list!=undefined){
         responseList = list.map(
             r => (
                 <Response 
-                key = {r.id} 
+                question_id = {question_id}
+                response_id = {r.id} 
                 title={r.title} 
                 />
             )
@@ -41,10 +45,15 @@ function ResponseList({list}) {
     )
 }
 
-function Response({key,title}){
+function Response({question_id,response_id,title}){
+    const onCheckHandler = (e,id) => {
+        console.log(e.currentTarget.checked);
+        console.log(id);
+        //dispatch({type:ANSWER,question_id:question_id,response_id:id});
+    };
     return(
-        <div>      
-                <input type="checkbox"></input>
+        <div>   
+                <input type="checkbox" onChange={(e) => onCheckHandler(e,response_id)}></input>
                 <p>{title}</p>
         </div>
     );

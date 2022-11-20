@@ -10,8 +10,8 @@ import RatingResult from './QuestionResultList/RatingResult';
 
 
 
-function QuestionResultList() {
-    const data = useSelector((state)=>state.surveyMake.question);
+function AnswerResultList() {
+    const data = useSelector((state)=>state.surveyAnswer.question);
     let list = NaN;
     if(data!==undefined){
         list = data.map(
@@ -37,4 +37,4 @@ function QuestionResultList() {
     );
 }
 
-export default QuestionResultList;
+export default AnswerResultList;
