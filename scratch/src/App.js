@@ -10,13 +10,14 @@ import SurveyMake from "./pages/SurveyMake";
 import Participant from "./pages/Participant";
 import SendSurvey from "./pages/SendSurvey";
 import LinkFloating from "../src/components/Modal/LinkFloating";
-import ModalTestPage from "./components/Modal/ModalTestPage";
+import LoginMain from "./pages/LoginMain";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<LoginMain/>}/>
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
         <Route path="/management" element={<Management/>}/>
         <Route path="/surveymake" element={<SurveyMake/>}/>
