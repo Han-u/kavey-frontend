@@ -10,6 +10,7 @@ import SurveyMake from "./pages/SurveyMake";
 import Participant from "./pages/Participant";
 import SendSurvey from "./pages/SendSurvey";
 import LinkFloating from "../src/components/Modal/LinkFloating";
+import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
 import ModalTestPage from "./components/Modal/ModalTestPage";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/participant" element={<Participant/>}/>
         <Route path="/sendsurvey" element={<SendSurvey/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
+        <Route path="/searchparticipant" element={<ModalSearchParticipant/>}/>
 
       </Routes>
     </Router>

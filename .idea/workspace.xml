@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="">
+    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55]add 모달추가">
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/hooks/useDetectClose.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/pages/SearchParticipant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/pages/LinkFloating.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,14 +53,32 @@
       </RecentBranches>
     </option>
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;C:/frontEndd&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HiZxrgswSyL6t9eWQQeeH5gNDd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/frontEndd",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\frontEndd\scratch\src\pages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="[SC-55]add 모달추가">
       <created>1668672334758</created>
@@ -66,8 +87,19 @@
       <option name="project" value="LOCAL" />
       <updated>1668672334758</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55]add 모달추가" />
+      <created>1668770116957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668770116957</updated>
+      <workItem from="1668770120938" duration="32170000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
