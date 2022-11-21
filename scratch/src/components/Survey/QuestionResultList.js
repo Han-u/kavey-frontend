@@ -12,7 +12,7 @@ import RatingResult from './QuestionResultList/RatingResult';
 
 function QuestionResultList() {
     const data = useSelector((state)=>state.surveyMake.question);
-    let list = NaN;
+    let list = [];
     if(data!==undefined){
         list = data.map(
             r => {

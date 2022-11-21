@@ -20,12 +20,12 @@ function Make({id, title}) {
         dispatch({type:UPDATE_TITLE,id:id,value:e.target.value});
     };
 
+
     return(
-        <div style={styles.container}>
+        <div style={styles.container}  draggable>
             <div>
             <input placeholder={title} maxLength={50} onChange={onChange} ></input>
             </div>
-
         </div>
     );
 }

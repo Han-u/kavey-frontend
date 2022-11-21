@@ -1,13 +1,29 @@
-import {useSelector} from 'react-redux';
-import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from "../redux/Slices/SurveyMakeSlice"
+import {useSelector,useRef} from 'react-redux';
+
+import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR,UPDATE_ORDER } from "../redux/Slices/SurveyMakeSlice"
+import {useDispatch} from 'react-redux';
+
+import ReactDragList from 'react-drag-list'
+
 import Make from './QuestionMakeList/Make';
 import MultipleMake from './QuestionMakeList/MultipleMake';
 
+
+
+
+
 function QuestionMakeList() {
-    
+    const dispatch = useDispatch();
+
     const data = useSelector((state)=>state.surveyMake.question);
-    console.log(data);
-    let list = NaN;
+    
+    const handleDragEvent = (e) => {
+        console.log(e);
+        dispatch({type:UPDATE_ORDER,prev:e.oldIndex+1,next:e.newIndex+1});
+    }   
+
+
+    let list = [];
     if(data.length!==0){
         list = data.map(
             r => {
@@ -15,19 +31,26 @@ function QuestionMakeList() {
                     case OBJECTIVE:
                         return <Make id={r.order} title={r.title+" 주관식"} />
                     case MULTIPLE:
-                        return <MultipleMake id={r.order} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.response}/>
+                        return <MultipleMake id={r.order} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.response}/> 
                     case TRUEFALSE:
                         return <Make id={r.order} title={r.title+" 찬반"} />
                     case STAR:
-                        return <Make id={r.order} title={r.title+" 별점"} />
+                        return <Make id={r.order} title={r.title+" 별점"} /> 
                 }
             }
         )
     }
+
     
+
+
     return (
-        <div>
-            {list}
+        <div >
+            <ReactDragList
+            dataSource={list}
+            row={(record, index) => <div>{record}</div>}
+            onUpdate={handleDragEvent}
+            />
         </div>
     );
 }

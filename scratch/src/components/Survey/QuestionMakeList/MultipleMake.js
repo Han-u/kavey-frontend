@@ -22,6 +22,7 @@ function MultipleMake({id,title,canMulti,response}) {
         dispatch({type:UPDATE_MULTIPLE_CREATE_RESPONSE,questionID:id})
     }
 
+
     return(
         <div style={styles.container}>
             <button onClick={onClickPlus}>plus</button>

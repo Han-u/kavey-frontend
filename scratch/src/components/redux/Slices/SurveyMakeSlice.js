@@ -122,6 +122,56 @@ export const surveyMakeSlice=createSlice(
             state = newState;
         },    
 
+        UPDATE_ORDER:(state,action) =>{
+            const newState = {...state};
+            
+            let prev = newState.question.findIndex(r =>r.order===(action.prev));
+            prev= newState.question[prev].order;
+            let next = newState.question.findIndex(r =>r.order===(action.next));
+            next= newState.question[next].order;
+
+        
+            const index = newState.question.findIndex(r =>r.order===(prev));
+
+            if(prev < next){  
+                let i = 1;
+                let order = prev+1;
+                while(true){
+                    if(order <= next){
+                        i = newState.question.findIndex(r =>r.order===(order));
+                        if(i!==-1){
+                            newState.question[i].order-=1;
+                        }
+                    }
+                    else{
+                        newState.question[index].order=next;
+                        break;
+                    }
+                    order+=1;
+                }
+            }
+            else{
+                let i = 1;
+                let order = prev-1;
+                while(true){
+                    if(order >= next){
+                        console.log(order);
+                        i = newState.question.findIndex(r =>r.order===(order));
+                        if(i!==-1){
+                            newState.question[i].order+=1;
+                        }
+                    }
+                    else{
+                        newState.question[index].order=next;
+                        break;
+                    }
+                    order-=1;
+                }
+            }
+            state = newState;
+
+        },
+
         DELETE : (state,action) => {
             const newState = {...state};
             const index = newState.question.findIndex(r => r.id === newState.id);
@@ -148,4 +198,5 @@ export const {
     CREATE_TRUEFALSE,
     CREATE_STAR,
     UPDATE_TITLE,
+    UPDATE_ORDER,
     DELETE,} = surveyMakeSlice.actions;
