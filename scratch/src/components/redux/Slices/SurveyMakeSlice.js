@@ -1,4 +1,4 @@
-import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 
 export const OBJECTIVE = "OBEJCTIVE";
 export const MULTIPLE = "MULTIPLE";
@@ -135,13 +135,6 @@ export const surveyMakeSlice=createSlice(
     }
 
 )
-
-const rootReducer=combineReducers({
-  surveyMake:surveyMakeSlice.reducer,
-  // count:countSlice.reducer,
-})
-
-export const store = configureStore({reducer: rootReducer})
 
 export const {
     CREATE_OBJECTIVE,

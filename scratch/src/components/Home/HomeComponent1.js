@@ -3,8 +3,8 @@ import {Button} from 'reactstrap';
 import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function HomeComponent1() {
-    return (
+function HomeComponent1(){
+    return(
         <div>
         <div style={{backgroundColor:'white',margin:'auto'}}>
             {/* 대충 컴포넌트라는 뜻 진짜 대충이네용 */}

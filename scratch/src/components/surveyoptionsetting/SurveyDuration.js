@@ -1,47 +1,49 @@
 import SurveyDatePicker from "./surveyduration/SurveyDatePicker";
-import React, { useState } from "react";
+import {Button,Typography,ButtonGroup} from "@mui/material";
+import { useDispatch } from 'react-redux'
+import {SET_STARTDATE,SET_ENDDATE} from "../redux/Slices/SurveyOptionSlice"
 
 function SurveyDuration() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const dispatch = useDispatch(); 
 
   const QuickButtonWeek=()=>{
     const beforeDate=new Date();
     const afterDate=new Date();
-    setStartDate(beforeDate);
     afterDate.setDate(afterDate.getDate()+7)
-    setEndDate(afterDate);    
+    dispatch(SET_STARTDATE(beforeDate));
+    dispatch(SET_ENDDATE(afterDate));    
   };
 
   const QuickButtonDoubleWeek=()=>{
     const beforeDate=new Date();
     const afterDate=new Date();
-    setStartDate(beforeDate);
     afterDate.setDate(afterDate.getDate()+14)
-    setEndDate(afterDate);
+    dispatch(SET_STARTDATE(beforeDate));
+    dispatch(SET_ENDDATE(afterDate));
   };
 
   const QuickButtonMonth=()=>{
     const beforeDate=new Date();
     const afterDate=new Date();
-    setStartDate(beforeDate);
     afterDate.setDate(afterDate.getDate()+30)
-    setEndDate(afterDate);
+
+    dispatch(SET_STARTDATE(beforeDate));
+    dispatch(SET_ENDDATE(afterDate));
   };
   return (
     <div align="center">
-      <h2>2. 설문 기간 설정</h2>
-      <h4>기간을 정해주세요</h4>
-      <div>
-        <button onClick={QuickButtonWeek}>7일</button>
-        <button onClick={QuickButtonDoubleWeek}>14일</button>
-        <button onClick={QuickButtonMonth}>30일</button>
+      <Typography variant="h4">설문 기간 설정</Typography>
+      <Typography variant="h6">기간을 정해주세요</Typography>
+      <div style={{width:'50%'}}>
+        <ButtonGroup variant="outlined" style={{margin:'10px'}}>
+          <Button onClick={QuickButtonWeek}>7일</Button>
+          <Button onClick={QuickButtonDoubleWeek}>14일</Button>
+          <Button onClick={QuickButtonMonth}>30일</Button>
+        </ButtonGroup>
       </div>
-      <div align="center">
-        <h4>시작 기간 ~ 종료 기간</h4>
-        <SurveyDatePicker startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}></SurveyDatePicker>
+      <div align="center">        
+        <SurveyDatePicker></SurveyDatePicker>
       </div>
-      {/* <button onClick={()=>console.log(startDate,endDate)}>테스트</button> */}
     </div>
   );
 }

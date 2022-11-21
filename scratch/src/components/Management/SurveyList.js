@@ -1,11 +1,11 @@
 import {Box, Button, Chip, Menu, MenuItem, Typography} from "@mui/material";
 import {useState} from "react";
 import {Link} from "react-router-dom";
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {deleteSurvey} from "../redux/Slices/SuveyListSlice"
 function SurveyList(props) {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [anchorEl, setAnchorEl] = useState(null);
 

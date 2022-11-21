@@ -1,50 +1,40 @@
 import React from "react";
-import { useState } from "react";
+import {Button,Typography} from "@mui/material";
+import { useDispatch,useSelector } from 'react-redux'
+import {SET_IS_GENDER_QUESTION,SET_IS_AGE_QUESTION} from "../redux/Slices/SurveyOptionSlice"
 
-function SurveyGenderAge(props) {
 
-    const [gender, setGender] = useState(true)
-    const [age, setAge] = useState(true)
-    
+function SurveyGenderAge() {
 
-    const handleGenderChange = (e) => {
+    const age=useSelector((state)=>state.surveyOption.isAgeQuestion);
+    const gender=useSelector((state)=>state.surveyOption.isGenderQuestion);
+    const dispatch= useDispatch();
 
-        
-        if(gender === true)
-            setGender(false);
-        else
-            setGender(true);
-
-        console.log("gender : "+ gender);
-
-        
+    const handleGenderChange = () => {
+        dispatch(SET_IS_GENDER_QUESTION());
     };
 
-    const handleAgeChange = (e) => {
-        if(age === true)
-            setAge(false);
-        else
-            setAge(true);
-
-        console.log("age : "+ age);
+    const handleAgeChange = () => {
+        dispatch(SET_IS_AGE_QUESTION());
     };
-
-
 
     return(
         <div>
-            <h2>4. 인적 사항 질문 추가</h2>
-            <div >
-
-                <input type={"checkbox"} defaultChecked ={gender} onChange={(e)=>handleGenderChange(e)}/> 성별
-                <input type={"checkbox"} defaultChecked ={age} onChange={(e)=>handleAgeChange(e)}/> 연령대
-                
+            <Typography variant="h4">인적 사항 질문 추가</Typography>
+            <div  style={{display: 'flex', flexDirection: 'row',justifyContent: 'center'}}>
+                <div style={{width:'50%'}}>
+                    <Button variant={gender?"contained":"outlined"}
+                    onClick={()=>handleGenderChange()}
+                    >성별</Button>
+                </div>
+                <div style={{width:'50%'}}>
+                    <Button variant={age?"contained":"outlined"}
+                    onClick={()=>handleAgeChange()}
+                    >연령</Button>
+                </div>
             </div>
-
-
         </div>
-    )
-    
+    )    
 }
 
 export default SurveyGenderAge;
