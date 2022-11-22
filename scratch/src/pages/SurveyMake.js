@@ -39,10 +39,6 @@ function SurveyMake() {
     return ( 
         <div>
             <button onClick={onClick}>send to was</button>
-            <div> 
-                <PlusButton/>
-                <DeleteButton/>
-            </div>
             <div style={{display:"flex"}} >
                 <QuestionMakeList/>
                 <QuestionResultList/>
@@ -51,37 +47,37 @@ function SurveyMake() {
      );
 }
 
+export default SurveyMake;
+
 
 //button 
-function PlusButton(props){
+export function PlusButton({id}){
     const dispatch = useDispatch();
     return(
       <div>
         <input type="button" value="주관식" onClick={() => {
-          dispatch({type : CREATE_OBJECTIVE});
+          dispatch(CREATE_OBJECTIVE({id:id}));
         }}></input>
         <input type="button" value="객관식" onClick={() => {
-          dispatch({type : CREATE_MULTIPLE});
+          dispatch(CREATE_MULTIPLE({id:id}));
         }}></input>
         <input type="button" value="찬반" onClick={() => {
-          dispatch({type : CREATE_TRUEFALSE});
+          dispatch(CREATE_TRUEFALSE({id:id}));
         }}></input>
         <input type="button" value="별점" onClick={() => {
-          dispatch({type : CREATE_STAR});
+          dispatch(CREATE_STAR({id:id}));
         }}></input>
        </div>
     );
 }
 
-function DeleteButton(props){
+export function DeleteButton({id}){
     const dispatch = useDispatch();
     return(
       <div>
         <input type="button" value="+" onClick={() => {
-          dispatch({type : DELETE});
+          dispatch(DELETE({id:id}));
         }}></input>
        </div>
     );
 }
-
-export default SurveyMake;

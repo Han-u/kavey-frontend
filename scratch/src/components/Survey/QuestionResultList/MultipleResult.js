@@ -32,7 +32,7 @@ function ResponseList({question_id,list}) {
                 <Response 
                 question_id = {question_id}
                 response_id = {r.id} 
-                title={r.title} 
+                title={r.value} 
                 />
             )
         )
