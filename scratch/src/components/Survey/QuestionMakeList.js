@@ -19,7 +19,7 @@ function QuestionMakeList() {
     
     const handleDragEvent = (e) => {
         console.log(e);
-        dispatch({type:UPDATE_ORDER,prev:e.oldIndex+1,next:e.newIndex+1});
+        dispatch({type:UPDATE_ORDER,prev:e.oldIndex,next:e.newIndex});
     }   
 
 
