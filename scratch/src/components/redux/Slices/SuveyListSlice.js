@@ -1,4 +1,4 @@
-import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 
 export const SurveyListSlice=createSlice({
     name:'SurveyList',
@@ -54,9 +54,9 @@ export const SurveyListSlice=createSlice({
         //ㄴㄴ이거 그냥 설문 값 받아서 페이지 이동시키는게 나을듯
         
         },
-      }      
+        }      
     }
-  );
+);
 
 export const { deleteSurvey ,copySurvey} = SurveyListSlice.actions;
 

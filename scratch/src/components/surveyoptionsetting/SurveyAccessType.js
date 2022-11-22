@@ -1,51 +1,48 @@
 import React from "react";
-import { useState } from "react";
+import {Button,Typography} from "@mui/material";
+import { useDispatch,useSelector } from 'react-redux'
+import {SET_PUBLIC_PRIVATE,SET_PEOPLE_LIMIT} from "../redux/Slices/SurveyOptionSlice"
 
-function SurveyAccessType(props) {
-    const [PublicPrivate, setPublicPrivate] = useState("public")
-    const [PeopleLimit, setPeopleLimit] = useState()
+function SurveyAccessType() {
+    const publicPrivate=useSelector((state)=>state.surveyOption.publicPrivate);
+    const peopleLimit=useSelector((state)=>state.surveyOption.peopleLimit);
 
-    const handlepublic_surveyChange = (e) => {
-        setPublicPrivate("public");
-        console.log("public setting : "+ PublicPrivate);
+    const dispatch=useDispatch();
 
-        
-    };
-    const handleprivate_surveyChange = (e) => {
-        setPublicPrivate("private");
-        console.log("survey setting : "+ PublicPrivate);
-    };
+    const handleClick = (e) => {
+        dispatch(SET_PUBLIC_PRIVATE(e));    
+    };   
 
 
     const checkPublic = ()=>{
-        if (PublicPrivate === "public")
+        if (publicPrivate === "public")
             return "";
         else
             return "disabled";
     }
     const handleChange = (e) => {
-        // console.log(e.target.value);
-        setPeopleLimit(e.target.value);
+        dispatch(SET_PEOPLE_LIMIT(e));
     }
 
     return(
         <div>
-            <h2>3. 설문 응답 설정</h2>
-            <div  style={{display: 'flex', flexDirection: 'row',justifyContent: 'center' , width:'600px'}}>
-            <div style={{width:'50%'}}>
-                <input type="radio" id="publivSurvey" name="SurveylAccess" value="publivSurvey" defaultChecked onChange={(e) => handlepublic_surveyChange(e)} />
-                <label for="publivSurvey">개방형</label>
-                <p>
-                <label for="peopleLimit">설문조사 인원 설정  (0-100):</label>
-                <p/>
-                <input type="number" id="peopleLimit" name="peopleLimit" placeholder="(0 : 무제한)" value={PeopleLimit} min="0" disabled = {checkPublic()}  onChange={handleChange}/>
-                </p>
-                
-            </div>            
-            <div style={{width:'50%'}}>
-                <input type="radio" id="privateSurvey" name="SurveylAccess" value="privateSurvey" onChange={(e) => handleprivate_surveyChange(e)}/>
-                <label for="privateSurvey">폐쇄형</label>
-            </div>
+            <Typography variant="h4">설문 응답 설정</Typography>
+            <div  style={{display: 'flex', flexDirection: 'row',justifyContent: 'center'}}>
+                <div style={{width:'50%'}}>
+                    <Button variant={publicPrivate==="public"?"contained":"outlined"}
+                    onClick={(e)=>handleClick(e.target.value)} 
+                    value="public">개방형</Button>                
+                    <p>
+                    <label for="peopleLimit">설문조사 인원 설정</label>
+                    <input type="number" id="peopleLimit" name="peopleLimit" placeholder="(0 : 무제한)" value={peopleLimit} min="0" disabled = {checkPublic()}  onChange={(e)=>handleChange(e.target.value)}/>
+                    </p>                    
+                </div>            
+                <div style={{width:'50%'}}>
+                    <Button variant={publicPrivate==="private"?"contained":"outlined"}
+                    onClick={(e)=>handleClick(e.target.value)}
+                    value="private">폐쇄형</Button>
+                    
+                </div>
              </div>   
         </div>
     )

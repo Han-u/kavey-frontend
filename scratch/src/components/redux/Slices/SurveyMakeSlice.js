@@ -1,4 +1,4 @@
-import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 
 export const OBJECTIVE = "OBEJCTIVE";
 export const MULTIPLE = "MULTIPLE";
