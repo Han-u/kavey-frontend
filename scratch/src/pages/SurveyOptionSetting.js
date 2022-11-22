@@ -4,7 +4,7 @@ import SurveyAccessType from "../components/surveyoptionsetting/SurveyAccessType
 import SurveyDuration from "../components/surveyoptionsetting/SurveyDuration";
 import { useSelector,useDispatch } from 'react-redux'
 import { SET_PEOPLE_LIMIT } from "../components/redux/Slices/SurveyOptionSlice";
-import {Button} from'@mui/material';
+import {Button, Link} from'@mui/material';
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 
 
@@ -54,7 +54,7 @@ function SurveyOptionSetting() {
                     <div align="center" style={{marginTop:'50px'}}>
                             <Button variant="contained"
                             disabled={validationNext()}
-                            onClick={handleClick}>다음으로</Button>
+                            onClick={handleClick} component={Link} to="/surveymake">다음으로</Button>
                     </div>
                 </div>
             </div>
