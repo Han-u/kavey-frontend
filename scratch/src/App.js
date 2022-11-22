@@ -13,6 +13,7 @@ import LinkFloating from "../src/components/Modal/LinkFloating";
 import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
 import ModalTestPage from "./components/Modal/ModalTestPage";
 import SurveyAnswer from "./pages/SurveyAnswer";
+import ProxyTest from "./components/BackEnd/ProxyTest";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
         <Route path="/answer" element={<SurveyAnswer/>}/>
 
+        <Route path="/testproxy" element={<ProxyTest/>}/>
       </Routes>
     </Router>
   );
