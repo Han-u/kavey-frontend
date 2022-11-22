@@ -2,8 +2,9 @@ import ReactModal from "react-modal";
 import {Button, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import DatePicker from "react-datepicker";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const MyModal = ({ onSubmit, onClose }) => {
 
@@ -15,16 +16,7 @@ const MyModal = ({ onSubmit, onClose }) => {
         onClose();
 
     };
-    const data = [
-        {id: 0, email: '오영석@naver.com', sendDt: '2022-10-05', res: '응답',resDay:"2022-10-03"},
-        {id: 1, email: '김도성@naver.com', sendDt: '2022-10-05', res: '거절', resDay:"2022-10-03"},
-        {id: 2, email: '심성@naver.com', sendDt: '2022-10-05', res: '미응답',resDay:"2022-10-03"},
-        {id: 3, email: '김원@naver.com', sendDt: '2022-10-05', res: '미응답', resDay:"2022-10-03"},
-        {id: 4, email: '한요한@naver.com', sendDt: '2022-10-05', res: '응답', resDay:"2022-10-03"},
-        {id: 5, email: '다민이@naver.com', sendDt: '2022-10-05', res: '거절', resDay:"2022-10-03"},
-        {id: 6, email: '미노이@naver.com', sendDt: '2022-10-05', res: '미응답', resDay:""},
-        {id: 7, email: '기리보이@naver.com', sendDt: '2022-10-05', res: '미응답', resDay:"2022-10-03"}
-    ];
+
     const [checkItems, setCheckItems] = useState([]);
     // 체크박스 단일 선택
     const handleSingleCheck = (checked, id) => {
@@ -40,7 +32,7 @@ const MyModal = ({ onSubmit, onClose }) => {
         if(checked) {
             // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
             const idArray = [];
-            result.forEach((el) => idArray.push(el.id));
+            backResult.forEach((el) => idArray.push(el.id));
             setCheckItems(idArray);
         }
         else {
@@ -48,44 +40,6 @@ const MyModal = ({ onSubmit, onClose }) => {
             setCheckItems([]);
         }
     }
-    const [resState, setResState]=useState("전체");
-
-
-
-    const addSurveyItem1 = () => {
-        setResState("응답");
-        console.log(resState);
-    };
-    const addSurveyItem2 = () => {
-        setResState("미응답");
-        console.log(resState);
-
-    };
-    const addSurveyItem3 = () => {
-        setResState("거절");
-        console.log(resState);
-
-    };
-    const addSurveyItem4 = () => {
-        setResState("전체");
-        console.log(resState);
-
-    };
-    var result = data.filter(data=>data.res===resState);
-    if (resState==="전체")
-    {
-        var result = data.filter(data=>data.id >= 0);
-    }
-
-
-
-
-
-
-    const [startDate, setStartDate] = useState(new Date());
-    console.log(startDate);
-    const [endDate, setEndDate] = useState(new Date());
-    console.log(endDate);
 
 
 
@@ -98,8 +52,13 @@ const MyModal = ({ onSubmit, onClose }) => {
 
 
 
-    const [visible1, setVisible1]=useState(false);
-    const [visible2, setVisible2]=useState(false);
+
+
+
+
+
+
+
 
 
 
@@ -108,9 +67,6 @@ const MyModal = ({ onSubmit, onClose }) => {
         setSearch(e.target.value)
     }
 
-    const filterTitle = data.filter((p) => {
-        return p.email.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-    })
 
     const style = {
         header : {
@@ -133,10 +89,49 @@ const MyModal = ({ onSubmit, onClose }) => {
             backgroundColor: 'white'
         }
     };
+    const [backData, setBackData] = useState('')
+    useEffect(() => {
+        axios.get('/survey/1/receiver')
+            .then(response => setBackData(response.data))
+            .catch(error => console.log(error))
+    }, []);
+
+
+
+
+
+
+    const [resStatus, setResStatus]=useState("ALL");
+    const addSurveyBack1 = () => {
+        setResStatus("RESPONSE");
+        console.log(resStatus);
+    };
+    const addSurveyBack2 = () => {
+        setResStatus("NONRESPONSE");
+        console.log(resStatus);
+
+    };
+    const addSurveyBack3 = () => {
+        setResStatus("REJECT");
+        console.log(resStatus);
+    };
+    const addSurveyBack4 = () => {
+        setResStatus("ALL");
+        console.log(resStatus);
+    };
+    const realBack=Object.values(backData);
+
+
+    var backResult = realBack.filter(data=>data.status===resStatus);
+    if (resStatus==="ALL")
+    {
+        var backResult = realBack.filter(data=>data.attendID >= 0);
+    }
 
     return (
         <ReactModal isOpen>
             <div>
+                <Button className="Button" component={Link} to="/participant">X</Button>
                 <div style={style.header}>
                     <Typography variant="h4" fontFamily="HallymGothic-Regular">
                         설문 참여자 검색
@@ -146,12 +141,7 @@ const MyModal = ({ onSubmit, onClose }) => {
                     <div style={style.Container}>
                         <div style={style.btn}>
                             <input type="text" value={search} onChange={onChange} />
-
-
-
-
                         </div>
-
                         <div>
                             <StyledTable>
                                 <thead>
@@ -160,7 +150,7 @@ const MyModal = ({ onSubmit, onClose }) => {
                                         <input type='checkbox' name='select-all'
                                                onChange={(e) => handleAllCheck(e.target.checked)}
                                             // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                                               checked={checkItems.length === data.length ? true : false} />
+                                               checked={checkItems.length === backResult.length ? true : false} />
                                     </th>
                                     <th className='second-row'>이메일</th>
                                     <th className='second-row'>전송날짜</th>
@@ -174,18 +164,15 @@ const MyModal = ({ onSubmit, onClose }) => {
                                 </thead>
                                 <tbody>
 
-                                {filterTitle.map((data,key) => <tr key={key}>
-                                    <td>
-                                        <input type='checkbox'
-                                               onChange={(e) => handleSingleCheck(e.target.checked, result.id)}
-                                               checked={checkItems.includes(result.id) ? true : false} />
-                                    </td>
-                                    <td key={data.email}>{data.email}</td>
-                                    <td key={data.sendDt}>{data.sendDt}</td>
-                                    <td key={data.res}>{data.res}</td>
-                                    <td key={data.resDay}>{data.resDay}</td>
-                                    <td className='second-row'>{data.title}</td>
-                                </tr>)}
+                                {backResult && backResult.map((result,key)=>(
+                                    <tr key={key}>
+                                        <td><input type="checkbox"/></td>
+                                        <td key={result.email}>{result.sendEmail}</td>
+                                        <td key={result.sendDt}>{result.sendDate}</td>
+                                        <td key={result.res}>{result.status}</td>
+                                        <td key={result.resDay}>{result.responseDate}</td>
+                                    </tr>
+                                ))}
 
                                 </tbody>
                             </StyledTable>

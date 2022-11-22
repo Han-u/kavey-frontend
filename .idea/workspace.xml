@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55]add 모달추가">
-      <change afterPath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/src/hooks/useDetectClose.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch/src/pages/SearchParticipant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/pages/Test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/sc-22" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,12 +32,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1668673672" />
+                    <option name="branchName" value="feature/sc-53" />
+                    <option name="lastUsedInstant" value="1669095189" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="feature/sc-53" />
-                    <option name="lastUsedInstant" value="1668612814" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1668673672" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-22" />
@@ -61,18 +60,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/frontEndd",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/frontEndd&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\frontEndd\scratch\src\pages" />
@@ -94,6 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1668770116957</updated>
       <workItem from="1668770120938" duration="32170000" />
+      <workItem from="1669132528397" duration="2742000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -115,5 +115,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[SC-55]add 모달추가" />
     <option name="LAST_COMMIT_MESSAGE" value="[SC-55]add 모달추가" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js</url>
+          <line>87</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
