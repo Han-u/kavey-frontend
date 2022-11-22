@@ -36,7 +36,6 @@ function QuestionMakeList() {
             }
         )
     }
-    console.log(list);
     const renderData = <ReactDragList dataSource={list} row={(record, index) => <div>{record}</div>} onUpdate={handleDragEvent} />            
     
 

@@ -2,10 +2,10 @@ import { createSlice} from '@reduxjs/toolkit'
 
 import produce from "immer";
 
-export const OBJECTIVE = "OBEJCTIVE";
-export const MULTIPLE = "MULTIPLE";
-export const TRUEFALSE = "TRUEFALSE";
-export const STAR = "STAR";
+export const OBJECTIVE = 1
+export const MULTIPLE = 2
+export const TRUEFALSE = 3
+export const STAR = 4
 
 export const surveyMakeSlice=createSlice(
     {
@@ -51,9 +51,9 @@ export const surveyMakeSlice=createSlice(
                 required:true,
                 ordering:id+1,
                 type:MULTIPLE,
-                option_number:0,
+                option_number:1,
                 option_list:[{value:1+"번째 선택요소",ordering:0,data:"??"}],
-                canMulti:"true",
+                //canMulti:"true",
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
@@ -87,17 +87,18 @@ export const surveyMakeSlice=createSlice(
                     let response = draftState.question[q_id].option_list;
                     response[r_id].value = value;
                     draftState.question[q_id].option_list = response;
+                    draftState.question[q_id].option_number=response.length;
                 })
                 state.question = newState.question;
             },
             UPDATE_MULTIPLE_DELETE_RESPONSE : (state,action) => {
                 const {q_id,r_id} = action.payload;
-                console.log(q_id,r_id);
                 const newState = produce(state,(draftState) => {
                     let response = draftState.question[q_id].option_list;
                     response.splice(r_id,1);
                     response.map((r,id)=>response[id].ordering = id);
                     draftState.question[q_id].option_list = response;
+                    draftState.question[q_id].option_number=response.length;
                 })
                 state.question = newState.question;
             },
@@ -171,6 +172,7 @@ export const surveyMakeSlice=createSlice(
             newQuestion.splice(id,1,)
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
+
 
         },
     }

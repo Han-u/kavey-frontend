@@ -25,14 +25,32 @@ const tempStyle={
 }
 
 
+//이전 페이지에서 갖고올 dummy data
+let dummy = {
+  "user_id" : 1,
+  "title" : "어떤 동물이 좋아?",
+  "description": "테스트 설문입니다",
+  "ask_age" : "TRUE",
+  "ask_gender" : "TRUE",
+  "is_private" : "FALSE",
+  "limit_person" : "100",
+  "start_date" : "2021-01-01T00:00",
+  "end_date" : "9999-01-01T00:00",
+  "theme" : 1,
+  "question_number" :  2,
+  "question_list" : []
+}
 
 function SurveyMake() {
-  const selectorData = useSelector(state=>state.question);
+  //front -> back example code 
+  const selectorData = useSelector((state)=>state.surveyMake.question);
 
   const onClick = (e) =>{
-    console.log("?");
     console.log(selectorData);
-    axios.post('/rest/create',selectorData);
+    
+    dummy.question_list = selectorData;
+    console.log(dummy);
+    axios.post('/survey',dummy);
   }
 
 
