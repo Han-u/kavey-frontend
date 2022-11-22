@@ -24,6 +24,7 @@ function App() {
         <Route path="/participant" element={<Participant/>}/>
         <Route path="/sendsurvey" element={<SendSurvey/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
+        <Route path="/oauth/callback/kakao"></Route>
 
       </Routes>
     </Router>

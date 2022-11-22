@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const KakaoLogin = () => {
   // 카카오 개발자 앱 키 선언
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
-  const REDIRECT_URI = 'http://localhost:3000/oauth';
+  const REDIRECT_URI = 'http://localhost:3000/login';
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   // 인가코드 받아오기
@@ -30,6 +30,7 @@ const KakaoLogin = () => {
             const token = response.headers.authorization;
             // 이 토큰은 프론트엔드, 즉 현재 내 서버에 저장시킨다.
             window.localStorage.setItem("token", token);
+            console.log("token 값 확인", token);
           });
         console.log(res);
       } catch (e) {
@@ -42,9 +43,11 @@ const KakaoLogin = () => {
       const token = window.localStorage.getItem("token");
 
       try {
+        console.log("여기 진입함요")
         const res = await axios
           // 이때, post가 아닌 get으로 접근한다.
           // 접근 주소는 백엔드에서 설정한 주소로 한다.
+
           .get(
             "http://localhost:8081",
             {
@@ -59,12 +62,13 @@ const KakaoLogin = () => {
           // data 라는 변수에 유저 정보를 저장하고, setItem을 사용해 로컬에 다시 저장한다.
           .then((data) => {
             window.localStorage.setItem("profile", JSON.stringify(data));
-            console.log(data);
+            console.log(data,"이거 데이터임");
             // 만약, 유저정보를 잘 불러왔다면 navigate를 사용해 프론트엔드에서 설정한 마이페이지 경로를 설정해서 이동시킨다.
             if (data) {
               navigate("");
             }
           });
+        console.log(res);
       } catch (e) {
         // 에러 발생 시, 에러 응답 출력
         console.error(e);
