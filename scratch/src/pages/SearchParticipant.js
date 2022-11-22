@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import {Link} from "react-router-dom";
 
 
 
@@ -71,25 +70,25 @@ function Participant(){
 
 
 
-        const addSurveyItem1 = () => {
-            setResState("응답");
-            console.log(resState);
-        };
-        const addSurveyItem2 = () => {
-            setResState("미응답");
-            console.log(resState);
+    const addSurveyItem1 = () => {
+        setResState("응답");
+        console.log(resState);
+    };
+    const addSurveyItem2 = () => {
+        setResState("미응답");
+        console.log(resState);
 
-        };
-        const addSurveyItem3 = () => {
-            setResState("거절");
-            console.log(resState);
+    };
+    const addSurveyItem3 = () => {
+        setResState("거절");
+        console.log(resState);
 
-        };
-        const addSurveyItem4 = () => {
-            setResState("전체");
-            console.log(resState);
+    };
+    const addSurveyItem4 = () => {
+        setResState("전체");
+        console.log(resState);
 
-        };
+    };
     var result = data.filter(data=>data.res===resState);
     if (resState==="전체")
     {
@@ -134,7 +133,7 @@ function Participant(){
 
 
 
-        return (
+    return (
         <div>
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
@@ -149,7 +148,7 @@ function Participant(){
                         <Button onClick={addSurveyItem2}>미응답</Button>
                         <Button onClick={addSurveyItem3}>거절</Button>
                         <Button onClick={addSurveyItem4}>전체</Button>
-                        <Button className="Button" component={Link} to="/searchparticipant">설문참여자 검색</Button>
+                        <input type="text" value={search} onChange={onChange} />
 
 
 
@@ -179,22 +178,20 @@ function Participant(){
                             </thead>
                             <tbody>
 
+                            {filterTitle.map((data,key) => <tr key={key}>
+                                <td>
+                                    <input type='checkbox'
+                                           onChange={(e) => handleSingleCheck(e.target.checked, result.id)}
+                                           checked={checkItems.includes(result.id) ? true : false} />
+                                </td>
+                                <td key={data.email}>{data.email}</td>
+                                <td key={data.sendDt}>{data.sendDt}</td>
+                                <td key={data.res}>{data.res}</td>
+                                <td key={data.resDay}>{data.resDay}</td>
+                                <td className='second-row'>{data.title}</td>
+                            </tr>)}
 
 
-                            {result?.map((result, key) => (
-                                <tr key={key}>
-                                    <td>
-                                        <input type='checkbox'
-                                               onChange={(e) => handleSingleCheck(e.target.checked, result.id)}
-                                               checked={checkItems.includes(result.id) ? true : false} />
-                                    </td>
-                                    <td key={result.email}>{result.email}</td>
-                                    <td key={result.sendDt}>{result.sendDt}</td>
-                                    <td key={result.res}>{result.res}</td>
-                                    <td key={result.resDay}>{result.resDay}</td>
-                                    <td className='second-row'>{data.title}</td>
-                                </tr>
-                            ))}
                             </tbody>
                         </StyledTable>
                     </div>
