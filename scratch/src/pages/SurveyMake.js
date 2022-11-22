@@ -10,11 +10,13 @@ import { CREATE_OBJECTIVE,
   CREATE_TRUEFALSE,
   CREATE_STAR,
   UPDATE_TITLE,
-  DELETE }  from '../components/redux/Slices/SurveyMakeSlice';
+  DELETE, 
+  MULTIPLE}  from '../components/redux/Slices/SurveyMakeSlice';
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
 import QuestionResultList from '../components/Survey/QuestionResultList';
+import produce from 'immer';
   
 
 
@@ -48,9 +50,24 @@ function SurveyMake() {
   const onClick = (e) =>{
     console.log(selectorData);
     
-    dummy.question_list = selectorData;
-    console.log(dummy);
-    axios.post('/survey',dummy);
+
+    const newState = produce(dummy,(draftState) => {
+      draftState.question_list = selectorData;
+      draftState.question_number = draftState.question_list.length;
+      
+      /*객관식 ordering수정 필요*/
+      /*
+      draftState.question_list.map((data,id)=>{
+        if(data.type==MULTIPLE){
+          let after = data.option_list.map((dd,ii)=>dd)
+          console.log(after);
+          draftState.question_list[id].option_list = after;
+        }
+      })
+      */
+  })
+    console.log(newState);
+    axios.post('/survey',newState);
   }
 
 
