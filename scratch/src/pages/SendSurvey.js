@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import EmailList from "../components/SendSurvey/child/EmailList";
 import {Link} from 'react-router-dom';
+import  HorizontalLinearStepper  from "../components/surveyoptionsetting/public/Stepper"
+import { useSelector } from 'react-redux'
 import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
 var ID=1;
 
 
 function SendSurvey(){
-
+    const step=useSelector((state)=>state.surveyOption.step);
     const [email, setEmail] = useState([{id:ID,value:"example"}]);
 
     const appendEmail = () => {
@@ -26,6 +28,11 @@ function SendSurvey(){
     }
     return(
         <div className="wrapper">
+            <div align='center' style={{backgroundColor:'white',height:'120px'}}>
+                <div style={{width:"50%",padding:"30px"}}>
+                    <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
+                </div>
+            </div>
             <div className="title">
                 <h1>설문 발송 페이지</h1>
             </div>

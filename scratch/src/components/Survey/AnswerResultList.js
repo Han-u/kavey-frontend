@@ -31,8 +31,11 @@ function AnswerResultList() {
     }
     
     return (
-        <div>
+        <div style={{backgroundColor:'lightgray'}}>
+        <div style={{width:'600px',backgroundColor:'white',margin:'auto'}}>
             {list}
+            <button>제출</button>
+        </div>
         </div>
     );
 }

@@ -79,7 +79,7 @@ function Management(){
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
                     설문 관리하기
                 </Typography>
-                <Button variant="contained" href="/survey">
+                <Button variant="contained" href="/surveyoptionsetting">
                     설문 제작
                 </Button>
             </div>

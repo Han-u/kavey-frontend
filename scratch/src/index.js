@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import ReactModal from "react-modal";
 import { store } from './components/redux/SurveyStore'
 import { Provider } from 'react-redux'
@@ -13,13 +13,21 @@ import ModalsProvider from "./components/Modal/ModalsProvider";
 ReactModal.setAppElement("#root");
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <Provider store={store}>
+//     <ModalsProvider>
+//       <App />
+//       </ModalsProvider>
+//   </Provider>
+// );
+ReactDOM.render(
   <Provider store={store}>
     <ModalsProvider>
       <App />
-      </ModalsProvider>
-  </Provider>
+    </ModalsProvider>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

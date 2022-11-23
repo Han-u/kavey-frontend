@@ -1,4 +1,4 @@
-import {useSelector,useRef} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR,UPDATE_ORDER } from "../redux/Slices/SurveyMakeSlice"
 import {useDispatch} from 'react-redux';
@@ -45,7 +45,7 @@ function QuestionMakeList() {
 
 
     return (
-        <div >
+        <div style={{width:'600px',backgroundColor:'white'}}>
             <ReactDragList
             dataSource={list}
             row={(record, index) => <div>{record}</div>}

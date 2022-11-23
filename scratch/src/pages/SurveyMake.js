@@ -1,5 +1,6 @@
 import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios';
+import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper"
 
 import { CREATE_OBJECTIVE,
   CREATE_MULTIPLE,
@@ -27,6 +28,9 @@ const tempStyle={
 
 
 function SurveyMake() {
+  const step=useSelector((state)=>state.surveyOption.step);
+
+  
   const selectorData = useSelector(state=>state.question);
 
   const onClick = (e) =>{
@@ -37,15 +41,24 @@ function SurveyMake() {
 
 
     return ( 
-        <div>
+        <div style={{height:'100%',width:'100%',backgroundColor:'lightgray'}}>
+            <div align='center' style={{height:'120px',backgroundColor:'white'}}>
+                <div style={{width:"50%",padding:"30px"}}>
+                    <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
+                </div>
+            </div>
             <button onClick={onClick}>send to was</button>
             <div> 
                 <PlusButton/>
                 <DeleteButton/>
             </div>
-            <div style={{display:"flex"}} >
-                <QuestionMakeList/>
-                <QuestionResultList/>
+            <div style={{display:"flex",width:'100%'}} >
+                <div style={{marginLeft:'auto',marginRight:'auto'}}>
+                  <QuestionMakeList/>
+                </div>
+                <div style={{marginLeft:'auto',marginRight:'auto'}}>
+                  <QuestionResultList/>
+                </div>
             </div>
         </div>
      );

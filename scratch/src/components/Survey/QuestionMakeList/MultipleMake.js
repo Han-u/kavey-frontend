@@ -1,6 +1,10 @@
 
-import {useDispatch} from 'react-redux';
-import { UPDATE_TITLE,UPDATE_MULTIPLE_CANMULTI,UPDATE_MULTIPLE_CREATE_RESPONSE,UPDATE_MULTIPLE_UPDATE_RESPONSE,UPDATE_MULTIPLE_DELETE_RESPONSE } from "../../redux/Slices/SurveyMakeSlice";
+import { useDispatch } from 'react-redux';
+import { UPDATE_TITLE,
+    UPDATE_MULTIPLE_CANMULTI,
+    UPDATE_MULTIPLE_CREATE_RESPONSE,
+    UPDATE_MULTIPLE_UPDATE_RESPONSE,
+    UPDATE_MULTIPLE_DELETE_RESPONSE } from "../../redux/Slices/SurveyMakeSlice";
 
 const styles = {
     container: {
@@ -45,7 +49,7 @@ function MultiButton({id,canMulti}){
 
     return (
         <div>
-                <button onClick={onClick}>{canMulti}</button>
+            <button onClick={onClick}>{canMulti}</button>
         </div>
     );
 }

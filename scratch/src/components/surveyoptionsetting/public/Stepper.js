@@ -4,13 +4,17 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { NEXT_LEVEL } from '../../redux/Slices/SurveyOptionSlice';
 
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
-function HorizontalLinearStepper() {
+function HorizontalLinearStepper(props) {
+  const dispatch= useDispatch();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const navigate=useNavigate();
 
 //   const isStepOptional = (step) => {
 //     return step === 1;
@@ -26,13 +30,34 @@ function HorizontalLinearStepper() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
+    
+    if(props.step ===0){
+      // setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      dispatch(NEXT_LEVEL(1))
+      navigate(`/surveymake`);
+    }else if(props.step ===1){
+      dispatch(NEXT_LEVEL(1));
+      navigate(`/sendsurvey`);
+    }else{
+      navigate(`/management`);
+    }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+    
+    
+    
+    // setSkipped(newSkipped);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    if(props.step ===2){
+      // setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      dispatch(NEXT_LEVEL(-1))
+      navigate(`/surveymake`);
+    }else if(props.step ===1){
+      dispatch(NEXT_LEVEL(-1));
+      navigate(`/surveyoptionsetting`);
+    }
   };
 
 //   const handleSkip = () => {
@@ -56,7 +81,7 @@ function HorizontalLinearStepper() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={props.step}>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
@@ -75,7 +100,7 @@ function HorizontalLinearStepper() {
           );
         })}
       </Stepper>
-      {activeStep === steps.length ? (
+      {props.step === steps.length ? (
         <React.Fragment>
           {/* <Typography sx={{ mt: 2, mb: 1 }}>
             All steps completed - you&apos;re finished
@@ -91,7 +116,7 @@ function HorizontalLinearStepper() {
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
-              disabled={activeStep === 0}
+              disabled={props.step === 0}
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
@@ -104,7 +129,7 @@ function HorizontalLinearStepper() {
               </Button>
             )} */}
             <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              {props.step === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>
         </React.Fragment>
