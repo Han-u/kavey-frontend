@@ -16,6 +16,7 @@ function Participant(){
             .then(response => setBackData(response.data))
             .catch(error => console.log(error))
     }, []);
+
     const [resStatus, setResStatus]=useState("ALL");
     const addSurveyBack1 = () => {
         setResStatus("RESPONSE");

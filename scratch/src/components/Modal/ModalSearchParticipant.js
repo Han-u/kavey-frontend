@@ -6,68 +6,7 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const MyModal = ({ onSubmit, onClose }) => {
-
-    const handleClickSubmit = () => {
-        onSubmit();
-    };
-
-    const handleClickCancel = () => {
-        onClose();
-
-    };
-
-    const [checkItems, setCheckItems] = useState([]);
-    // 체크박스 단일 선택
-    const handleSingleCheck = (checked, id) => {
-        if (checked) {
-            // 단일 선택 시 체크된 아이템을 배열에 추가
-            setCheckItems(prev => [...prev, id]);
-        } else {
-            // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-            setCheckItems(checkItems.filter((el) => el !== id));
-        }
-    };
-    const handleAllCheck = (checked) => {
-        if(checked) {
-            // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
-            const idArray = [];
-            backResult.forEach((el) => idArray.push(el.id));
-            setCheckItems(idArray);
-        }
-        else {
-            // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
-            setCheckItems([]);
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const [search, setSearch] = useState("");
-    const onChange = (e) => {
-        setSearch(e.target.value)
-    }
-
-
+const MyModal = () => {
     const style = {
         header : {
             display: 'flex',
@@ -89,44 +28,30 @@ const MyModal = ({ onSubmit, onClose }) => {
             backgroundColor: 'white'
         }
     };
-    const [backData, setBackData] = useState('')
-    useEffect(() => {
-        axios.get('/survey/1/receiver')
-            .then(response => setBackData(response.data))
-            .catch(error => console.log(error))
-    }, []);
 
+    const data = [
+        {id: 0, email: 'kyle3444@naver.com', sendDt: '2020-02-02T00:00:00', res: 'RESPONSE',resDay:"2020-02-02T00:00:00"},
+        {id: 1, email: 'james9@naver.com', sendDt: '2022-10-05', res: 'NONRESPONSE', resDay:"2022-09-30T00:00:00"},
+        {id: 2, email: 'kimwon9@naver.com', sendDt: '2022-10-05', res: 'RESPONSE',resDay:"2022-09-30T00:00:00"},
+        {id: 3, email: 'wowme9@naver.com', sendDt: '2022-10-05', res: 'REJECT', resDay:"2022-11-30T00:00:00"}
+    ];
 
+    var result = data.filter(data=>data.res.id >= 0);
 
-
-
-
-    const [resStatus, setResStatus]=useState("ALL");
-    const addSurveyBack1 = () => {
-        setResStatus("RESPONSE");
-        console.log(resStatus);
-    };
-    const addSurveyBack2 = () => {
-        setResStatus("NONRESPONSE");
-        console.log(resStatus);
-
-    };
-    const addSurveyBack3 = () => {
-        setResStatus("REJECT");
-        console.log(resStatus);
-    };
-    const addSurveyBack4 = () => {
-        setResStatus("ALL");
-        console.log(resStatus);
-    };
-    const realBack=Object.values(backData);
-
-
-    var backResult = realBack.filter(data=>data.status===resStatus);
-    if (resStatus==="ALL")
-    {
-        var backResult = realBack.filter(data=>data.attendID >= 0);
+    const [search, setSearch] = useState("");
+    const onChange = (e) => {
+        setSearch(e.target.value)
     }
+
+    const filterTitle = data.filter((p) => {
+        return p.email.includes(search)
+    })
+
+    console.log(result);
+
+
+
+
 
     return (
         <ReactModal isOpen>
@@ -134,7 +59,7 @@ const MyModal = ({ onSubmit, onClose }) => {
                 <Button className="Button" component={Link} to="/participant">X</Button>
                 <div style={style.header}>
                     <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                        설문 참여자 검색
+                        설문_참여자_검색_해주세요!
                     </Typography>
                 </div>
                 <div style={style.body}>
@@ -142,37 +67,31 @@ const MyModal = ({ onSubmit, onClose }) => {
                         <div style={style.btn}>
                             <input type="text" value={search} onChange={onChange} />
                         </div>
+
                         <div>
                             <StyledTable>
                                 <thead>
                                 <tr>
                                     <th>
-                                        <input type='checkbox' name='select-all'
-                                               onChange={(e) => handleAllCheck(e.target.checked)}
-                                            // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                                               checked={checkItems.length === backResult.length ? true : false} />
+                                        <input type='checkbox'/>
                                     </th>
                                     <th className='second-row'>이메일</th>
                                     <th className='second-row'>전송날짜</th>
                                     <th className='second-row'>응답여부</th>
                                     <th className='second-row'>응답날짜</th>
-
-
-
-
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                {backResult && backResult.map((result,key)=>(
-                                    <tr key={key}>
-                                        <td><input type="checkbox"/></td>
-                                        <td key={result.email}>{result.sendEmail}</td>
-                                        <td key={result.sendDt}>{result.sendDate}</td>
-                                        <td key={result.res}>{result.status}</td>
-                                        <td key={result.resDay}>{result.responseDate}</td>
-                                    </tr>
-                                ))}
+                                {filterTitle.map((result,key) => <tr key={key}>
+                                    <td>
+                                        <input type='checkbox'/>
+                                    </td>
+                                    <td key={result.email}>{result.email}</td>
+                                    <td key={result.sendDt}>{result.sendDt}</td>
+                                    <td key={result.res}>{result.res}</td>
+                                    <td key={result.resDay}>{result.resDay}</td>
+                                </tr>)}
 
                                 </tbody>
                             </StyledTable>
@@ -181,7 +100,6 @@ const MyModal = ({ onSubmit, onClose }) => {
 
                 </div>
             </div>
-            )
         </ReactModal>
     );
 };
