@@ -2,12 +2,13 @@ import React from 'react';
 import {Button} from 'reactstrap';
 import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
+
 
 function HomeComponent1(){
     return(
         <div>
         <div style={{backgroundColor:'white',margin:'auto'}}>
-            {/* 대충 컴포넌트라는 뜻 진짜 대충이네용 */}
             <div style={{height:'80px',backgroundColor:'white',position:'fixed',width:'100%',}}>
                 <header>
                     <div style={{display: 'flex',
@@ -18,7 +19,7 @@ function HomeComponent1(){
                                 marginLeft:'5vh',
                                 marginRight:'5vh'}}>
                         <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3>
-                        <Button color="warning"><h5>Log in</h5></Button>
+                        <Link to="/login"><img src="/img/kakao_login.png"></img></Link>
                     </div>
                 </header>
             </div>

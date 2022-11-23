@@ -11,7 +11,7 @@ import Participant from "./pages/Participant";
 import SendSurvey from "./pages/SendSurvey";
 import LinkFloating from "../src/components/Modal/LinkFloating";
 import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
-import ModalTestPage from "./components/Modal/ModalTestPage";
+import LoginMain from "./pages/LoginMain";
 import SurveyAnswer from "./pages/SurveyAnswer";
 import ProxyTest from "./components/BackEnd/ProxyTest";
 
@@ -20,6 +20,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<LoginMain/>}/>
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
         <Route path="/management" element={<Management/>}/>
         <Route path="/surveymake" element={<SurveyMake/>}/>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/searchparticipant" element={<ModalSearchParticipant/>}/>
 
         <Route path="/answer" element={<SurveyAnswer/>}/>
+        <Route path="/oauth/callback/kakao"></Route>
 
         <Route path="/testproxy" element={<ProxyTest/>}/>
       </Routes>
