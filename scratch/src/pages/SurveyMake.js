@@ -46,6 +46,7 @@ let dummy = {
 
 function SurveyMake() {
   //front -> back example code 
+  const step=useSelector((state)=>state.surveyOption.step);
   const selectorData = useSelector((state)=>state.surveyMake.question);
 
   const onClick = (e) =>{
