@@ -31,7 +31,7 @@ function QuestionResultList() {
     }
     
     return (
-        <div>
+        <div style={{width:'600px',backgroundColor:'white',height:'100%'}}>
             {list}
         </div>
     );

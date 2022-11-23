@@ -50,7 +50,7 @@ function MultiButton({id,canMulti}){
 
     return (
         <div>
-                <button onClick={onClick}>{canMulti}</button>
+            <button onClick={onClick}>{canMulti}</button>
         </div>
     );
 }

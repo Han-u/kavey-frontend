@@ -1,11 +1,20 @@
 import React from 'react';
 import {Button} from 'reactstrap';
+import { useNavigate } from 'react-router-dom'
 import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 
 
 function HomeComponent1(){
+    const navigate=useNavigate();
+
+    const handleClick=()=>{
+        //여기서 로그인 되어있나 검증 해주긴 해야 됨당?
+        console.log("하이");
+        navigate(`/surveyoptionsetting`);
+    }
+
     return(
         <div>
         <div style={{backgroundColor:'white',margin:'auto'}}>
@@ -32,7 +41,9 @@ function HomeComponent1(){
                             justifyContent: 'center'}}>
                     <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>
                     <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5>
-                    <Button color="warning" style={{marginTop:'70px'}}>Create Survey!</Button>
+                    <Button color="warning" style={{marginTop:'70px'}}
+                    onClick={handleClick}
+                    >Create Survey!</Button>
                 </div>
                 <div style={{height:'100%',
                             width:'40%',

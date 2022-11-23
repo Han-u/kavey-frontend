@@ -14,6 +14,7 @@ import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
 import LoginMain from "./pages/LoginMain";
 import SurveyAnswer from "./pages/SurveyAnswer";
 import ProxyTest from "./components/BackEnd/ProxyTest";
+import MyDocument from "./pages/Report";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Route path="/sendsurvey" element={<SendSurvey/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
         <Route path="/searchparticipant" element={<ModalSearchParticipant/>}/>
-
+        <Route path="/report" element={<MyDocument/>}/>
         <Route path="/answer" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
 

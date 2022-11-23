@@ -13,6 +13,7 @@ export const SurveyOptionSlice=createSlice(
             publicPrivate:'public',
             peopleLimit:null,
             themeColor:"lightgray",
+            step:0,
         },
         reducers:{
             SET_TITLE:(state,action)=>{
@@ -48,7 +49,12 @@ export const SurveyOptionSlice=createSlice(
                     state.themeColor=action.payload;                    
                 }
                 
-            }
+            },
+            NEXT_LEVEL:(state,action)=>{
+                console.log(state.step);
+                state.step=state.step+action.payload;
+                console.log(state.step);
+            },
         }
     }
 );
@@ -64,5 +70,6 @@ export const {
     SET_IS_GENDER_QUESTION,
     SET_IS_AGE_QUESTION,
     SET_THEME_TEST,
+    NEXT_LEVEL,
 
 } = SurveyOptionSlice.actions;

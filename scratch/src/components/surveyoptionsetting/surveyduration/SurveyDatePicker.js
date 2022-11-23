@@ -12,7 +12,7 @@ function SurveyDatePicker() {
   const endDate=useSelector((state)=>state.surveyOption.endDate);
 
 
-    
+
   let datepicker=useRef(null); 
 
   const onChange = (dates) => {
