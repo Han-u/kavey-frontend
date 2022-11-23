@@ -102,7 +102,7 @@ function HomeComponent1(){
             <div style={{backgroundColor:'white',height:'100px'}}>
                 <footer>
                     <div style={{alignItems:'center',justifyContent: 'center',display: 'flex',flexDirection: 'row'}}>
-                    <h6 style={{color:'#828282'}}>©가혁진. All Rights Reserved.</h6>
+                    <h6 style={{color:'#828282'}}>©매천동의 전민종. All Rights Reserved.</h6>
                     </div>
                 </footer>
             </div>
