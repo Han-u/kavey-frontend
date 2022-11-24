@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
 function Participant(){
     const [backData, setBackData] = useState('')
     useEffect(() => {
-        axios.get('/survey/1/receiver')
+        axios.get('api/survey/1/receiver')
             .then(response => setBackData(response.data))
             .catch(error => console.log(error))
     }, []);
@@ -25,7 +25,6 @@ function Participant(){
     const addSurveyBack2 = () => {
         setResStatus("NONRESPONSE");
         console.log(resStatus);
-
     };
     const addSurveyBack3 = () => {
         setResStatus("REJECT");
@@ -37,14 +36,11 @@ function Participant(){
     };
     const realBack=Object.values(backData);
 
-
     var backResult = realBack.filter(data=>data.status===resStatus);
     if (resStatus==="ALL")
     {
         var backResult = realBack.filter(data=>data.attendID >= 0);
     }
-
-
 
 
     const [checkItems, setCheckItems] = useState([]);
@@ -159,7 +155,7 @@ function Participant(){
                                     <input type='checkbox' name='select-all'
                                            onChange={(e) => handleAllCheck(e.target.checked)}
                                         // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                                           checked={checkItems.length === backData.length ? true : false} />
+                                           checked={checkItems.length === backResult.length ? true : false} />
                                 </th>
                                 <th className='second-row'>이메일</th>
                                 <th className='second-row'><button onClick={() => {
@@ -177,7 +173,10 @@ function Participant(){
 
                             {backResult && backResult.map((result,key)=>(
                                 <tr key={key}>
-                                    <td><input type="checkbox"/></td>
+                                    <td><input type='checkbox' name={`select-${backResult.id}`}
+                                               onChange={(e) => handleSingleCheck(e.target.checked, backResult.id)}
+                                        // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
+                                               checked={checkItems.includes(backResult.id) ? true : false} /></td>
                                     <td key={result.email}>{result.sendEmail}</td>
                                     <td key={result.sendDt}>{result.sendDate}</td>
                                     <td key={result.res}>{result.status}</td>
