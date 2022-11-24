@@ -1,9 +1,12 @@
 import React from 'react';
-import {Button} from 'reactstrap';
+// import {Button} from 'reactstrap';
 import { useNavigate } from 'react-router-dom'
 import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
+import {Box, Button, Chip, Menu, MenuItem, Typography} from "@mui/material";
+
+
 
 
 function HomeComponent1(){
@@ -27,7 +30,8 @@ function HomeComponent1(){
                                 height:'90px',
                                 marginLeft:'5vh',
                                 marginRight:'5vh'}}>
-                        <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3>
+                        {/* <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3> */}
+                        <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{color:"#1976D2"}}>Kavey</Typography>
                         <Link to="/login"><img src="/img/kakao_login.png"></img></Link>
                     </div>
                 </header>
@@ -39,11 +43,14 @@ function HomeComponent1(){
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center'}}>
-                    <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>
-                    <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5>
-                    <Button color="warning" style={{marginTop:'70px'}}
+                    {/* <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>
+                    <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5> */}
+                    <Typography variant="h3" fontFamily="HallymGothic-Regular">가장 귀여운 설문 == 좋설사</Typography>
+                    <Typography variant="h6" fontFamily="HallymGothic-Regular">세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</Typography>
+                    <Button style={{marginTop:'70px'}}
+                    variant="contained"
                     onClick={handleClick}
-                    >Create Survey!</Button>
+                    >설문 제작하기!</Button>
                 </div>
                 <div style={{height:'100%',
                             width:'40%',

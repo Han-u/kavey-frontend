@@ -48,7 +48,7 @@ function SurveyMake() {
   //front -> back example code 
   const step=useSelector((state)=>state.surveyOption.step);
   const selectorData = useSelector((state)=>state.surveyMake.question);
-
+  const themeColor = useSelector((state)=>state.surveyOption.themeColor);
   const onClick = (e) =>{
     console.log(selectorData);
     
@@ -74,7 +74,7 @@ function SurveyMake() {
 
 
     return ( 
-        <div style={{height:'100%',width:'100%',backgroundColor:'lightgray'}}>
+        <div style={{height:'100%',width:'100%',backgroundColor:themeColor}}>
             <div align='center' style={{height:'120px',backgroundColor:'white'}}>
                 <div style={{width:"50%",padding:"30px"}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
