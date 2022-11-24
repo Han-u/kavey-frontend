@@ -14,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/sc-22" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,12 +30,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1668673672" />
+                    <option name="branchName" value="feature/sc-53" />
+                    <option name="lastUsedInstant" value="1669095189" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="feature/sc-53" />
-                    <option name="lastUsedInstant" value="1668612814" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1668673672" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-22" />
@@ -91,8 +91,17 @@
       <option name="presentableId" value="Default" />
       <updated>1668770116957</updated>
       <workItem from="1668770120938" duration="32170000" />
+      <workItem from="1669132528397" duration="7338000" />
+      <workItem from="1669247287743" duration="2264000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
+      <created>1669135353138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669135353138</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +120,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[SC-55]add 모달추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[SC-55]add 모달추가" />
+    <MESSAGE value="[SC-55]add 백이랑 연결" />
+    <option name="LAST_COMMIT_MESSAGE" value="[SC-55]add 백이랑 연결" />
   </component>
 </project>

@@ -34,6 +34,8 @@ function App() {
         <Route path="/oauth/callback/kakao"></Route>
 
         <Route path="/testproxy" element={<ProxyTest/>}/>
+
+
       </Routes>
     </Router>
   );
