@@ -32,10 +32,7 @@ function App() {
         <Route path="/report" element={<MyDocument/>}/>
         <Route path="/answer" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
-
         <Route path="/testproxy" element={<ProxyTest/>}/>
-
-
       </Routes>
     </Router>
   );

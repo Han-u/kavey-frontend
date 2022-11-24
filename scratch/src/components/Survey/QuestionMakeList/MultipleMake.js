@@ -5,11 +5,17 @@ import { UPDATE_TITLE,UPDATE_MULTIPLE_CANMULTI,UPDATE_MULTIPLE_CREATE_RESPONSE,U
 
 import { DeleteButton, PlusButton } from '../../../pages/SurveyMake';
 
+import {Button,IconButton,TextField,Tooltip} from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close';
+
 const styles = {
     container: {
-        border:3,
+        border:1,
         borderStyle: "solid",
+        display: "flex",
+        flexDirection: "column",
         padding: 15,
+        // backgroundColor: "black"
     },
 }
 
@@ -27,14 +33,25 @@ function MultipleMake({id,title,canMulti,response}) {
 
 
     return(
-        <div style={styles.container}>
-            <DeleteButton id={id}/>
-            <button onClick={onClickPlus}>plus</button>
-            <MultiButton id={id}canMulti={canMulti}/>
+        <div style={styles.container} draggable>
+            <div style={{flexDirection: 'row',
+                        display:'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        paddingBottom:'10px'}}>
+                <DeleteButton id={id}/>
+                <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
+                <PlusButton id={id}/>
+            </div>
             <div>
-            <input placeholder={title} maxLength={50} onChange={onChange} ></input>
-            <ResponseList id={id} list={response}/>
-            <PlusButton id={id}/>
+            <MultiButton id={id}canMulti={canMulti}/>
+            <Button onClick={onClickPlus}>보기추가</Button>
+            </div>
+            <div>
+                <ResponseList id={id} list={response}/>
+            </div>
+            <div style={{float:'right'}}>
+                
             </div>
         </div>
     );
@@ -50,7 +67,9 @@ function MultiButton({id,canMulti}){
 
     return (
         <div>
-            <button onClick={onClick}>{canMulti}</button>
+            <Tooltip title="복수응답 허용 여부에요">
+                <Button variant="outlined" size="small" onClick={onClick}>{canMulti}</Button>
+            </Tooltip>
         </div>
     );
 }
@@ -91,8 +110,10 @@ function Response({q_id,r_id,title}){
     return(
         <div>      
                 <input type="checkbox"/>
-                <input type="text" placeholder={title} onChange={onChange}/>
-                <button onClick={onClickDelete}>delete</button>
+                <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
+                style={{marginLeft:'10px'}}
+                />
+                <IconButton onClick={onClickDelete}><CloseIcon color="error"/></IconButton>
         </div>
     );
 }

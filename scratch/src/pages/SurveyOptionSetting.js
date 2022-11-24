@@ -7,6 +7,7 @@ import { SET_PEOPLE_LIMIT ,NEXT_LEVEL} from "../components/redux/Slices/SurveyOp
 import {Button} from'@mui/material';
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import {useNavigate} from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 function SurveyOptionSetting() {
@@ -27,6 +28,24 @@ function SurveyOptionSetting() {
 
     };
 
+    const handleCancle = ()=>{
+        // navigate(`/management`);
+        Swal.fire({
+            title: '정말 취소하시겠어요?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '네',
+            cancelButtonText:'아니오',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate(`/management`);
+            }
+        })
+
+    };
+
     const validationNext=()=>{
         if(surveyOption.title===""){
             return true;
@@ -37,31 +56,50 @@ function SurveyOptionSetting() {
 
     return (
         <div>      
-            <div align='center' style={{backgroundColor:'white',height:'120px'}}>
-                <div style={{width:"50%",padding:"30px"}}>
+            <div align='center' style={{backgroundColor:'white',
+                                        height:'120px',
+                                        position:'fixed',
+                                        width:'100%',
+                                        zIndex:'1',
+                                        paddingTop:'30px',
+                                        borderBottom:'1px solid lightgray',}}>
+                <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
                 </div>
             </div>
-            <div style={{align:'center',backgroundColor:surveyOption.themeColor,height:'100%'}}>
-                <div style={{width:'600px',
-                        height:'100%',
-                        margin:'auto',backgroundColor:'white',padding:'0px 30px 30px 30px'}}>
-                    <div>
-                        <SurveyTitle/>
-                    </div>
-                    <div style={{paddingTop:'30px'}}>
-                        <SurveyDuration/>
-                    </div>
-                    <div align="center" style={{paddingTop:'30px'}}>
-                        <SurveyAccessType/>
-                    </div>
-                    <div align="center" style={{paddingTop:'30px'}}>
-                        <SurveyGenderAge/>
-                    </div>
-                    <div align="center" style={{marginTop:'50px'}}>
-                            <Button variant="contained"                            
-                            disabled={validationNext()}
-                            onClick={handleClick}>다음으로</Button>
+            
+            <div align='center' style={{align:'center',
+                                            backgroundColor:surveyOption.themeColor,
+                                            height:'100%',
+                                            width:'100%',
+                                            paddingTop:'120px'}}>
+                <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>
+                    <div style={{width:'600px',
+                            height:'100%',
+                            margin:'auto',backgroundColor:'white',padding:'0px 30px 30px 30px'}}>
+                        <div>
+                            <SurveyTitle/>
+                        </div>
+                        <div style={{paddingTop:'30px'}}>
+                            <SurveyDuration/>
+                        </div>
+                        <div align="center" style={{paddingTop:'30px'}}>
+                            <SurveyAccessType/>
+                        </div>
+                        <div align="center" style={{paddingTop:'30px'}}>
+                            <SurveyGenderAge/>
+                        </div>
+                        <div align="center" style={{paddingTop:'100px'}}>
+                                
+                                <Button variant="contained"                            
+                                disabled={validationNext()}
+                                onClick={handleClick}>다음으로</Button>
+                                <Button variant="contained"
+                                color="error"
+                                style={{marginLeft:'30px'}}                            
+                                onClick={handleCancle}>취소하기</Button>
+                                
+                        </div>
                     </div>
                 </div>
             </div>

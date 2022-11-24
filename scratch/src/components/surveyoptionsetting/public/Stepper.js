@@ -4,9 +4,10 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { NEXT_LEVEL } from '../../redux/Slices/SurveyOptionSlice';
+import Swal from 'sweetalert2'
 
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
@@ -15,6 +16,8 @@ function HorizontalLinearStepper(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const navigate=useNavigate();
+  const surveyOption=useSelector((state)=>state.surveyOption);
+  const surveyMake=useSelector((state)=>state.surveyMake);
 
 //   const isStepOptional = (step) => {
 //     return step === 1;
@@ -38,8 +41,22 @@ function HorizontalLinearStepper(props) {
     }else if(props.step ===1){
       dispatch(NEXT_LEVEL(1));
       navigate(`/sendsurvey`);
-    }else{
-      navigate(`/management`);
+    }else{      
+      Swal.fire({
+        title: '설문 제작을 완료하시겠어요?',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네',
+        cancelButtonText:'아니요'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log(surveyOption);
+          console.log(surveyMake);
+          navigate(`/management`);
+        }
+      })
     }
 
     
@@ -120,7 +137,7 @@ function HorizontalLinearStepper(props) {
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
-              Back
+              뒤로
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
             {/* {isStepOptional(activeStep) && (
@@ -129,7 +146,7 @@ function HorizontalLinearStepper(props) {
               </Button>
             )} */}
             <Button onClick={handleNext}>
-              {props.step === steps.length - 1 ? 'Finish' : 'Next'}
+              {props.step === steps.length - 1 ? '완료' : '다음'}
             </Button>
           </Box>
         </React.Fragment>

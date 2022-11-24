@@ -51,9 +51,7 @@ export const SurveyOptionSlice=createSlice(
                 
             },
             NEXT_LEVEL:(state,action)=>{
-                console.log(state.step);
                 state.step=state.step+action.payload;
-                console.log(state.step);
             },
         }
     }

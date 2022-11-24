@@ -3,7 +3,7 @@ import EmailList from "../components/SendSurvey/child/EmailList";
 import {Link} from 'react-router-dom';
 import  HorizontalLinearStepper  from "../components/surveyoptionsetting/public/Stepper"
 import { useSelector } from 'react-redux'
-import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
+import {Button, Typography, Input} from "@mui/material";
 var ID=1;
 
 
@@ -28,27 +28,42 @@ function SendSurvey(){
     }
     return(
         <div className="wrapper">
-            <div align='center' style={{backgroundColor:'white',height:'120px'}}>
-                <div style={{width:"50%",padding:"30px"}}>
+            <div align='center' style={{backgroundColor:'white',
+                                        height:'120px',
+                                        position:'fixed',
+                                        width:'100%',
+                                        zIndex:'1',
+                                        paddingTop:'30px',
+                                        marginBottom:'10px',
+                                        borderBottom:'1px solid lightgray',}}>
+                <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
                 </div>
             </div>
-            <div className="title">
-                <h1>설문 발송 페이지</h1>
-            </div>
-            <div className="search" >
+            <div  
+                style={{display:'flex',
+                flexDirection:'column',
+                alignItems:'center',
+                justifyContent: 'center',
+                paddingTop:'130px'}}>
+                <div className="title" style={{paddingBottom:'30px'}}>
+                    <Typography variant="h4" fontFamily="HallymGothic-Regular"
+                        style={{paddingBottom:'5px'}}>설문 발송</Typography>
+                </div>
+                <div className="search" style={{paddingBottom:'15px'}}>
 
-                <Button onClick={appendEmail} className="Button2" >피설문자 추가</Button>
-                <Input  placeholder={"이메일 검색"} maxLength={50} className="input"></Input>
-                <Button className="Button">검색</Button>
-            </div>
-            <div className="emailList">
-                <EmailList list={email} onDelete={deleteEmail}></EmailList>
-            </div>
-            <div className="sendButton">
-                <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
-                <Button className="Button" >생략</Button>
-                <Button className="Button"  onClick={sendSuccess}>전송</Button>
+                    <Button onClick={appendEmail} className="Button2" >피설문자 추가</Button>
+                    <Input  placeholder={"이메일 검색"} maxLength={50} className="input"></Input>
+                    <Button className="Button">검색</Button>
+                </div>
+                <div className="emailList">
+                    <EmailList list={email} onDelete={deleteEmail}></EmailList>
+                </div>
+                <div className="sendButton">
+                    <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
+                    <Button className="Button" >생략</Button>
+                    <Button className="Button"  onClick={sendSuccess}>전송</Button>
+                </div>
             </div>
         </div>
     );

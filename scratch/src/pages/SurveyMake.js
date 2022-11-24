@@ -1,7 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios';
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper"
-
+import {React,useState} from 'react'
 import { CREATE_OBJECTIVE,
   CREATE_MULTIPLE,
   UPDATE_MULTIPLE_CANMULTI,
@@ -18,8 +18,9 @@ import { CREATE_OBJECTIVE,
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
 import QuestionResultList from '../components/Survey/QuestionResultList';
 import produce from 'immer';
-  
 
+import {Menu,MenuItem,Button,IconButton} from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 //style
@@ -48,7 +49,7 @@ function SurveyMake() {
   //front -> back example code 
   const step=useSelector((state)=>state.surveyOption.step);
   const selectorData = useSelector((state)=>state.surveyMake.question);
-  const themeColor = useSelector((state)=>state.surveyOption.themeColor);
+  // const themeColor = useSelector((state)=>state.surveyOption.themeColor);
   const onClick = (e) =>{
     console.log(selectorData);
     
@@ -74,18 +75,28 @@ function SurveyMake() {
 
 
     return ( 
-        <div style={{height:'100%',width:'100%',backgroundColor:themeColor}}>
-            <div align='center' style={{height:'120px',backgroundColor:'white'}}>
-                <div style={{width:"50%",padding:"30px"}}>
+        <div style={{height:'100%',width:'100%'}}>
+            <div align='center' style={{backgroundColor:'white',
+                                        height:'120px',
+                                        position:'fixed',
+                                        width:'100%',
+                                        zIndex:'1',
+                                        paddingTop:'30px',
+                                        marginBottom:'10px',
+                                        borderBottom:'1px solid lightgray',}}>
+                <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
                 </div>
             </div>
-            <button onClick={onClick}>send to was</button>
-            <div style={{display:"flex",width:'100%'}} >
-                <div style={{marginLeft:'auto',marginRight:'auto'}}>
+            {/* <button onClick={onClick}>send to was</button> */}
+            <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px'}} >
+                <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>
                 </div>
-                <div style={{marginLeft:'auto',marginRight:'auto'}}>
+                <div style={{marginLeft:'auto',
+                marginRight:'auto',
+                width:'50%',
+                borderLeft:'1px solid lightgray'}}>
                   <QuestionResultList/>
                 </div>
             </div>
@@ -99,9 +110,18 @@ export default SurveyMake;
 //button 
 export function PlusButton({id}){
     const dispatch = useDispatch();
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
     return(
       <div>
-        <input type="button" value="주관식" onClick={() => {
+        {/* <input type="button" value="주관식" onClick={() => {
           dispatch(CREATE_OBJECTIVE({id:id}));
         }}></input>
         <input type="button" value="객관식" onClick={() => {
@@ -112,7 +132,46 @@ export function PlusButton({id}){
         }}></input>
         <input type="button" value="별점" onClick={() => {
           dispatch(CREATE_STAR({id:id}));
-        }}></input>
+        }}></input> */}
+        <Button
+        id="basic-button"
+        variant="outlined" 
+        size="small"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        +
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={() => {
+          dispatch(CREATE_OBJECTIVE({id:id}));
+          handleClose();
+        }}>주관식</MenuItem>
+        <MenuItem onClick={() => {
+          dispatch(CREATE_MULTIPLE({id:id}));
+          handleClose();
+        }}>객관식</MenuItem>
+        <MenuItem onClick={() => {
+          dispatch(CREATE_TRUEFALSE({id:id}));
+          handleClose();
+        }}>찬반</MenuItem>
+        <MenuItem onClick={() => {
+          dispatch(CREATE_STAR({id:id}));
+          handleClose();
+        }}>별점</MenuItem>
+      </Menu>
+
+
        </div>
     );
 }
@@ -121,9 +180,9 @@ export function DeleteButton({id}){
     const dispatch = useDispatch();
     return(
       <div>
-        <input type="button" value="+" onClick={() => {
-          dispatch(DELETE({id:id}));
-        }}></input>
+        <IconButton variant="contained" color="error" size="small" 
+        onClick={() => {dispatch(DELETE({id:id}));
+        }}><DeleteIcon /></IconButton>
        </div>
     );
 }
