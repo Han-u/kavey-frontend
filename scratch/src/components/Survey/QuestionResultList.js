@@ -23,7 +23,7 @@ function QuestionResultList() {
                     case OBJECTIVE:
                         return <ObjectResult id={r.ordering} title={r.title} />
                     case MULTIPLE:
-                        return <MultipleResult id={r.ordering} title={r.title} canMulti={r.canMulti} response={r.option_list}/>
+                        return <MultipleResult id={r.ordering} title={r.title} canMulti={r.canMulti} response={r.optionList}/>
                     case TRUEFALSE:
                         return <TrueFalseResult id={r.ordering} title={r.title}/>
                     case STAR:
@@ -32,15 +32,14 @@ function QuestionResultList() {
             }
         )
     }
-    console.log(list);
 
     return (
-        <div align="center" style={{width:'800px',backgroundColor:surveyOption.themeColor}}>
+        <div align="center" style={{width:'800px',backgroundColor:surveyOption.theme}}>
             <div style={{width:'600px',height:'100%'}}>
                 <Typography variant="h2" fontFamily="HallymGothic-Regular" style={{paddingTop:'30px',paddingBottom:'30px'}}>{surveyOption.title}</Typography>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{paddingBottom:'30px'}}>{surveyOption.description}</Typography>
-                {surveyOption.isGenderQuestion?<div>여기 성별 질문</div>:null}
-                {surveyOption.isAgeQuestion?<div>여기 나이 질문</div>:null}
+                {surveyOption.askGender?<div>여기 성별 질문</div>:null}
+                {surveyOption.askAge?<div>여기 나이 질문</div>:null}
                 {list}
             </div>
         </div>

@@ -4,15 +4,9 @@ import HorizontalLinearStepper from "../components/surveyoptionsetting/public/St
 import {React,useState} from 'react'
 import { CREATE_OBJECTIVE,
   CREATE_MULTIPLE,
-  UPDATE_MULTIPLE_CANMULTI,
-  UPDATE_MULTIPLE_CREATE_RESPONSE,
-  UPDATE_MULTIPLE_UPDATE_RESPONSE,
-  UPDATE_MULTIPLE_DELETE_RESPONSE,
   CREATE_TRUEFALSE,
   CREATE_STAR,
-  UPDATE_TITLE,
-  DELETE, 
-  MULTIPLE}  from '../components/redux/Slices/SurveyMakeSlice';
+  DELETE,}  from '../components/redux/Slices/SurveyMakeSlice';
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
@@ -21,6 +15,7 @@ import produce from 'immer';
 
 import {Menu,MenuItem,Button,IconButton} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
+import { TO_BACKEND_OPTION } from '../components/redux/Slices/SurveyOptionSlice';
 
 
 //style
@@ -29,50 +24,8 @@ const tempStyle={
 }
 
 
-//이전 페이지에서 갖고올 dummy data
-let dummy = {
-  "user_id" : 1,
-  "title" : "어떤 동물이 좋아?",
-  "description": "테스트 설문입니다",
-  "ask_age" : "TRUE",
-  "ask_gender" : "TRUE",
-  "is_private" : "FALSE",
-  "limit_person" : "100",
-  "start_date" : "2021-01-01T00:00",
-  "end_date" : "9999-01-01T00:00",
-  "theme" : 1,
-  "question_number" :  2,
-  "question_list" : []
-}
-
 function SurveyMake() {
-  //front -> back example code 
   const step=useSelector((state)=>state.surveyOption.step);
-  const selectorData = useSelector((state)=>state.surveyMake.question);
-  // const themeColor = useSelector((state)=>state.surveyOption.themeColor);
-  const onClick = (e) =>{
-    console.log(selectorData);
-    
-
-    const newState = produce(dummy,(draftState) => {
-      draftState.question_list = selectorData;
-      draftState.question_number = draftState.question_list.length;
-      
-      /*객관식 ordering수정 필요*/
-      /*
-      draftState.question_list.map((data,id)=>{
-        if(data.type==MULTIPLE){
-          let after = data.option_list.map((dd,ii)=>dd)
-          console.log(after);
-          draftState.question_list[id].option_list = after;
-        }
-      })
-      */
-  })
-    console.log(newState);
-    axios.post('/survey',newState);
-  }
-
 
     return ( 
         <div style={{height:'100%',width:'100%'}}>
@@ -88,7 +41,6 @@ function SurveyMake() {
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
                 </div>
             </div>
-            {/* <button onClick={onClick}>send to was</button> */}
             <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px'}} >
                 <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>

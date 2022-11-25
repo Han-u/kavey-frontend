@@ -6,8 +6,8 @@ import {SET_IS_GENDER_QUESTION,SET_IS_AGE_QUESTION} from "../redux/Slices/Survey
 
 function SurveyGenderAge() {
 
-    const age=useSelector((state)=>state.surveyOption.isAgeQuestion);
-    const gender=useSelector((state)=>state.surveyOption.isGenderQuestion);
+    const age=useSelector((state)=>state.surveyOption.askAge);
+    const gender=useSelector((state)=>state.surveyOption.askGender);
     const dispatch= useDispatch();
 
     const handleGenderChange = () => {

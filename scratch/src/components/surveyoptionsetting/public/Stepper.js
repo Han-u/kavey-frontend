@@ -6,18 +6,23 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { NEXT_LEVEL } from '../../redux/Slices/SurveyOptionSlice';
+import { NEXT_LEVEL, TO_BACKEND_OPTION } from '../../redux/Slices/SurveyOptionSlice';
 import Swal from 'sweetalert2'
+import produce from 'immer';
+import axios from 'axios';
 
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
 function HorizontalLinearStepper(props) {
-  const dispatch= useDispatch();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const navigate=useNavigate();
-  const surveyOption=useSelector((state)=>state.surveyOption);
-  const surveyMake=useSelector((state)=>state.surveyMake);
+
+  //redux
+  const dispatch= useDispatch();
+  const optionData = useSelector((state)=>state.surveyOption);
+  const questionData = useSelector((state)=>state.surveyMake.question);
+  
 
 //   const isStepOptional = (step) => {
 //     return step === 1;
@@ -52,18 +57,63 @@ function HorizontalLinearStepper(props) {
         cancelButtonText:'아니요'
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log(surveyOption);
-          console.log(surveyMake);
-          navigate(`/management`);
-        }
-      })
-    }
+          //front -> back example code 
+          //db쪽 1부터 시작하므로,,, 작업이 필요합니당
+          const newQuestionList = produce(questionData,(draftState) => {
+            //question
+            draftState.map((v,i) => {draftState[i].ordering =draftState[i].ordering+1});
+            //option
+            draftState.map((v,i) => {draftState[i].optionNumber = draftState[i].optionList.length});
+            draftState.map((v,i) => {
+              draftState[i].optionList.map((vv,ii)=>{
+                draftState[i].optionList[ii].ordering = draftState[i].optionList[ii].ordering+1;
+              })});
+          })
+          const newState = produce(optionData,(draftState) => {
+            console.log(optionData);
+            draftState.questionNumber = questionData.length;
+            draftState.questionList = draftState.questionList.concat(newQuestionList);  
 
+            //날짜 변환
+            //draftState.startDate = dateFormat(draftState.startDate);
+            //draftState.endDate = dateFormat(draftState.endDate);
+
+            if(draftState.theme=="lightpink"){
+              draftState.theme="APEACH";
+            }
+            //삭제
+            delete draftState["step"];
+
+          })
+          
+          console.log(newState);
+          axios.post('/api/survey',newState);
+                //navigate(`/management`);
+              
+              }
+            })
+          }
     
-    
-    
+      
     // setSkipped(newSkipped);
   };
+
+
+  function dateFormat(date) {
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+
+    month = month >= 10 ? month : '0' + month;
+    day = day >= 10 ? day : '0' + day;
+    hour = hour >= 10 ? hour : '0' + hour;
+    minute = minute >= 10 ? minute : '0' + minute;
+    second = second >= 10 ? second : '0' + second;
+
+    return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+}
 
   const handleBack = () => {
     // setActiveStep((prevActiveStep) => prevActiveStep - 1);

@@ -27,7 +27,7 @@ function QuestionMakeList() {
                     case OBJECTIVE:
                         return <Make id={r.ordering} title={r.title+" 주관식"} />
                     case MULTIPLE:
-                        return <MultipleMake id={r.ordering} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.option_list}/> 
+                        return <MultipleMake id={r.ordering} title={r.title+" 객관식"} canMulti={r.canMulti} response={r.optionList}/> 
                     case TRUEFALSE:
                         return <Make id={r.ordering} title={r.title+" 찬반"} />
                     case STAR:

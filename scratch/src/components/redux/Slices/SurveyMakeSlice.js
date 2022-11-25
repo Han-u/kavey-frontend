@@ -11,17 +11,13 @@ export const surveyMakeSlice=createSlice(
     {
         name:'surveyMake',
         initialState:{
-            //surveyTitle:"",
-            //surveyDesc:"",
-            //surveyIsGenderQuestion:true,
-            //surveyIsAgeQuestion:true,
             question:[ {   
                 title:1+"번째 질문",
                 required:true,
                 ordering:0,
                 type:OBJECTIVE,
-                option_number:0,
-                option_list:[]
+                optionNumber:0,
+                optionList:[]
             }],
         },
         reducers:{
@@ -34,8 +30,8 @@ export const surveyMakeSlice=createSlice(
                 required:true,
                 ordering:id+1,
                 type:OBJECTIVE,
-                option_number:0,
-                option_list:[]
+                optionNumber:0,
+                optionList:[]
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
@@ -51,8 +47,8 @@ export const surveyMakeSlice=createSlice(
                 required:true,
                 ordering:id+1,
                 type:MULTIPLE,
-                option_number:1,
-                option_list:[{value:1+"번째 선택요소",ordering:0,data:"??"}],
+                optionNumber:1,
+                optionList:[{value:1+"번째 선택요소",ordering:0,data:"??"}],
                 //canMulti:"true",
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
@@ -75,30 +71,30 @@ export const surveyMakeSlice=createSlice(
             UPDATE_MULTIPLE_CREATE_RESPONSE : (state,action) => {
                 const {q_id} = action.payload;
                 const newState = produce(state,(draftState) => {
-                    let response = draftState.question[q_id].option_list;
+                    let response = draftState.question[q_id].optionList;
                     response = [...response,{value:response.length+1+"번째 선택요소",ordering:response.length,data:"??"}]
-                    draftState.question[q_id].option_list = response;
+                    draftState.question[q_id].optionList = response;
                 })
                 state.question = newState.question;
             },            
             UPDATE_MULTIPLE_UPDATE_RESPONSE : (state,action) => {
                 const {q_id,r_id,value} = action.payload;
                 const newState = produce(state,(draftState) => {
-                    let response = draftState.question[q_id].option_list;
+                    let response = draftState.question[q_id].optionList;
                     response[r_id].value = value;
-                    draftState.question[q_id].option_list = response;
-                    draftState.question[q_id].option_number=response.length;
+                    draftState.question[q_id].optionList = response;
+                    draftState.question[q_id].optionNumber=response.length;
                 })
                 state.question = newState.question;
             },
             UPDATE_MULTIPLE_DELETE_RESPONSE : (state,action) => {
                 const {q_id,r_id} = action.payload;
                 const newState = produce(state,(draftState) => {
-                    let response = draftState.question[q_id].option_list;
+                    let response = draftState.question[q_id].optionList;
                     response.splice(r_id,1);
                     response.map((r,id)=>response[id].ordering = id);
-                    draftState.question[q_id].option_list = response;
-                    draftState.question[q_id].option_number=response.length;
+                    draftState.question[q_id].optionList = response;
+                    draftState.question[q_id].optionNumber=response.length;
                 })
                 state.question = newState.question;
             },
@@ -111,8 +107,8 @@ export const surveyMakeSlice=createSlice(
                 required:true,
                 ordering:id+1,
                 type:TRUEFALSE,
-                option_number:0,
-                option_list:[]
+                optionNumber:0,
+                optionList:[]
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
@@ -127,8 +123,8 @@ export const surveyMakeSlice=createSlice(
                 required:true,
                 ordering:id+1,
                 type:STAR,
-                option_number:0,
-                option_list:[]
+                optionNumber:0,
+                optionList:[]
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
@@ -139,8 +135,6 @@ export const surveyMakeSlice=createSlice(
             const newState = produce(state,(draftState) => {
                 draftState.question[id].title=value;
             })
-            console.log(newState.question[id].title);
-            //?오ㅐ state = newState는 안되냐;
             state.question = newState.question;
         },    
 
@@ -175,6 +169,10 @@ export const surveyMakeSlice=createSlice(
 
 
         },
+
+        TO_BACKEND:(state,action)=>{
+
+        },
     }
     }
 
@@ -193,4 +191,6 @@ export const {
     CREATE_STAR,
     UPDATE_TITLE,
     UPDATE_ORDER,
-    DELETE,} = surveyMakeSlice.actions;
+    DELETE,
+    TO_BACKEND
+} = surveyMakeSlice.actions;
