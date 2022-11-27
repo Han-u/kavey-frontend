@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
 
-function CreateUser({ username, onChange, onCreate }) {
+function CreateUser({ email, onChange, onCreate }) {
     const checkEmail = (e) => {
         var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
         // 형식에 맞는 경우 true 리턴
@@ -13,10 +13,10 @@ function CreateUser({ username, onChange, onCreate }) {
     return (
         <div>
             <Input
-                name="username"
+                name="email"
                 placeholder="example@email.com"
                 onChange={onChange}
-                value={username}
+                value={email}
                 onBlur={checkEmail}
             />
             <Button onClick={onCreate}>ADD</Button>

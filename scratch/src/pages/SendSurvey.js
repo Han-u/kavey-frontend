@@ -29,10 +29,10 @@ function SendSurvey() {
         }
     };
     const [inputs, setInputs] = useState({
-        username: '',
+        email: '',
     });
 
-    const { username,} = inputs;
+    const { email,} = inputs;
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -49,13 +49,13 @@ function SendSurvey() {
     const onCreate = () => {
         const user = {
             id: nextId.current,
-            username,
+            email,
         };
 
         setUsers(users.concat(user));
 
         setInputs({
-            username: '',
+            email: '',
         });
 
         nextId.current += 1;
@@ -89,7 +89,7 @@ function SendSurvey() {
             <div style={style.body}>
                 <div style={style.Container}>
                     <CreateUser
-                        username={username}
+                        username={email}
                         onChange={onChange}
                         onCreate={onCreate}
                     />
@@ -103,12 +103,6 @@ function SendSurvey() {
                     <Button>생략</Button>
                     <Button className="Button"  onClick={sendSuccess}>전송</Button>
                     <Button onClick={send}>확인(없앨버튼)</Button>
-
-
-
-
-
-
                 </div>
 
             </div>

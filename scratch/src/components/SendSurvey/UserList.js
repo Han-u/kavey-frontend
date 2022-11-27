@@ -4,7 +4,7 @@ import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
 function User({ user, onRemove }) {
     return (
         <div>
-            <b>{user.username}</b>
+            <b>{user.email}</b>
             <Button onClick={() => onRemove(user.id)}>X</Button>
         </div>
     );
