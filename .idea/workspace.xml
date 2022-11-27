@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] copyright">
+    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix checkbox">
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/SendSurvey.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/child/Email.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/child/EmailList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,20 +66,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/frontEndd",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Back-End&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\frontEndd\scratch\src\components\Modal" />
+      <recent name="C:\frontEndd\scratch\src\pages\child" />
       <recent name="C:\frontEndd\scratch\src\pages" />
     </key>
   </component>
@@ -91,7 +102,9 @@
       <updated>1668770116957</updated>
       <workItem from="1668770120938" duration="32170000" />
       <workItem from="1669132528397" duration="7338000" />
-      <workItem from="1669247287743" duration="2264000" />
+      <workItem from="1669247287743" duration="6853000" />
+      <workItem from="1669479193467" duration="3458000" />
+      <workItem from="1669561404250" duration="11900000" />
     </task>
     <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
       <created>1669135353138</created>
@@ -100,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669135353138</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[SC-55] fix checkbox">
+      <created>1669256379992</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669256379992</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[SC-55]add 모달추가" />
     <MESSAGE value="[SC-55]add 백이랑 연결" />
-    <option name="LAST_COMMIT_MESSAGE" value="[SC-55]add 백이랑 연결" />
+    <MESSAGE value="[SC-55] fix checkbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="[SC-55] fix checkbox" />
   </component>
 </project>

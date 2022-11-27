@@ -1,49 +1,119 @@
-import React, {useState} from 'react';
-import EmailList from "../components/SendSurvey/child/EmailList";
-import {Link} from 'react-router-dom';
-import {Button, Container, Grid, IconButton, Menu, MenuItem, Paper, TextField, Typography, Input} from "@mui/material";
-var ID=1;
+import React, { useRef, useState } from 'react';
+import UserList from '../components/SendSurvey/UserList';
+import CreateUser from '../components/SendSurvey/CreateUser';
+import {Typography,Button} from "@mui/material";
+import {Link} from "react-router-dom";
+import LinkFloating from "../components/Modal/LinkFloating";
 
 
-function SendSurvey(){
+function SendSurvey() {
+    const style = {
+        header : {
+            display: 'flex',
+            alignItems: 'center',
+            padding: 30,
+            justifyContent: 'space-between'
+        },
+        body : {
+            padding: 30,
+            backgroundColor: 'lightgray'
+        },
+        btn : {
+            padding: 10,
+            paddingLeft: 0,
 
-    const [email, setEmail] = useState([{id:ID,value:"example"}]);
+        },
+        Container: {
+            padding: 20,
+            backgroundColor: 'white'
+        }
+    };
+    const [inputs, setInputs] = useState({
+        username: '',
+    });
 
-    const appendEmail = () => {
-        ID = ID +1;
-        setEmail([...email,{id:ID,value:"example"}]);
+    const { username,} = inputs;
 
-    }
+    const onChange = e => {
+        const { name, value } = e.target;
+        setInputs({
+            ...inputs,
+            [name]: value,
+        });
+    };
 
-    const deleteEmail = (id)=> {
-        const index = email.findIndex(r => r.id === id)
-        setEmail([...email.slice(0,index),...email.slice(index+1,email.length)]);
-    }
+    const [users, setUsers] = useState([]);
 
+    const nextId = useRef(0);
+
+    const onCreate = () => {
+        const user = {
+            id: nextId.current,
+            username,
+        };
+
+        setUsers(users.concat(user));
+
+        setInputs({
+            username: '',
+        });
+
+        nextId.current += 1;
+    };
+
+    const onRemove = id => {
+        setUsers(users.filter(user => user.id !== id));
+    };
 
     const sendSuccess = () => {
         alert("설문전송을 완료했습니다.");
     }
-    return(
-        <div className="wrapper">
-            <div className="title">
-                <h1>설문 발송 페이지</h1>
-            </div>
-            <div className="search" >
 
-                <Button onClick={appendEmail} className="Button2" >피설문자 추가</Button>
-                <Input  placeholder={"이메일 검색"} maxLength={50} className="input"></Input>
-                <Button className="Button">검색</Button>
+    const send = () => {
+        console.log("설문조사 보낼 이메일");
+        console.log({users});
+    }
+
+
+
+
+
+
+    return (
+        <div>
+            <div style={style.header}>
+                <Typography variant="h4" fontFamily="HallymGothic-Regular">
+                    설문 발송 페이지
+                </Typography>
             </div>
-            <div className="emailList">
-                <EmailList list={email} onDelete={deleteEmail}></EmailList>
-            </div>
-            <div className="sendButton">
-                <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
-                <Button className="Button" >생략</Button>
-                <Button className="Button"  onClick={sendSuccess}>전송</Button>
+            <div style={style.body}>
+                <div style={style.Container}>
+                    <CreateUser
+                        username={username}
+                        onChange={onChange}
+                        onCreate={onCreate}
+                    />
+                </div>
+                <div style={style.Container}>
+                    <UserList users={users} onRemove={onRemove}/>
+                </div>
+                <div style={style.Container}>
+                    <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
+
+                    <Button>생략</Button>
+                    <Button className="Button"  onClick={sendSuccess}>전송</Button>
+                    <Button onClick={send}>확인(없앨버튼)</Button>
+
+
+
+
+
+
+                </div>
+
             </div>
         </div>
     );
 }
+
 export default SendSurvey;

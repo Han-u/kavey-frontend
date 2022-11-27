@@ -14,6 +14,7 @@ import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
 import SurveyAnswer from "./pages/SurveyAnswer";
 import ProxyTest from "./components/BackEnd/ProxyTest";
 
+
 function App() {
   return (
     <Router>
@@ -30,6 +31,8 @@ function App() {
         <Route path="/answer" element={<SurveyAnswer/>}/>
 
         <Route path="/testproxy" element={<ProxyTest/>}/>
+
+
 
 
       </Routes>
