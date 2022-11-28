@@ -14,7 +14,6 @@ import axios from 'axios';
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
 function HorizontalLinearStepper(props) {
-  const dispatch= useDispatch();
   // const [activeStep, setActiveStep] = React.useState(0);
   // const [skipped, setSkipped] = React.useState(new Set());
   const navigate=useNavigate();

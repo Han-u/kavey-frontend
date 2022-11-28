@@ -1,17 +1,25 @@
 import React, { useRef, useState } from 'react';
+import {useSelector} from 'react-redux'
 import UserList from '../components/SendSurvey/UserList';
 import CreateUser from '../components/SendSurvey/CreateUser';
 import {Typography,Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import LinkFloating from "../components/Modal/LinkFloating";
+import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
+
 
 
 function SendSurvey() {
+    const step=useSelector((state)=>state.surveyOption.step);
+
     const style = {
         header : {
             display: 'flex',
             alignItems: 'center',
-            padding: 30,
+            paddingTop:130,
+            paddingLeft:30,
+            paddingRight:30,
+            paddingBottom:30,
             justifyContent: 'space-between'
         },
         body : {
@@ -72,6 +80,7 @@ function SendSurvey() {
     const send = () => {
         console.log("설문조사 보낼 이메일");
         console.log({users});
+        
     }
 
 
@@ -81,6 +90,17 @@ function SendSurvey() {
 
     return (
         <div>
+            <div align='center' style={{backgroundColor:'white',
+                                        height:'120px',
+                                        position:'fixed',
+                                        width:'100%',
+                                        zIndex:'1',
+                                        paddingTop:'30px',
+                                        borderBottom:'1px solid lightgray',}}>
+                <div style={{width:"50%",backgroundColor: 'white'}}>
+                    <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
+                </div>
+            </div>
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
                     설문 발송 페이지
