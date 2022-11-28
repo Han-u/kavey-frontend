@@ -27,11 +27,25 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
 
     const checkEmail = (e) => {
         var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+
         // 형식에 맞는 경우 true 리턴
         if (regExp.test(e.target.value)==false)
         {
-            alert("올바른 이메일을 입력해주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '이메일 양식 오류',
+                text: '정확한 피설문자의 이메일을 입력해주세요'
+            })
         }
+        if ((e.target.value) == '')
+        {
+            Swal.fire({
+                icon: 'error',
+                title: '비어있는 공간',
+                text: '비어있지롱 비어있지롱'
+            })
+        }
+
     }
 
     const [visible,setVisible] =useState(false);
