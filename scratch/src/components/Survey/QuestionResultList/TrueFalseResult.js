@@ -14,12 +14,18 @@ const styles = {
     },
 }
 
-function TrueFalseResult({id,title}){
-
+function TrueFalseResult({id,title,required}){
+    console.log(required)
     return (
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular" 
-            style={{marginBottom:'20px'}}>{title}</Typography>
+            <div>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+                {required === true && <h1 style={{color: "red"}} >*</h1> }
+                <Typography variant="h4" fontFamily="HallymGothic-Regular" 
+                style={{marginBottom:'20px'}}>{title}</Typography>
+            </div>
+            </div>
+            
             <div>
                 <ButtonGroup varient="outlined" size="large">
                     <Button >찬성</Button>

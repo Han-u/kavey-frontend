@@ -6,7 +6,8 @@ import { CREATE_OBJECTIVE,
   CREATE_MULTIPLE,
   CREATE_TRUEFALSE,
   CREATE_STAR,
-  DELETE,}  from '../components/redux/Slices/SurveyMakeSlice';
+  DELETE,
+  UPDATE_REQUIRED,}  from '../components/redux/Slices/SurveyMakeSlice';
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
@@ -132,9 +133,22 @@ export function DeleteButton({id}){
     const dispatch = useDispatch();
     return(
       <div>
-        <IconButton variant="contained" color="error" size="small" 
+        <IconButton variant="contained"  size="small" 
         onClick={() => {dispatch(DELETE({id:id}));
         }}><DeleteIcon /></IconButton>
        </div>
     );
+}
+
+
+export function RequiredButton({id,required}){
+  const dispatch = useDispatch();
+  return(
+    <div>
+      <Button variant="contained"  size="small" 
+      onClick={() => {dispatch(UPDATE_REQUIRED({id:id}));
+      }}>{required.toString()}
+      </Button>
+     </div>
+  );
 }

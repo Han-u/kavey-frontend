@@ -10,6 +10,7 @@ import { NEXT_LEVEL, TO_BACKEND_OPTION } from '../../redux/Slices/SurveyOptionSl
 import Swal from 'sweetalert2'
 import produce from 'immer';
 import axios from 'axios';
+import { CHECKBOX,RADIO } from '../../redux/Slices/SurveyMakeSlice';
 
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
@@ -62,11 +63,18 @@ function HorizontalLinearStepper(props) {
           const newQuestionList = produce(questionData,(draftState) => {
             //question
             draftState.map((v,i) => {draftState[i].ordering =draftState[i].ordering+1});
-            //option
+            //multiple option
             draftState.map((v,i) => {draftState[i].optionNumber = draftState[i].optionList.length});
             draftState.map((v,i) => {
               draftState[i].optionList.map((vv,ii)=>{
                 draftState[i].optionList[ii].ordering = draftState[i].optionList[ii].ordering+1;
+                if(draftState[i].canMulti == true){
+                  draftState[i].type = CHECKBOX;
+                }
+                else{
+                  draftState[i].type = RADIO;
+                }
+                delete draftState[i].canMulti;
               })});
           })
           const newState = produce(optionData,(draftState) => {
@@ -74,11 +82,6 @@ function HorizontalLinearStepper(props) {
             draftState.questionNumber = questionData.length;
             draftState.questionList = draftState.questionList.concat(newQuestionList);  
 
-
-            if(draftState.theme=="lightpink"){
-              draftState.theme="APEACH";
-            }
-            //삭제
             delete draftState["step"];
 
           })

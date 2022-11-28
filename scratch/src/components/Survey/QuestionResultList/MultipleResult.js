@@ -17,11 +17,14 @@ const styles = {
     },
 }
 
-function MultipleResult({id, title,canMulti,response}) {    
+function MultipleResult({id, title,required,canMulti,response}) {    
     return (  
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular" 
-            style={{marginBottom:'20px'}}>{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+                {required === true && <h1 style={{color: "red" }} >*</h1> }
+                <Typography variant="h4" fontFamily="HallymGothic-Regular" 
+                style={{marginBottom:'20px'}}>{title}</Typography>
+            </div>
             <p>{canMulti}</p>
             <ResponseList question_id={id}list={response}/>
         </div> 

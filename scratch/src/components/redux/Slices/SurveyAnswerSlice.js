@@ -1,5 +1,5 @@
 import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
-import { MULTIPLE } from './SurveyMakeSlice';
+import { CHECKBOX, MULTIPLE ,RADIO} from './SurveyMakeSlice';
 
 
 export const SurveyAnswerSlice=createSlice(
@@ -9,7 +9,7 @@ export const SurveyAnswerSlice=createSlice(
             option:[],
             question:[],
             answer : {
-                userId : 1,
+                userId : 2,
                 gender : "MALE",
                 age : 10,
                 surveySubjective : [],
@@ -28,13 +28,21 @@ export const SurveyAnswerSlice=createSlice(
                 let subjectiveAnswer = [];
                 data.questionList.map((d,id)=>{
                     switch(d.type){
-                        case MULTIPLE:
+                        case CHECKBOX:
                             multipleAnswer.push({
                                 questionId:d.questionId,
                                 optionId:17, //ordering아닌 optionid임 
-                                questionType:d.type
+                                questionType:CHECKBOX,
+                                canMulti:true,
+
                             });
-                            
+                        case RADIO:
+                            multipleAnswer.push({
+                                questionId:d.questionId,
+                                optionId:17, //ordering아닌 optionid임 
+                                questionType:RADIO,
+                                canMulti:true,
+                            });
                         break
                         default:
                             subjectiveAnswer.push({

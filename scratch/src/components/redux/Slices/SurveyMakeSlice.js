@@ -3,7 +3,9 @@ import { createSlice} from '@reduxjs/toolkit'
 import produce from "immer";
 
 export const OBJECTIVE = "TEXT";
-export const MULTIPLE = "CHECKBOX"
+export const MULTIPLE = "MULTIPLE"  //MULTIPLE 한개만 선택 
+export const RADIO = "RADIO"  //MULTIPLE 한개만 선택 
+export const CHECKBOX = "CHECKBOX" //MULTIPLE 여러개 선택 
 export const TRUEFALSE = "TRUEFALSE"
 export const STAR = 'RATING'
 
@@ -49,7 +51,7 @@ export const surveyMakeSlice=createSlice(
                 type:MULTIPLE,
                 optionNumber:1,
                 optionList:[{value:1+"번째 선택요소",ordering:0,data:"??"}],
-                //canMulti:"true",
+                canMulti:true,
             })
             newQuestion.map((r,i)=>{newQuestion[i].ordering=i});
             state.question = newQuestion;
@@ -58,12 +60,7 @@ export const surveyMakeSlice=createSlice(
             UPDATE_MULTIPLE_CANMULTI : (state,action) => {
                 const {q_id} = action.payload;
                 const newState = produce(state,(draftState) => {
-                    if(draftState.question[q_id].canMulti=="true"){
-                        draftState.question[q_id].canMulti = "false";
-                    }
-                    else{
-                        draftState.question[q_id].canMulti = "true";
-                    }
+                    state.question[q_id].canMulti = !state.question[q_id].canMulti;
                 })
                 state.question = newState.question;
             }, 
@@ -137,7 +134,10 @@ export const surveyMakeSlice=createSlice(
             })
             state.question = newState.question;
         },    
-
+        UPDATE_REQUIRED:(state,action) =>{
+            const {id} = action.payload;
+            state.question[id].required = !state.question[id].required;
+        },
         UPDATE_ORDER:(state,action) =>{
             const {prev,next} = action.payload;
             console.log(prev,next);
@@ -190,6 +190,7 @@ export const {
     CREATE_TRUEFALSE,
     CREATE_STAR,
     UPDATE_TITLE,
+    UPDATE_REQUIRED,
     UPDATE_ORDER,
     DELETE,
     TO_BACKEND

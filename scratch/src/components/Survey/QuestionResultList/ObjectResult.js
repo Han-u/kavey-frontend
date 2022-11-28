@@ -18,7 +18,7 @@ const styles = {
 
 
 
-function ObjectResult({id, title}) {
+function ObjectResult({id, title,required}) {
     const dispatch = useDispatch();
     const onChange = (e) => {
         dispatch({type:ANSWER,id:id,value:e.target.value});
@@ -26,9 +26,11 @@ function ObjectResult({id, title}) {
 
     return (  
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular"
-            style={{marginBottom:'20px'}}
-            >{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+                {required === true && <h1 style={{color: "red"}} >*</h1> }
+                <Typography variant="h4" fontFamily="HallymGothic-Regular"
+                style={{marginBottom:'20px'}}>{title}</Typography>
+            </div>
             <TextField label="답변을 입력해주세요" onChange={onChange}></TextField>
         </div> 
         

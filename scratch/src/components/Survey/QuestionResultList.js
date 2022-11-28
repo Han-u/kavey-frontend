@@ -21,13 +21,13 @@ function QuestionResultList() {
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
-                        return <ObjectResult id={r.ordering} title={r.title} />
+                        return <ObjectResult id={r.ordering} title={r.title} required={r.required}/>
                     case MULTIPLE:
-                        return <MultipleResult id={r.ordering} title={r.title} canMulti={r.canMulti} response={r.optionList}/>
+                        return <MultipleResult id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} response={r.optionList} />
                     case TRUEFALSE:
-                        return <TrueFalseResult id={r.ordering} title={r.title}/>
+                        return <TrueFalseResult id={r.ordering} title={r.title} required={r.required}/>
                     case STAR:
-                        return <RatingResult id={r.ordering} title={r.title}/>
+                        return <RatingResult id={r.ordering} title={r.title} required={r.required}/>
                 }
             }
         )

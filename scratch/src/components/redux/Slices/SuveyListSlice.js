@@ -4,6 +4,7 @@ export const SurveyListSlice=createSlice({
     name:'SurveyList',
     initialState:{        
         value:[
+            /*
             {
                 id:1, status: 'making', title: "설문제목1",
                 startDt: '2022-10-02', endDt:'2022-11-03',
@@ -40,6 +41,7 @@ export const SurveyListSlice=createSlice({
                 startDt: '2022-10-02', endDt:'2022-11-03',
                 isOpen: true, subject: 31, participation: 2
             }
+            */
         ]},
     reducers:{
       deleteSurvey: (state,action)=>{

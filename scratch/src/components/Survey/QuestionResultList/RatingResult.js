@@ -23,7 +23,7 @@ const styles = {
   },
 }
 
-function RatingResult({id,title}) {
+function RatingResult({id,title,required}) {
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -49,7 +49,10 @@ function RatingResult({id,title}) {
 
     return (
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+              {required === true && <h1 style={{color: "red"}} >*</h1> }
+              <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
+            </div>
             <div align="center">
               <Stars align="center">
                   {ARRAY.map(el => {
