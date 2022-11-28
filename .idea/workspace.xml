@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CopyUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch/src/pages/Atest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/surveyoptionsetting/public/Stepper.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/surveyoptionsetting/public/Stepper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
