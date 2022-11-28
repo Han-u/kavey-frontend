@@ -28,5 +28,3 @@ function Email({onDelete}){
     );
 }
 
-
-export default Email;

@@ -20,19 +20,19 @@ function Participant(){
     const [resStatus, setResStatus]=useState("ALL");
     const addSurveyBack1 = () => {
         setResStatus("RESPONSE");
-        console.log(resStatus);
+
     };
     const addSurveyBack2 = () => {
         setResStatus("NONRESPONSE");
-        console.log(resStatus);
+
     };
     const addSurveyBack3 = () => {
         setResStatus("REJECT");
-        console.log(resStatus);
+
     };
     const addSurveyBack4 = () => {
         setResStatus("ALL");
-        console.log(resStatus);
+
     };
     const realBack=Object.values(backData);
 
@@ -96,9 +96,7 @@ function Participant(){
 
 
     const [startDate, setStartDate] = useState(new Date());
-    console.log(startDate);
     const [endDate, setEndDate] = useState(new Date());
-    console.log(endDate);
 
 
 
@@ -120,6 +118,9 @@ function Participant(){
     const onChange = (e) => {
         setSearch(e.target.value)
     }
+
+    //재전송용 빈 배열() attend_id 들어가유
+    const [resendList,setResendList]=useState([]);
 
 
 
@@ -151,12 +152,7 @@ function Participant(){
                         <StyledTable>
                             <thead>
                             <tr>
-                                <th>
-                                    <input type='checkbox' name='select-all'
-                                           onChange={(e) => handleAllCheck(e.target.checked)}
-                                        // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                                           checked={checkItems.length === backResult.length ? true : false} />
-                                </th>
+                                <th><input type='checkbox'/></th>
                                 <th className='second-row'>이메일</th>
                                 <th className='second-row'><button onClick={() => {
                                     setVisible1(!visible1);
@@ -171,12 +167,9 @@ function Participant(){
                             </thead>
                             <tbody>
 
-                            {backResult && backResult.map((result,key)=>(
+                            {backResult.map((result,key)=>(
                                 <tr key={key}>
-                                    <td><input type='checkbox' name={`select-${backResult.id}`}
-                                               onChange={(e) => handleSingleCheck(e.target.checked, backResult.id)}
-                                        // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                                               checked={checkItems.includes(backResult.id) ? true : false} /></td>
+                                    <td><input type='checkbox'/></td>
                                     <td key={result.email}>{result.sendEmail}</td>
                                     <td key={result.sendDt}>{result.sendDate}</td>
                                     <td key={result.res}>{result.status}</td>
