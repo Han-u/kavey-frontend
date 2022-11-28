@@ -2,10 +2,10 @@ import { createSlice} from '@reduxjs/toolkit'
 
 import produce from "immer";
 
-export const OBJECTIVE = 1
-export const MULTIPLE = 2
-export const TRUEFALSE = 3
-export const STAR = 4
+export const OBJECTIVE = "TEXT";
+export const MULTIPLE = "CHECKBOX"
+export const TRUEFALSE = "TRUEFALSE"
+export const STAR = 'RATING'
 
 export const surveyMakeSlice=createSlice(
     {
