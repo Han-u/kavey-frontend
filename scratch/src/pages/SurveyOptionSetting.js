@@ -18,11 +18,10 @@ function SurveyOptionSetting() {
     const navigate=useNavigate();
 
     const handleClick = ()=>{
-        if(surveyOption.peopleLimit==null){
+        if(surveyOption.limitPerson==null){
             dispatch(SET_PEOPLE_LIMIT(0));
         }
         console.log(step)
-        console.log(surveyOption);
         dispatch(NEXT_LEVEL(1));
         navigate(`/surveymake`);
 
@@ -69,7 +68,7 @@ function SurveyOptionSetting() {
             </div>
             
             <div align='center' style={{align:'center',
-                                            backgroundColor:surveyOption.themeColor,
+                                            backgroundColor:surveyOption.theme,
                                             height:'100%',
                                             width:'100%',
                                             paddingTop:'120px'}}>
