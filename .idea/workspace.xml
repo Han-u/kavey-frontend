@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/modal.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +95,7 @@
       <workItem from="1669132528397" duration="7338000" />
       <workItem from="1669247287743" duration="6853000" />
       <workItem from="1669479193467" duration="3458000" />
-      <workItem from="1669561404250" duration="12250000" />
+      <workItem from="1669561404250" duration="16526000" />
     </task>
     <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
       <created>1669135353138</created>
@@ -121,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669573882822</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[SC-55] fix sendSurvey">
+      <created>1669574242095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669574242095</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

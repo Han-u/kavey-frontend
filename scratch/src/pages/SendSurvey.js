@@ -69,14 +69,25 @@ function SendSurvey() {
         alert("설문전송을 완료했습니다.");
     }
 
+    const user=[];
     const send = () => {
-        console.log("설문조사 보낼 이메일");
-        console.log({users});
+        for (let i =0; i<users.length; i++){
+            user.push(users[i].email);
+        }
+        console.log(user);
+
+
     }
+    const send2 = () => {
+
+        for (let i =0; i<users.length; i++){
+            user.push(users[i].email);
+        }
 
 
 
 
+    }
 
 
     return (
@@ -99,9 +110,7 @@ function SendSurvey() {
                 </div>
                 <div style={style.Container}>
                     <Button className="Button" component={Link} to="/linkfloating">설문링크</Button>
-
-                    <Button>생략</Button>
-                    <Button className="Button"  onClick={sendSuccess}>전송</Button>
+                    <Button className="Button"  onClick={send2}>전송</Button>
                     <Button onClick={send}>확인(없앨버튼)</Button>
                 </div>
 
