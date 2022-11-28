@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch,useSelector } from 'react-redux'
 import {SET_STARTDATE,SET_ENDDATE} from "../../redux/Slices/SurveyOptionSlice"
+import Swal from 'sweetalert2'
 
 function SurveyDatePicker() {
 
@@ -12,15 +13,19 @@ function SurveyDatePicker() {
   const endDate=useSelector((state)=>state.surveyOption.endDate);
 
 
-    
+
   let datepicker=useRef(null); 
 
   const onChange = (dates) => {
     const [start, end] = dates;
     const date=new Date();
-    if(start.getDate()< date.getDate()&& start.getMonth()<=date.getMonth() ){
-      // console.log(start.getDate(),date.getDate());
-      alert("기간은 현재 날짜보다 빠를 수 없습니다!");
+    if((start.getDate()< date.getDate()&& start.getMonth()<=date.getMonth())
+    ||(start.getDate()>= date.getDate()&& start.getMonth()<date.getMonth()) ){
+      Swal.fire({
+        title: '기간은 현재 날짜보다 \n 빠를 수 없습니다!',
+        icon: 'error',
+        confirmButtonText: '확인'
+      })
       datepicker.setOpen(false);
     }else{      
       dispatch(SET_STARTDATE(start));
@@ -28,7 +33,7 @@ function SurveyDatePicker() {
     }    
   };
   const ExampleCustomInput = React.forwardRef(({ value, onClick }, ref) => (
-    <Button variant="outlined" className="example-custom-input" onClick={onClick} ref={ref}>
+    <Button size="large" variant="outlined" className="example-custom-input" onClick={onClick} ref={ref}>
       {value}
     </Button>
   ));

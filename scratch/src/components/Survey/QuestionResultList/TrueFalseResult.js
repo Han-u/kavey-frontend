@@ -1,28 +1,32 @@
-import {useState} from "react";
-import {Button, ButtonGroup, Container, TextField} from "@mui/material";
+import {Button, ButtonGroup,Typography} from "@mui/material";
 
 const styles = {
     container: {
         display: "flex",
         justifyContent: "center",
-        margin: 30
+        backgroundColor:'white',
+        border: "1px solid",
+        borderRadius:8,
+        flexDirection: "column",
+        width:'100%',
+        padding:'30px',
+        marginBottom: '30px',
     },
 }
 
 function TrueFalseResult({id,title}){
 
     return (
-        <Container maxWidth='sm' sx={{border: 1, borderRadius: 3}}>
-            <h1>
-                {title}
-            </h1>
-            <div style={styles.container}>
+        <div style={styles.container}>
+            <Typography variant="h4" fontFamily="HallymGothic-Regular" 
+            style={{marginBottom:'20px'}}>{title}</Typography>
+            <div>
                 <ButtonGroup varient="outlined" size="large">
                     <Button >찬성</Button>
                     <Button >반대</Button>
                 </ButtonGroup>
             </div>
-        </Container>
+        </div>
     )
 }
 

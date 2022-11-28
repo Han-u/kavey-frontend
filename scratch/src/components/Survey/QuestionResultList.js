@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-
+import { ButtonGroup,Button,Typography } from '@mui/material';
 import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from "../redux/Slices/SurveyMakeSlice";
 
 import ObjectResult from './QuestionResultList/ObjectResult';
@@ -11,28 +11,37 @@ import RatingResult from './QuestionResultList/RatingResult';
 
 
 function QuestionResultList() {
+    const surveyOption=useSelector((state)=>state.surveyOption);
     const data = useSelector((state)=>state.surveyMake.question);
+    
     let list = [];
+
     if(data!==undefined){
         list = data.map(
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
-                        return <ObjectResult id={r.order} title={r.title} />
+                        return <ObjectResult id={r.ordering} title={r.title} />
                     case MULTIPLE:
-                        return <MultipleResult id={r.order} title={r.title} canMulti={r.canMulti} response={r.response}/>
+                        return <MultipleResult id={r.ordering} title={r.title} canMulti={r.canMulti} response={r.optionList}/>
                     case TRUEFALSE:
-                        return <TrueFalseResult id={r.order} title={r.title}/>
+                        return <TrueFalseResult id={r.ordering} title={r.title}/>
                     case STAR:
-                        return <RatingResult id={r.order} title={r.title}/>
+                        return <RatingResult id={r.ordering} title={r.title}/>
                 }
             }
         )
     }
-    
+
     return (
-        <div>
-            {list}
+        <div align="center" style={{width:'800px',backgroundColor:surveyOption.theme}}>
+            <div style={{width:'600px',height:'100%'}}>
+                <Typography variant="h2" fontFamily="HallymGothic-Regular" style={{paddingTop:'30px',paddingBottom:'30px'}}>{surveyOption.title}</Typography>
+                <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{paddingBottom:'30px'}}>{surveyOption.description}</Typography>
+                {surveyOption.askGender?<div>여기 성별 질문</div>:null}
+                {surveyOption.askAge?<div>여기 나이 질문</div>:null}
+                {list}
+            </div>
         </div>
     );
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import {Button,Typography} from "@mui/material";
+import {Button,Typography,Tooltip} from "@mui/material";
 import { useDispatch,useSelector } from 'react-redux'
 import {SET_PUBLIC_PRIVATE,SET_PEOPLE_LIMIT} from "../redux/Slices/SurveyOptionSlice"
 
 function SurveyAccessType() {
-    const publicPrivate=useSelector((state)=>state.surveyOption.publicPrivate);
-    const peopleLimit=useSelector((state)=>state.surveyOption.peopleLimit);
+    const isPrivate=useSelector((state)=>state.surveyOption.isPrivate);
+    const limitPerson=useSelector((state)=>state.surveyOption.limitPerson);
 
     const dispatch=useDispatch();
 
@@ -15,7 +15,7 @@ function SurveyAccessType() {
 
 
     const checkPublic = ()=>{
-        if (publicPrivate === "public")
+        if (isPrivate === "FALSE")
             return "";
         else
             return "disabled";
@@ -26,24 +26,32 @@ function SurveyAccessType() {
 
     return(
         <div>
-            <Typography variant="h4">설문 응답 설정</Typography>
+            <Typography variant="h4" fontFamily="HallymGothic-Regular"
+            style={{paddingBottom:'5px'}}
+            >설문 접근 방법</Typography>
+            <Typography variant="h6" fontFamily="HallymGothic-Regular"
+            style={{paddingBottom:'20px'}}
+            >설문 접근 방법을 선택해주세요</Typography>
             <div  style={{display: 'flex', flexDirection: 'row',justifyContent: 'center'}}>
                 <div style={{width:'50%'}}>
-                    <Button variant={publicPrivate==="public"?"contained":"outlined"}
-                    onClick={(e)=>handleClick(e.target.value)} 
-                    value="public">개방형</Button>                
-                    <p>
-                    <label for="peopleLimit">설문조사 인원 설정</label>
-                    <input type="number" id="peopleLimit" name="peopleLimit" placeholder="(0 : 무제한)" value={peopleLimit} min="0" disabled = {checkPublic()}  onChange={(e)=>handleChange(e.target.value)}/>
-                    </p>                    
+                    <Tooltip title="링크가 있는 모든 응답자가 접근할 수 있어요!">
+                        <Button variant={isPrivate==="FALSE"?"contained":"outlined"}
+                        onClick={(e)=>handleClick(e.target.value)} 
+                        value="FALSE">개방형</Button>
+                    </Tooltip>                
+                    <br></br>
+                    <br></br>
+                    <label for="limitPerson"><Typography fontFamily="HallymGothic-Regular">설문조사 인원 설정</Typography></label>
+                    <input type="number" id="limitPerson" name="limitPerson" placeholder="(0 : 무제한)" value={limitPerson} min="0" disabled = {checkPublic()}  onChange={(e)=>handleChange(e.target.value)}/>                 
                 </div>            
                 <div style={{width:'50%'}}>
-                    <Button variant={publicPrivate==="private"?"contained":"outlined"}
-                    onClick={(e)=>handleClick(e.target.value)}
-                    value="private">폐쇄형</Button>
-                    
+                    <Tooltip title="참여 요청을 받은 응답자만 접근할 수 있어요!">
+                        <Button variant={isPrivate==="TRUE"?"contained":"outlined"}
+                        onClick={(e)=>handleClick(e.target.value)}
+                        value="TRUE">폐쇄형</Button>
+                    </Tooltip>
                 </div>
-             </div>   
+            </div>   
         </div>
     )
     

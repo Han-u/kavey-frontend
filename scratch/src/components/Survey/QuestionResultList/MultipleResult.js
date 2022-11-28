@@ -1,20 +1,27 @@
 import { useState } from "react";
-
 import {useDispatch} from 'react-redux';
 import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import {Typography,} from '@mui/material'
 
 const styles = {
     container: {
-        border:3,
-        borderStyle: "solid",
-        padding: 15,
+        display: "flex",
+        justifyContent: "center",
+        backgroundColor:'white',
+        border: "1px solid",
+        borderRadius:8,
+        flexDirection: "column",
+        width:'100%',
+        padding:'30px',
+        marginBottom: '30px',
     },
 }
 
 function MultipleResult({id, title,canMulti,response}) {    
     return (  
         <div style={styles.container}>
-            <h1>{title}</h1>
+            <Typography variant="h4" fontFamily="HallymGothic-Regular" 
+            style={{marginBottom:'20px'}}>{title}</Typography>
             <p>{canMulti}</p>
             <ResponseList question_id={id}list={response}/>
         </div> 
@@ -32,7 +39,7 @@ function ResponseList({question_id,list}) {
                 <Response 
                 question_id = {question_id}
                 response_id = {r.id} 
-                title={r.title} 
+                title={r.value} 
                 />
             )
         )

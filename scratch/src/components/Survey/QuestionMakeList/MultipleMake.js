@@ -1,12 +1,21 @@
 
 import {useDispatch} from 'react-redux';
+
 import { UPDATE_TITLE,UPDATE_MULTIPLE_CANMULTI,UPDATE_MULTIPLE_CREATE_RESPONSE,UPDATE_MULTIPLE_UPDATE_RESPONSE,UPDATE_MULTIPLE_DELETE_RESPONSE } from "../../redux/Slices/SurveyMakeSlice";
+
+import { DeleteButton, PlusButton } from '../../../pages/SurveyMake';
+
+import {Button,IconButton,TextField,Tooltip} from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close';
 
 const styles = {
     container: {
-        border:3,
+        border:1,
         borderStyle: "solid",
+        display: "flex",
+        flexDirection: "column",
         padding: 15,
+        // backgroundColor: "black"
     },
 }
 
@@ -15,21 +24,34 @@ function MultipleMake({id,title,canMulti,response}) {
     const dispatch = useDispatch();
 
     const onChange = (e) => {
-        dispatch({type:UPDATE_TITLE,id:id,value:e.target.value});
+        dispatch(UPDATE_TITLE({id:id,value:e.target.value}));
     };
 
     const onClickPlus = (e) =>{
-        dispatch({type:UPDATE_MULTIPLE_CREATE_RESPONSE,questionID:id})
+        dispatch(UPDATE_MULTIPLE_CREATE_RESPONSE({q_id:id}))
     }
 
 
     return(
-        <div style={styles.container}>
-            <button onClick={onClickPlus}>plus</button>
-            <MultiButton id={id}canMulti={canMulti}/>
+        <div style={styles.container} draggable>
+            <div style={{flexDirection: 'row',
+                        display:'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        paddingBottom:'10px'}}>
+                <DeleteButton id={id}/>
+                <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
+                <PlusButton id={id}/>
+            </div>
             <div>
-            <input placeholder={title} maxLength={50} onChange={onChange} ></input>
-            <ResponseList id={id} list={response}/>
+            <MultiButton id={id}canMulti={canMulti}/>
+            <Button onClick={onClickPlus}>보기추가</Button>
+            </div>
+            <div>
+                <ResponseList id={id} list={response}/>
+            </div>
+            <div style={{float:'right'}}>
+                
             </div>
         </div>
     );
@@ -40,12 +62,14 @@ export default MultipleMake;
 function MultiButton({id,canMulti}){
     const dispatch = useDispatch();
     const onClick = (e) =>{
-        dispatch({type:UPDATE_MULTIPLE_CANMULTI,questionID:id})
+        dispatch(UPDATE_MULTIPLE_CANMULTI({q_id:id}))
     }
 
     return (
         <div>
-                <button onClick={onClick}>{canMulti}</button>
+            <Tooltip title="복수응답 허용 여부에요">
+                <Button variant="outlined" size="small" onClick={onClick}>{canMulti}</Button>
+            </Tooltip>
         </div>
     );
 }
@@ -56,9 +80,9 @@ function ResponseList({id,list}) {
         responseList = list.map(
             r => (
                 <Response 
-                questionID={id}
-                responseID = {r.id} 
-                title={r.title} 
+                q_id={id}
+                r_id = {r.ordering} 
+                title={r.value} 
                 />
             )
         )
@@ -72,22 +96,24 @@ function ResponseList({id,list}) {
 }
 
 
-function Response({questionID ,responseID,title}){
+function Response({q_id,r_id,title}){
     const dispatch = useDispatch();
 
     const onChange = (e) => {
-        dispatch({type:UPDATE_MULTIPLE_UPDATE_RESPONSE,questionID:questionID,responseID:responseID,value:e.target.value});
+        dispatch(UPDATE_MULTIPLE_UPDATE_RESPONSE({q_id:q_id,r_id:r_id,value:e.target.value}));
     };
 
     const onClickDelete = (e) => {
-        dispatch({type:UPDATE_MULTIPLE_DELETE_RESPONSE,questionID:questionID,responseID:responseID});
+        dispatch(UPDATE_MULTIPLE_DELETE_RESPONSE({q_id:q_id,r_id:r_id}));
     }
 
     return(
         <div>      
                 <input type="checkbox"/>
-                <input type="text" placeholder={title} onChange={onChange}/>
-                <button onClick={onClickDelete}>delete</button>
+                <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
+                style={{marginLeft:'10px'}}
+                />
+                <IconButton onClick={onClickDelete}><CloseIcon color="error"/></IconButton>
         </div>
     );
 }

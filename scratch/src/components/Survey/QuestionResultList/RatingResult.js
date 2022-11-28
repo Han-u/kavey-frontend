@@ -5,14 +5,21 @@ import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import { Typography } from '@mui/material';
 
 
 
 const styles = {
   container: {
-      border:3,
-      borderStyle: "solid",
-      padding: 15,
+      display: "flex",
+      justifyContent: "center",
+      backgroundColor:'white',
+      border: "1px solid",
+      borderRadius:8,
+      flexDirection: "column",
+      width:'100%',
+      padding:'30px',
+      marginBottom: '30px',
   },
 }
 
@@ -41,22 +48,24 @@ function RatingResult({id,title}) {
     };
 
     return (
-        <Wrap style={styles.container}>
-            <h1>{title}</h1>
-            <Stars>
-                {ARRAY.map(el => {
-                    return (
-                        <FaStar
-                            key={el}
-                            size="50"
-                            onClick={() => StarClick(el)}
-                            className={clicked[el] && 'yellowStar'}
-                        />
-                    );
-                })}
-            </Stars>
-            <RatingText>별점 누를 때 텍스트 변경</RatingText>
-        </Wrap>
+        <div style={styles.container}>
+            <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
+            <div align="center">
+              <Stars align="center">
+                  {ARRAY.map(el => {
+                      return (
+                          <FaStar
+                              key={el}
+                              size="50"
+                              onClick={() => StarClick(el)}
+                              className={clicked[el] && 'yellowStar'}
+                          />
+                      );
+                  })}
+              </Stars>
+              <RatingText>별점 누를 때 텍스트 변경</RatingText>
+            </div>
+        </div>
     );
 }
 
@@ -78,7 +87,9 @@ const RatingText = styled.div`
 
 const Stars = styled.div`
   display: flex;
-  padding-top: 5px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  margin-left:140px;
 
   & svg {
     color: gray;

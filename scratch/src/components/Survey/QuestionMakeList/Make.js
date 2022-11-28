@@ -3,12 +3,20 @@ import {useDispatch} from 'react-redux';
 
 import { UPDATE_TITLE } from "../../redux/Slices/SurveyMakeSlice";
 
+import { DeleteButton, PlusButton } from '../../../pages/SurveyMake';
+
+import {TextField} from '@mui/material'
+
 const styles = {
     container: {
-        border:3,
+        border:1,
         borderStyle: "solid",
         display: "flex",
+        flexDirection: "row",
         padding: 15,
+        justifyContent: "space-between",
+        alignItems:'baseline'
+        
     },
 }
 
@@ -17,15 +25,19 @@ function Make({id, title}) {
     const dispatch = useDispatch();
 
     const onChange = (e) => {
-        dispatch({type:UPDATE_TITLE,id:id,value:e.target.value});
+        dispatch(UPDATE_TITLE({id:id,value:e.target.value}));
     };
 
 
     return(
         <div style={styles.container}  draggable>
-            <div>
-            <input placeholder={title} maxLength={50} onChange={onChange} ></input>
-            </div>
+                <div style={{float:'left'}}>
+                    <DeleteButton id={id}/>
+                </div>
+                <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
+                <div style={{float:'right'}}>
+                    <PlusButton id={id}/>
+                </div>
         </div>
     );
 }
