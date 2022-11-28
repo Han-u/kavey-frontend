@@ -13,8 +13,8 @@ const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
 function HorizontalLinearStepper(props) {
   const dispatch= useDispatch();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  // const [activeStep, setActiveStep] = React.useState(0);
+  // const [skipped, setSkipped] = React.useState(new Set());
   const navigate=useNavigate();
   const surveyOption=useSelector((state)=>state.surveyOption);
   const surveyMake=useSelector((state)=>state.surveyMake);
@@ -23,16 +23,16 @@ function HorizontalLinearStepper(props) {
 //     return step === 1;
 //   };
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
+  // const isStepSkipped = (step) => {
+  //   return skipped.has(step);
+  // };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
+    // let newSkipped = skipped;
+    // if (isStepSkipped(activeStep)) {
+    //   newSkipped = new Set(newSkipped.values());
+    //   newSkipped.delete(activeStep);
+    // }
     
     if(props.step ===0){
       // setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -92,9 +92,9 @@ function HorizontalLinearStepper(props) {
 //     });
 //   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -122,10 +122,10 @@ function HorizontalLinearStepper(props) {
           {/* <Typography sx={{ mt: 2, mb: 1 }}>
             All steps completed - you&apos;re finished
           </Typography> */}
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+          {/* <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
             <Button onClick={handleReset}>Reset</Button>
-          </Box>
+          </Box> */}
         </React.Fragment>
       ) : (
         <React.Fragment>

@@ -15,6 +15,7 @@ import LoginMain from "./pages/LoginMain";
 import SurveyAnswer from "./pages/SurveyAnswer";
 import ProxyTest from "./components/BackEnd/ProxyTest";
 import MyDocument from "./pages/Report";
+import SurveyResult from "./pages/SurveyResult";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/answer" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
         <Route path="/testproxy" element={<ProxyTest/>}/>
+        <Route path="/result" element={<SurveyResult/>}/>
       </Routes>
     </Router>
   );
