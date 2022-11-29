@@ -18,6 +18,8 @@ import MyDocument from "./pages/Report";
 import SurveyResult from "./pages/SurveyResult";
 import Atest from "./pages/Atest";
 
+import Test from  "./pages/Test";
+
 function App() {
   return (
     <Router>
@@ -38,6 +40,8 @@ function App() {
         <Route path="/result" element={<SurveyResult/>}/>
 
         <Route path="/atest" element={<Atest/>}/>
+
+        <Route path="/test" element={<Test/>}/>
       </Routes>
     </Router>
   );

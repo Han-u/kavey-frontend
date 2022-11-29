@@ -7,6 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {QueryClientProvider,QueryClient} from "react-query";
 
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
@@ -21,13 +22,17 @@ ReactModal.setAppElement("#root");
 //       </ModalsProvider>
 //   </Provider>
 // );
+const queryClient=new QueryClient();
 ReactDOM.render(
+    <QueryClientProvider client={queryClient}>
   <Provider store={store}>
     <ModalsProvider>
       <App />
     </ModalsProvider>
-  </Provider>,
+  </Provider>
+    </QueryClientProvider>,
   document.getElementById('root')
+
 );
 
 // If you want to start measuring performance in your app, pass a function

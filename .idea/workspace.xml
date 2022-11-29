@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +35,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-53" />
-                    <option name="lastUsedInstant" value="1669095189" />
+                    <option name="lastUsedInstant" value="1669680882" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1668673672" />
+                    <option name="lastUsedInstant" value="1669680662" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-22" />
