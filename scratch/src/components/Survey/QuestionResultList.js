@@ -6,6 +6,9 @@ import ObjectResult from './QuestionResultList/ObjectResult';
 import MultipleResult from './QuestionResultList/MultipleResult';
 import TrueFalseResult from './QuestionResultList/TrueFalseResult';
 import RatingResult from './QuestionResultList/RatingResult';
+import GenderResult from './QuestionResultList/GenderResult';
+import AgeResult from './QuestionResultList/AgeResult';
+import { useState } from 'react';
 
 
 export const MAKE = "MAKE";
@@ -42,8 +45,8 @@ function QuestionResultList({purpose,surveyOption,question,value}) {
             <div style={{width:'600px',height:'100%'}}>
                 <Typography variant="h2" fontFamily="HallymGothic-Regular" style={{paddingTop:'30px',paddingBottom:'30px'}}>{surveyOption.title}</Typography>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{paddingBottom:'30px'}}>{surveyOption.description}</Typography>
-                {surveyOption.askGender?<div>여기 성별 질문</div>:null}
-                {surveyOption.askAge?<div>여기 나이 질문</div>:null}
+                {surveyOption.askGender?<div><GenderResult purpose={purpose}/></div>:null}
+                {surveyOption.askAge?<div><AgeResult purpose={purpose}/></div>:null}
                 {list}
             </div>
         </div>

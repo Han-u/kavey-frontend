@@ -11,8 +11,8 @@ export const SurveyAnswerSlice=createSlice(
             question:[],
             answer : {
                 userId : 1,
-                gender : "MALE",
-                age : 10,
+                gender : "",
+                age : "",
                 surveySubjective : [],
                 surveyMultiple : []
             },
@@ -57,6 +57,16 @@ export const SurveyAnswerSlice=createSlice(
                 delete data.questionList;
                 state.option = data;
             },
+            ANSWER_GENDER: (state,action) => {
+                const {value} = action.payload;
+                state.answer.gender=value;
+            },
+
+            ANSWER_AGE: (state,action) => {
+                const {value} = action.payload;
+                state.answer.age=value;
+            },
+
             ANSWER_SUBJECTIVE: (state,action) => {
                 const {ordering,value} = action.payload;
 
@@ -94,6 +104,7 @@ export const SurveyAnswerSlice=createSlice(
                 state.answer.surveyMultiple = newState;
 
             },
+        
         }
     }
 
@@ -104,6 +115,8 @@ export const SurveyAnswerSlice=createSlice(
 export const 
 {
     GET_SURVEY,
+    ANSWER_GENDER,
+    ANSWER_AGE,
     ANSWER_SUBJECTIVE,
     ANSWER_MULTIPLE_RADIO,
     ANSWER_MULTIPLE_CHECKBOX,
