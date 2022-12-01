@@ -1,4 +1,3 @@
-import AnswerResultList from "../components/Survey/AnswerResultList";
 import axios from 'axios';
 
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import Swal from 'sweetalert2'
 import {useNavigate} from 'react-router-dom'
 
 import { Typography,Button} from "@mui/material";
+import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResultList";
 
 
 let FLAG = -1;
@@ -48,10 +48,24 @@ function SurveyAnswer() {
 
     return ( 
         <div align="center">
-          <AnswerResultList/>
+          <AnswerQuestionResultList/>
           <Button variant="contained" onClick={handleClick}>제출하기</Button>
         </div>
      );
 }
 
 export default SurveyAnswer;
+
+
+
+export function AnswerQuestionResultList(){
+  const question = useSelector((state)=>state.surveyAnswer.question);
+  const surveyOption=useSelector((state)=>state.surveyAnswer.option);
+
+
+  return (
+  <QuestionResultList purpose={RESPONSE} surveyOption={surveyOption} question={question}/>
+  );
+
+}
+

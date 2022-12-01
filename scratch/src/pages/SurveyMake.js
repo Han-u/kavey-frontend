@@ -11,7 +11,7 @@ import { CREATE_OBJECTIVE,
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
-import QuestionResultList from '../components/Survey/QuestionResultList';
+import QuestionResultList, { MAKE } from '../components/Survey/QuestionResultList';
 import produce from 'immer';
 
 import {Menu,MenuItem,Button,IconButton} from '@mui/material'
@@ -50,7 +50,7 @@ function SurveyMake() {
                 marginRight:'auto',
                 width:'50%',
                 borderLeft:'1px solid lightgray'}}>
-                  <QuestionResultList/>
+                  <MakeQuestionResultList/>
                 </div>
             </div>
         </div>
@@ -151,4 +151,16 @@ export function RequiredButton({id,required}){
       </Button>
      </div>
   );
+}
+
+export function MakeQuestionResultList(){
+    const surveyOption=useSelector((state)=>state.surveyOption);
+    const question = useSelector((state)=>state.surveyMake.question);
+
+
+
+    return (
+    <QuestionResultList purpose={MAKE} surveyOption={surveyOption} question={question}/>
+    );
+
 }

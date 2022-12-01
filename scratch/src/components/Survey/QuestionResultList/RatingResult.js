@@ -23,7 +23,7 @@ const styles = {
   },
 }
 
-function RatingResult({id,title,required}) {
+function RatingResult({purpose,id,title,required}) {
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState([false, false, false, false, false]);

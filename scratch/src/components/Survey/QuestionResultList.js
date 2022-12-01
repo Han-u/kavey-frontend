@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 import { ButtonGroup,Button,Typography } from '@mui/material';
-import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR } from "../redux/Slices/SurveyMakeSlice";
+import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR,RADIO,CHECKBOX } from "../redux/Slices/SurveyMakeSlice";
 
 import ObjectResult from './QuestionResultList/ObjectResult';
 import MultipleResult from './QuestionResultList/MultipleResult';
@@ -8,26 +8,32 @@ import TrueFalseResult from './QuestionResultList/TrueFalseResult';
 import RatingResult from './QuestionResultList/RatingResult';
 
 
+export const MAKE = "MAKE";
+export const RESPONSE = "RESPONSE";
+export const RESULT = "RESULT";
 
 
-function QuestionResultList() {
-    const surveyOption=useSelector((state)=>state.surveyOption);
-    const data = useSelector((state)=>state.surveyMake.question);
-    
+function QuestionResultList({purpose,surveyOption,question,value}) {
+    console.log(purpose);
+
     let list = [];
 
-    if(data!==undefined){
-        list = data.map(
+    if(question!==undefined){
+        list = question.map(
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
-                        return <ObjectResult id={r.ordering} title={r.title} required={r.required}/>
+                        return <ObjectResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
                     case MULTIPLE:
-                        return <MultipleResult id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} response={r.optionList} />
+                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} response={r.optionList} />
+                    case RADIO:
+                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
+                    case CHECKBOX:
+                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
                     case TRUEFALSE:
-                        return <TrueFalseResult id={r.ordering} title={r.title} required={r.required}/>
+                        return <TrueFalseResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
                     case STAR:
-                        return <RatingResult id={r.ordering} title={r.title} required={r.required}/>
+                        return <RatingResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
                 }
             }
         )

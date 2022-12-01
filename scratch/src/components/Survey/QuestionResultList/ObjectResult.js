@@ -18,7 +18,7 @@ const styles = {
 
 
 
-function ObjectResult({id, title,required}) {
+function ObjectResult({purpose,id, title,required}) {
     const dispatch = useDispatch();
     const onChange = (e) => {
         dispatch({type:ANSWER,id:id,value:e.target.value});

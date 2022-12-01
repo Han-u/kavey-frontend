@@ -14,7 +14,7 @@ const styles = {
     },
 }
 
-function TrueFalseResult({id,title,required}){
+function TrueFalseResult({purpose,id,title,required}){
     console.log(required)
     return (
         <div style={styles.container}>

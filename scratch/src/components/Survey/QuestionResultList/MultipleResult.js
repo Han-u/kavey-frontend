@@ -2,6 +2,7 @@ import { useState } from "react";
 import {useDispatch} from 'react-redux';
 import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
+import { RADIO } from "../../redux/Slices/SurveyMakeSlice";
 
 const styles = {
     container: {
@@ -17,7 +18,9 @@ const styles = {
     },
 }
 
-function MultipleResult({id, title,required,canMulti,response}) {    
+function MultipleResult({purpose,id, title,required,canMulti,type,response}) {  
+    console.log(type);  
+    
     return (  
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
@@ -26,7 +29,7 @@ function MultipleResult({id, title,required,canMulti,response}) {
                 style={{marginBottom:'20px'}}>{title}</Typography>
             </div>
             <p>{canMulti}</p>
-            <ResponseList question_id={id}list={response}/>
+            <ResponseList question_id={id} canMulti={canMulti} type ={type} list={response}/>
         </div> 
         
     );
@@ -34,16 +37,21 @@ function MultipleResult({id, title,required,canMulti,response}) {
 
 export default MultipleResult;
 
-function ResponseList({question_id,list}) {
+function ResponseList({question_id,canMulti,type,list}) {
+    const onCheckHandler = (e) => {
+        console.log(e.target);
+    };
+
+
     let responseList;
     if(list!=undefined){
         responseList = list.map(
             r => (
-                <Response 
-                question_id = {question_id}
-                response_id = {r.id} 
-                title={r.value} 
-                />
+                <div>
+                    <input name={question_id} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}  onChange={(e) => onCheckHandler(e)}/> 
+                    <p>{r.value}</p>
+                </div>
+
             )
         )
     }
@@ -54,20 +62,4 @@ function ResponseList({question_id,list}) {
         </div>
     )
 }
-
-function Response({question_id,response_id,title}){
-    const onCheckHandler = (e,id) => {
-        console.log(e.currentTarget.checked);
-        console.log(id);
-        //dispatch({type:ANSWER,question_id:question_id,response_id:id});
-    };
-    return(
-        <div>   
-                <input type="checkbox" onChange={(e) => onCheckHandler(e,response_id)}></input>
-                <p>{title}</p>
-        </div>
-    );
-}
-
-
 
