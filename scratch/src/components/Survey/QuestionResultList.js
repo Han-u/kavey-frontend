@@ -14,8 +14,6 @@ export const RESULT = "RESULT";
 
 
 function QuestionResultList({purpose,surveyOption,question,value}) {
-    console.log(purpose);
-
     let list = [];
 
     if(question!==undefined){

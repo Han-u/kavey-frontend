@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import {  ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -37,14 +37,16 @@ function RatingResult({purpose,id,title,required}) {
     };
 
     useEffect(() => {
-        sendReview();
+      let score = clicked.filter(Boolean).length;
+        if(score!=0){
+          sendReview();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [clicked]);
 
     const sendReview = () => {
         let score = clicked.filter(Boolean).length;
-        console.log({score});
-        dispatch({type:ANSWER,id:id,value:score});
+        dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
     };
 
     return (
@@ -66,7 +68,6 @@ function RatingResult({purpose,id,title,required}) {
                       );
                   })}
               </Stars>
-              <RatingText>별점 누를 때 텍스트 변경</RatingText>
             </div>
         </div>
     );

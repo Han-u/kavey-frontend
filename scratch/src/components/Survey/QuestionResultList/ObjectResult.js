@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,TextField} from '@mui/material';
 
 const styles = {
@@ -21,7 +21,7 @@ const styles = {
 function ObjectResult({purpose,id, title,required}) {
     const dispatch = useDispatch();
     const onChange = (e) => {
-        dispatch({type:ANSWER,id:id,value:e.target.value});
+        dispatch(ANSWER_SUBJECTIVE({ordering:id,value:e.target.value}));
     };
 
     return (  

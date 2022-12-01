@@ -1,4 +1,5 @@
 import { configureStore ,combineReducers,createSlice} from '@reduxjs/toolkit'
+import produce from 'immer';
 import { CHECKBOX, MULTIPLE ,RADIO} from './SurveyMakeSlice';
 
 
@@ -31,23 +32,21 @@ export const SurveyAnswerSlice=createSlice(
                         case CHECKBOX:
                             multipleAnswer.push({
                                 questionId:d.questionId,
-                                optionId:17, //ordering아닌 optionid임 
+                                optionId:[], //ordering아닌 optionid임 
                                 questionType:CHECKBOX,
-                                canMulti:true,
-
                             });
+                        break
                         case RADIO:
                             multipleAnswer.push({
                                 questionId:d.questionId,
-                                optionId:17, //ordering아닌 optionid임 
+                                optionId:"", //ordering아닌 optionid임 
                                 questionType:RADIO,
-                                canMulti:true,
                             });
                         break
                         default:
                             subjectiveAnswer.push({
                                 questionId:d.questionId,
-                                value:"빈값"
+                                value:""
                             });
                         break
                     }
@@ -58,7 +57,22 @@ export const SurveyAnswerSlice=createSlice(
                 delete data.questionList;
                 state.option = data;
             },
-            ANSWER: (state,action) => {
+            ANSWER_SUBJECTIVE: (state,action) => {
+                const {ordering,value} = action.payload;
+
+                const q_id = state.question.find(e=>e.ordering === ordering).questionId;
+
+                const newState = produce(state.answer.surveySubjective,(draftState) => {
+                    var i = draftState.findIndex(e=>e.questionId == q_id);
+                    draftState[i].value = value;
+                })
+                state.answer.surveySubjective = newState;
+
+            },
+            ANSWER_MULTIPLE_RADIO: (state,action) => {
+
+            },
+            ANSWER_MULTIPLE_CHECKBOX: (state,action) => {
 
             },
         }
@@ -68,4 +82,10 @@ export const SurveyAnswerSlice=createSlice(
 
 
 
-export const {GET_SURVEY,ANSWER} = SurveyAnswerSlice.actions;
+export const 
+{
+    GET_SURVEY,
+    ANSWER_SUBJECTIVE,
+    ANSWER_MULTIPLE_RADIO,
+    ANSWER_MULTIPLE_CHECKBOX,
+} = SurveyAnswerSlice.actions;

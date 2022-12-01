@@ -19,8 +19,6 @@ const styles = {
 }
 
 function MultipleResult({purpose,id, title,required,canMulti,type,response}) {  
-    console.log(type);  
-    
     return (  
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
