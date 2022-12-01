@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GET_SURVEY } from "../components/redux/Slices/SurveyAnswerSlice";
 
 import Swal from 'sweetalert2'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 
 import { Typography,Button} from "@mui/material";
 import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResultList";
@@ -14,6 +14,9 @@ import { CHECKBOX } from '../components/redux/Slices/SurveyMakeSlice';
 
 let FLAG = -1;
 function SurveyAnswer() {
+
+    const { surveyId } = useParams();
+    console.log(surveyId);
     const answer = useSelector((state)=>state.surveyAnswer.answer);
     const dispatch = useDispatch();
 
@@ -55,7 +58,7 @@ function SurveyAnswer() {
                 draftState.surveyMultiple = filnalMulti;
               })
 
-              axios.post("/api/survey/17/submit",finalAnswer).then(response => {
+              axios.post("/api/survey/"+parseInt(surveyId)+"/submit",finalAnswer).then(response => {
               });
                 //navigate(`/submit`);
             }
@@ -64,7 +67,7 @@ function SurveyAnswer() {
 
 
     if(FLAG==-1){
-      axios.get("/api/survey/17/page").then(response => {
+      axios.get("/api/survey/"+parseInt(surveyId)+"/page").then(response => {
         //console.log(response.data);
         dispatch(GET_SURVEY({data:response.data}));
       });
