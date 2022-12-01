@@ -24,7 +24,7 @@ function TrueFalseResult({purpose,id,title,required}){
 
     const [clicked, setClicked] = useState();
 
-    if(purpose == RESPONSE){
+    if(purpose == RESPONSE & clicked!=undefined){
         dispatch(ANSWER_SUBJECTIVE({ordering:id,value:clicked}));
     }
 

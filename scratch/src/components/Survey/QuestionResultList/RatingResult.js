@@ -40,15 +40,16 @@ function RatingResult({purpose,id,title,required}) {
 
     useEffect(() => {
       let score = clicked.filter(Boolean).length;
-        if(score!=0){
-          sendReview();
-        }
+      if(score!=0){
+        sendReview();
+      }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [clicked]);
 
     const sendReview = () => {
         let score = clicked.filter(Boolean).length;
-        if(purpose == RESPONSE){
+        if(purpose == RESPONSE & score!=undefined){
           dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
         }
     };
