@@ -10,7 +10,7 @@ export const SurveyAnswerSlice=createSlice(
             option:[],
             question:[],
             answer : {
-                userId : 2,
+                userId : 1,
                 gender : "MALE",
                 age : 10,
                 surveySubjective : [],
@@ -32,7 +32,7 @@ export const SurveyAnswerSlice=createSlice(
                         case CHECKBOX:
                             multipleAnswer.push({
                                 questionId:d.questionId,
-                                optionId:[], //ordering아닌 optionid임 
+                                optionId:"", //ordering아닌 optionid임 
                                 questionType:CHECKBOX,
                             });
                         break
@@ -70,9 +70,28 @@ export const SurveyAnswerSlice=createSlice(
 
             },
             ANSWER_MULTIPLE_RADIO: (state,action) => {
+                const {ordering,value} = action.payload;
+
+                const q_id = state.question.find(e=>e.ordering === ordering).questionId;
+
+                const newState = produce(state.answer.surveyMultiple,(draftState) => {
+                    var i = draftState.findIndex(e=>e.questionId == q_id);
+                    draftState[i].optionId = value;
+                })
+                state.answer.surveyMultiple = newState;
 
             },
             ANSWER_MULTIPLE_CHECKBOX: (state,action) => {
+                const {ordering,value} = action.payload;
+                console.log(ordering,value);
+
+                const q_id = state.question.find(e=>e.ordering === ordering).questionId;
+
+                const newState = produce(state.answer.surveyMultiple,(draftState) => {
+                    var i = draftState.findIndex(e=>e.questionId == q_id);
+                    draftState[i].optionId = value.map(e=>e.optionId);
+                })
+                state.answer.surveyMultiple = newState;
 
             },
         }

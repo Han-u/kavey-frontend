@@ -8,6 +8,8 @@ import {useNavigate} from 'react-router-dom'
 
 import { Typography,Button} from "@mui/material";
 import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResultList";
+import produce from 'immer';
+import { CHECKBOX } from '../components/redux/Slices/SurveyMakeSlice';
 
 
 let FLAG = -1;
@@ -29,7 +31,31 @@ function SurveyAnswer() {
         }).then((result) => {
             if (result.isConfirmed) {
               console.log(answer);
-              axios.post("/api/survey/5/submit",answer).then(response => {
+
+              let reChange = [];
+              const newMulti = produce(answer.surveyMultiple,(draftState) => {
+                draftState.map((e,id)=>{
+                  if(e.questionType==CHECKBOX){
+                    const plus = draftState[id];
+                    plus.optionId.map((ee)=>{
+                      reChange.push({
+                        questionId:e.questionId,
+                        optionId:ee,
+                        questionType:CHECKBOX,
+                      })
+                    });
+                    draftState.splice(id,1);
+                  }
+                })
+              })
+              
+              const filnalMulti = newMulti.concat(reChange);
+
+              const finalAnswer = produce(answer,(draftState) => {
+                draftState.surveyMultiple = filnalMulti;
+              })
+
+              axios.post("/api/survey/17/submit",finalAnswer).then(response => {
               });
                 //navigate(`/submit`);
             }
@@ -38,7 +64,7 @@ function SurveyAnswer() {
 
 
     if(FLAG==-1){
-      axios.get("/api/survey/5/page").then(response => {
+      axios.get("/api/survey/17/page").then(response => {
         //console.log(response.data);
         dispatch(GET_SURVEY({data:response.data}));
       });

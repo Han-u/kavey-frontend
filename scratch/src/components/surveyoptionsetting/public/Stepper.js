@@ -71,7 +71,7 @@ function HorizontalLinearStepper(props) {
                 if(draftState[i].canMulti == true){
                   draftState[i].type = CHECKBOX;
                 }
-                else{
+                else if(draftState[i].canMulti == false){
                   draftState[i].type = RADIO;
                 }
                 delete draftState[i].canMulti;

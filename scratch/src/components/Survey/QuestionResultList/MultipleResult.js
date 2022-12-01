@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
-import { RADIO } from "../../redux/Slices/SurveyMakeSlice";
+import { CHECKBOX, RADIO } from "../../redux/Slices/SurveyMakeSlice";
 
 const styles = {
     container: {
@@ -27,7 +27,7 @@ function MultipleResult({purpose,id, title,required,canMulti,type,response}) {
                 style={{marginBottom:'20px'}}>{title}</Typography>
             </div>
             <p>{canMulti}</p>
-            <ResponseList question_id={id} canMulti={canMulti} type ={type} list={response}/>
+            <ResponseList purpose={purpose} question_id={id} canMulti={canMulti} type ={type} list={response}/>
         </div> 
         
     );
@@ -35,10 +35,27 @@ function MultipleResult({purpose,id, title,required,canMulti,type,response}) {
 
 export default MultipleResult;
 
-function ResponseList({question_id,canMulti,type,list}) {
+function ResponseList({purpose,question_id,canMulti,type,list}) {
+    const dispatch = useDispatch();
+
+    const [answer,setAnswer] = useState([]);
+    
     const onCheckHandler = (e) => {
-        console.log(e.target);
-        console.log(e);
+        if(type == RADIO){
+            dispatch(ANSWER_MULTIPLE_RADIO({ordering:question_id,value:e.target.id}));
+        }
+        else if(type==CHECKBOX){
+            let newAnswer = answer;
+            if(e.target.checked==true){
+                newAnswer= [...newAnswer,{optionId:e.target.id}];
+            }
+            else if(e.target.checked==false){
+                const id = newAnswer.findIndex(ee=>ee.optionId==e.target.id);
+                newAnswer.splice(id,1);
+            }  
+            setAnswer(newAnswer);
+            dispatch(ANSWER_MULTIPLE_CHECKBOX({ordering:question_id,value:newAnswer}));
+        }
     };
 
 
