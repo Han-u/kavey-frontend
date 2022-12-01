@@ -38,6 +38,7 @@ export default MultipleResult;
 function ResponseList({question_id,canMulti,type,list}) {
     const onCheckHandler = (e) => {
         console.log(e.target);
+        console.log(e);
     };
 
 

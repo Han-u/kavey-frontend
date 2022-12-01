@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import {useDispatch} from 'react-redux';
 import {  ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
+import { RESPONSE } from '../QuestionResultList';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
+
 
 
 
@@ -46,7 +48,9 @@ function RatingResult({purpose,id,title,required}) {
 
     const sendReview = () => {
         let score = clicked.filter(Boolean).length;
-        dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
+        if(purpose == RESPONSE){
+          dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
+        }
     };
 
     return (

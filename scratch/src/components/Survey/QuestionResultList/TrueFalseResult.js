@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
 import { ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
+import { RESPONSE } from '../QuestionResultList';
 
 const styles = {
     container: {
@@ -17,12 +18,16 @@ const styles = {
         marginBottom: '30px',
     },
 }
-//dispatch(ANSWER_SUBJECTIVE({ordering:id,value:e.target.value}));
+
 function TrueFalseResult({purpose,id,title,required}){
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState();
-    dispatch(ANSWER_SUBJECTIVE({ordering:id,value:clicked}));
+
+    if(purpose == RESPONSE){
+        dispatch(ANSWER_SUBJECTIVE({ordering:id,value:clicked}));
+    }
+
 
     return (
         <div style={styles.container}>
@@ -37,7 +42,7 @@ function TrueFalseResult({purpose,id,title,required}){
             <div>
                 <ButtonGroup varient="outlined" size="large">
                     <Button variant={clicked===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
-                    <Button variant={clicked===true?"outlined":"contained"} onClick={()=>setClicked(false)}>반대</Button>
+                    <Button variant={clicked===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>
                 </ButtonGroup>
             </div>
         </div>
