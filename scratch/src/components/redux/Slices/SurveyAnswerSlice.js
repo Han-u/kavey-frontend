@@ -118,12 +118,16 @@ export const SurveyAnswerSlice=createSlice(
             
             CHECK_ANSWER: (state,action) => {
                 let flag = 1;
-
-                if(flag == 1 && state.option.askGender==true){
-                   (state.answer.gender!='')? state.status = true :  flag=-1; 
+                if(state.option.askGender==false && state.option.askAge==false){
+                    state.status = true;
                 }
-                if(flag == 1 && state.option.askAge==true){
-                    (state.answer.age!='')? state.status = true : flag=-1; 
+                else{
+                    if(flag != -1 && state.option.askGender==true){
+                        (state.answer.gender!='')? state.status = true :  flag=-1; 
+                     }
+                     if(flag != -1 && state.option.askAge==true){
+                         (state.answer.age!='')? state.status = true : flag=-1; 
+                     }
                 }
                 let cnt = 0;
                 state.mustAnswerId.map((e)=>{

@@ -85,6 +85,7 @@ function SurveyAnswer() {
       axios.get("/api/survey/"+parseInt(surveyId)+"/page").then(response => {
         //console.log(response.data);
         dispatch(GET_SURVEY({data:response.data}));
+        dispatch(CHECK_ANSWER()); 
       });
     FLAG = 1; 
     }
