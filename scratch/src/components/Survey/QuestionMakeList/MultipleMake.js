@@ -110,7 +110,6 @@ function Response({q_id,r_id,title}){
 
     return(
         <div>      
-                <input type="checkbox"/>
                 <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
                 style={{marginLeft:'10px'}}
                 />

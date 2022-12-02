@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { useDispatch, useSelector } from "react-redux";
-import { GET_SURVEY } from "../components/redux/Slices/SurveyAnswerSlice";
+import { CHECK_ANSWER, GET_SURVEY } from "../components/redux/Slices/SurveyAnswerSlice";
 
 import Swal from 'sweetalert2'
 import {useNavigate, useParams} from 'react-router-dom'
@@ -16,21 +16,25 @@ let FLAG = -1;
 function SurveyAnswer() {
 
     const { surveyId } = useParams();
-    console.log(surveyId);
+
     const answer = useSelector((state)=>state.surveyAnswer.answer);
+    const status = useSelector((state)=>state.surveyAnswer.status);
+
     const dispatch = useDispatch();
 
     const navigate=useNavigate();
 
     const handleClick=()=>{
+      console.log(status);
+      if(status == true){
         Swal.fire({
-            title: '제출하시겠어요?',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '네',
-            cancelButtonText:'아니요'
+          title: '제출하시겠어요?',
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '네',
+          cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
               console.log(answer);
@@ -63,6 +67,17 @@ function SurveyAnswer() {
                 //navigate(`/submit`);
             }
         })
+      }
+      else{
+        Swal.fire({
+          title: '양식을 채워주세요',
+          icon: 'warning',
+          confirmButtonColor: '#d33',
+          confirmButtonText: '네',
+          
+        })
+      }
+        
     };
 
 

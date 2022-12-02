@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {useDispatch} from 'react-redux';
-import {  ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
+import {  ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import { RESPONSE } from '../QuestionResultList';
 
 import { FaStar } from 'react-icons/fa';
@@ -51,6 +51,7 @@ function RatingResult({purpose,id,title,required}) {
         let score = clicked.filter(Boolean).length;
         if(purpose == RESPONSE & score!=undefined){
           dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
+          dispatch(CHECK_ANSWER());
         }
     };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
-import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
 import { CHECKBOX, RADIO } from "../../redux/Slices/SurveyMakeSlice";
 
@@ -43,6 +43,7 @@ function ResponseList({purpose,question_id,canMulti,type,list}) {
     const onCheckHandler = (e) => {
         if(type == RADIO){
             dispatch(ANSWER_MULTIPLE_RADIO({ordering:question_id,value:e.target.id}));
+            dispatch(CHECK_ANSWER());
         }
         else if(type==CHECKBOX){
             let newAnswer = answer;
@@ -55,6 +56,7 @@ function ResponseList({purpose,question_id,canMulti,type,list}) {
             }  
             setAnswer(newAnswer);
             dispatch(ANSWER_MULTIPLE_CHECKBOX({ordering:question_id,value:newAnswer}));
+            dispatch(CHECK_ANSWER());
         }
     };
 

@@ -2,7 +2,7 @@ import {useDispatch} from 'react-redux';
 
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
-import { ANSWER_AGE, ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER_AGE, ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import { RESPONSE } from '../QuestionResultList';
 
 
@@ -26,6 +26,7 @@ function AgeResult({purpose,id,title,required}) {
 
     const onChange = (e) => {
         dispatch(ANSWER_AGE({value:e.target.value}));
+        dispatch(CHECK_ANSWER());
     };
 
 
@@ -33,7 +34,7 @@ function AgeResult({purpose,id,title,required}) {
         <div style={styles.container}>
             <div>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-                {required === true && <h1 style={{color: "red"}} >*</h1> }
+                <h1 style={{color: "red"}} >*</h1>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular" 
                 style={{marginBottom:'20px'}}>당신의 나이는?</Typography>
             </div>

@@ -2,7 +2,7 @@ import {useDispatch} from 'react-redux';
 
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
-import { ANSWER_SUBJECTIVE } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import { RESPONSE } from '../QuestionResultList';
 
 const styles = {
@@ -26,6 +26,7 @@ function TrueFalseResult({purpose,id,title,required}){
 
     if(purpose == RESPONSE & clicked!=undefined){
         dispatch(ANSWER_SUBJECTIVE({ordering:id,value:clicked}));
+        dispatch(CHECK_ANSWER());
     }
 
 
