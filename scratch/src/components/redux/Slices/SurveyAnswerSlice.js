@@ -118,7 +118,7 @@ export const SurveyAnswerSlice=createSlice(
             
             CHECK_ANSWER: (state,action) => {
                 let flag = 1;
-                if(state.option.askGender==false && state.option.askAge==false){
+                if(state.option.askGender==false && state.option.askAge==false){ 
                     state.status = true;
                 }
                 else{
