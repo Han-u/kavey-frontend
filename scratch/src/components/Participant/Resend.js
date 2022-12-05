@@ -3,15 +3,12 @@ import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
 import axios from 'axios';
 import {useQuery} from 'react-query'
-
 import "react-datepicker/dist/react-datepicker.css";
-import Resend from "../components/Participant/Resend";
-import {Link} from "react-router-dom";
 import Swal from "sweetalert2";
-import CopyUrl from "../components/SendSurvey/CopyUrl";
 
 
-function Participant(){
+
+function Resend(){
     const style = {
         header : {
             display: 'flex',
@@ -34,14 +31,19 @@ function Participant(){
         }
     };
 
+    const [search, setSearch] = useState("");
 
-    const [resStatus, setResStatus]=useState("ALL");
-    const addSurveyBack1 = () => {setResStatus("RESPONSE");};
-    const addSurveyBack2 = () => {setResStatus("NONRESPONSE");};
-    const addSurveyBack3 = () => {setResStatus("REJECT");};
-    const addSurveyBack4 = () => {setResStatus("ALL");};
+    const [checkedList, setCheckedList] = useState([]);
+    const onCheckedElement = (checked, item) => {
+        if (checked) {
+            setCheckedList([...checkedList, item]);
+        } else if (!checked) {
+            setCheckedList(checkedList.filter(el => el !== item));
+        }
+    };
 
-    const [visible,setVisible] =useState(false);
+
+
 
     const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
@@ -50,49 +52,58 @@ function Participant(){
     if(isLoading){return <h2>success</h2>}
     if(isError){return <h2>Oops... {error.message}</h2>}
 
+
     const realBack=Object.values(data.data);
-
-    var backResult = realBack.filter(data=>data.status===resStatus);
-    if (resStatus==="ALL")
-    {var backResult = realBack.filter(data=>data.attendID >= 0);}
+    var backResult = realBack.filter(data=>data.status==="NONRESPONSE");
 
 
+    const onSend = () => {
+        Swal.fire({
+            title: '설문지를 재발송 하시겠습니까?',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '네',
+            cancelButtonText:'아니요'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("발송완료~~");
+                console.log(checkedList);
+            }
+        })
+    }
 
 
+    const onChange = (e) => {
+        setSearch(e.target.value)
+    }
+    const filterTitle = backResult.filter((p) => {
+        return p.sendEmail.includes(search)
+    })
     return (
         <div>
-            <div style={style.header}>
-                <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                    설문 참여자 관리
-                </Typography>
-            </div>
-            <div style={style.body}>
+
                 <div style={style.Container}>
                     <div style={style.btn}>
-                        <Button onClick={addSurveyBack1}>응답</Button>
-                        <Button onClick={addSurveyBack2}>미응답</Button>
-                        <Button onClick={addSurveyBack3}>거절</Button>
-                        <Button onClick={addSurveyBack4}>전체</Button>
-                        <Button onClick={() => {setVisible(!visible);}}>{visible ? "재발송페이지열기" : "재발송페이지닫기"}</Button>
-
+                        <input type="text" value={search} onChange={onChange} placeholder="검"/>
+                        <Button onClick={onSend}>재전송</Button>
                     </div>
-                    {visible && <Resend/>}
-
                     <div>
                         <StyledTable>
                             <thead>
                             <tr>
-
+                                <th><input type="checkbox"/></th>
                                 <th className='second-row'>이메일</th>
                                 <th className='second-row'>전송날짜</th>
                                 <th className='second-row'>응답여부</th>
-                                <th className='second-row'>응답날짜</th>
+                                <th className='second-row'>응답날짜에용</th>
                             </tr>
                             </thead>
-
                             <tbody>
-                            {backResult.map((result,key)=>(
+                            {filterTitle.map((result,key)=>(
                                 <tr key={key}>
+                                    <td><input type='checkbox' value={result.attendID} onChange={e => {onCheckedElement(e.target.checked, e.target.value);}}/></td>
                                     <td key={result.email}>{result.sendEmail}</td>
                                     <td key={result.sendDt}>{result.sendDate}</td>
                                     <td key={result.res}>{result.status}</td>
@@ -104,11 +115,10 @@ function Participant(){
                     </div>
                 </div>
 
-            </div>
+
         </div>
     )
 }
-
 const StyledTable = styled.table`
   text-align: center;
   border-collapse: collapse;
@@ -135,4 +145,4 @@ const StyledTable = styled.table`
   }
 `;
 
-export default Participant;
+export default Resend;

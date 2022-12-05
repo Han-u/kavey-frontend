@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
+      <change afterPath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Modal/ModalSearchParticipant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,18 +59,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Back-End&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/frontEndd",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\frontEndd\scratch\src\components\Modal" />
@@ -101,6 +98,9 @@
       <workItem from="1669247287743" duration="6853000" />
       <workItem from="1669479193467" duration="3458000" />
       <workItem from="1669561404250" duration="16526000" />
+      <workItem from="1669855483448" duration="602000" />
+      <workItem from="1669977287854" duration="6261000" />
+      <workItem from="1670217900933" duration="2183000" />
     </task>
     <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
       <created>1669135353138</created>
@@ -137,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669652219280</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[SC-55] fix sendSurvey">
+      <created>1669695426391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669695426391</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
