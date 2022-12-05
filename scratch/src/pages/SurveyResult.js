@@ -1,10 +1,9 @@
 import {Button,Typography} from "@mui/material";
 import {useState} from "react";
 import { useSelector } from 'react-redux'
-
+import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
 
 function SurveyResult(){
-    const surveyList=useSelector((state)=>state.surveyList.value);
     
     const style = {
         header : {
@@ -63,7 +62,7 @@ function SurveyResult(){
                     </div>
                 </div>
                 <div style={style.surveyContainer}>
-                    {status === 'info'?"info":null}
+                    {status === 'info'?<ResultSurveyInfo/>:null}
                     {status === 'participant'?"parti":null}
                     {status === 'question'?"q":null}
                 </div>

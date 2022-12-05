@@ -7,11 +7,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {QueryClientProvider,QueryClient} from "react-query"
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
 ReactModal.setAppElement("#root");
-
+const queryClient= new QueryClient();
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
@@ -22,11 +22,13 @@ ReactModal.setAppElement("#root");
 //   </Provider>
 // );
 ReactDOM.render(
+  <QueryClientProvider client={queryClient}>
   <Provider store={store}>
     <ModalsProvider>
       <App />
     </ModalsProvider>
   </Provider>,
+  </QueryClientProvider>,
   document.getElementById('root')
 );
 
