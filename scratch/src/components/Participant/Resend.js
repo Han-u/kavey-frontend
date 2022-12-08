@@ -7,6 +7,28 @@ import Swal from "sweetalert2";
 import styled from 'styled-components';
 
 export default function Resend() {
+    const style = {
+        header : {
+            display: 'flex',
+            alignItems: 'center',
+            padding: 30,
+            justifyContent: 'space-between'
+        },
+        body : {
+            padding: 30,
+            backgroundColor: 'lightgray'
+        },
+        btn : {
+            padding: 10,
+            paddingLeft: 0,
+
+        },
+        Container: {
+            padding: 20,
+            backgroundColor: 'white'
+        }
+    };
+
     const [search, setSearch] = useState("");
 
 
@@ -61,6 +83,9 @@ export default function Resend() {
             if (result.isConfirmed) {
                 console.log("발송완료~~");
                 console.log(checkItems);
+                /*
+                --------------------------API로 대체 되어야합니다------------------------------------------
+                 */
             }
         })
     }
@@ -75,16 +100,15 @@ export default function Resend() {
 
 
     return (
+        <div>
+            <div style={style.Container}>
+                <div style={style.btn}>
+                    <input type="text" value={search} onChange={onChange} placeholder="search email"/>
+                    <Button onClick={onSend}>재전송</Button>
+                </div>
 
         <StyledTable>
-            <input type="text" value={search} onChange={onChange} placeholder="search email"/>
-
-
             <thead>
-            <tr>
-                <Button onClick={onSend}>재전송</Button>
-
-            </tr>
             <tr>
                 <th>
                     <input type='checkbox' name='select-all'
@@ -115,6 +139,8 @@ export default function Resend() {
             ))}
             </tbody>
         </StyledTable>
+            </div>
+        </div>
     )
 }
 const StyledTable = styled.table`

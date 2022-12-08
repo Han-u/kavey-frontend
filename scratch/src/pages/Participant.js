@@ -73,7 +73,7 @@ function Participant(){
                         <Button onClick={addSurveyBack2}>미응답</Button>
                         <Button onClick={addSurveyBack3}>거절</Button>
                         <Button onClick={addSurveyBack4}>전체</Button>
-                        <Button onClick={() => {setVisible(!visible);}}>{visible ? "재발송페이지열기" : "재발송페이지닫기"}</Button>
+                        <Button onClick={() => {setVisible(!visible);}}>{visible ? "재발송페이지닫기" : "재발송페이지열기"}</Button>
 
                     </div>
                     {visible && <Resend/>}
