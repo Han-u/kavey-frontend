@@ -82,7 +82,6 @@ function Participant(){
                         <StyledTable>
                             <thead>
                             <tr>
-
                                 <th className='second-row'>이메일</th>
                                 <th className='second-row'>전송날짜</th>
                                 <th className='second-row'>응답여부</th>
