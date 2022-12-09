@@ -22,6 +22,9 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
         })
     }
 
+    const sendEmail =() => {
+
+    }
 
 
 

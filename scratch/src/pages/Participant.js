@@ -3,12 +3,8 @@ import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
 import axios from 'axios';
 import {useQuery} from 'react-query'
-
 import "react-datepicker/dist/react-datepicker.css";
 import Resend from "../components/Participant/Resend";
-import {Link} from "react-router-dom";
-import Swal from "sweetalert2";
-import CopyUrl from "../components/SendSurvey/CopyUrl";
 
 
 function Participant(){
@@ -77,7 +73,6 @@ function Participant(){
 
                     </div>
                     {visible && <Resend/>}
-
                     <div>
                         <StyledTable>
                             <thead>

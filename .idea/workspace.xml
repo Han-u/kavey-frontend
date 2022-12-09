@@ -4,7 +4,9 @@
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +104,7 @@
       <workItem from="1670217900933" duration="2211000" />
       <workItem from="1670301040672" duration="1065000" />
       <workItem from="1670510301362" duration="5078000" />
+      <workItem from="1670558202287" duration="5933000" />
     </task>
     <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
       <created>1669135353138</created>

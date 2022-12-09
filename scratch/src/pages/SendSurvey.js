@@ -5,6 +5,7 @@ import {Typography,Button} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
@@ -85,12 +86,20 @@ function SendSurvey() {
             cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log("발송완료~~");
-
-                console.log(user);
+                const url = '/api/survey/1/email-send';
+                const config = {"Content-Type": 'application/json'};
+                const data = {
+                    "sendEmailList" : user
+                }
+                axios.post(url, data, config)
+                    .then(response => alert("성공했습니다-"))
+                    .catch(error => {alert("실패했습니다.");
+                        console.log(error)})
+            
             }
         })
     }
+
 
     return (
         <div>

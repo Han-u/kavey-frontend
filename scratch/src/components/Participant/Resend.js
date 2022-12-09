@@ -1,10 +1,10 @@
 import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
 import React, {useState, useEffect} from "react";
-import axios from 'axios';
 import {useQuery} from 'react-query'
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import styled from 'styled-components';
+import axios  from 'axios'
 
 export default function Resend() {
     const style = {
@@ -77,18 +77,30 @@ export default function Resend() {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '네',
+            confirmButtonText: '네ㅇ',
             cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log("발송완료~~");
                 console.log(checkItems);
-                /*
-                --------------------------API로 대체 되어야합니다------------------------------------------
-                 */
+                const url = '/api/survey/1/email-resend';
+                const config = {"Content-Type": 'application/json'};
+                const data = {
+                    "attendIdList" : checkItems
+                }
+                axios.post(url, data, config)
+                    .then(response => alert("성공했습니다"))
+                    .catch(error => {alert("실패했습니다.");
+                        console.log(error)})
+
+
             }
         })
     }
+
+
+
+
     const onChange = (e) => {
         setSearch(e.target.value)
     }
