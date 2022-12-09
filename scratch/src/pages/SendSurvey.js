@@ -5,8 +5,11 @@ import CreateUser from '../components/SendSurvey/CreateUser';
 import {Typography,Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import LinkFloating from "../components/Modal/LinkFloating";
+import Swal from "sweetalert2";
+import produce from "immer";
+import axios from "axios";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
-
+import {useSelector} from "react-redux";
 
 
 function SendSurvey() {
@@ -16,10 +19,10 @@ function SendSurvey() {
         header : {
             display: 'flex',
             alignItems: 'center',
-            paddingTop:130,
+            paddingTop: 130,
             paddingLeft:30,
-            paddingRight:30,
             paddingBottom:30,
+            paddingRight:30,
             justifyContent: 'space-between'
         },
         body : {
@@ -74,7 +77,26 @@ function SendSurvey() {
     };
 
     const sendSuccess = () => {
-        alert("설문전송을 완료했습니다.");
+        Swal.fire({
+            title: '<strong><p>hi</p>HTML <u>example</u></strong>',
+            icon: 'info',
+            html:'<p>hi</p>'+
+                'You can use <b>bold text</b>, ' +
+                '<a href="//sweetalert2.github.io">links</a> ' +
+                'and other HTML tags',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Great!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i>'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                    console.log("hi");
+            }
+        })
     }
 
     const send = () => {
@@ -91,12 +113,13 @@ function SendSurvey() {
     return (
         <div>
             <div align='center' style={{backgroundColor:'white',
-                                        height:'120px',
-                                        position:'fixed',
-                                        width:'100%',
-                                        zIndex:'1',
-                                        paddingTop:'30px',
-                                        borderBottom:'1px solid lightgray',}}>
+                height:'120px',
+                position:'fixed',
+                width:'100%',
+                zIndex:'1',
+                paddingTop:'30px',
+                marginBottom:'10px',
+                borderBottom:'1px solid lightgray',}}>
                 <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
                 </div>
