@@ -1,72 +1,13 @@
 import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
 import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
-import DatePicker from "react-datepicker";
 import axios from 'axios';
-
+import {useQuery} from 'react-query'
 import "react-datepicker/dist/react-datepicker.css";
-import {Link} from "react-router-dom";
-
+import Resend from "../components/Participant/Resend";
 
 
 function Participant(){
-    const [backData, setBackData] = useState('')
-    useEffect(() => {
-        axios.get('api/survey/1/receiver')
-            .then(response => setBackData(response.data))
-            .catch(error => console.log(error))
-    }, []);
-
-    const [resStatus, setResStatus]=useState("ALL");
-    const addSurveyBack1 = () => {
-        setResStatus("RESPONSE");
-
-    };
-    const addSurveyBack2 = () => {
-        setResStatus("NONRESPONSE");
-
-    };
-    const addSurveyBack3 = () => {
-        setResStatus("REJECT");
-
-    };
-    const addSurveyBack4 = () => {
-        setResStatus("ALL");
-
-    };
-    const realBack=Object.values(backData);
-
-    var backResult = realBack.filter(data=>data.status===resStatus);
-    if (resStatus==="ALL")
-    {
-        var backResult = realBack.filter(data=>data.attendID >= 0);
-    }
-
-
-    const [checkItems, setCheckItems] = useState([]);
-    // 체크박스 단일 선택
-    const handleSingleCheck = (checked, id) => {
-        if (checked) {
-            // 단일 선택 시 체크된 아이템을 배열에 추가
-            setCheckItems(prev => [...prev, id]);
-        } else {
-            // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-            setCheckItems(checkItems.filter((el) => el !== id));
-        }
-    };
-    const handleAllCheck = (checked) => {
-        if(checked) {
-            // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
-            const idArray = [];
-            backResult.forEach((el) => idArray.push(el.id));
-            setCheckItems(idArray);
-        }
-        else {
-            // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
-            setCheckItems([]);
-        }
-    }
-
     const style = {
         header : {
             display: 'flex',
@@ -90,39 +31,26 @@ function Participant(){
     };
 
 
+    const [resStatus, setResStatus]=useState("ALL");
+    const addSurveyBack1 = () => {setResStatus("RESPONSE");};
+    const addSurveyBack2 = () => {setResStatus("NONRESPONSE");};
+    const addSurveyBack3 = () => {setResStatus("REJECT");};
+    const addSurveyBack4 = () => {setResStatus("ALL");};
 
+    const [visible,setVisible] =useState(false);
 
+    const sid=1;
+    const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
+        return axios.get('http://localhost:8081/api/survey/'+sid+'/receiver')
+    })
+    if(isLoading){return <h2>success</h2>}
+    if(isError){return <h2>Oops... {error.message}</h2>}
 
+    const realBack=Object.values(data.data);
 
-
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-
-
-
-
-
-
-
-
-
-
-
-
-    const [visible1, setVisible1]=useState(false);
-    const [visible2, setVisible2]=useState(false);
-
-
-
-    const [search, setSearch] = useState("");
-    const onChange = (e) => {
-        setSearch(e.target.value)
-    }
-
-    //재전송용 빈 배열() attend_id 들어가유
-    const [resendList,setResendList]=useState([]);
-
-
+    var backResult = realBack.filter(data=>data.status===resStatus);
+    if (resStatus==="ALL")
+    {var backResult = realBack.filter(data=>data.attendID >= 0);}
 
 
 
@@ -137,39 +65,28 @@ function Participant(){
             <div style={style.body}>
                 <div style={style.Container}>
                     <div style={style.btn}>
-                        <Button>재전송</Button>
                         <Button onClick={addSurveyBack1}>응답</Button>
                         <Button onClick={addSurveyBack2}>미응답</Button>
                         <Button onClick={addSurveyBack3}>거절</Button>
                         <Button onClick={addSurveyBack4}>전체</Button>
-                        <Button className="Button" component={Link} to="/searchparticipant">설문참여자 검색</Button>
-
-
+                        <Button onClick={() => {setVisible(!visible);}}>{visible ? "재발송페이지닫기" : "재발송페이지열기"}</Button>
 
                     </div>
-
+                    {visible && <Resend/>}
                     <div>
                         <StyledTable>
                             <thead>
                             <tr>
-                                <th><input type='checkbox'/></th>
                                 <th className='second-row'>이메일</th>
-                                <th className='second-row'><button onClick={() => {
-                                    setVisible1(!visible1);
-                                }}>전송날짜</button>{visible1 && <DatePicker selected={startDate} onChange={date => setStartDate(date)} />}</th>
+                                <th className='second-row'>전송날짜</th>
                                 <th className='second-row'>응답여부</th>
-                                <th className='second-row'><button onClick={() => {
-                                    setVisible2(!visible2);
-                                }}>응답날짜</button>{visible2 && <DatePicker selected={endDate} onChange={date => setEndDate(date)} />}</th>
-
-
+                                <th className='second-row'>응답날짜</th>
                             </tr>
                             </thead>
-                            <tbody>
 
+                            <tbody>
                             {backResult.map((result,key)=>(
                                 <tr key={key}>
-                                    <td><input type='checkbox'/></td>
                                     <td key={result.email}>{result.sendEmail}</td>
                                     <td key={result.sendDt}>{result.sendDate}</td>
                                     <td key={result.res}>{result.status}</td>
