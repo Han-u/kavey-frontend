@@ -2,7 +2,7 @@ import {Button,Typography} from "@mui/material";
 import {useState} from "react";
 import { useSelector } from 'react-redux'
 import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
-
+import ResultParticipant from "../components/SurveyResult/ResultParticipant";
 function SurveyResult(){
     
     const style = {
@@ -63,7 +63,7 @@ function SurveyResult(){
                 </div>
                 <div style={style.surveyContainer}>
                     {status === 'info'?<ResultSurveyInfo/>:null}
-                    {status === 'participant'?"parti":null}
+                    {status === 'participant'?<ResultParticipant/>:null}
                     {status === 'question'?"q":null}
                 </div>
             </div>
