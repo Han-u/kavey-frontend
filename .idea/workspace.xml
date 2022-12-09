@@ -4,8 +4,7 @@
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/pages/Participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/Participant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Participant/aaa.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/sc-53" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,12 +31,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/sc-53" />
-                    <option name="lastUsedInstant" value="1669680882" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1670599687" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1669680662" />
+                    <option name="branchName" value="feature/sc-53" />
+                    <option name="lastUsedInstant" value="1669680882" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-22" />

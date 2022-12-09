@@ -89,9 +89,14 @@ export default function Resend() {
                     "attendIdList" : checkItems
                 }
                 axios.post(url, data, config)
-                    .then(response => alert("성공했습니다"))
-                    .catch(error => {alert("실패했습니다.");
-                        console.log(error)})
+                    .then(response => Swal.fire({
+                        icon: 'success',
+                        title: '설문지 발송에 성공했습니다.'
+                    }))
+                    .catch(error => Swal.fire({
+                        icon: 'error',
+                        title: '설문지 발송에 실패했습니다.'
+                    }))
 
 
             }

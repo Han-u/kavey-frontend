@@ -5,7 +5,6 @@ import CreateUser from '../components/SendSurvey/CreateUser';
 import {Typography,Button} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
-import {useSelector} from "react-redux";
 import axios from "axios";
 
 function SendSurvey() {
@@ -93,9 +92,14 @@ function SendSurvey() {
                     "sendEmailList" : user
                 }
                 axios.post(url, data, config)
-                    .then(response => alert("성공했습니다-"))
-                    .catch(error => {alert("실패했습니다.");
-                        console.log(error)})
+                    .then(response =>  Swal.fire({
+                        icon: 'success',
+                        title: '설문지 발송에 성공했습니다.'
+                    }))
+                    .catch(error =>  Swal.fire({
+                        icon: 'errir',
+                        title: '설문지 발송에 실패했습니다.'
+                    }))
             
             }
         })
