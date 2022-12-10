@@ -17,7 +17,7 @@ function Email({onDelete}){
             {/* <button className="inputtype3" onClick={(e)=>{
                 onDelete();
                 e.stopPropagation();
-            }}>X</button> */}
+            }}>X</button> */}a
 
             <IconButton onClick={(e)=>{
                 onDelete();
