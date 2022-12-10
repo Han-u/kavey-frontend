@@ -1,8 +1,5 @@
 import {React,useEffect} from 'react';
-// import {Button} from 'reactstrap';
 import { useNavigate } from 'react-router-dom'
-import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Typography} from "@mui/material";
 import Swal from 'sweetalert2'
 
@@ -10,9 +7,17 @@ import Swal from 'sweetalert2'
 
 
 function HomeComponent1(){
+
     useEffect(() =>{
-        console.log(window.localStorage.getItem("token"));
+        var divObj = document.getElementById("mainDiv");
+        var setHeight= document.body.offsetHeight-587;
+        divObj.style.height=`${setHeight}px`;
+        window.addEventListener('resize', () =>{
+            setHeight= document.body.offsetHeight-587;
+            divObj.style.height=`${setHeight}px`;
+        })        
     })
+
     const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
     const REDIRECT_URI = 'http://localhost:3000/login';
     const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -36,7 +41,7 @@ function HomeComponent1(){
                   toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
               });
-              window.location.replace(KAKAO_AUTH_URI);
+              window.location.href=KAKAO_AUTH_URI;
         }else{
             navigate('/surveyoptionsetting')
         }
@@ -58,7 +63,7 @@ function HomeComponent1(){
                         <Button href={KAKAO_AUTH_URI}><img src="/img/kakao_login.png"/></Button>
                     </div>
             </div>
-            <div style={{height: '35vh', backgroundColor: "#FFD701"}}>
+            <div id="mainDiv" style={{backgroundColor: "#FFD701"}}>
             <hr style={{margin: '1px', color: 'white'}}/>
                 <div style={{height:'100%',
                     alignItems: 'center',
@@ -76,7 +81,7 @@ function HomeComponent1(){
                 </div>
             </div>
             <div>
-                <img src="images/mainLogoFriends_1920.png" style={{maxWidth: '100%', backgroundColor: '#FFD701'}}/>
+                <img id="kakaoImage" src="images/mainLogoFriends_1920.png" style={{maxWidth: '100%', backgroundColor: '#FFD701'}}/>
             </div>
             <div style={{backgroundColor:'white', display: 'flex', justifyContent: 'center'}}>
                 <img src="images/main.png" height= '800px' style={{marginBottom: '150px'}}/>
