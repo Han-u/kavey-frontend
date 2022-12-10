@@ -10,6 +10,7 @@ import { NEXT_LEVEL, TO_BACKEND_OPTION } from '../../redux/Slices/SurveyOptionSl
 import Swal from 'sweetalert2'
 import produce from 'immer';
 import axios from 'axios';
+import {Typography} from "@mui/material"
 
 const steps = ['설문 기본 설정', '설문 제작', '설문 배포'];
 
@@ -22,25 +23,10 @@ function HorizontalLinearStepper(props) {
   const dispatch= useDispatch();
   const optionData = useSelector((state)=>state.surveyOption);
   const questionData = useSelector((state)=>state.surveyMake.question);
-  
-
-//   const isStepOptional = (step) => {
-//     return step === 1;
-//   };
-
-  // const isStepSkipped = (step) => {
-  //   return skipped.has(step);
-  // };
 
   const handleNext = () => {
-    // let newSkipped = skipped;
-    // if (isStepSkipped(activeStep)) {
-    //   newSkipped = new Set(newSkipped.values());
-    //   newSkipped.delete(activeStep);
-    // }
-    
+
     if(props.step ===0){
-      // setActiveStep((prevActiveStep) => prevActiveStep + 1);
       dispatch(NEXT_LEVEL(1))
       navigate(`/surveymake`);
     }else if(props.step ===1){
@@ -85,7 +71,7 @@ function HorizontalLinearStepper(props) {
           
           console.log(newState);
           axios.post('/api/survey',newState);
-                //navigate(`/management`);
+                navigate(`/management`);
               
               }
             })
@@ -106,27 +92,22 @@ function HorizontalLinearStepper(props) {
     }else if(props.step ===1){
       dispatch(NEXT_LEVEL(-1));
       navigate(`/surveyoptionsetting`);
+    }else if(props.step===0){
+      Swal.fire({
+        title: '정말 취소하시겠어요?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네',
+        cancelButtonText:'아니오',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            navigate(`/management`);
+        }
+    })
     }
   };
-
-//   const handleSkip = () => {
-//     if (!isStepOptional(activeStep)) {
-//       // You probably want to guard against something like this,
-//       // it should never occur unless someone's actively trying to break something.
-//       throw new Error("You can't skip a step that isn't optional.");
-//     }
-
-//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-//     setSkipped((prevSkipped) => {
-//       const newSkipped = new Set(prevSkipped.values());
-//       newSkipped.add(activeStep);
-//       return newSkipped;
-//     });
-//   };
-
-  // const handleReset = () => {
-  //   setActiveStep(0);
-  // };
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -161,15 +142,15 @@ function HorizontalLinearStepper(props) {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
+          {/* <Typography sx={{ mt: 2, mb: 1 }}>Step </Typography> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
-              disabled={props.step === 0}
+              
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
-              뒤로
+              {props.step===0?<Typography style={{color:"red"}} >취소</Typography>:'뒤로'}
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
             {/* {isStepOptional(activeStep) && (

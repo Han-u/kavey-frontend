@@ -1,6 +1,6 @@
 import {React,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Button, Typography} from "@mui/material";
+import { Button, Typography,Link} from "@mui/material";
 import Swal from 'sweetalert2'
 
 
@@ -59,7 +59,8 @@ function HomeComponent1(){
                                 marginLeft:'3vh',
                                 marginRight:'3vh'}}>
                         {/* <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3> */}
-                        <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{color:"#1976D2"}}>Kavey</Typography>
+                        <Link href="/" underline="none"><Typography variant="h4" fontFamily='Inter'
+                        style={{color:"white"}}>Kavey</Typography></Link>
                         <Button href={KAKAO_AUTH_URI}><img src="/img/kakao_login.png"/></Button>
                     </div>
             </div>

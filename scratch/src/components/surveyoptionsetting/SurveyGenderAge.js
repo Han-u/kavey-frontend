@@ -19,31 +19,31 @@ function SurveyGenderAge() {
     };
 
     return(
-        <div>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular"
-            style={{paddingBottom:'5px'}}
-            >인적 사항 질문</Typography>
-            <Typography variant="h6" fontFamily="HallymGothic-Regular"
-            style={{paddingBottom:'20px'}}
-            >기본 인적 사항 질문 유무를 골라주세요</Typography>
-            <div  style={{display: 'flex', flexDirection: 'row',justifyContent: 'center'}}>
-                <div style={{width:'50%'}}>
-                    <Tooltip title="성별 질문을 추가할게요!">
+        <div style={{height:"210px",display:"flex",
+      flexDirection:"row",width:"100%"}}>
+            <div style={{width:"274px"}}>
+            <Typography variant="h4" fontFamily="NanumSquare"
+            style={{paddingBottom:'5px',fontWeight:"550",fontSize:"24px",marginTop:"30px",marginRight:"50px"}}>
+            기본 질문</Typography>
+            </div>
+            <div  style={{marginTop:"30px",float:"left"}}>
+                <div style={{float:"left"}}>
+                <Tooltip title="성별 질문을 추가할게요!">
                         <Button variant={gender?"contained":"outlined"}
+                        style={{width:"80px",height:"30px",marginRight:"10px"}}
                         onClick={()=>handleGenderChange()}>
                             성별
                         </Button>
-                    </Tooltip>
-                </div>
-                <div style={{width:'50%'}}>
+                    </Tooltip> 
                     <Tooltip title="연령대 질문을 추가할게요!">
                         <Button variant={age?"contained":"outlined"}
+                        style={{width:"80px",height:"30px"}}
                         onClick={()=>handleAgeChange()}>
                             연령
-                        </Button>
-                    </Tooltip>
-                </div>
-            </div>
+                        </Button>    
+                        </Tooltip>   
+                </div>            
+            </div>   
         </div>
     )    
 }

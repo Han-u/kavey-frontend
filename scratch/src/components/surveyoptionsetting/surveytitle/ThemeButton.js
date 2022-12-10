@@ -10,7 +10,7 @@ function ThemeButton(props) {
 
   return (
     <div>      
-      <div style={{backgroundColor:"white"}}> 
+      <div style={{backgroundColor:"#FAFAFA",margin:"5px"}}> 
       <Tooltip title={props.theme}>     
         <Button>       
         <img src={props.src} alt={props.theme} onClick={handleClick} style={{width:"40px",height:"40px"}}></img> 

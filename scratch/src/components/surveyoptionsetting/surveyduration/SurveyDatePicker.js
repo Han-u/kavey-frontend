@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import {Button} from "@mui/material";
+import {Button, Tooltip} from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch,useSelector } from 'react-redux'
@@ -33,9 +33,13 @@ function SurveyDatePicker() {
     }    
   };
   const ExampleCustomInput = React.forwardRef(({ value, onClick }, ref) => (
-    <Button size="large" variant="outlined" className="example-custom-input" onClick={onClick} ref={ref}>
-      {value}
-    </Button>
+    <Tooltip title="시작일 ~ 종료일" placement="top">
+      <Button 
+      style={{backgroundColor:"#FAFAFA"}}
+      size="large" className="example-custom-input" onClick={onClick} ref={ref}>
+        {value}
+      </Button>
+    </Tooltip>
   ));
   return (
     <DatePicker

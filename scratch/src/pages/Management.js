@@ -11,27 +11,27 @@ import Swal from 'sweetalert2'
 function Management(){
     const navigate=useNavigate();
 
-    useEffect(async() =>{
-        const token=window.localStorage.getItem('token');
-        //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
-        if(token===null){
-            Swal.fire({
-                toast: true,
-                icon: 'warning',
-                title: '로그인을 해주세요!',
-                animation: false,
-                position: 'top',
-                showConfirmButton: false,
-                timer: 1200,
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              });
-            navigate('/');
-            }
-    });
+    // useEffect(async() =>{
+    //     const token=window.localStorage.getItem('token');
+    //     //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
+    //     if(token===null){
+    //         Swal.fire({
+    //             toast: true,
+    //             icon: 'warning',
+    //             title: '로그인을 해주세요!',
+    //             animation: false,
+    //             position: 'top',
+    //             showConfirmButton: false,
+    //             timer: 1200,
+    //             timerProgressBar: false,
+    //             didOpen: (toast) => {
+    //               toast.addEventListener('mouseenter', Swal.stopTimer)
+    //               toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //             }
+    //           });
+    //         navigate('/');
+    //         }
+    // });
     
     const surveyList=useSelector((state)=>state.surveyList.value);
        
@@ -67,45 +67,7 @@ function Management(){
         })
         
     }
-    // const mock = [
-    //     {
-    //         id:1, status: 'making', title: "설문제목1",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: true, subject: 0, participation: 0
-    //     },
-    //     {
-    //         id:2, status: 'progress', title: "설문제목2",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: false, subject: 31, participation: 0
-    //     },
-    //     {
-    //         id:3, status: 'done', title: "설문제목3",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: false, subject: 55, participation: 15
-    //     },
-    //     {
-    //         id:4, status: 'done', title: "설문제목4",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: true, subject: 55, participation: 0,
-    //         earlyTermination: '2022-11-01'
-    //     },
-    //     {
-    //         id:5, status: 'done', title: "설문제목5",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: false, subject: 31, participation: 3
-    //     },
-    //     {
-    //         id:6, status: 'done', title: "설문제목6",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: true, subject: 31, participation: 4
-    //     },
-    //     {
-    //         id:7, status: 'done', title: "설문제목7",
-    //         startDt: '2022-10-02', endDt:'2022-11-03',
-    //         isOpen: true, subject: 31, participation: 2
-    //     }
-    // ]
-
+    
     const style = {
         header : {
             display: 'flex',

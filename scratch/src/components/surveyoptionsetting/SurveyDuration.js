@@ -74,23 +74,26 @@ function SurveyDuration() {
     });
   };
   return (
-    <div align="center">
-      <Typography variant="h4" fontFamily="HallymGothic-Regular"
-      style={{paddingBottom:'5px'}}
-      >설문 기간 설정</Typography>
-      <Typography variant="h6" fontFamily="HallymGothic-Regular"
-      style={{paddingBottom:'10px'}}
-      >설문 기간을 정해주세요</Typography>
-      <div style={{width:'50%'}}>
-        <ButtonGroup variant="outlined" style={{margin:'10px'}}>
-          <Button onClick={QuickButtonWeek}>7일</Button>
-          <Button onClick={QuickButtonDoubleWeek}>14일</Button>
-          <Button onClick={QuickButtonMonth}>30일</Button>
-        </ButtonGroup>
+    <div>
+      <div style={{height:"210px",display:"flex",
+      flexDirection:"row",width:"100%"}}>
+        <div style={{width:"274px"}}>
+          <Typography variant="h4" fontFamily="NanumSquare"
+          style={{paddingBottom:'5px',fontWeight:"550",fontSize:"24px",marginTop:"50px",marginRight:"50px"}}
+          >설문 기간</Typography>
+        </div>
+        <div style={{marginTop:"50px"}}>
+            <div style={{float:"left",marginBottom:"20px"}}>        
+              <SurveyDatePicker></SurveyDatePicker>
+            </div>
+            <div >
+                <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonWeek}>7일</Button>
+                <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonDoubleWeek}>14일</Button>
+                <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonMonth}>30일</Button>
+            </div>
+        </div>
       </div>
-      <div align="center">        
-        <SurveyDatePicker></SurveyDatePicker>
-      </div>
+      <div style={{borderBottom:"1px solid #000000",width:'70%'}}></div>
     </div>
   );
 }

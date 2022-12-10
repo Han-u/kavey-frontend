@@ -27,24 +27,6 @@ function SurveyOptionSetting() {
 
     };
 
-    const handleCancle = ()=>{
-        // navigate(`/management`);
-        Swal.fire({
-            title: '정말 취소하시겠어요?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '네',
-            cancelButtonText:'아니오',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                navigate(`/management`);
-            }
-        })
-
-    };
-
     const validationNext=()=>{
         if(surveyOption.title===""){
             return true;
@@ -73,22 +55,22 @@ function SurveyOptionSetting() {
                                             width:'100%',
                                             paddingTop:'120px'}}>
                 <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>
-                    <div style={{width:'600px',
+                    <div style={{width:'960px',
                             height:'100%',
-                            margin:'auto',backgroundColor:'white',padding:'0px 30px 30px 30px'}}>
+                            margin:'auto',backgroundColor:'white'}}>
                         <div>
                             <SurveyTitle/>
                         </div>
-                        <div style={{paddingTop:'30px'}}>
+                        <div>
                             <SurveyDuration/>
                         </div>
-                        <div align="center" style={{paddingTop:'30px'}}>
+                        <div>
                             <SurveyAccessType/>
                         </div>
-                        <div align="center" style={{paddingTop:'30px'}}>
+                        <div>
                             <SurveyGenderAge/>
                         </div>
-                        <div align="center" style={{paddingTop:'100px'}}>
+                        {/* <div align="center" style={{marginTop:'30px'}}>
                                 
                                 <Button variant="contained"                            
                                 disabled={validationNext()}
@@ -98,7 +80,7 @@ function SurveyOptionSetting() {
                                 style={{marginLeft:'30px'}}                            
                                 onClick={handleCancle}>취소하기</Button>
                                 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
