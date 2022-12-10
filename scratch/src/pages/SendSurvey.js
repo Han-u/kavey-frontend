@@ -2,10 +2,11 @@ import React, { useRef, useState } from 'react';
 import {useSelector} from 'react-redux'
 import UserList from '../components/SendSurvey/UserList';
 import CreateUser from '../components/SendSurvey/CreateUser';
-import {Typography,Button} from "@mui/material";
+import {Typography,Button,styled} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import axios from "axios";
+import CopyUrl from "../components/SendSurvey/CopyUrl";
 
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
@@ -21,17 +22,34 @@ function SendSurvey() {
             justifyContent: 'space-between'
         },
         body : {
-            padding: 30,
-            backgroundColor: 'lightgray'
+            padding: 80,
+            display: 'flex',
+            backgroundColor: '#F5F5F5',
+            flexDirection : 'column'
         },
-        btn : {
-            padding: 10,
-            paddingLeft: 0,
-
+        sendList : {
+            display: 'flex',
+            backgroundColor: 'white',
+            flexDirection : 'row'
         },
-        Container: {
+        Container1: {
+            paddingBottom: 15,
+            backgroundColor: '#F5F5F5'
+        },
+        Container2: {
             padding: 20,
             backgroundColor: 'white'
+        },
+        Container3: {
+            margin:30,
+            padding: 40,
+            backgroundColor: '#F5F5F5',
+            width:1100
+        },
+        Container4: {
+            paddingTop: 150,
+            textAlign:'end',
+            backgroundColor: '#F5F5F5'
         }
     };
     const [inputs, setInputs] = useState({
@@ -97,7 +115,7 @@ function SendSurvey() {
                         title: '설문지 발송에 성공했습니다.'
                     }))
                     .catch(error =>  Swal.fire({
-                        icon: 'errir',
+                        icon: 'error',
                         title: '설문지 발송에 실패했습니다.'
                     }))
             
@@ -105,7 +123,36 @@ function SendSurvey() {
         })
     }
 
+    const BootstrapButton1 = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+            fontFamily: [
+        'NanumSquare',
+    ]
+    });
+    const BootstrapButton2 = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ]
+    });
 
+    const textInput = useRef();
+    const onCopy = () => {
+        const el = textInput.current
+        el.select()
+        document.execCommand("copy")
+    };
+
+
+    const [show, setShow] = useState(false);
+
+
+
+    const [visible,setVisible] =useState(false);
     return (
         <div>
             <div align='center' style={{backgroundColor:'white',
@@ -122,15 +169,25 @@ function SendSurvey() {
             </div>
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                    설문 발송 페이지입니다.
+
                 </Typography>
             </div>
+
             <div style={style.body}>
-                <div style={style.Container}>
-                    <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                <div style={style.Container1}>
+                    <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : "설문 조사 링크 복사 열기"}</BootstrapButton2>
+                    {visible && <CopyUrl/>}
                 </div>
-                <div style={style.Container}>
-                    <UserList users={users} onRemove={onRemove} />
+                <div style={style.sendList}>
+                    <div style={style.Container2}>
+                        <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                    </div>
+                    <div style={style.Container3}>
+                        <UserList users={users} onRemove={onRemove} />
+                    </div>
+                </div>
+                <div style={style.Container4}>
+                    <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>완료✔</BootstrapButton1>
                 </div>
             </div>
         </div>

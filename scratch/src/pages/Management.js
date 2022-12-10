@@ -2,6 +2,7 @@ import {Button, Grid, Typography} from "@mui/material";
 import SurveyList from "../components/Management/SurveyList";
 import {useEffect, useState} from "react";
 import { useSelector } from 'react-redux'
+import '../Management.css'
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
@@ -73,11 +74,16 @@ function Management(){
             display: 'flex',
             alignItems: 'center',
             padding: 30,
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            backgroundColor: '#202225',
+
         },
         body : {
             padding: 30,
-            backgroundColor: 'lightgray'
+            backgroundColor: '#F5F5F5',
+            display: 'flex',
+            justifyContent: 'center',
+            height: '100vh'
         },
         btn : {
             padding: 10,
@@ -86,7 +92,9 @@ function Management(){
         },
         surveyContainer: {
             padding: 20,
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            maxWidth: "1200px",
+            borderRadius: '0 30px 30px 30px'
         }
     }
 
@@ -96,42 +104,58 @@ function Management(){
     }
 
     return (
-        <div >
+        <div>
             <div style={style.header}>
-                <Typography variant="h4" fontFamily="HallymGothic-Regular">
+                <div style={{display: 'flex', alignItems:'center'}}>
+                    <img src='images/Subtract.png' width='35px' height='35px'/>
+                    <span style={{color: 'white', marginLeft: '10px'}}> 한소연 님, <br/> 오늘 하루도 좋-설사 하세요!</span>
+
+                </div>
+                <Typography variant="h4" fontFamily="NanumSquareB" style={{color: "white"}}>
                     설문 관리하기
                 </Typography>
-                <Button variant="contained" onClick={()=>{const token=window.localStorage.getItem("token");const profile=window.localStorage.getItem("profile"); console.log(token,JSON.parse(profile));}}>
-                    카카오정보 테스트
-                </Button>
-                <Button variant="contained" onClick={()=>{handleLogout()}}>
-                    로그아웃 테스트
-                </Button>
-                <Button variant="contained" href="/surveyoptionsetting">
+                <Button variant="contained" href="/surveyoptionsetting" style={{color: 'black', backgroundColor: '#FFD701', borderRadius: '10px'}}>
                     설문 제작
                 </Button>
             </div>
             <div style={style.body}>
-                <div style={style.btn}>
-                    <Button variant={status === 'ALL'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="ALL">전체</Button>
-                    <Button variant={status === 'MAKING'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="MAKING">제작중</Button>
-                    <Button variant={status === 'PROGRESS'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="PROGRESS">진행중</Button>
-                    <Button variant={status === 'DONE'? "contained": "outlined"} onClick={onClick} value="DONE">설문완료</Button>
-                </div>
-                <div style={style.surveyContainer}>
-                    <Grid container>
+                {/*<div style={style.btn}>*/}
+                {/*    <Button variant={status === 'ALL'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="ALL">전체</Button>*/}
+                {/*    <Button variant={status === 'MAKING'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="MAKING">제작중</Button>*/}
+                {/*    <Button variant={status === 'PROGRESS'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="PROGRESS">진행중</Button>*/}
+                {/*    <Button variant={status === 'DONE'? "contained": "outlined"} onClick={onClick} value="DONE">설문완료</Button>*/}
+                {/*</div>*/}
+                <div>
+                    <div style={{display: 'flex'}}>
+                        <div className={'index-button ' + (status === "ALL" ? 'selected' : null)}>
+                            전체
+                        </div>
+                        <div className={'index-button ' + (status === "MAKING" ? 'selected' : null)}>
+                            제작중
+                        </div>
+                        <div className={'index-button ' + (status === "PROGRESS" ? 'selected' : null)}>
+                            진행중
+                        </div>
+                        <div className={'index-button ' + (status === "DONE" ? 'selected' : null)}>
+                            설문완료
+                        </div>
+                    </div>
+                    <div style={style.surveyContainer}>
+                        <Grid container>
                             {surveyList.map((m) =>{
                                 if(status==='ALL'){
-                                    return <Grid item xs={3}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
+                                    return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else if(m.status.toUpperCase()===status){
                                     return <Grid item xs={3}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else{
                                     return null;
-                                }                              
-                                
+                                }
+
                             })}
-                    </Grid>
+                        </Grid>
+                    </div>
                 </div>
+
             </div>
         </div>
     )
