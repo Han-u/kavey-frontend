@@ -24,3 +24,23 @@ html, body, #root, .App {
     font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'NanumSquareEB';
+    src : url('./fonts/NanumSquareEB.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareB';
+    src : url('./fonts/NanumSquareB.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareL';
+    src : url('./fonts/NanumSquareL.ttf');
+}
+
+@font-face {
+    font-family: 'NanumSquareR';
+    src : url('./fonts/NanumSquareR.ttf');
+}
