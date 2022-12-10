@@ -6,6 +6,7 @@ import {Typography,Button} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import axios from "axios";
+import CopyUrl from "../components/SendSurvey/CopyUrl";
 
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
@@ -21,17 +22,36 @@ function SendSurvey() {
             justifyContent: 'space-between'
         },
         body : {
-            padding: 30,
-            backgroundColor: 'lightgray'
+            padding: 80,
+            display: 'flex',
+            backgroundColor: 'lightblue',
+            flexDirection : 'column'
+        },
+        sendList : {
+            display: 'flex',
+            backgroundColor: 'red',
+            flexDirection : 'row'
         },
         btn : {
             padding: 10,
             paddingLeft: 0,
 
         },
-        Container: {
+        Container1: {
             padding: 20,
-            backgroundColor: 'white'
+            backgroundColor: 'yellow'
+        },
+        Container2: {
+            padding: 20,
+            backgroundColor: 'lightgray'
+        },
+        Container3: {
+            padding: 20,
+            backgroundColor: 'green'
+        },
+        Container4: {
+            padding: 20,
+            backgroundColor: 'purple'
         }
     };
     const [inputs, setInputs] = useState({
@@ -104,6 +124,7 @@ function SendSurvey() {
             }
         })
     }
+    const [visible,setVisible] =useState(false);
 
 
     return (
@@ -122,15 +143,27 @@ function SendSurvey() {
             </div>
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                    설문 발송 페이지입니다.
+
                 </Typography>
             </div>
+
             <div style={style.body}>
-                <div style={style.Container}>
-                    <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                <div style={style.Container1}>
+                    <Button onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : "설문 조사 링크 복사 열기"}</Button>
+                    {visible && <CopyUrl/>}
                 </div>
-                <div style={style.Container}>
-                    <UserList users={users} onRemove={onRemove} />
+                <div style={style.sendList}>
+                    <div style={style.Container2}>
+                        <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                    </div>
+                    <div style={style.Container3}>
+                        <UserList users={users} onRemove={onRemove} />
+                    </div>
+
+                </div>
+                <div style={style.Container4}>
+                    <button>hihihi</button>
+                    <Button onClick={onSend}>완료</Button>
                 </div>
             </div>
         </div>

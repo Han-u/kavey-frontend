@@ -57,10 +57,10 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
     return (
         <div>
             <div>
+                <p>설문 질의응답자 리스트</p>
                 <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}/>
-                <Button onClick={onCreate}>피설문자추가</Button>
-                <Button onClick={() => {setVisible(!visible);}}>{visible ? "설문지링크복사페이지닫기" : "설문지링크복사페이지열기"}</Button>
-                <Button onClick={onSend}>발송</Button>
+                <Button onClick={onCreate}>+</Button>
+                <Button onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : "설문 조사 링크 복사 열기"}</Button>
             </div>
             {visible && <CopyUrl/>}
         </div>
