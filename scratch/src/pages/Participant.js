@@ -1,4 +1,4 @@
-import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
+import {Button, Typography, Menu, MenuItem, Input, TextField} from "@mui/material";
 import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
 import axios from 'axios';
@@ -7,17 +7,30 @@ import "react-datepicker/dist/react-datepicker.css";
 import Resend from "../components/Participant/Resend";
 
 
+
 function Participant(){
     const style = {
+        header0 : {
+            flex: 1,
+            flexDirection: "column",
+        },
         header : {
             display: 'flex',
             alignItems: 'center',
             padding: 30,
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            backgroundColor: '#202225',
+
         },
+        main : {
+            paddingTop:35
+        },
+
+
+
         body : {
             padding: 30,
-            backgroundColor: 'lightgray'
+            backgroundColor: '#F5F5F5'
         },
         btn : {
             padding: 10,
@@ -25,6 +38,7 @@ function Participant(){
 
         },
         Container: {
+            margin:60,
             padding: 20,
             backgroundColor: 'white'
         }
@@ -38,6 +52,7 @@ function Participant(){
     const addSurveyBack4 = () => {setResStatus("ALL");};
 
     const [visible,setVisible] =useState(false);
+    const [visible2,setVisible2] =useState(true);
 
     const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
@@ -52,35 +67,68 @@ function Participant(){
     if (resStatus==="ALL")
     {var backResult = realBack.filter(data=>data.attendID >= 0);}
 
+    const reSendSurvey =() => {
+        setVisible(!visible);
+        setVisible2(!visible2);
+    }
+
+
+    const BootstrapButton = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ],
+
+    });
+
+    const BootstrapButton1 = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ],
+        marginLeft:15,
+
+    });
+
 
 
 
     return (
         <div>
             <div style={style.header}>
-                <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                    설문 참여자 관리
+                <Button variant="contained" href="/management" style={{color: 'black', backgroundColor: '#FFD701', borderRadius: '10px'}}>
+                    뒤로가기
+                </Button>
+
+                <Typography variant="h4" fontFamily="NanumSquareB" style={{color: "white"}}>
+                    설문 참여자 관리하기
                 </Typography>
+
+                <p style={{color:'#202225'}}>--</p>
+
             </div>
             <div style={style.body}>
                 <div style={style.Container}>
                     <div style={style.btn}>
-                        <Button onClick={addSurveyBack1}>응답</Button>
-                        <Button onClick={addSurveyBack2}>미응답</Button>
-                        <Button onClick={addSurveyBack3}>거절</Button>
-                        <Button onClick={addSurveyBack4}>전체</Button>
-                        <Button onClick={() => {setVisible(!visible);}}>{visible ? "재발송페이지닫기" : "재발송페이지열기"}</Button>
-
+                        <BootstrapButton disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={addSurveyBack4}>전체</BootstrapButton>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={addSurveyBack1}>응답</BootstrapButton1>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={addSurveyBack2}>미응답</BootstrapButton1>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={addSurveyBack3}>거절</BootstrapButton1>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={reSendSurvey}>재발송</BootstrapButton1>
                     </div>
                     {visible && <Resend/>}
-                    <div>
+                    {visible2 && <div style={style.main}>
                         <StyledTable>
                             <thead>
                             <tr>
-                                <th className='second-row'>이메일</th>
+                                <th className='first-row'>이메일</th>
                                 <th className='second-row'>전송날짜</th>
-                                <th className='second-row'>응답여부</th>
-                                <th className='second-row'>응답날짜</th>
+                                <th className='third-row'>응답여부</th>
+                                <th className='fourth-row'>응답날짜</th>
                             </tr>
                             </thead>
 
@@ -95,7 +143,7 @@ function Participant(){
                             ))}
                             </tbody>
                         </StyledTable>
-                    </div>
+                    </div>}
                 </div>
 
             </div>
@@ -110,8 +158,8 @@ const StyledTable = styled.table`
     tr{
       th{
         padding: 10px 15px;
-        background-color: #888;
-        color: #fff;
+        background-color: #F5F5F5;
+        color: black;
         font-weight: 700;
       }
     }
@@ -124,8 +172,17 @@ const StyledTable = styled.table`
       }
     }
   }
-  .second-row{
+  .first-row{
     width: 150px;
+  }
+  .second-row{
+    width: 300px;
+  }
+  .third-row{
+    width: 150px;
+  }
+  .fourth-row{
+    width: 300px;
   }
 `;
 

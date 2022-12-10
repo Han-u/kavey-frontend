@@ -8,6 +8,7 @@ import HorizontalLinearStepper from "../components/surveyoptionsetting/public/St
 import axios from "axios";
 import CopyUrl from "../components/SendSurvey/CopyUrl";
 
+
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
 
@@ -131,14 +132,7 @@ function SendSurvey() {
         'NanumSquare',
     ]
     });
-    const BootstrapButton2 = styled(Button)({
-        backgroundColor: '#FFD701',
-        color: 'black',
-        boxShadow: 'none',
-        fontFamily: [
-            'NanumSquare',
-        ]
-    });
+
 
     const textInput = useRef();
     const onCopy = () => {
@@ -153,6 +147,21 @@ function SendSurvey() {
 
 
     const [visible,setVisible] =useState(false);
+
+    const BootstrapButton2 = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ]
+    });
+
+    const copy = () => {
+        const el = textInput.current
+        el.select()
+        document.execCommand("copy")
+    }
     return (
         <div>
             <div align='center' style={{backgroundColor:'white',
@@ -175,7 +184,7 @@ function SendSurvey() {
 
             <div style={style.body}>
                 <div style={style.Container1}>
-                    <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : "설문 조사 링크 복사 열기"}</BootstrapButton2>
+                    <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기❒" : "설문 조사 링크 복사 열기❒"}</BootstrapButton2>
                     {visible && <CopyUrl/>}
                 </div>
                 <div style={style.sendList}>
