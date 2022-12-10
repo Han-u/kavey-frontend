@@ -19,14 +19,13 @@ function ResultSurveyInfo({surveyId}){
     }
     return (<div>
         <Button onClick={handleClick}>하이</Button>
-        <p>{data.status}</p>
-        <p>{data.private}</p>
-        <p>{data.limitPerson}</p>
-        <p>{data.surveyStartDate}</p>
-        <p>{data.surveyEndDate}</p>
-        <p>{data.askAge}</p>
-        <p>{data.askGender}</p>
-        <p>{data.theme}</p>
+        <p>상태 : {data.status}</p>
+        <p>형태 : {data.private? "폐쇄형":"개방형"}</p>
+        <p>제한 인원 : {data.limitPerson}</p>
+        <p>기간 : {data.surveyStartDate} ~ {data.surveyEndDate}</p>
+        <p>나이 질문 여부 : {data.askAge.toString()}</p>
+        <p>성별 질문 여부 : {data.askGender.toString()}</p>
+        <p>테마: {data.theme}</p>
     </div>)
 
 

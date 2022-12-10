@@ -63,8 +63,8 @@ function SurveyResult(){
             </div>
             <div style={style.body}>
                 <div style={style.surveyContainer}>
-                    <p>{data.title}</p>
-                    <p>{data.description}</p>
+                    <h1>설문 이름 : {data.title}</h1>
+                    <h2>설문 설명 : {data.description}</h2>
                 </div>
                 <div style={{display: 'flex',flexDirection: 'row',justifyContent:'space-between'}}>
                     <div style={style.btn}>
