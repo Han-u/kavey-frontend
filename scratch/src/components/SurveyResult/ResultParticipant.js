@@ -1,6 +1,6 @@
 import {useQuery} from 'react-query'
 import { Button,CircularProgress } from '@mui/material'
-import { ATTEND_NONRESPONSE, ATTEND_RESPONSE, getAttendResult, RESULT_ATTEND} from './ResultQuery';
+import { ATTEND_NONRESPONSE, ATTEND_RESPONSE, getAttendResult, RESULT_ATTEND} from './other/Query';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
 

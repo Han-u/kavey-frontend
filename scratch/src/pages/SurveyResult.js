@@ -3,12 +3,11 @@ import {Button,Typography} from "@mui/material";
 import {CircularProgress } from '@mui/material'
 import {useState} from "react";
 import { useQuery } from "react-query";
-import { useSelector } from 'react-redux'
 import ResultParticipant from "../components/SurveyResult/ResultParticipant";
-import { getSurveyResult, RESULT_SURVEY } from "../components/SurveyResult/ResultQuery";
 import ResultStatics from "../components/SurveyResult/ResultStatics";
 import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
 import {useParams} from 'react-router-dom'
+import { getSurveyResult, RESULT_SURVEY } from "../components/SurveyResult/other/Query";
 function SurveyResult(){
     const { surveyId } = useParams();
 
@@ -81,7 +80,7 @@ function SurveyResult(){
                 <div style={style.surveyContainer}>
                     {status === 'info'?<ResultSurveyInfo surveyId={surveyId}/>:null}
                     {status === 'participant'?<ResultParticipant surveyId={surveyId}/>:null}
-                    {status === 'question'?<ResultStatics/>:null}
+                    {status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson}/>:null}
                 </div>
             </div>
         </div>

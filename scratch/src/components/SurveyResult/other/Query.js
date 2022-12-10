@@ -19,7 +19,6 @@ export const ATTEND_NONRESPONSE = "NONRESPONSE"
 
 export const RESULT_ALL = "RESULT_ALL";
 export const getAllResult= async (surveyId) => {
-    const uid=1;
     const { data } = await  axios.get('/api/survey/'+surveyId+'/result/attends/');
     return data;
 };
@@ -31,6 +30,14 @@ export const getPersonalResult= async (surveyId) => {
     const { data } = await  axios.get('/api/survey/'+surveyId+'/result/attend/'+uid);
     return data;
 };
+
+
+export const RESULT_STATICS = "RESULT_STATICS";
+export const getStaticsResult= async (surveyId) => {
+    const { data } = await  axios.get('/api/survey/'+surveyId+'/result/');
+    return data;
+};
+
 
 
 

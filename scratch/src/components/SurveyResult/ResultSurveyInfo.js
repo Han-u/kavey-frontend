@@ -1,6 +1,6 @@
 import {useQuery} from 'react-query'
 import { Button,CircularProgress } from '@mui/material'
-import { getSurveyResult, RESULT_SURVEY } from './ResultQuery';
+import { getSurveyResult, RESULT_SURVEY } from './other/Query';
 
 function ResultSurveyInfo({surveyId}){
     const sid=1;
