@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
-import {useSelector} from 'react-redux'
 import UserList from '../components/SendSurvey/UserList';
 import CreateUser from '../components/SendSurvey/CreateUser';
 import {Typography,Button} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
-import axios from "axios";
+import {useSelector} from "react-redux";
 
-function SendSurvey() {
+
+function Atest() {
     const step=useSelector((state)=>state.surveyOption.step);
 
     const style = {
@@ -38,24 +38,31 @@ function SendSurvey() {
         username: '',
         email: ''
     });
+
     const { username, email } = inputs;
+    console.log({email});
+
     const onChange = e => {
         const { name, value } = e.target;
         setInputs({
             ...inputs,
-            [name]: value
+            [name]: value,
         });
     };
+
+
     const [users, setUsers] = useState([]);
 
     const nextId = useRef(0);
+
     const onCreate = () => {
         const user = {
             id: nextId.current,
-            username,
-            email
+            email,
         };
+
         setUsers(users.concat(user));
+
 
         setInputs({
             username: '',
@@ -65,17 +72,38 @@ function SendSurvey() {
     };
 
     const onRemove = id => {
-        // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
-        // = user.id 가 id 인 것을 제거함
         setUsers(users.filter(user => user.id !== id));
     };
 
-
-    const user=[];
-    for (let i =0; i<users.length; i++){
-        user.push(users[i].email);
+    const textInput = useRef();
+    const copy = () => {
+        const el = textInput.current
+        el.select()
+        document.execCommand("copy")
     }
-    const onSend = () => {
+
+    const sendURLCopy = () => {
+        Swal.fire({
+            title: '<strong>설문지 링크</strong>',
+            icon: 'info',
+            html:
+                '<input type="text" value="설문조사발송용 URL" ref={textInput} readOnly></input><button onClick={copy}>copy</button>',
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> 설문링크복사',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i>',
+            cancelButtonAriaLabel: 'Thumbs down'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("hi");
+            }
+        })
+    }
+
+    const sendSuccess = () => {
         Swal.fire({
             title: '설문지를 발송하시겠습니까?',
             icon: 'success',
@@ -86,24 +114,26 @@ function SendSurvey() {
             cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = '/api/survey/1/email-send';
-                const config = {"Content-Type": 'application/json'};
-                const data = {
-                    "sendEmailList" : user
-                }
-                axios.post(url, data, config)
-                    .then(response =>  Swal.fire({
-                        icon: 'success',
-                        title: '설문지 발송에 성공했습니다.'
-                    }))
-                    .catch(error =>  Swal.fire({
-                        icon: 'errir',
-                        title: '설문지 발송에 실패했습니다.'
-                    }))
-            
+                console.log("발송완료");
             }
         })
     }
+
+    const user=[];
+    const send = () => {
+        for (let i =0; i<users.length; i++){
+            user.push(users[i].email);
+        }
+        console.log(user);
+    }
+
+    const onSend = () => {
+        for (let i =0; i<users.length; i++){
+            user.push(users[i].email);
+        }
+        console.log(user);
+    }
+
 
 
     return (
@@ -122,19 +152,25 @@ function SendSurvey() {
             </div>
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
-                    설문 발송 페이지입니다.
+                    설문 발송 페이지
                 </Typography>
             </div>
             <div style={style.body}>
                 <div style={style.Container}>
-                    <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                    <CreateUser
+                        username={email}
+                        onChange={onChange}
+                        onCreate={onCreate}
+                        onSend={onSend}
+                    />
+                    <Button>reset</Button>
                 </div>
                 <div style={style.Container}>
-                    <UserList users={users} onRemove={onRemove} />
+                    <UserList users={users} onRemove={onRemove}/>
                 </div>
             </div>
         </div>
     );
 }
 
-export default SendSurvey;
+export default Atest;

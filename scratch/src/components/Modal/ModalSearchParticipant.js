@@ -30,13 +30,13 @@ const MyModal = () => {
     };
 
     const data = [
-        {id: 0, email: 'kyle3444@naver.com', sendDt: '2020-02-02T00:00:00', res: 'RESPONSE',resDay:"2020-02-02T00:00:00"},
+        {id: 0, email: 'aaakyle3444@naver.com', sendDt: '2020-02-02T00:00:00', res: 'RESPONSE',resDay:"2020-02-02T00:00:00"},
         {id: 1, email: 'james9@naver.com', sendDt: '2022-10-05', res: 'NONRESPONSE', resDay:"2022-09-30T00:00:00"},
         {id: 2, email: 'kimwon9@naver.com', sendDt: '2022-10-05', res: 'RESPONSE',resDay:"2022-09-30T00:00:00"},
         {id: 3, email: 'wowme9@naver.com', sendDt: '2022-10-05', res: 'REJECT', resDay:"2022-11-30T00:00:00"}
     ];
 
-    var result = data.filter(data=>data.res.id >= 0);
+
 
     const [search, setSearch] = useState("");
     const onChange = (e) => {
@@ -47,7 +47,7 @@ const MyModal = () => {
         return p.email.includes(search)
     })
 
-    console.log(result);
+
 
 
 

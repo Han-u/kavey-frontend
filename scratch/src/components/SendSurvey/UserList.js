@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
+import {Button} from "@mui/material";
 
 function User({ user, onRemove }) {
     return (

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] fix sendSurvey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch/src/components/surveyoptionsetting/public/Stepper.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/surveyoptionsetting/public/Stepper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/Participant/Resend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/Participant/aaa.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/sc-53" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,12 +31,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/sc-53" />
-                    <option name="lastUsedInstant" value="1669095189" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1670599687" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1668673672" />
+                    <option name="branchName" value="feature/sc-53" />
+                    <option name="lastUsedInstant" value="1669680882" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/sc-22" />
@@ -96,7 +97,13 @@
       <workItem from="1669132528397" duration="7338000" />
       <workItem from="1669247287743" duration="6853000" />
       <workItem from="1669479193467" duration="3458000" />
-      <workItem from="1669561404250" duration="12250000" />
+      <workItem from="1669561404250" duration="16526000" />
+      <workItem from="1669855483448" duration="602000" />
+      <workItem from="1669977287854" duration="6261000" />
+      <workItem from="1670217900933" duration="2211000" />
+      <workItem from="1670301040672" duration="1065000" />
+      <workItem from="1670510301362" duration="5078000" />
+      <workItem from="1670558202287" duration="5933000" />
     </task>
     <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
       <created>1669135353138</created>
@@ -119,7 +126,42 @@
       <option name="project" value="LOCAL" />
       <updated>1669573882822</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[SC-55] fix sendSurvey">
+      <created>1669574242095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669574242095</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[SC-55] fix sendSurvey">
+      <created>1669652219280</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669652219280</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[SC-55] fix sendSurvey">
+      <created>1669695426391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669695426391</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[SC-55] fix sendSurvey">
+      <created>1670220111490</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670220111490</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[SC-55] fix sendSurvey">
+      <created>1670515136765</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670515136765</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
