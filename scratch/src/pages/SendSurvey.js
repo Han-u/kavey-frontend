@@ -5,7 +5,6 @@ import CreateUser from '../components/SendSurvey/CreateUser';
 import {Typography,Button} from "@mui/material";
 import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
-import {useSelector} from "react-redux";
 import axios from "axios";
 
 function SendSurvey() {

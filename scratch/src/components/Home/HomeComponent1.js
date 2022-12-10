@@ -1,22 +1,46 @@
-import React from 'react';
+import {React,useEffect} from 'react';
 // import {Button} from 'reactstrap';
 import { useNavigate } from 'react-router-dom'
 import { faShareNodes,faFileLines,faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Link} from "react-router-dom";
-import {Box, Button, Chip, Menu, MenuItem, Typography} from "@mui/material";
+import { Button, Typography} from "@mui/material";
+import Swal from 'sweetalert2'
 
 
 
 
 function HomeComponent1(){
+    useEffect(() =>{
+        console.log(window.localStorage.getItem("token"));
+    })
+    const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+    const REDIRECT_URI = 'http://localhost:3000/login';
+    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
     const navigate=useNavigate();
 
     const handleClick=()=>{
-        //여기서 로그인 되어있나 검증 해주긴 해야 됨당?
-        console.log("하이");
-        navigate(`/surveyoptionsetting`);
-    }
+        const token=window.localStorage.getItem('token');
+        if(token===null){
+            Swal.fire({
+                toast: true,
+                icon: 'info',
+                title: '로그인을 진행할게요!',
+                animation: false,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              });
+              window.location.replace(KAKAO_AUTH_URI);
+        }else{
+            navigate('/surveyoptionsetting')
+        }
+}
 
     return(
         <div>
@@ -32,7 +56,7 @@ function HomeComponent1(){
                                 marginRight:'5vh'}}>
                         {/* <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3> */}
                         <Typography variant="h4" fontFamily="HallymGothic-Regular" style={{color:"#1976D2"}}>Kavey</Typography>
-                        <Link to="/login"><img src="/img/kakao_login.png"></img></Link>
+                        <Button href={KAKAO_AUTH_URI}><img src="/img/kakao_login.png"/></Button>
                     </div>
                 </header>
             </div>

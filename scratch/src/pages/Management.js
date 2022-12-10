@@ -1,12 +1,72 @@
 import {Button, Grid, Typography} from "@mui/material";
 import SurveyList from "../components/Management/SurveyList";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+
+
 
 
 function Management(){
+    const navigate=useNavigate();
+
+    useEffect(async() =>{
+        const token=window.localStorage.getItem('token');
+        //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
+        if(token===null){
+            Swal.fire({
+                toast: true,
+                icon: 'warning',
+                title: '로그인을 해주세요!',
+                animation: false,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              });
+            navigate('/');
+            }
+    });
+    
     const surveyList=useSelector((state)=>state.surveyList.value);
+       
+    const handleLogout=()=>{
+        Swal.fire({
+            title: '로그아웃 하시겠어요?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '네',
+            cancelButtonText:'아니오',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.localStorage.clear();
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    title: '다음에 또 오세요!',
+                    animation: false,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 1200,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  });
+                navigate('/')
+
+            }
+        })
         
+    }
     // const mock = [
     //     {
     //         id:1, status: 'making', title: "설문제목1",
@@ -79,6 +139,12 @@ function Management(){
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
                     설문 관리하기
                 </Typography>
+                <Button variant="contained" onClick={()=>{const token=window.localStorage.getItem("token");const profile=window.localStorage.getItem("profile"); console.log(token,JSON.parse(profile));}}>
+                    카카오정보 테스트
+                </Button>
+                <Button variant="contained" onClick={()=>{handleLogout()}}>
+                    로그아웃 테스트
+                </Button>
                 <Button variant="contained" href="/surveyoptionsetting">
                     설문 제작
                 </Button>

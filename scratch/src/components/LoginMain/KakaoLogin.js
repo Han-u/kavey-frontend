@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const KakaoLogin = () => {
   // 카카오 개발자 앱 키 선언
@@ -13,6 +14,7 @@ const KakaoLogin = () => {
 
   // 로그인 성공시 MyPage로 이동시키기위해 useNavigate 사용
   const navigate = useNavigate();
+  
   useEffect(() => {
     (async () => {
       try {
@@ -24,51 +26,66 @@ const KakaoLogin = () => {
           )
           // 백엔드 쪽에서 보내준 응답 확인
           .then((response) => {
-            console.log("응답 확인", response);
+            // console.log("응답 확인", response);
             // 이때,
             // 백엔드로부터 받아온 헤더값에 저장되어있는 authorization 을 접근해 token 이라는 변수에 저장
             const token = response.headers.authorization;
-            // 이 토큰은 프론트엔드, 즉 현재 내 서버에 저장시킨다.
+            // 이 토큰은 프론트엔드, 즉 현재 내 서버에 저장
             window.localStorage.setItem("token", token);
-            console.log("token 값 확인", token);
+            // console.log("token 값 확인", token);
           });
-        console.log(res);
+        // console.log(res);
       } catch (e) {
         // 에러 발생 시, 에러 응답 출력
         console.error(e);
       }
 
-      // 위에서 setItem 을 사용하여 내부에 저장시킨 토크을 다시 불러온다.
-      // 이때, 내부 저장소에서 가져온 토큰을 다시 token 이라는 변수에 담는다.
+      // 위에서 setItem 을 사용하여 내부에 저장시킨 토크을 다시 불러온다
+      // 이때, 내부 저장소에서 가져온 토큰을 다시 token 이라는 변수에 담는다
       const token = window.localStorage.getItem("token");
 
       try {
-        console.log("여기 진입함요")
+        console.log("내정보 가져오기")
         const res = await axios
-          // 이때, post가 아닌 get으로 접근한다.
-          // 접근 주소는 백엔드에서 설정한 주소로 한다.
+          // 이때, post가 아닌 get으로 접근
+          // 접근 주소 = 백엔드에서 설정한 주소
 
           .get(
-            "http://localhost:8081",
+            "http://localhost:8081/api/me",
             {
-              // 헤더값에는 받아온 토큰을 Authorization과 request 에 담아서 보낸다.
+              // 헤더값에는 받아온 토큰을 Authorization과 request 에 담아서 전송
               headers: {
                 Authorization: token,
                 request: token,
               },
             }
           )
-          // 위에서 백엔드가 토큰을 잘받고 처리해서 유저정보를 다시 넘겨준다면, 그 응답을 처리한다.
-          // data 라는 변수에 유저 정보를 저장하고, setItem을 사용해 로컬에 다시 저장한다.
+          // 위에서 백엔드가 토큰을 잘받고 처리해서 유저정보를 다시 넘겨준다면, 그 응답을 처리
+          // data 라는 변수에 유저 정보를 저장하고, setItem을 사용해 로컬에 다시 저장
           .then((data) => {
+            // console.log(typeof(data))
             window.localStorage.setItem("profile", JSON.stringify(data));
-            console.log(data,"이거 데이터임");
-            // 만약, 유저정보를 잘 불러왔다면 navigate를 사용해 프론트엔드에서 설정한 마이페이지 경로를 설정해서 이동시킨다.
+            // console.log(data);
+            // 만약, 유저정보를 잘 불러왔다면 navigate를 사용해 프론트엔드에서 설정한 마이페이지 경로를 설정해서 이동
             if (data) {
-              navigate("");
+              Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: data.data.nickname+'님 안녕하세요!',
+                animation: false,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              });
+              navigate("../management");
             }
           });
-        console.log(res);
+        // console.log(res);
       } catch (e) {
         // 에러 발생 시, 에러 응답 출력
         console.error(e);
@@ -78,7 +95,8 @@ const KakaoLogin = () => {
 
   return (
     <>
-      <a href={KAKAO_AUTH_URI}>카카오로 시작하기</a>
+    {/* <Button href={KAKAO_AUTH_URI}><img src="/img/kakao_login.png"/></Button> */}
+      {/* <a href={KAKAO_AUTH_URI} >카카오로 시작하기</a> */}
     </>
   );
 };
