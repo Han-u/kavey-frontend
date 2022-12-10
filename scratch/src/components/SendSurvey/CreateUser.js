@@ -1,9 +1,17 @@
 import React, { useRef,useState } from "react";
-import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
+import {Button, Typography, Menu, MenuItem, Input, styled} from "@mui/material";
 import CopyUrl from "./CopyUrl";
 import Swal from "sweetalert2";
 
 function CreateUser({ username, email, onChange, onCreate,onSend }) {
+    const style = {
+        text : {
+            color:'black'
+        },
+        inputSpace: {
+            paddingTop:10
+        }
+    }
 
 
     const check = () => {
@@ -21,13 +29,6 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
             }
         })
     }
-
-    const sendEmail =() => {
-
-    }
-
-
-
     const checkEmail = (e) => {
         var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
 
@@ -51,18 +52,24 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
 
     }
 
-    const [visible,setVisible] =useState(false);
+    const BootstrapButton2 = styled(Button)({
 
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ]
+    });
 
     return (
         <div>
             <div>
-                <p>설문 질의응답자 리스트</p>
-                <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}/>
-                <Button onClick={onCreate}>+</Button>
-                <Button onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : "설문 조사 링크 복사 열기"}</Button>
+                <h3 style={style.text}>설문 질의응답자 리스트</h3>
+                <div style={style.inputSpace}>
+                    <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}/>
+                    <BootstrapButton2 size="large" onClick={onCreate}>ADD</BootstrapButton2>
+                </div>
             </div>
-            {visible && <CopyUrl/>}
         </div>
     );
 }
