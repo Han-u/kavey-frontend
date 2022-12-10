@@ -34,7 +34,7 @@ function App() {
         <Route path="/answer" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
         <Route path="/testproxy" element={<ProxyTest/>}/>
-        <Route path="/result" element={<SurveyResult/>}/>
+        <Route path="/result/:surveyId" element={<SurveyResult/>}/>
       </Routes>
     </Router>
   );

@@ -1,10 +1,17 @@
-import {Button,Typography} from "@mui/material";
-import {useState} from "react";
-import { useSelector } from 'react-redux'
-import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
 
+import {Button,Typography} from "@mui/material";
+import {CircularProgress } from '@mui/material'
+import {useState} from "react";
+import { useQuery } from "react-query";
+import { useSelector } from 'react-redux'
+import ResultParticipant from "../components/SurveyResult/ResultParticipant";
+import { getSurveyResult, RESULT_SURVEY } from "../components/SurveyResult/ResultQuery";
+import ResultStatics from "../components/SurveyResult/ResultStatics";
+import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
+import {useParams} from 'react-router-dom'
 function SurveyResult(){
-    
+    const { surveyId } = useParams();
+
     const style = {
         header : {
             display: 'flex',
@@ -27,9 +34,18 @@ function SurveyResult(){
         }
     }
 
+    const {isLoading,data,isError,error} = useQuery(RESULT_SURVEY , ()=>getSurveyResult(parseInt(surveyId)));
+
     const [status, setStatus] = useState("info");
     const onClick = (e) => {
         setStatus(e.target.value);
+    }
+
+    if(isLoading){
+        return <CircularProgress />
+    }
+    if(isError){
+        return <h2>Oops... {error.message}</h2>
     }
 
     return (
@@ -47,7 +63,8 @@ function SurveyResult(){
             </div>
             <div style={style.body}>
                 <div style={style.surveyContainer}>
-                    여기에 설문 정보
+                    <p>{data.title}</p>
+                    <p>{data.description}</p>
                 </div>
                 <div style={{display: 'flex',flexDirection: 'row',justifyContent:'space-between'}}>
                     <div style={style.btn}>
@@ -62,9 +79,9 @@ function SurveyResult(){
                     </div>
                 </div>
                 <div style={style.surveyContainer}>
-                    {status === 'info'?<ResultSurveyInfo/>:null}
-                    {status === 'participant'?"parti":null}
-                    {status === 'question'?"q":null}
+                    {status === 'info'?<ResultSurveyInfo surveyId={surveyId}/>:null}
+                    {status === 'participant'?<ResultParticipant surveyId={surveyId}/>:null}
+                    {status === 'question'?<ResultStatics/>:null}
                 </div>
             </div>
         </div>
