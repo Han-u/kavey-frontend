@@ -27,49 +27,55 @@ function SurveyTitle(){
     }
 
 
-    return( 
+    return(
             <div align="center" style={{backgroundColor:"#D4E8FF",
             width:"100%",
-            height:"210px",
+            height:"200px",
             display:"flex",
-            flexDirection:"row"}}>   
-                <div style={{padding:"46px 0px 0px 50px",
+            flexDirection:"row"}}>
+                <div style={{
+                    paddingLeft: '50px',
+                    justifyContent: 'center',
                 flexDirection:"column",
                 display:"flex",
                 width:"670px"}}>
-                    <TextField label="설문 제목" 
+                    <TextField
+                    placeholder="설문 제목"
                     sc={{border:0}}
                     variant="standard"
                     required
                     error={validationTitle()?true:false}
-                    helperText={validationTitle()?"필수 입력입니다.":false}
-                    onChange={(e)=>handleChangeTitle(e.target.value)} 
+                    helperText={validationTitle()?"* 필수 입력입니다.":false}
+                    onChange={(e)=>handleChangeTitle(e.target.value)}
                     value={title}
                     InputProps={{
                         disableUnderline:true,
-                        style:{fontSize:25}
+                        style:{fontSize:25, fontFamily:'NanumSquareB'}
                     }}
                     InputLabelProps={{
-                        
                         style:{fontWeight:700}
                     }}
-                    style={{width:"500px",
-                    height:"73px",
+                    style={{width:"550px",
                     backgroundColor:"rgba(255,255,255,0.4)",
+                    borderRadius: '10px',
                     marginBottom:"10px",
                     paddingLeft:'10px'
                     }}
                     />
-                    <TextField label="설문 상세 설명" 
+                    <TextField
+                        placeholder="설문 상세 설명"
                     variant="standard"
                     InputProps={{
                         disableUnderline:true,
+                        style:{fontSize:15, fontFamily:'NanumSquareB', paddingTop: '8px'},
+
                       }}
-                    onChange={(e)=>handleChangeDesc(e.target.value)} 
+                    onChange={(e)=>handleChangeDesc(e.target.value)}
                     value={description}
-                    size="small" 
+                    size="small"
                     style={{width:"620px",
-                    height:"50px",
+                        borderRadius: '10px',
+                        minHeight:"40px",
                     backgroundColor:"rgba(255,255,255,0.4)",
                     paddingLeft:'10px'}}
                     />
@@ -87,7 +93,7 @@ function SurveyTitle(){
                     </div>
                 </div>
                 </Tooltip>
-            </div>        
+            </div>
     )
 };
 

@@ -51,7 +51,7 @@ function SurveyOptionSetting() {
             
             <div align='center' style={{align:'center',
                                             backgroundColor:surveyOption.theme,
-                                            height:'100%',
+                                            height:'100vh',
                                             width:'100%',
                                             paddingTop:'120px'}}>
                 <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>

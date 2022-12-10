@@ -78,12 +78,15 @@ function SurveyDuration() {
       <div style={{height:"210px",display:"flex",
       flexDirection:"row",width:"100%"}}>
         <div style={{width:"274px"}}>
-          <Typography variant="h4" fontFamily="NanumSquare"
-          style={{paddingBottom:'5px',fontWeight:"550",fontSize:"24px",marginTop:"50px",marginRight:"50px"}}
+          <Typography variant="h4" fontFamily="NanumSquareB"
+          style={{paddingBottom:'5px',fontSize:"24px",marginTop:"50px",marginRight:"50px"}}
           >설문 기간</Typography>
         </div>
         <div style={{marginTop:"50px"}}>
-            <div style={{float:"left",marginBottom:"20px"}}>        
+            <div style={{float:"left",marginBottom:"20px"}}>
+              <div style={{fontSize: '3px', fontFamily:'NanumSquareL'}}>
+                시작일 - 종료일
+              </div>
               <SurveyDatePicker></SurveyDatePicker>
             </div>
             <div >
@@ -93,7 +96,7 @@ function SurveyDuration() {
             </div>
         </div>
       </div>
-      <div style={{borderBottom:"1px solid #000000",width:'70%'}}></div>
+      <div style={{borderBottom:"1px solid #000000",width:'90%'}}></div>
     </div>
   );
 }
