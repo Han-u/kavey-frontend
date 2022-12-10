@@ -82,6 +82,7 @@ function Management(){
                 <Button variant="contained" href="/surveyoptionsetting">
                     설문 제작
                 </Button>
+                {/* <Button variant="contained" onClick={()=>{const token=window.localStorage.getItem("token");console.log(token)}}>test</Button> */}
             </div>
             <div style={style.body}>
                 <div style={style.btn}>
