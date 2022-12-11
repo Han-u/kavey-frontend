@@ -35,21 +35,95 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
 
 
     return (
-        <div style={styles.container}>
-            <div>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-                {required === true && <h1 style={{color: "red"}} >*</h1> }
-                <Typography variant="h4" fontFamily="HallymGothic-Regular" 
-                style={{marginBottom:'20px'}}>{title}</Typography>
+        <div>
+        <div style={{height:"220px"}}>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"30px" }}>
+                {required === true && <h2 style={{color: "red"}} >*</h2> }
+                <Typography fontFamily="NanumSquare"
+                style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
             </div>
-            </div>
-            
+            {/* <div>
+                    <Button variant={clicked===true?"contained":"outlined"} 
+                    onClick={()=>setClicked(true)} 
+                    style={
+                        clicked===true?
+                        {width:"160px",
+                        height:"60px" ,
+                        marginRight:"10px"
+                        ,borderRadius:"10px",
+                        fontSize:"28px",
+                        backgroundColor:"#FFD701",
+                        border:"1px solid #D9D9D9",
+                        color:"black"}
+                        :
+                        {width:"160px",
+                        height:"60px" ,
+                        marginRight:"10px"
+                        ,borderRadius:"10px",
+                        fontSize:"28px",
+                        backgroundColor:"#FFFFFF",
+                        border:"1px solid #D9D9D9",
+                        color:"black"}}>찬성</Button>
+                    <Button variant={clicked===false?"contained":"outlined"} 
+                    onClick={()=>setClicked(false)} 
+                    style={clicked===false?
+                        {width:"160px",
+                        height:"60px"
+                        ,borderRadius:"10px",
+                        fontSize:"28px",
+                        backgroundColor:"#FFD701",
+                        border:"1px solid #D9D9D9",
+                        color:"black"}
+                        :
+                        {width:"160px",
+                        height:"60px"
+                        ,borderRadius:"10px",
+                        fontSize:"28px",
+                        backgroundColor:"#FFFFFF",
+                        border:"1px solid #D9D9D9",
+                        color:"black"}}>반대</Button>
+            </div> */}
             <div>
-                {purpose!=RESULT ? 
-                <ButtonGroup varient="outlined" size="large">
-                <Button variant={clicked===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
-                <Button variant={clicked===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>
-                </ButtonGroup>
+                {purpose!=RESULT ? <div>
+                <Button variant={clicked===true?"contained":"outlined"} 
+                onClick={()=>setClicked(true)} 
+                style={
+                    clicked===true?
+                    {width:"160px",
+                    height:"60px" ,
+                    marginRight:"10px"
+                    ,borderRadius:"10px",
+                    fontSize:"28px",
+                    backgroundColor:"#FFD701",
+                    border:"1px solid #D9D9D9",
+                    color:"black"}
+                    :
+                    {width:"160px",
+                    height:"60px" ,
+                    marginRight:"10px"
+                    ,borderRadius:"10px",
+                    fontSize:"28px",
+                    backgroundColor:"#FFFFFF",
+                    border:"1px solid #D9D9D9",
+                    color:"black"}}>찬성</Button>
+                <Button variant={clicked===false?"contained":"outlined"} 
+                onClick={()=>setClicked(false)} 
+                style={clicked===false?
+                    {width:"160px",
+                    height:"60px"
+                    ,borderRadius:"10px",
+                    fontSize:"28px",
+                    backgroundColor:"#FFD701",
+                    border:"1px solid #D9D9D9",
+                    color:"black"}
+                    :
+                    {width:"160px",
+                    height:"60px"
+                    ,borderRadius:"10px",
+                    fontSize:"28px",
+                    backgroundColor:"#FFFFFF",
+                    border:"1px solid #D9D9D9",
+                    color:"black"}}>반대</Button></div>
                 :
                 <ButtonGroup varient="outlined" size="large">
                     <Button variant={Boolean(filter_data[0].answer)===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
@@ -58,6 +132,7 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
                 }
                 
             </div>
+        </div>
         </div>
     )
 }

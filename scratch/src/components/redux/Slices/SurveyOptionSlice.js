@@ -13,10 +13,11 @@ export const SurveyOptionSlice=createSlice(
             limitPerson:null,
             startDate:new Date(),
             endDate:new Date(),
-            theme:"#F5F5F5",
+            theme:null,
             questionNumber:0,
             questionList:[],
             step:0, //프론트용
+            themeForFront:null,//프론트용22
         },
         reducers:{
             SET_TITLE:(state,action)=>{
@@ -47,10 +48,27 @@ export const SurveyOptionSlice=createSlice(
 
             SET_THEME_TEST:(state,action)=>{
                 if(state.theme===action.payload){
-                    state.theme="lightgray"
+                    state.theme=null
+                    state.themeForFront=null
                 }else{
-                    state.theme=action.payload;                    
+                    state.theme=action.payload
+                    switch(action.payload){
+                        case "chunsik":
+                            state.themeForFront="url('/images/theme_chunsik.png')";
+                            break;
+                        case "ryan":
+                            state.themeForFront="url('/images/theme_ryan.png')";
+                            break;
+                        case "jordy":
+                            state.themeForFront="url('/images/theme_jordy.png')";
+                            break
+                        case "apeach":
+                            state.themeForFront="url('/images/theme_apeach.png')";
+                            break;
+                    }
                 }
+                
+                
                 
             },
 

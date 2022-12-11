@@ -32,15 +32,17 @@ function ObjectResult({purpose,q_id,id, title,required}) {
     };
 
     return (  
-        <div style={styles.container}>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-                {required === true && <h1 style={{color: "red"}} >*</h1> }
-                <Typography variant="h4" fontFamily="HallymGothic-Regular"
-                style={{marginBottom:'20px'}}>{title}</Typography>
+        <div>
+        <div style={{height:"230px"}}>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
+                {required === true && <h2 style={{color: "red"}} >*</h2> }
+                <Typography fontFamily="NanumSquare"
+                style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
             </div>
-            {purpose!=RESULT?  <input type="text" label="답변을 입력해주세요" onChange={onChange}/>: <input type="text" value={filter_data[0].answer} readOnly={true}/>}    
+            {purpose!=RESULT?  <TextField label="답변을 입력해주세요" onChange={onChange} style={{width:"400px",height:"110px",marginTop:"15px"}}></TextField>: <input type="text" value={filter_data[0].answer} readOnly={true}/>}    
         </div> 
-        
+        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+        </div>
     );
 }
 

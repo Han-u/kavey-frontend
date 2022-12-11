@@ -84,6 +84,7 @@ function Management(){
             padding: 30,
             justifyContent: 'space-between',
             backgroundColor: '#202225',
+            height:"100px"
 
         },
         body : {

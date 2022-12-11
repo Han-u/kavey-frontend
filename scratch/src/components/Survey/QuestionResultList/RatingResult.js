@@ -41,7 +41,8 @@ function RatingResult({purpose,q_id,id,title,required}) {
         setClicked(clickStates);
     };
 
-    if(filter_data!=undefined && purpose!=RESPONSE && FLAG ==-1){
+    if(filter_data!=undefined && purpose==RESULT && FLAG ==-1){
+      console.log("왜 접근하냐?")
       StarClick(filter_data[0].answer-1);
       FLAG=1;
     }
@@ -63,12 +64,14 @@ function RatingResult({purpose,q_id,id,title,required}) {
         }
     };
     return (
-        <div style={styles.container}>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-              {required === true && <h1 style={{color: "red"}} >*</h1> }
-              <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
-            </div>
-            <div align="center">
+      <div>
+      <div style={{height:"220px"}}>
+          <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"30px" }}>
+              {required === true && <h2 style={{color: "red"}} >*</h2> }
+              <Typography fontFamily="NanumSquare"
+              style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
+          </div>
+            <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}>
               {purpose!=RESULT? 
                 <Stars align="center">
                 {ARRAY.map(el => {
@@ -100,6 +103,8 @@ function RatingResult({purpose,q_id,id,title,required}) {
               }
             </div>
         </div>
+        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+        </div>
     );
 }
 
@@ -123,7 +128,6 @@ const Stars = styled.div`
   display: flex;
   padding-top: 30px;
   padding-bottom: 5px;
-  margin-left:140px;
 
   & svg {
     color: gray;

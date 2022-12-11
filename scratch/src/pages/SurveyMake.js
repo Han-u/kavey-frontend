@@ -14,11 +14,11 @@ import QuestionMakeList from '../components/Survey/QuestionMakeList';
 import QuestionResultList, { MAKE } from '../components/Survey/QuestionResultList';
 import produce from 'immer';
 
-import {Menu,MenuItem,Button,IconButton,Tooltip} from '@mui/material'
+import {Menu,MenuItem,Button,IconButton,Tooltip, Typography,Divider} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { TO_BACKEND_OPTION } from '../components/redux/Slices/SurveyOptionSlice';
-
-
+import CheckIcon from '@mui/icons-material/Check';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 //style
 const tempStyle={
     display:"flex",
@@ -39,14 +39,15 @@ function SurveyMake() {
                                         borderBottom:'1px solid lightgray',}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
             </div>    
-            <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px' ,backgroundColor:'#F5F5F5',height:"100%"}} >
+            <div align="center" style={{display:"flex",width:'100%',paddingTop:'100px' ,backgroundColor:'#F5F5F5',height:"100%"}} >
                 <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>
                 </div>
                 <div style={{marginLeft:'auto',
                 marginRight:'auto',
                 width:'50%',
-                borderLeft:'1px solid lightgray'}}>
+                borderLeft:'1px solid lightgray',
+                backgroundColor:'white'}}>
                   <MakeQuestionResultList/>
                 </div>
             </div>
@@ -83,7 +84,7 @@ export function PlusButton({id}){
         <input type="button" value="별점" onClick={() => {
           dispatch(CREATE_STAR({id:id}));
         }}></input> */}
-        <Button
+        <IconButton
         id="basic-button"
         variant="outlined" 
         size="small"
@@ -92,8 +93,8 @@ export function PlusButton({id}){
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        +
-      </Button>
+        <ControlPointIcon sx={{fontSize:'30px' ,marginLeft:"15px"}}></ControlPointIcon>
+      </IconButton>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -107,14 +108,19 @@ export function PlusButton({id}){
           dispatch(CREATE_OBJECTIVE({id:id}));
           handleClose();
         }}>주관식</MenuItem>
+        <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={() => {
           dispatch(CREATE_MULTIPLE({id:id}));
           handleClose();
         }}>객관식</MenuItem>
+        <Divider sx={{ my: 0.5 }} />
+
         <MenuItem onClick={() => {
           dispatch(CREATE_TRUEFALSE({id:id}));
           handleClose();
         }}>찬반</MenuItem>
+        <Divider sx={{ my: 0.5 }} />
+
         <MenuItem onClick={() => {
           dispatch(CREATE_STAR({id:id}));
           handleClose();
@@ -133,9 +139,9 @@ export function DeleteButton({id}){
     if( question.length >= 2){
       return(
         <div>
-          <IconButton variant="contained"  size="small" 
+          <IconButton variant="contained"
           onClick={() => {dispatch(DELETE({id:id}));
-          }}><DeleteIcon/></IconButton>
+          }}><DeleteIcon /></IconButton>
          </div>
       );
 
@@ -158,9 +164,15 @@ export function RequiredButton({id,required}){
   const dispatch = useDispatch();
   return(
     <div>
-      <Button variant="contained"  size="small" 
+      <Button variant="standard" 
+      style={required?
+        {backgroundColor:"#FF5442",borderRadius:"22px",color:"white"}:
+        {borderRadius:"22px",backgroundColor:"#EDEDED",color:"black"}
+    }
       onClick={() => {dispatch(UPDATE_REQUIRED({id:id}));
-      }}>{required.toString()}
+      }}><CheckIcon/><Typography 
+      fontFamily={"NanumSquare"} 
+      style={{fontWeight:"400",fontSize:"14px"}}>필수답변</Typography>
       </Button>
      </div>
   );

@@ -10,10 +10,10 @@ function HomeComponent1(){
 
     useEffect(() =>{
         var divObj = document.getElementById("mainDiv");
-        var setHeight= document.body.offsetHeight-587;
+        var setHeight= document.body.offsetHeight-627;
         divObj.style.height=`${setHeight}px`;
         window.addEventListener('resize', () =>{
-            setHeight= document.body.offsetHeight-587;
+            setHeight= document.body.offsetHeight-627;
             divObj.style.height=`${setHeight}px`;
         })        
     })
@@ -50,7 +50,7 @@ function HomeComponent1(){
     return(
         <div>
         <div style={{backgroundColor:'white',margin:'auto'}}>
-            <div style={{height:'60px',backgroundColor:'#FFD701',width:'100%'}}>
+            <div style={{height:'100px',backgroundColor:'#FFD701',width:'100%'}}>
                     <div style={{display: 'flex',
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
@@ -58,7 +58,6 @@ function HomeComponent1(){
                                 height: '100%',
                                 marginLeft:'3vh',
                                 marginRight:'3vh'}}>
-                        {/* <h3 style={{color:'yellow',fontWeight:'bold'}}>Kavey</h3> */}
                         <Link href="/" underline="none"><Typography variant="h4" fontFamily='Inter'
                         style={{color:"white"}}>Kavey</Typography></Link>
                         <Button href={KAKAO_AUTH_URI}><img src="/img/kakao_login.png"/></Button>
@@ -71,8 +70,6 @@ function HomeComponent1(){
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center'}}>
-                    {/* <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>
-                    <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5> */}
                     <Typography variant="h3" fontFamily="NanumSquareB">가장 귀여운 설문 == 좋설사</Typography>
                     <Typography variant="h6" fontFamily="NanumSquareL">세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</Typography>
                     <Button style={{marginTop:'60px', borderRadius: '28px', fontFamily: "NanumSquareL", backgroundColor: "#202225"}}
@@ -87,88 +84,6 @@ function HomeComponent1(){
             <div style={{backgroundColor:'white', display: 'flex', justifyContent: 'center'}}>
                 <img src="images/main.png" height= '800px' style={{marginBottom: '150px'}}/>
             </div>
-            {/*<div style={{backgroundColor:'white',margin:'auto',height:'100vh',paddingTop:'60px',display: 'flex', flexDirection: 'row'}}>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'60%' ,*/}
-            {/*                alignItems: 'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                flexDirection: 'column',*/}
-            {/*                justifyContent: 'center'}}>*/}
-            {/*        /!* <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>*/}
-            {/*        <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5> *!/*/}
-            {/*        <Typography variant="h3" fontFamily="HallymGothic-Regular">가장 귀여운 설문 == 좋설사</Typography>*/}
-            {/*        <Typography variant="h6" fontFamily="HallymGothic-Regular">세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</Typography>*/}
-            {/*        <Button style={{marginTop:'70px'}}*/}
-            {/*        variant="contained"*/}
-            {/*        onClick={handleClick}*/}
-            {/*        >설문 제작하기!</Button>*/}
-            {/*    </div>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'40%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                backgroundColor:'#FFC31E'}}>*/}
-            {/*        <img style={{width:'100%'}}*/}
-            {/*        src="/images/mainimage.png"/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div style={{backgroundColor:'white',margin:'auto',height:'40vh',display:'flex',flexDirection: 'row',width:'70%'}}>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'30%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center',*/}
-            {/*                }}>*/}
-            {/*    <FontAwesomeIcon icon={faFileLines} size='8x'*/}
-            {/*    color='yellow'/>*/}
-            {/*    </div>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'70%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center'*/}
-            {/*                }}>*/}
-            {/*                    <h3 style={{fontWeight:'bold'}}>쉽고 간편한 설문 생성 및 관리</h3>                */}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div style={{backgroundColor:'white',margin:'auto',height:'40vh' ,display:'flex',flexDirection: 'row',width:'70%'}}>          */}
-            {/*<div style={{height:'100%',*/}
-            {/*                width:'70%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center'*/}
-            {/*                }}>   */}
-            {/*                <h3  style={{fontWeight:'bold'}}>특정 및 불특정 다수에게 설문 공유 가능</h3>              */}
-            {/*    </div>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'30%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center'*/}
-            {/*                }}>*/}
-            {/*        <FontAwesomeIcon icon={faShareNodes} size='8x'*/}
-            {/*    color='yellow'/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div style={{backgroundColor:'white',margin:'auto',height:'40vh',display:'flex',flexDirection: 'row',width:'70%'}}>*/}
-            {/*<div style={{height:'100%',*/}
-            {/*                width:'30%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center'*/}
-            {/*                }}>                                */}
-            {/*    <FontAwesomeIcon icon={faFileExport} size='8x'*/}
-            {/*    color='yellow'/>*/}
-            {/*    </div>*/}
-            {/*    <div style={{height:'100%',*/}
-            {/*                width:'70%',*/}
-            {/*                alignItems:'center',*/}
-            {/*                display: 'flex',*/}
-            {/*                justifyContent: 'center'*/}
-            {/*                }}>  */}
-            {/*                <h3 style={{fontWeight:'bold'}}>편리하게 사용 가능한 파일로 변환</h3>                    */}
-            {/*    </div>*/}
-            {/*</div>*/}
             <div style={{backgroundColor:'white',height:'100px'}}>
                 <footer>
                     <div style={{alignItems:'center',justifyContent: 'center',display: 'flex',flexDirection: 'row'}}>
