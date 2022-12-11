@@ -59,7 +59,7 @@ function SurveyOptionSetting() {
                                             height:'100vh',
                                             width:'100%',
                                             paddingTop:'100px'}}>
-                <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>
+                <div style={{backgroundColor:'#F5F5F5',width:'50%',height:'100%'}}>
                     <div style={{width:'960px',
                             height:'100%',
                             margin:'auto',backgroundColor:'white'}}>
