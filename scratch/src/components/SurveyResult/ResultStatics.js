@@ -5,6 +5,29 @@ import { Barchart, Piechart } from './other/Chart';
 import { OBJECTIVE, STAR, TRUEFALSE } from '../redux/Slices/SurveyMakeSlice';
 import produce from 'immer';
 
+const style = {
+    questionContainer: {
+      margin: 30
+    },
+    title: {
+        fontFamily: 'NanumSquareR', fontSize: 30
+    },
+    description : {
+        fontFamily: 'NanumSquareL', fontSize: 15
+    },
+    subText: {
+        width: 500,
+        backgroundColor: '#FAFAFA',
+        margin: 10,
+        padding: 10,
+        fontFamily: 'NanumSquareR',
+        fontSize: 15
+    },
+    hr : {
+        border: '1px solid black',
+        width: '85%'
+    }
+}
 
 function ResultStatics({surveyId,limitPerson,question}) {
     const {isLoading,data,isError,error} = useQuery(RESULT_STATICS, ()=>getStaticsResult(surveyId));
@@ -27,7 +50,7 @@ function ResultStatics({surveyId,limitPerson,question}) {
 export default ResultStatics;
 
 function AttendStatics({attendCount,limitPerson}){
-  if(limitPerson!=undefined){
+  if(limitPerson!==undefined){
     let data = [
       {
         "id": "참가",
@@ -43,39 +66,53 @@ function AttendStatics({attendCount,limitPerson}){
       },
     ]
     return(
-      <div>
-        <h1>참가자 수</h1>
+      <div style={{
+          width: '80%',
+          background: "#FAFAFA",
+          borderRadius: 10}}>
+          <div style={{paddingTop: 15}}>
+              <span style={style.title}>응답 현황</span><br/>
+              <span style={style.description}>참여자 : 총 {attendCount}명</span>
+          </div>
         <Piechart data={data}/>
       </div>
     )
   } 
   else{
     return(
-    <div>
-        <h1>참가자 수</h1>
-        <h1>{attendCount}</h1>
-    </div>
+        <div style={{
+            width: '80%',
+            background: "#FAFAFA",
+            borderRadius: 10}}>
+            <div style={{paddingTop: 15}}>
+                <span style={{fontFamily: 'NanumSquareR', fontSize: 30}}>응답 현황</span><br/>
+                <span style={{fontFamily: 'NanumSquareL', fontSize: 15}}>참여자 : 총 {attendCount}명</span>
+            </div>
+        </div>
     )
   }
 }
 
 
-function QuestionStaticsList({statics,question}) {  
+function QuestionStaticsList({statics,question}) {
   console.log(statics);
   let graphs = statics.map(d=>{
     let s;
     switch (d.type){
       case OBJECTIVE:
         s = d.answerCountList.map((dd)=>(
-          <p>{dd.value}</p>
+          <div style={style.subText}>{dd.value}</div>
         ));
-        return <div>
-            <h2>id : {d.questionId}</h2>
-            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
-            <h2>type : {d.type}</h2>
-            <h2>카운트 수 : {d.attendCount}</h2>
-            <p>{s}</p>
-          </div>
+        return (
+            <div>
+                <div style={style.questionContainer}>
+                    <p style={style.title}>{d.questionId} 주관식 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
+                    <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
+                    {s}
+                </div>
+                <div style={style.hr}></div>
+            </div>
+        )
       break;
       case TRUEFALSE:
       case STAR:
@@ -97,12 +134,14 @@ function QuestionStaticsList({statics,question}) {
         );
 
         return <div>
-            <h2>id : {d.questionId}</h2>
-            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
-            <h2>type : {d.type}</h2>
-            <h2>카운트 수 : {d.attendCount}</h2>
+            <div style={style.questionContainer}>
+            <p style={style.title}>{d.questionId} 별점 평점 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
+            <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
             <Barchart  keys={keys} data={s}/>
-          </div>
+        </div>
+          <div style={style.hr}></div>
+        </div>
+
 
       break;
       default:
@@ -114,11 +153,12 @@ function QuestionStaticsList({statics,question}) {
           }
         ));
           return <div>
-            <h2>id : {d.questionId}</h2>
-            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
-            <h2>type : {d.type}</h2>
-            <h2>카운트 수 : {d.attendCount}</h2>
-            <Piechart  data={s}/>
+              <div style={style.questionContainer}>
+                  <p style={style.title}>{d.questionId} 객관식 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
+                  <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
+                  <Piechart  data={s}/>
+              </div>
+              <div style={style.hr}></div>
           </div>
       break;
     }

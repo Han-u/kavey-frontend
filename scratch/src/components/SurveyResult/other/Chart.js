@@ -13,7 +13,7 @@ export function Piechart({data}){
     };
 
     return (
-        <div style={{ width: '800px', height: '500px', margin: '0 auto' }}>
+        <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
             <ResponsivePie
                 data={data}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -21,6 +21,7 @@ export function Piechart({data}){
                 padAngle={1.8}
                 cornerRadius={8}
                 borderWidth={2}
+                colors={{ scheme: 'pastel1' }}
                 arcLinkLabelsSkipAngle={0}
                 arcLinkLabelsTextColor="#000000"
                 arcLinkLabelsThickness={2}
@@ -74,7 +75,7 @@ export function Piechart({data}){
 
 export function Barchart({keys,data}){
     return (
-        <div style={{ width: '800px', height: '500px', margin: '0 auto' }}>
+        <div style={{ width: '700px', height: '400px', margin: '0 auto' }}>
              <ResponsiveBar
                 data={data}
                 keys={keys}
@@ -83,7 +84,7 @@ export function Barchart({keys,data}){
                 padding={0.3}
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}
-                colors={{ scheme: 'nivo' }}
+                colors={{ scheme: 'pastel1' }}
                 defs={[
                     {
                         id: 'dots',
