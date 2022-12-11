@@ -22,16 +22,16 @@ const styles = {
 function MultipleResult({purpose,q_id,id, title,required,canMulti,type,response}) {  
     return (
         <div>
-        <div>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
-                {required === true && <h2 style={{color: "red"}} >*</h2> }
-                <Typography fontFamily="NanumSquare"
-                style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
-            </div>
-            <p>{canMulti}</p>
-            <ResponseList purpose={purpose} q_id={q_id} ordering={id} canMulti={canMulti} type ={type} list={response}/>
-        </div> 
-        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+            <div>
+                <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
+                    {required === true && <h2 style={{color: "red"}} >*</h2> }
+                    <Typography fontFamily="NanumSquare"
+                    style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
+                </div>
+                <p>{canMulti}</p>
+                <ResponseList purpose={purpose} q_id={q_id} ordering={id} canMulti={canMulti} type ={type} list={response}/>
+            </div> 
+            <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
         </div>
     );
 }

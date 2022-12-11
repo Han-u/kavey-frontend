@@ -41,7 +41,8 @@ function RatingResult({purpose,q_id,id,title,required}) {
         setClicked(clickStates);
     };
 
-    if(filter_data!=undefined && purpose!=RESPONSE && FLAG ==-1){
+    if(filter_data!=undefined && purpose==RESULT && FLAG ==-1){
+      console.log("왜 접근하냐?")
       StarClick(filter_data[0].answer-1);
       FLAG=1;
     }

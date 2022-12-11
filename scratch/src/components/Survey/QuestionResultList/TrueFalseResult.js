@@ -42,7 +42,7 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
                 <Typography fontFamily="NanumSquare"
                 style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
             </div>
-            <div>
+            {/* <div>
                     <Button variant={clicked===true?"contained":"outlined"} 
                     onClick={()=>setClicked(true)} 
                     style={
@@ -82,11 +82,9 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
                         backgroundColor:"#FFFFFF",
                         border:"1px solid #D9D9D9",
                         color:"black"}}>반대</Button>
-            </div>
-            
+            </div> */}
             <div>
-                {purpose!=RESULT ? 
-                <div>
+                {purpose!=RESULT ? <div>
                 <Button variant={clicked===true?"contained":"outlined"} 
                 onClick={()=>setClicked(true)} 
                 style={
@@ -125,8 +123,7 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
                     fontSize:"28px",
                     backgroundColor:"#FFFFFF",
                     border:"1px solid #D9D9D9",
-                    color:"black"}}>반대</Button>
-        </div>
+                    color:"black"}}>반대</Button></div>
                 :
                 <ButtonGroup varient="outlined" size="large">
                     <Button variant={Boolean(filter_data[0].answer)===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
@@ -135,6 +132,7 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
                 }
                 
             </div>
+        </div>
         </div>
     )
 }
