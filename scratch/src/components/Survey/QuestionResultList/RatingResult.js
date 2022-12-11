@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import {  ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import { RESPONSE } from '../QuestionResultList';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
+
 
 
 
@@ -23,7 +25,7 @@ const styles = {
   },
 }
 
-function RatingResult({id,title}) {
+function RatingResult({purpose,id,title,required}) {
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -37,19 +39,28 @@ function RatingResult({id,title}) {
     };
 
     useEffect(() => {
+      let score = clicked.filter(Boolean).length;
+      if(score!=0){
         sendReview();
+      }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [clicked]);
 
     const sendReview = () => {
         let score = clicked.filter(Boolean).length;
-        console.log({score});
-        dispatch({type:ANSWER,id:id,value:score});
+        if(purpose == RESPONSE & score!=undefined){
+          dispatch(ANSWER_SUBJECTIVE({ordering:id,value:score}));
+          dispatch(CHECK_ANSWER());
+        }
     };
 
     return (
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+              {required === true && <h1 style={{color: "red"}} >*</h1> }
+              <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
+            </div>
             <div align="center">
               <Stars align="center">
                   {ARRAY.map(el => {
@@ -63,7 +74,6 @@ function RatingResult({id,title}) {
                       );
                   })}
               </Stars>
-              <RatingText>별점 누를 때 텍스트 변경</RatingText>
             </div>
         </div>
     );

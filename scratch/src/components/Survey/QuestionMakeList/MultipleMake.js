@@ -3,10 +3,11 @@ import {useDispatch} from 'react-redux';
 
 import { UPDATE_TITLE,UPDATE_MULTIPLE_CANMULTI,UPDATE_MULTIPLE_CREATE_RESPONSE,UPDATE_MULTIPLE_UPDATE_RESPONSE,UPDATE_MULTIPLE_DELETE_RESPONSE } from "../../redux/Slices/SurveyMakeSlice";
 
-import { DeleteButton, PlusButton } from '../../../pages/SurveyMake';
+import { DeleteButton, PlusButton,RequiredButton } from '../../../pages/SurveyMake';
 
 import {Button,IconButton,TextField,Tooltip} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
+import TrueFalseResult from '../QuestionResultList/TrueFalseResult';
 
 const styles = {
     container: {
@@ -20,7 +21,7 @@ const styles = {
 }
 
 
-function MultipleMake({id,title,canMulti,response}) {
+function MultipleMake({id,title,required,canMulti,response}) {
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -40,6 +41,7 @@ function MultipleMake({id,title,canMulti,response}) {
                         alignItems: 'baseline',
                         paddingBottom:'10px'}}>
                 <DeleteButton id={id}/>
+                <RequiredButton id={id} required={required}/>
                 <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
                 <PlusButton id={id}/>
             </div>
@@ -68,13 +70,14 @@ function MultiButton({id,canMulti}){
     return (
         <div>
             <Tooltip title="복수응답 허용 여부에요">
-                <Button variant="outlined" size="small" onClick={onClick}>{canMulti}</Button>
+                <Button variant="outlined" size="small" onClick={onClick}>{canMulti.toString()}</Button>
             </Tooltip>
         </div>
     );
 }
 
 function ResponseList({id,list}) {
+    let canDelete = list.length < 2 ? false : true;
     let responseList;
     if(list!=undefined){
         responseList = list.map(
@@ -83,6 +86,7 @@ function ResponseList({id,list}) {
                 q_id={id}
                 r_id = {r.ordering} 
                 title={r.value} 
+                canDelete={canDelete}
                 />
             )
         )
@@ -96,7 +100,7 @@ function ResponseList({id,list}) {
 }
 
 
-function Response({q_id,r_id,title}){
+function Response({q_id,r_id,title,canDelete}){
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -105,15 +109,23 @@ function Response({q_id,r_id,title}){
 
     const onClickDelete = (e) => {
         dispatch(UPDATE_MULTIPLE_DELETE_RESPONSE({q_id:q_id,r_id:r_id}));
+        
     }
+
 
     return(
         <div>      
-                <input type="checkbox"/>
                 <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
                 style={{marginLeft:'10px'}}
                 />
-                <IconButton onClick={onClickDelete}><CloseIcon color="error"/></IconButton>
+                {canDelete ? 
+                    <IconButton onClick={onClickDelete}><CloseIcon color="error"/></IconButton>
+                    :
+                    <Tooltip title="보기는 하나 이상 필요합니다!">
+                        <IconButton><CloseIcon color="error"/></IconButton>
+                    </Tooltip>
+                }
+                
         </div>
     );
 }

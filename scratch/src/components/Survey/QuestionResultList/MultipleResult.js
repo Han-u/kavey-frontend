@@ -1,7 +1,8 @@
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
+import { CHECKBOX, RADIO } from "../../redux/Slices/SurveyMakeSlice";
 
 const styles = {
     container: {
@@ -17,13 +18,16 @@ const styles = {
     },
 }
 
-function MultipleResult({id, title,canMulti,response}) {    
+function MultipleResult({purpose,id, title,required,canMulti,type,response}) {  
     return (  
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular" 
-            style={{marginBottom:'20px'}}>{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+                {required === true && <h1 style={{color: "red" }} >*</h1> }
+                <Typography variant="h4" fontFamily="HallymGothic-Regular" 
+                style={{marginBottom:'20px'}}>{title}</Typography>
+            </div>
             <p>{canMulti}</p>
-            <ResponseList question_id={id}list={response}/>
+            <ResponseList purpose={purpose} question_id={id} canMulti={canMulti} type ={type} list={response}/>
         </div> 
         
     );
@@ -31,16 +35,41 @@ function MultipleResult({id, title,canMulti,response}) {
 
 export default MultipleResult;
 
-function ResponseList({question_id,list}) {
+function ResponseList({purpose,question_id,canMulti,type,list}) {
+    const dispatch = useDispatch();
+
+    const [answer,setAnswer] = useState([]);
+    
+    const onCheckHandler = (e) => {
+        if(type == RADIO){
+            dispatch(ANSWER_MULTIPLE_RADIO({ordering:question_id,value:e.target.id}));
+            dispatch(CHECK_ANSWER());
+        }
+        else if(type==CHECKBOX){
+            let newAnswer = answer;
+            if(e.target.checked==true){
+                newAnswer= [...newAnswer,{optionId:e.target.id}];
+            }
+            else if(e.target.checked==false){
+                const id = newAnswer.findIndex(ee=>ee.optionId==e.target.id);
+                newAnswer.splice(id,1);
+            }  
+            setAnswer(newAnswer);
+            dispatch(ANSWER_MULTIPLE_CHECKBOX({ordering:question_id,value:newAnswer}));
+            dispatch(CHECK_ANSWER());
+        }
+    };
+
+
     let responseList;
     if(list!=undefined){
         responseList = list.map(
             r => (
-                <Response 
-                question_id = {question_id}
-                response_id = {r.id} 
-                title={r.value} 
-                />
+                <div>
+                    <input name={question_id} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}  onChange={(e) => onCheckHandler(e)}/> 
+                    <p>{r.value}</p>
+                </div>
+
             )
         )
     }
@@ -51,20 +80,4 @@ function ResponseList({question_id,list}) {
         </div>
     )
 }
-
-function Response({question_id,response_id,title}){
-    const onCheckHandler = (e,id) => {
-        console.log(e.currentTarget.checked);
-        console.log(id);
-        //dispatch({type:ANSWER,question_id:question_id,response_id:id});
-    };
-    return(
-        <div>   
-                <input type="checkbox" onChange={(e) => onCheckHandler(e,response_id)}></input>
-                <p>{title}</p>
-        </div>
-    );
-}
-
-
 

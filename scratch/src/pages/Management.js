@@ -94,13 +94,15 @@ function Management(){
             padding: 20,
             backgroundColor: 'white',
             maxWidth: "1200px",
+            width:"1200px",
             borderRadius: '0 30px 30px 30px'
         }
     }
 
     const [status, setStatus] = useState("ALL");
     const onClick = (e) => {
-        setStatus(e.target.value);
+        console.log(e);
+        setStatus(e);
     }
 
     return (
@@ -117,6 +119,7 @@ function Management(){
                 <Button variant="contained" href="/surveyoptionsetting" style={{color: 'black', backgroundColor: '#FFD701', borderRadius: '10px'}}>
                     설문 제작
                 </Button>
+                {/* <Button variant="contained" onClick={()=>{const token=window.localStorage.getItem("token");console.log(token)}}>test</Button> */}
             </div>
             <div style={style.body}>
                 {/*<div style={style.btn}>*/}
@@ -127,30 +130,29 @@ function Management(){
                 {/*</div>*/}
                 <div>
                     <div style={{display: 'flex'}}>
-                        <div className={'index-button ' + (status === "ALL" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "ALL" ? 'selected' : null)} onClick={()=>{onClick("ALL")}}>
                             전체
                         </div>
-                        <div className={'index-button ' + (status === "MAKING" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "MAKING" ? 'selected' : null)} onClick={()=>{onClick("MAKING")}}>
                             제작중
                         </div>
-                        <div className={'index-button ' + (status === "PROGRESS" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "PROGRESS" ? 'selected' : null)} onClick={()=>{onClick("PROGRESS")}}>
                             진행중
                         </div>
-                        <div className={'index-button ' + (status === "DONE" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "DONE" ? 'selected' : null)} onClick={()=>{onClick("DONE")}}>
                             설문완료
                         </div>
                     </div>
                     <div style={style.surveyContainer}>
                         <Grid container>
-                            {surveyList.map((m) =>{
+                            {surveyList.length ===0?<Typography fontFamily="NanumSquareB" style={{fontSize:"250px",margin:"auto"}}>텅</Typography>:surveyList.map((m) =>{
                                 if(status==='ALL'){
                                     return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else if(m.status.toUpperCase()===status){
-                                    return <Grid item xs={3}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
+                                    return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else{
                                     return null;
                                 }
-
                             })}
                         </Grid>
                     </div>
