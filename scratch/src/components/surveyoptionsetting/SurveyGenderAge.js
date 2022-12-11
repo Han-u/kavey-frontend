@@ -22,8 +22,8 @@ function SurveyGenderAge() {
         <div style={{height:"210px",display:"flex",
       flexDirection:"row",width:"100%"}}>
             <div style={{width:"274px"}}>
-            <Typography variant="h4" fontFamily="NanumSquare"
-            style={{paddingBottom:'5px',fontWeight:"550",fontSize:"24px",marginTop:"30px",marginRight:"50px"}}>
+            <Typography variant="h4" fontFamily="NanumSquareB"
+            style={{paddingBottom:'5px', fontSize:"24px",marginTop:"30px",marginRight:"50px"}}>
             기본 질문</Typography>
             </div>
             <div  style={{marginTop:"30px",float:"left"}}>

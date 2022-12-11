@@ -13,7 +13,7 @@ export const SurveyOptionSlice=createSlice(
             limitPerson:null,
             startDate:new Date(),
             endDate:new Date(),
-            theme:"lightgray",
+            theme:"#F5F5F5",
             questionNumber:0,
             questionList:[],
             step:0, //프론트용

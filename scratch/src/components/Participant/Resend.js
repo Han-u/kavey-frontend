@@ -1,4 +1,4 @@
-import {Button, Typography, Menu, MenuItem, Input} from "@mui/material";
+import {Button, Typography, Menu, MenuItem, Input, TextField} from "@mui/material";
 import React, {useState, useEffect} from "react";
 import {useQuery} from 'react-query'
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,14 +19,13 @@ export default function Resend() {
             backgroundColor: 'lightgray'
         },
         btn : {
-            padding: 10,
-            paddingLeft: 0,
-
+            alignItems: 'center'
         },
         Container: {
-            padding: 20,
+
             backgroundColor: 'white'
         }
+
     };
 
     const [search, setSearch] = useState("");
@@ -77,7 +76,7 @@ export default function Resend() {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '네ㅇ',
+            confirmButtonText: '네',
             cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -112,6 +111,14 @@ export default function Resend() {
     const filterTitle = ddata.filter((p) => {
         return p.sendEmail.includes(search)
     })
+    const BootstrapButton1 = styled(Button)({
+        backgroundColor: '#FFD701',
+        color: 'black',
+        boxShadow: 'none',
+        fontFamily: [
+            'NanumSquare',
+        ]
+    });
 
 
 
@@ -120,10 +127,9 @@ export default function Resend() {
         <div>
             <div style={style.Container}>
                 <div style={style.btn}>
-                    <input type="text" value={search} onChange={onChange} placeholder="search email"/>
-                    <Button onClick={onSend}>재전송</Button>
+                    <TextField style={{width:400, marginLeft:700}} id="standard-basic" label="이메일을 검색하세요🔍" variant="standard" defaultValue="Small" value={search} onChange={onChange}/>
+                    <BootstrapButton1 sx={ { borderRadius: 28 } } style={{marginLeft:40}} disabled={false} variant="contained" size="medium" onClick={onSend}>전송🛫</BootstrapButton1>
                 </div>
-
         <StyledTable>
             <thead>
             <tr>
@@ -133,10 +139,10 @@ export default function Resend() {
                         // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                            checked={checkItems.length === ddata.length ? true : false} />
                 </th>
-                <th className='second-row'>이메일</th>
+                <th className='first-row'>이메일</th>
                 <th className='second-row'>전송날짜</th>
-                <th className='second-row'>응답여부</th>
-                <th className='second-row'>응답날짜</th>
+                <th className='third-row'>응답여부</th>
+                <th className='fourth-row'>응답날짜</th>
             </tr>
             </thead>
             <tbody>
@@ -167,8 +173,8 @@ const StyledTable = styled.table`
     tr{
       th{
         padding: 10px 15px;
-        background-color: #888;
-        color: #fff;
+        background-color: #F5F5F5;
+        color: black;
         font-weight: 700;
       }
     }
@@ -181,7 +187,16 @@ const StyledTable = styled.table`
       }
     }
   }
-  .second-row{
+  .first-row{
     width: 150px;
+  }
+  .second-row{
+    width: 300px;
+  }
+  .third-row{
+    width: 150px;
+  }
+  .fourth-row{
+    width: 300px;
   }
 `;
