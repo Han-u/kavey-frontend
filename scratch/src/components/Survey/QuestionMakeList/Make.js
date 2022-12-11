@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 
 import { UPDATE_TITLE } from "../../redux/Slices/SurveyMakeSlice";
 
-import { DeleteButton, PlusButton } from '../../../pages/SurveyMake';
+import { DeleteButton, PlusButton, RequiredButton } from '../../../pages/SurveyMake';
 
 import {TextField} from '@mui/material'
 
@@ -20,8 +20,7 @@ const styles = {
     },
 }
 
-
-function Make({id, title}) {
+function Make({id, title,required}) {
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -34,6 +33,7 @@ function Make({id, title}) {
                 <div style={{float:'left'}}>
                     <DeleteButton id={id}/>
                 </div>
+                <RequiredButton id={id} required={required}/>
                 <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
                 <div style={{float:'right'}}>
                     <PlusButton id={id}/>

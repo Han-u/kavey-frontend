@@ -34,7 +34,7 @@ function App() {
         <Route path="/linkfloating" element={<LinkFloating/>}/>
         <Route path="/searchparticipant" element={<ModalSearchParticipant/>}/>
         <Route path="/report" element={<MyDocument/>}/>
-        <Route path="/answer" element={<SurveyAnswer/>}/>
+        <Route path="/answer/:surveyId" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
         <Route path="/testproxy" element={<ProxyTest/>}/>
         <Route path="/result" element={<SurveyResult/>}/>

@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux';
-import { ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
+import { ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,TextField} from '@mui/material';
 
 const styles = {
@@ -18,17 +18,20 @@ const styles = {
 
 
 
-function ObjectResult({id, title}) {
+function ObjectResult({purpose,id, title,required}) {
     const dispatch = useDispatch();
     const onChange = (e) => {
-        dispatch({type:ANSWER,id:id,value:e.target.value});
+        dispatch(ANSWER_SUBJECTIVE({ordering:id,value:e.target.value}));
+        dispatch(CHECK_ANSWER());
     };
 
     return (  
         <div style={styles.container}>
-            <Typography variant="h4" fontFamily="HallymGothic-Regular"
-            style={{marginBottom:'20px'}}
-            >{title}</Typography>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
+                {required === true && <h1 style={{color: "red"}} >*</h1> }
+                <Typography variant="h4" fontFamily="HallymGothic-Regular"
+                style={{marginBottom:'20px'}}>{title}</Typography>
+            </div>
             <TextField label="답변을 입력해주세요" onChange={onChange}></TextField>
         </div> 
         

@@ -6,14 +6,15 @@ import { CREATE_OBJECTIVE,
   CREATE_MULTIPLE,
   CREATE_TRUEFALSE,
   CREATE_STAR,
-  DELETE,}  from '../components/redux/Slices/SurveyMakeSlice';
+  DELETE,
+  UPDATE_REQUIRED,}  from '../components/redux/Slices/SurveyMakeSlice';
 
 
 import QuestionMakeList from '../components/Survey/QuestionMakeList';
-import QuestionResultList from '../components/Survey/QuestionResultList';
+import QuestionResultList, { MAKE } from '../components/Survey/QuestionResultList';
 import produce from 'immer';
 
-import {Menu,MenuItem,Button,IconButton} from '@mui/material'
+import {Menu,MenuItem,Button,IconButton,Tooltip} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { TO_BACKEND_OPTION } from '../components/redux/Slices/SurveyOptionSlice';
 
@@ -45,7 +46,7 @@ function SurveyMake() {
                 marginRight:'auto',
                 width:'50%',
                 borderLeft:'1px solid lightgray'}}>
-                  <QuestionResultList/>
+                  <MakeQuestionResultList/>
                 </div>
             </div>
         </div>
@@ -125,12 +126,53 @@ export function PlusButton({id}){
 }
 
 export function DeleteButton({id}){
+    const question = useSelector((state)=>state.surveyMake.question);
     const dispatch = useDispatch();
-    return(
-      <div>
-        <IconButton variant="contained" color="error" size="small" 
-        onClick={() => {dispatch(DELETE({id:id}));
-        }}><DeleteIcon /></IconButton>
-       </div>
+
+    if( question.length >= 2){
+      return(
+        <div>
+          <IconButton variant="contained"  size="small" 
+          onClick={() => {dispatch(DELETE({id:id}));
+          }}><DeleteIcon/></IconButton>
+         </div>
+      );
+
+    }
+    else{
+      return(
+        <div>
+          <Tooltip title="질문은 하나 이상 필요합니다!">
+          <IconButton variant="contained"  size="small" ><DeleteIcon/></IconButton>
+            </Tooltip>
+         </div>
+      );
+
+    }
+    
+}
+
+
+export function RequiredButton({id,required}){
+  const dispatch = useDispatch();
+  return(
+    <div>
+      <Button variant="contained"  size="small" 
+      onClick={() => {dispatch(UPDATE_REQUIRED({id:id}));
+      }}>{required.toString()}
+      </Button>
+     </div>
+  );
+}
+
+export function MakeQuestionResultList(){
+    const surveyOption=useSelector((state)=>state.surveyOption);
+    const question = useSelector((state)=>state.surveyMake.question);
+
+
+
+    return (
+    <QuestionResultList purpose={MAKE} surveyOption={surveyOption} question={question}/>
     );
+
 }
