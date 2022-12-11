@@ -6,7 +6,7 @@ import { OBJECTIVE, STAR, TRUEFALSE } from '../redux/Slices/SurveyMakeSlice';
 import produce from 'immer';
 
 
-function ResultStatics({surveyId,limitPerson}) {
+function ResultStatics({surveyId,limitPerson,question}) {
     const {isLoading,data,isError,error} = useQuery(RESULT_STATICS, ()=>getStaticsResult(surveyId));
 
     if(isLoading){
@@ -20,14 +20,13 @@ function ResultStatics({surveyId,limitPerson}) {
     return (
         <div>
             <AttendStatics attendCount={data.attendCount} limitPerson={limitPerson}/>
-            <QuestionStaticsList statics={data.responseQuestionResultList}/>
+            <QuestionStaticsList statics={data.responseQuestionResultList} question={question}/>
         </div>
       );
 }
 export default ResultStatics;
 
 function AttendStatics({attendCount,limitPerson}){
-  console.log(attendCount,limitPerson);
   if(limitPerson!=undefined){
     let data = [
       {
@@ -61,7 +60,7 @@ function AttendStatics({attendCount,limitPerson}){
 }
 
 
-function QuestionStaticsList({statics}) {  
+function QuestionStaticsList({statics,question}) {  
   console.log(statics);
   let graphs = statics.map(d=>{
     let s;
@@ -71,6 +70,8 @@ function QuestionStaticsList({statics}) {
           <p>{dd.value}</p>
         ));
         return <div>
+            <h2>id : {d.questionId}</h2>
+            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
             <h2>type : {d.type}</h2>
             <h2>카운트 수 : {d.attendCount}</h2>
             <p>{s}</p>
@@ -96,6 +97,8 @@ function QuestionStaticsList({statics}) {
         );
 
         return <div>
+            <h2>id : {d.questionId}</h2>
+            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
             <h2>type : {d.type}</h2>
             <h2>카운트 수 : {d.attendCount}</h2>
             <Barchart  keys={keys} data={s}/>
@@ -111,6 +114,8 @@ function QuestionStaticsList({statics}) {
           }
         ));
           return <div>
+            <h2>id : {d.questionId}</h2>
+            <h2>title: {question.filter(dd=>dd.questionId===d.questionId)[0].title}</h2>
             <h2>type : {d.type}</h2>
             <h2>카운트 수 : {d.attendCount}</h2>
             <Piechart  data={s}/>

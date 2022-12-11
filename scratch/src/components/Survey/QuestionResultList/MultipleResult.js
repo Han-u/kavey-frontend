@@ -1,8 +1,9 @@
 import { useState } from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
 import { CHECKBOX, RADIO } from "../../redux/Slices/SurveyMakeSlice";
+import { RESPONSE,RESULT } from '../QuestionResultList';
 
 const styles = {
     container: {
@@ -18,7 +19,7 @@ const styles = {
     },
 }
 
-function MultipleResult({purpose,id, title,required,canMulti,type,response}) {  
+function MultipleResult({purpose,q_id,id, title,required,canMulti,type,response}) {  
     return (  
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
@@ -27,7 +28,7 @@ function MultipleResult({purpose,id, title,required,canMulti,type,response}) {
                 style={{marginBottom:'20px'}}>{title}</Typography>
             </div>
             <p>{canMulti}</p>
-            <ResponseList purpose={purpose} question_id={id} canMulti={canMulti} type ={type} list={response}/>
+            <ResponseList purpose={purpose} q_id={q_id} ordering={id} canMulti={canMulti} type ={type} list={response}/>
         </div> 
         
     );
@@ -35,14 +36,18 @@ function MultipleResult({purpose,id, title,required,canMulti,type,response}) {
 
 export default MultipleResult;
 
-function ResponseList({purpose,question_id,canMulti,type,list}) {
+function ResponseList({purpose,q_id,ordering,canMulti,type,list}) {
+    const data = useSelector((state)=>state.surveyPersonal.result);
+    const filter_data = data.filter((d)=>d.questionId == q_id);
+    console.log("객관:",filter_data);
+    
     const dispatch = useDispatch();
 
     const [answer,setAnswer] = useState([]);
     
     const onCheckHandler = (e) => {
         if(type == RADIO){
-            dispatch(ANSWER_MULTIPLE_RADIO({ordering:question_id,value:e.target.id}));
+            dispatch(ANSWER_MULTIPLE_RADIO({ordering:ordering,value:e.target.id}));
             dispatch(CHECK_ANSWER());
         }
         else if(type==CHECKBOX){
@@ -55,7 +60,7 @@ function ResponseList({purpose,question_id,canMulti,type,list}) {
                 newAnswer.splice(id,1);
             }  
             setAnswer(newAnswer);
-            dispatch(ANSWER_MULTIPLE_CHECKBOX({ordering:question_id,value:newAnswer}));
+            dispatch(ANSWER_MULTIPLE_CHECKBOX({ordering:ordering,value:newAnswer}));
             dispatch(CHECK_ANSWER());
         }
     };
@@ -63,15 +68,31 @@ function ResponseList({purpose,question_id,canMulti,type,list}) {
 
     let responseList;
     if(list!=undefined){
-        responseList = list.map(
-            r => (
-                <div>
-                    <input name={question_id} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}  onChange={(e) => onCheckHandler(e)}/> 
-                    <p>{r.value}</p>
-                </div>
-
+        if(purpose!=RESULT){
+            responseList = list.map(
+                r => (
+                    <div>
+                        <input name={ordering} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}  onChange={(e) => onCheckHandler(e)}/> 
+                        <p>{r.value}</p>
+                    </div>
+    
+                )
             )
-        )
+        }
+        else{
+            responseList = list.map(
+                r => {
+                    let result = filter_data.filter((dd)=>dd.answer==r.optionId);
+                    return(
+                        <div>
+                            <input readOnly={true} checked={result.length > 0 ? true :false} name={ordering} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}/> 
+                            <p>{r.value}</p>
+                        </div>
+        
+                    )
+                }
+            )
+        }
     }
 
     return(

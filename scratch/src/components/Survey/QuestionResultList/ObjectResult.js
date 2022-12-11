@@ -1,6 +1,7 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,TextField} from '@mui/material';
+import { RESPONSE,RESULT } from '../QuestionResultList';
 
 const styles = {
     container: {
@@ -18,7 +19,12 @@ const styles = {
 
 
 
-function ObjectResult({purpose,id, title,required}) {
+function ObjectResult({purpose,q_id,id, title,required}) {
+    const data = useSelector((state)=>state.surveyPersonal.result);
+
+    const filter_data = data.filter((d)=>d.questionId == q_id);
+
+
     const dispatch = useDispatch();
     const onChange = (e) => {
         dispatch(ANSWER_SUBJECTIVE({ordering:id,value:e.target.value}));
@@ -32,7 +38,7 @@ function ObjectResult({purpose,id, title,required}) {
                 <Typography variant="h4" fontFamily="HallymGothic-Regular"
                 style={{marginBottom:'20px'}}>{title}</Typography>
             </div>
-            <TextField label="답변을 입력해주세요" onChange={onChange}></TextField>
+            {purpose!=RESULT?  <input type="text" label="답변을 입력해주세요" onChange={onChange}/>: <input type="text" value={filter_data[0].answer} readOnly={true}/>}    
         </div> 
         
     );

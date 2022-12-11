@@ -24,9 +24,8 @@ export const getAllResult= async (surveyId) => {
 
 
 export const RESULT_PERSONAL = "RESULT_PERSONAL";
-export const getPersonalResult= async (surveyId) => {
-    const uid=1;
-    const { data } = await  axios.get('/api/survey/'+surveyId+'/result/attend/'+uid);
+export const getPersonalResult= async (surveyId,attendId) => {
+    const { data } = await  axios.get('/api/survey/'+surveyId+'/result/attend/'+attendId);
     return data;
 };
 
