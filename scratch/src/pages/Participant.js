@@ -23,25 +23,25 @@ function Participant(){
 
         },
         main : {
-            paddingTop:35
+            paddingTop:50
         },
-
 
 
         body : {
             padding: 30,
-            backgroundColor: '#F5F5F5'
+            backgroundColor: '#F5F5F5',
+            height: '100vh',
         },
         btn : {
-            padding: 10,
-            paddingLeft: 0,
 
         },
         Container: {
             margin:60,
-            padding: 20,
-            backgroundColor: 'white'
-        }
+            padding: 40,
+            backgroundColor: 'white',
+            minHeight: 960,
+            borderRadius: 25,
+        },
     };
 
 
@@ -78,7 +78,7 @@ function Participant(){
         color: 'black',
         boxShadow: 'none',
         fontFamily: [
-            'NanumSquare',
+            'NanumSquareR',
         ],
 
     });
@@ -88,7 +88,7 @@ function Participant(){
         color: 'black',
         boxShadow: 'none',
         fontFamily: [
-            'NanumSquare',
+            'NanumSquareR',
         ],
         marginLeft:15,
 
@@ -125,16 +125,18 @@ function Participant(){
                         <StyledTable>
                             <thead>
                             <tr>
-                                <th className='first-row'>이메일</th>
-                                <th className='second-row'>전송날짜</th>
-                                <th className='third-row'>응답여부</th>
-                                <th className='fourth-row'>응답날짜</th>
+                                <th className='check-row'></th>
+                                <th className='first-row' style={style.th}>이메일</th>
+                                <th className='second-row' style={style.th}>전송날짜</th>
+                                <th className='third-row' style={style.th}>응답여부</th>
+                                <th className='fourth-row' style={style.th}>응답날짜</th>
                             </tr>
                             </thead>
 
                             <tbody>
                             {backResult.map((result,key)=>(
                                 <tr key={key}>
+                                    <td className='check-row'></td>
                                     <td key={result.email}>{result.sendEmail}</td>
                                     <td key={result.sendDt}>{result.sendDate}</td>
                                     <td key={result.res}>{result.status}</td>
@@ -161,6 +163,8 @@ const StyledTable = styled.table`
         background-color: #F5F5F5;
         color: black;
         font-weight: 700;
+        font-family: 'NanumSquareB';
+        font-size: 15
       }
     }
   }
@@ -169,17 +173,21 @@ const StyledTable = styled.table`
       td{
         padding: 7px 15px;
         border-bottom: 1px solid #eee;
+        font-family: 'NanumSquareR';
       }
     }
   }
+  .check-row{
+    width: 43px;
+  }
   .first-row{
-    width: 150px;
+    width: 300px;
   }
   .second-row{
     width: 300px;
   }
   .third-row{
-    width: 150px;
+    width: 300px;
   }
   .fourth-row{
     width: 300px;
