@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
 import { ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
-import { RESPONSE } from '../QuestionResultList';
+import { RESPONSE,RESULT } from '../QuestionResultList';
 
 const styles = {
     container: {
@@ -45,7 +45,7 @@ function TrueFalseResult({purpose,q_id,id,title,required}){
             </div>
             
             <div>
-                {purpose==RESPONSE ? 
+                {purpose!=RESULT ? 
                 <ButtonGroup varient="outlined" size="large">
                 <Button variant={clicked===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
                 <Button variant={clicked===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>

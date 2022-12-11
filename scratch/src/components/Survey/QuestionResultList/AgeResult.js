@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
 import { ANSWER_AGE, ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
-import { RESPONSE } from '../QuestionResultList';
+import { RESPONSE, RESULT } from '../QuestionResultList';
 
 
 const styles = {
@@ -23,7 +23,7 @@ const styles = {
 
 function AgeResult({purpose,id,title,required}) {
     const data = useSelector((state)=>state.surveyPersonal.age);
-    console.log("나이:",data);
+    console.log("나이나이나ㅣ이나이나인:",data);
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -43,7 +43,7 @@ function AgeResult({purpose,id,title,required}) {
             </div>
             
             <div>
-                {purpose==RESPONSE?  <input type="text" onChange={onChange}/>: <input type="text" value={data} readOnly={true}/>}    
+                {purpose!=RESULT?  <input type="text" onChange={onChange}/>: <input type="text" value={data} readOnly={true}/>}    
             </div>
         </div>
     )

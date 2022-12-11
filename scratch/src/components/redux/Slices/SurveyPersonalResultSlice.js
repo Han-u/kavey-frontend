@@ -11,6 +11,10 @@ export const SurveyPersonalResultSlice=createSlice(
             GET_RESULT:(state,action) =>{
                 const result = action.payload.data;
                 console.log(result); 
+                result.gender!=""? state.gender = result.gender: state.age = undefined;
+                result.age!=""? state.age = result.age:  state.age = undefined;
+                
+
                 state.result = result.responseUserAnswerDtos;
             },
         }

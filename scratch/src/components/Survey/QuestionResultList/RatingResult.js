@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import {useDispatch,useSelector} from 'react-redux';
 import {  ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
-import { RESPONSE } from '../QuestionResultList';
+import { RESPONSE, RESULT } from '../QuestionResultList';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -69,30 +69,35 @@ function RatingResult({purpose,q_id,id,title,required}) {
               <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
             </div>
             <div align="center">
-              <Stars align="center">
-                  {ARRAY.map(el => {
-                      if(purpose==RESPONSE){
-                        return (
-                          <FaStar
-                              key={el}
-                              size="50"
-                              onClick={() => StarClick(el)}
-                              className={clicked[el] && 'yellowStar'}
-                          />
-                      );
-
-                      }
-                      else{
-                        return (
-                          <FaStar
-                              key={el}
-                              size="50"
-                              className={clicked[el] && 'yellowStar'}
-                          />
-                      );
-                      }
-                  })}
+              {purpose!=RESULT? 
+                <Stars align="center">
+                {ARRAY.map(el => {
+                      return (
+                        <FaStar
+                            key={el}
+                            size="50"
+                            onClick={() => StarClick(el)}
+                            className={clicked[el] && 'yellowStar'}
+                        />
+                    );
+                    }
+                )}
               </Stars>
+              : 
+                <StarsResult align="center">
+                {ARRAY.map(el => {
+                      return (
+                        <FaStar
+                            key={el}
+                            size="50"
+                            className={clicked[el] && 'yellowStar'}
+                        />
+                    );
+                    }
+                )}
+              </StarsResult>
+                
+              }
             </div>
         </div>
     );
@@ -137,3 +142,24 @@ const Stars = styled.div`
     color: #fcc419;
   }
 `;
+
+
+const StarsResult = styled.div`
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  margin-left:140px;
+
+  & svg {
+    color: gray;
+    cursor: pointer;
+  }
+  .yellowStar {
+    color: #fcc419;
+  }
+`;
+
+
+
+
+

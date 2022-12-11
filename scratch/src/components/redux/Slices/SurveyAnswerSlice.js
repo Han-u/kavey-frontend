@@ -148,7 +148,7 @@ export const SurveyAnswerSlice=createSlice(
                             }
                         }
                         else{
-                            (state.answer.surveySubjective[i].value!='') ? cnt+=1 : flag=-1; 
+                            (state.answer.surveySubjective[i].value!=='') ? cnt+=1 : flag=-1; 
                         }
                     }
                 })

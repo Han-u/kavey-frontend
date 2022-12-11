@@ -1,7 +1,7 @@
 import {useDispatch,useSelector} from 'react-redux';
 import { ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,TextField} from '@mui/material';
-import { RESPONSE } from '../QuestionResultList';
+import { RESPONSE,RESULT } from '../QuestionResultList';
 
 const styles = {
     container: {
@@ -38,7 +38,7 @@ function ObjectResult({purpose,q_id,id, title,required}) {
                 <Typography variant="h4" fontFamily="HallymGothic-Regular"
                 style={{marginBottom:'20px'}}>{title}</Typography>
             </div>
-            {purpose==RESPONSE?  <input type="text" label="답변을 입력해주세요" onChange={onChange}/>: <input type="text" value={filter_data[0].answer} readOnly={true}/>}    
+            {purpose!=RESULT?  <input type="text" label="답변을 입력해주세요" onChange={onChange}/>: <input type="text" value={filter_data[0].answer} readOnly={true}/>}    
         </div> 
         
     );
