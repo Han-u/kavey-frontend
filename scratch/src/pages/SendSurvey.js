@@ -155,18 +155,14 @@ function SendSurvey() {
     const [visible,setVisible] =useState(false);
     return (
         <div>
-            <div align='center' style={{backgroundColor:'white',
-                height:'120px',
-                position:'fixed',
-                width:'100%',
-                zIndex:'1',
-                paddingTop:'30px',
-                marginBottom:'10px',
-                borderBottom:'1px solid lightgray',}}>
-                <div style={{width:"50%",backgroundColor: 'white'}}>
+            <div align='center' style={{backgroundColor:'#FFD701',
+                                        height:'100px',
+                                        position:'fixed',
+                                        width:'100%',
+                                        zIndex:'1',                                    
+                                        borderBottom:'1px solid lightgray',}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
-                </div>
-            </div>
+            </div>    
             <div style={style.header}>
                 <Typography variant="h4" fontFamily="HallymGothic-Regular">
 

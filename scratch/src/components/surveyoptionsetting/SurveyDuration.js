@@ -86,7 +86,7 @@ function SurveyDuration() {
             <div style={{float:"left",marginBottom:"20px"}}>        
               <SurveyDatePicker></SurveyDatePicker>
             </div>
-            <div >
+            <div style={{marginTop:"20px"}}>
                 <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonWeek}>7일</Button>
                 <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonDoubleWeek}>14일</Button>
                 <Button variant="outlined" style={{marginRight:"10px",height:"30px"}} onClick={QuickButtonMonth}>30일</Button>

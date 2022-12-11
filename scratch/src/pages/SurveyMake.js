@@ -29,18 +29,14 @@ function SurveyMake() {
 
     return ( 
         <div style={{height:'100%',width:'100%'}}>
-            <div align='center' style={{backgroundColor:'white',
-                                        height:'120px',
+            <div align='center' style={{backgroundColor:'#FFD701',
+                                        height:'100px',
                                         position:'fixed',
                                         width:'100%',
-                                        zIndex:'1',
-                                        paddingTop:'30px',
-                                        marginBottom:'10px',
+                                        zIndex:'1',                                    
                                         borderBottom:'1px solid lightgray',}}>
-                <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
-                </div>
-            </div>
+            </div>    
             <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px'}} >
                 <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>

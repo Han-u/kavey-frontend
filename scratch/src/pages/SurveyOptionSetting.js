@@ -37,23 +37,19 @@ function SurveyOptionSetting() {
 
     return (
         <div>      
-            <div align='center' style={{backgroundColor:'white',
-                                        height:'120px',
+            <div align='center' style={{backgroundColor:'#FFD701',
+                                        height:'100px',
                                         position:'fixed',
                                         width:'100%',
-                                        zIndex:'1',
-                                        paddingTop:'30px',
+                                        zIndex:'1',                                    
                                         borderBottom:'1px solid lightgray',}}>
-                <div style={{width:"50%",backgroundColor: 'white'}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
-                </div>
-            </div>
-            
+            </div>         
             <div align='center' style={{align:'center',
                                             backgroundColor:surveyOption.theme,
-                                            height:'100%',
+                                            height:'100vh',
                                             width:'100%',
-                                            paddingTop:'120px'}}>
+                                            paddingTop:'100px'}}>
                 <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>
                     <div style={{width:'960px',
                             height:'100%',
