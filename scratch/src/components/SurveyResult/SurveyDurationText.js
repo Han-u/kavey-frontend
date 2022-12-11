@@ -16,7 +16,7 @@ function SurveyDurationText(props) {
             fontSize: '3px', fontFamily:'NanumSquareL'
         },
         dateBox : {
-            backgroundColor: '#FAFAFA',
+            backgroundColor: '#F5F5F5',
             fontFamily: 'NanumSquareR',
             fontSize: 14,
             height: 25,

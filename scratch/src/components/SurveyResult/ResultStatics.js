@@ -17,7 +17,7 @@ const style = {
     },
     subText: {
         width: 500,
-        backgroundColor: '#FAFAFA',
+        backgroundColor: '#F5F5F5',
         margin: 10,
         padding: 10,
         fontFamily: 'NanumSquareR',
@@ -68,7 +68,7 @@ function AttendStatics({attendCount,limitPerson}){
     return(
       <div style={{
           width: '80%',
-          background: "#FAFAFA",
+          background: "#F5F5F5",
           borderRadius: 10}}>
           <div style={{paddingTop: 15}}>
               <span style={style.title}>응답 현황</span><br/>
@@ -82,7 +82,7 @@ function AttendStatics({attendCount,limitPerson}){
     return(
         <div style={{
             width: '80%',
-            background: "#FAFAFA",
+            background: "#F5F5F5",
             borderRadius: 10}}>
             <div style={{paddingTop: 15}}>
                 <span style={{fontFamily: 'NanumSquareR', fontSize: 30}}>응답 현황</span><br/>

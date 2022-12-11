@@ -54,7 +54,7 @@ function SurveyAccessType() {
                         <Typography fontFamily="NanumSquareR" style={{fontSize: '15px'}}>설문조사 인원 설정</Typography>
                     </label>
                     <br></br>
-                    <input style={{backgroundColor: '#FAFAFA', border: '0px'}} type="number" id="limitPerson" name="limitPerson" placeholder="(0 : 무제한)" value={limitPerson} min="0" disabled = {checkPublic()}  onChange={(e)=>handleChange(e.target.value)}/>
+                    <input style={{backgroundColor: '#F5F5F5', border: '0px'}} type="number" id="limitPerson" name="limitPerson" placeholder="(0 : 무제한)" value={limitPerson} min="0" disabled = {checkPublic()}  onChange={(e)=>handleChange(e.target.value)}/>
                 </div>
             </div>   
         </div>
