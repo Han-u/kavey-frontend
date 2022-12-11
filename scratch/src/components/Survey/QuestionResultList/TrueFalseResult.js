@@ -1,4 +1,4 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
@@ -19,7 +19,11 @@ const styles = {
     },
 }
 
-function TrueFalseResult({purpose,id,title,required}){
+function TrueFalseResult({purpose,q_id,id,title,required}){
+    const data = useSelector((state)=>state.surveyPersonal.result);
+    const filter_data = data.filter((d)=>d.questionId == q_id)
+    console.log("찬반:",filter_data);
+    
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState();
@@ -41,10 +45,18 @@ function TrueFalseResult({purpose,id,title,required}){
             </div>
             
             <div>
+                {purpose==RESPONSE ? 
                 <ButtonGroup varient="outlined" size="large">
-                    <Button variant={clicked===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
-                    <Button variant={clicked===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>
+                <Button variant={clicked===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
+                <Button variant={clicked===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>
                 </ButtonGroup>
+                :
+                <ButtonGroup varient="outlined" size="large">
+                    <Button variant={Boolean(filter_data[0].answer)===true?"contained":"outlined"} onClick={()=>setClicked(true)}>찬성</Button>
+                    <Button variant={Boolean(filter_data[0].answer)===false?"contained":"outlined"} onClick={()=>setClicked(false)}>반대</Button>
+                </ButtonGroup>
+                }
+                
             </div>
         </div>
     )

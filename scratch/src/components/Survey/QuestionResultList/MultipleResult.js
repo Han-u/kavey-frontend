@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { ANSWER, ANSWER_MULTIPLE_CHECKBOX, ANSWER_MULTIPLE_RADIO, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import {Typography,} from '@mui/material'
 import { CHECKBOX, RADIO } from "../../redux/Slices/SurveyMakeSlice";
@@ -18,7 +18,7 @@ const styles = {
     },
 }
 
-function MultipleResult({purpose,id, title,required,canMulti,type,response}) {  
+function MultipleResult({purpose,q_id,id, title,required,canMulti,type,response}) {  
     return (  
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
@@ -36,6 +36,9 @@ function MultipleResult({purpose,id, title,required,canMulti,type,response}) {
 export default MultipleResult;
 
 function ResponseList({purpose,question_id,canMulti,type,list}) {
+    const data = useSelector((state)=>state.surveyPersonal.result);
+    console.log("객관:",data);
+    
     const dispatch = useDispatch();
 
     const [answer,setAnswer] = useState([]);

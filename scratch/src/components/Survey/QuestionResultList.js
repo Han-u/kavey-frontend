@@ -16,7 +16,7 @@ export const RESPONSE = "RESPONSE";
 export const RESULT = "RESULT";
 
 
-function QuestionResultList({purpose,surveyOption,question,value}) {
+function QuestionResultList({purpose,surveyOption,question}) {
     let list = [];
 
     if(question!==undefined){
@@ -24,17 +24,17 @@ function QuestionResultList({purpose,surveyOption,question,value}) {
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
-                        return <ObjectResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
+                        return <ObjectResult purpose={purpose} q_id={r.questionId} id={r.ordering} title={r.title} required={r.required}/>
                     case MULTIPLE:
-                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} response={r.optionList} />
+                        return <MultipleResult purpose={purpose} q_id={r.questionId}  id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} response={r.optionList} />
                     case RADIO:
-                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
+                        return <MultipleResult purpose={purpose} q_id={r.questionId}  id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
                     case CHECKBOX:
-                        return <MultipleResult purpose={purpose} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
+                        return <MultipleResult purpose={purpose} q_id={r.questionId} id={r.ordering} title={r.title} required={r.required} canMulti={r.canMulti} type={r.type} response={r.optionList} />
                     case TRUEFALSE:
-                        return <TrueFalseResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
+                        return <TrueFalseResult purpose={purpose} q_id={r.questionId}  id={r.ordering} title={r.title} required={r.required}/>
                     case STAR:
-                        return <RatingResult purpose={purpose} id={r.ordering} title={r.title} required={r.required}/>
+                        return <RatingResult purpose={purpose} q_id={r.questionId} id={r.ordering} title={r.title} required={r.required}/>
                 }
             }
         )

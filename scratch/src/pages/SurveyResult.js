@@ -81,7 +81,7 @@ function SurveyResult(){
                 <div style={style.surveyContainer}>
                     {status === 'info'?<ResultSurveyInfo surveyId={surveyId}/>:null}
                     {status === 'participant'?<ResultParticipant surveyId={surveyId}/>:null}
-                    {status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson}/>:null}
+                    {status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson} />:null}
                 </div>
             </div>
         </div>

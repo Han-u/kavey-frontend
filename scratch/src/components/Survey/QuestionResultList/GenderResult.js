@@ -1,4 +1,4 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
@@ -20,6 +20,8 @@ const styles = {
 }
 
 function GenderResult({purpose,id,title,required}){
+    const data = useSelector((state)=>state.surveyPersonal.gender);
+    console.log("성별:",data);
     const dispatch = useDispatch();
 
     const [gender, setGender] = useState();
@@ -41,10 +43,17 @@ function GenderResult({purpose,id,title,required}){
             </div>
             
             <div>
+            {purpose==RESPONSE?   
                 <ButtonGroup varient="outlined" size="large">
                     <Button variant={gender==="MALE"?"contained":"outlined"} onClick={()=>setGender("MALE")}>남자</Button>
                     <Button variant={gender==="FEMALE"?"contained":"outlined"} onClick={()=>setGender("FEMALE")}>여자</Button>
                 </ButtonGroup>
+            :
+            <ButtonGroup varient="outlined" size="large">
+                    <Button variant={data==="MALE"?"contained":"outlined"} >남자</Button>
+                    <Button variant={data==="MALE"?"contained":"outlined"} >여자</Button>
+            </ButtonGroup>
+            }          
             </div>
         </div>
     )

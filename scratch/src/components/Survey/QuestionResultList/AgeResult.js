@@ -1,4 +1,4 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 import {Button, ButtonGroup,Typography} from "@mui/material";
 import { useState } from 'react';
@@ -22,6 +22,8 @@ const styles = {
 
 
 function AgeResult({purpose,id,title,required}) {
+    const data = useSelector((state)=>state.surveyPersonal.age);
+    console.log("나이:",data);
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -41,7 +43,7 @@ function AgeResult({purpose,id,title,required}) {
             </div>
             
             <div>
-                <input type="text" onChange={onChange}/>
+                {purpose==RESPONSE?  <input type="text" onChange={onChange}/>: <input type="text" value={data} readOnly={true}/>}    
             </div>
         </div>
     )

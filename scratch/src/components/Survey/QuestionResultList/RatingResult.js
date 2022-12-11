@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {  ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
 import { RESPONSE } from '../QuestionResultList';
 
@@ -24,8 +24,11 @@ const styles = {
       marginBottom: '30px',
   },
 }
+let FLAG = -1;
+function RatingResult({purpose,q_id,id,title,required}) {
+    const data = useSelector((state)=>state.surveyPersonal.result);
+    const filter_data = data.filter((d)=>d.questionId == q_id)
 
-function RatingResult({purpose,id,title,required}) {
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -37,6 +40,11 @@ function RatingResult({purpose,id,title,required}) {
         }
         setClicked(clickStates);
     };
+
+    if(filter_data!=undefined && purpose!=RESPONSE && FLAG ==-1){
+      StarClick(filter_data[0].answer-1);
+      FLAG=1;
+    }
 
     useEffect(() => {
       let score = clicked.filter(Boolean).length;
@@ -54,7 +62,6 @@ function RatingResult({purpose,id,title,required}) {
           dispatch(CHECK_ANSWER());
         }
     };
-
     return (
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
@@ -64,7 +71,8 @@ function RatingResult({purpose,id,title,required}) {
             <div align="center">
               <Stars align="center">
                   {ARRAY.map(el => {
-                      return (
+                      if(purpose==RESPONSE){
+                        return (
                           <FaStar
                               key={el}
                               size="50"
@@ -72,6 +80,17 @@ function RatingResult({purpose,id,title,required}) {
                               className={clicked[el] && 'yellowStar'}
                           />
                       );
+
+                      }
+                      else{
+                        return (
+                          <FaStar
+                              key={el}
+                              size="50"
+                              className={clicked[el] && 'yellowStar'}
+                          />
+                      );
+                      }
                   })}
               </Stars>
             </div>
