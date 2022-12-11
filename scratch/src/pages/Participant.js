@@ -9,6 +9,19 @@ import Resend from "../components/Participant/Resend";
 
 
 function Participant(){
+    const toDateFormat=(date) =>{
+        if (!date){
+            return ""
+        }
+        return date.split('T')[0]
+    }
+
+    const status = {
+        RESPONSE: '응답',
+        NONRESPONSE: '미응답',
+        REJECT: '거절'
+    }
+
     const style = {
         header0 : {
             flex: 1,
@@ -56,7 +69,7 @@ function Participant(){
 
     const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
-        return axios.get('http://localhost:8081/api/survey/'+sid+'/receiver')
+        return axios.get('/api/survey/'+sid+'/receiver')
     })
     if(isLoading){return <h2>success</h2>}
     if(isError){return <h2>Oops... {error.message}</h2>}
@@ -138,9 +151,9 @@ function Participant(){
                                 <tr key={key}>
                                     <td className='check-row'></td>
                                     <td key={result.email}>{result.sendEmail}</td>
-                                    <td key={result.sendDt}>{result.sendDate}</td>
-                                    <td key={result.res}>{result.status}</td>
-                                    <td key={result.resDay}>{result.responseDate}</td>
+                                    <td key={result.sendDt}>{toDateFormat(result.sendDate)}</td>
+                                    <td key={result.res}>{status[result.status]}</td>
+                                    <td key={result.resDay}>{toDateFormat(result.responseDate)}</td>
                                 </tr>
                             ))}
                             </tbody>

@@ -2,7 +2,10 @@ import {Button,Typography} from "@mui/material";
 
 function SurveyDurationText(props) {
     const toDateFormat=(date) =>{
-        return date.split('T')[0].replaceAll('-','/')
+        if (!date){
+            return ""
+        }
+        return date.split('T')[0]
     }
 
     const calcDurationDate=(start, end, date)=>{
