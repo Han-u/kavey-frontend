@@ -116,7 +116,7 @@ function SurveyResult(){
                         <div style={style.surveyContainer}>
                             {status === 'info'?<ResultSurveyInfo surveyId={surveyId}/>:null}
                             {status === 'participant'?<ResultParticipant surveyId={surveyId}/>:null}
-                            {status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson}/>:null}
+                            {status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson} question={data.questionList}/>:null}
                         </div>
                         {/*<div align="center" style={{marginTop:'30px'}}>*/}
 
@@ -132,29 +132,6 @@ function SurveyResult(){
                     </div>
                 </div>
             </div>
-            {/*<div style={style.body}>*/}
-            {/*    <div style={style.surveyContainer}>*/}
-            {/*        <h1>설문 이름 : {data.title}</h1>*/}
-            {/*        <h2>설문 설명 : {data.description}</h2>*/}
-            {/*    </div>*/}
-            {/*    <div style={{display: 'flex',flexDirection: 'row',justifyContent:'space-between'}}>*/}
-            {/*        <div style={style.btn}>*/}
-            {/*            <Button variant={status === 'info'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="info">설문 정보</Button>*/}
-            {/*            <Button variant={status === 'participant'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="participant">대상자 정보</Button>*/}
-            {/*            <Button variant={status === 'question'? "contained": "outlined"} onClick={onClick} sx={{marginRight: 1}} value="question">질문별 통계</Button>*/}
-            {/*        </div>*/}
-            {/*        <div style={style.btn}>*/}
-            {/*            <Button variant="contained" href="/report">*/}
-            {/*                리포트 작성*/}
-            {/*            </Button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div style={style.surveyContainer}>*/}
-            {/*        {status === 'info'?<ResultSurveyInfo surveyId={surveyId}/>:null}*/}
-            {/*        {status === 'participant'?<ResultParticipant surveyId={surveyId}/>:null}*/}
-            {/*        /!*{status === 'question'?<ResultStatics surveyId={surveyId} limitPerson={data.limitPerson}/>:null}*!/*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </div>
     )
 }

@@ -3,8 +3,9 @@ import { createSlice} from '@reduxjs/toolkit'
 export const SurveyListSlice=createSlice({
     name:'SurveyList',
     initialState:{        
-        value:[
-            /*
+        value:
+        /*
+            [
             {
                 id:1, status: 'making', title: "설문제목1",
                 startDt: '2022-10-02', endDt:'2022-11-03',
@@ -41,8 +42,182 @@ export const SurveyListSlice=createSlice({
                 startDt: '2022-10-02', endDt:'2022-11-03',
                 isOpen: true, subject: 31, participation: 2
             }
+        ]
             */
-        ]},
+            [
+                {
+                    "title": "세빈테스트",
+                    "limitPerson": 20,
+                    "surveyStartDate": "2022-12-01T10:30:54.473",
+                    "surveyEndDate": "2022-12-31T10:30:54.473",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "세빈테스트",
+                    "limitPerson": 16,
+                    "surveyStartDate": "2022-12-02T07:38:31.06",
+                    "surveyEndDate": "2023-01-01T07:38:31.06",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": true
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-02T08:51:21.219",
+                    "surveyEndDate": "2022-12-02T08:51:21.219",
+                    "earlyEndDate": "2022-12-02T17:51:40.199472",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 1,
+                    "surveyStartDate": "2022-12-02T08:59:23.594",
+                    "surveyEndDate": "2023-01-01T08:59:23.594",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 1,
+                    "surveyStartDate": "2022-12-02T08:59:23.594",
+                    "surveyEndDate": "2023-01-01T08:59:23.594",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "stream test",
+                    "limitPerson": 2000,
+                    "surveyStartDate": "2022-12-04T07:56:35.895",
+                    "surveyEndDate": "2023-01-03T07:56:35.895",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문123",
+                    "limitPerson": 222,
+                    "surveyStartDate": "2022-12-04T08:14:55.744",
+                    "surveyEndDate": "2023-01-03T08:14:55.744",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "postgres sink connector 확인용!",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-04T09:17:03.12",
+                    "surveyEndDate": "2023-01-03T09:17:03.12",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "어떤 동물이 좋아?",
+                    "limitPerson": 100,
+                    "surveyStartDate": "2021-01-01T00:00:00",
+                    "surveyEndDate": "9999-01-01T00:00:00",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-09T04:21:43.889",
+                    "surveyEndDate": "2022-12-09T04:21:43.889",
+                    "earlyEndDate": "2022-12-09T13:25:20.327254",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T10:09:50.608",
+                    "surveyEndDate": "2022-12-10T10:09:50.608",
+                    "earlyEndDate": "2022-12-10T19:10:00.257417",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T10:09:50.608",
+                    "surveyEndDate": "2022-12-10T10:09:50.608",
+                    "earlyEndDate": "2022-12-10T19:10:20.158062",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "어떤 동물이 좋아?",
+                    "limitPerson": 100,
+                    "surveyStartDate": "2000-11-01T16:23:00",
+                    "surveyEndDate": "2001-12-01T16:24:00",
+                    "earlyEndDate": "2022-12-10T21:05:50.541757",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T12:06:35.039",
+                    "surveyEndDate": "2022-12-17T12:06:35.039",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T12:06:35.039",
+                    "surveyEndDate": "2022-12-17T12:06:35.039",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T12:06:35.039",
+                    "surveyEndDate": "2022-12-17T12:06:35.039",
+                    "earlyEndDate": null,
+                    "status": "PROGRESS",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T12:27:40.207",
+                    "surveyEndDate": "2022-12-10T12:27:40.207",
+                    "earlyEndDate": "2022-12-10T21:42:50.522673",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T12:52:00.272",
+                    "surveyEndDate": "2022-12-10T12:52:00.272",
+                    "earlyEndDate": "2022-12-10T21:56:10.827285",
+                    "status": "DONE",
+                    "private": false
+                },
+                {
+                    "title": "이름 없는 설문",
+                    "limitPerson": 0,
+                    "surveyStartDate": "2022-12-10T16:06:41.188",
+                    "surveyEndDate": "2022-12-10T16:06:41.188",
+                    "earlyEndDate": "2022-12-11T01:07:10.640628",
+                    "status": "DONE",
+                    "private": false
+                }
+            ]
+        },
     reducers:{
       deleteSurvey: (state,action)=>{
         //실제로는 api 통신 먼저 해야됨        

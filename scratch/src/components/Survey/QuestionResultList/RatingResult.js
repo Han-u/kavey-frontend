@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {  ANSWER_SUBJECTIVE, CHECK_ANSWER } from '../../redux/Slices/SurveyAnswerSlice';
-import { RESPONSE } from '../QuestionResultList';
+import { RESPONSE, RESULT } from '../QuestionResultList';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -24,8 +24,11 @@ const styles = {
       marginBottom: '30px',
   },
 }
+let FLAG = -1;
+function RatingResult({purpose,q_id,id,title,required}) {
+    const data = useSelector((state)=>state.surveyPersonal.result);
+    const filter_data = data.filter((d)=>d.questionId == q_id)
 
-function RatingResult({purpose,id,title,required}) {
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -37,6 +40,11 @@ function RatingResult({purpose,id,title,required}) {
         }
         setClicked(clickStates);
     };
+
+    if(filter_data!=undefined && purpose!=RESPONSE && FLAG ==-1){
+      StarClick(filter_data[0].answer-1);
+      FLAG=1;
+    }
 
     useEffect(() => {
       let score = clicked.filter(Boolean).length;
@@ -54,7 +62,6 @@ function RatingResult({purpose,id,title,required}) {
           dispatch(CHECK_ANSWER());
         }
     };
-
     return (
         <div style={styles.container}>
             <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
@@ -62,18 +69,35 @@ function RatingResult({purpose,id,title,required}) {
               <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
             </div>
             <div align="center">
-              <Stars align="center">
-                  {ARRAY.map(el => {
+              {purpose!=RESULT? 
+                <Stars align="center">
+                {ARRAY.map(el => {
                       return (
-                          <FaStar
-                              key={el}
-                              size="50"
-                              onClick={() => StarClick(el)}
-                              className={clicked[el] && 'yellowStar'}
-                          />
-                      );
-                  })}
+                        <FaStar
+                            key={el}
+                            size="50"
+                            onClick={() => StarClick(el)}
+                            className={clicked[el] && 'yellowStar'}
+                        />
+                    );
+                    }
+                )}
               </Stars>
+              : 
+                <StarsResult align="center">
+                {ARRAY.map(el => {
+                      return (
+                        <FaStar
+                            key={el}
+                            size="50"
+                            className={clicked[el] && 'yellowStar'}
+                        />
+                    );
+                    }
+                )}
+              </StarsResult>
+                
+              }
             </div>
         </div>
     );
@@ -118,3 +142,24 @@ const Stars = styled.div`
     color: #fcc419;
   }
 `;
+
+
+const StarsResult = styled.div`
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  margin-left:140px;
+
+  & svg {
+    color: gray;
+    cursor: pointer;
+  }
+  .yellowStar {
+    color: #fcc419;
+  }
+`;
+
+
+
+
+

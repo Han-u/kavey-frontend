@@ -27,6 +27,7 @@ export const SurveyAnswerSlice=createSlice(
                 let data = action.payload.data;
                 
                 //question 분리
+                console.log(data);
                 state.question = Object.assign(data.questionList);
 
                 //응답 체크 시 필요할 데이터
@@ -147,7 +148,7 @@ export const SurveyAnswerSlice=createSlice(
                             }
                         }
                         else{
-                            (state.answer.surveySubjective[i].value!='') ? cnt+=1 : flag=-1; 
+                            (state.answer.surveySubjective[i].value!=='') ? cnt+=1 : flag=-1; 
                         }
                     }
                 })

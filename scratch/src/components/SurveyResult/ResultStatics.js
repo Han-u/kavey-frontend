@@ -29,7 +29,7 @@ const style = {
     }
 }
 
-function ResultStatics({surveyId,limitPerson}) {
+function ResultStatics({surveyId,limitPerson,question}) {
     const {isLoading,data,isError,error} = useQuery(RESULT_STATICS, ()=>getStaticsResult(surveyId));
 
     if(isLoading){
@@ -43,14 +43,13 @@ function ResultStatics({surveyId,limitPerson}) {
     return (
         <div>
             <AttendStatics attendCount={data.attendCount} limitPerson={limitPerson}/>
-            <QuestionStaticsList statics={data.responseQuestionResultList}/>
+            <QuestionStaticsList statics={data.responseQuestionResultList} question={question}/>
         </div>
       );
 }
 export default ResultStatics;
 
 function AttendStatics({attendCount,limitPerson}){
-  console.log(attendCount,limitPerson);
   if(limitPerson!==undefined){
     let data = [
       {
@@ -95,7 +94,7 @@ function AttendStatics({attendCount,limitPerson}){
 }
 
 
-function QuestionStaticsList({statics}) {  
+function QuestionStaticsList({statics,question}) {
   console.log(statics);
   let graphs = statics.map(d=>{
     let s;
@@ -107,7 +106,7 @@ function QuestionStaticsList({statics}) {
         return (
             <div>
                 <div style={style.questionContainer}>
-                    <p style={style.title}>주관식 질문 : {d.title}</p>
+                    <p style={style.title}>{d.questionId} 주관식 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
                     <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
                     {s}
                 </div>
@@ -136,7 +135,7 @@ function QuestionStaticsList({statics}) {
 
         return <div>
             <div style={style.questionContainer}>
-            <p style={style.title}>별점 평점 질문 : {d.title}</p>
+            <p style={style.title}>{d.questionId} 별점 평점 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
             <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
             <Barchart  keys={keys} data={s}/>
         </div>
@@ -155,7 +154,7 @@ function QuestionStaticsList({statics}) {
         ));
           return <div>
               <div style={style.questionContainer}>
-                  <p style={style.title}>객관식 질문 : {d.title}</p>
+                  <p style={style.title}>{d.questionId} 객관식 질문 : {question.filter(dd=>dd.questionId===d.questionId)[0].title}</p>
                   <p style={style.description}>총 응답자 : {d.attendCount} 명</p>
                   <Piechart  data={s}/>
               </div>
