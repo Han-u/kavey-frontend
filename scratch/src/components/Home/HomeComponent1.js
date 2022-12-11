@@ -73,20 +73,12 @@ function HomeComponent1(){
                     justifyContent: 'center'}}>
                     {/* <h1 style={{fontWeight:'bold'}}>가장 귀여운 설문 = 좋설사</h1>
                     <h5 style={{marginTop:'20px',color:'#828282'}}>세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</h5> */}
-                    <Typography variant="h3" fontFamily="HallymGothic-Regular">가장 귀여운 설문 === 좋설사</Typography>
-                    <Typography variant="h6" fontFamily="HallymGothic-Regular">세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</Typography>
-                    <Button style={{marginTop:'70px'}}
-                    variant="contained"
-                    onClick={handleClick}
-                    >설문 제작하기!</Button>
-                </div>
-                <div style={{height:'100%',
-                            width:'40%',
-                            alignItems:'center',
-                            display: 'flex',
-                            backgroundColor:'#FFC31E'}}>
-                    <img style={{width:'100%'}}
-                    src="/images/mainimage.png"/>
+                    <Typography variant="h3" fontFamily="NanumSquareB">가장 귀여운 설문 == 좋설사</Typography>
+                    <Typography variant="h6" fontFamily="NanumSquareL">세상에서 가장 귀엽고 사용자 친화적인 설문을 만나보세요!</Typography>
+                    <Button style={{marginTop:'60px', borderRadius: '28px', fontFamily: "NanumSquareL", backgroundColor: "#202225"}}
+                            variant="contained"
+                            onClick={handleClick}
+                    >설문 제작하기</Button>
                 </div>
             </div>
             <div>

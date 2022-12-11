@@ -12,8 +12,6 @@ import {QueryClientProvider,QueryClient} from "react-query";
 import ModalsProvider from "./components/Modal/ModalsProvider";
 
 ReactModal.setAppElement("#root");
-const queryClient= new QueryClient();
-
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
 //   <Provider store={store}>
