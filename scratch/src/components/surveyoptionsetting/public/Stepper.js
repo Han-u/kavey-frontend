@@ -7,7 +7,8 @@ import { NEXT_LEVEL, TO_BACKEND_OPTION } from '../../redux/Slices/SurveyOptionSl
 import Swal from 'sweetalert2'
 import produce from 'immer';
 import axios from 'axios';
-import {IconButton, Typography} from "@mui/material"import { CHECKBOX,RADIO } from '../../redux/Slices/SurveyMakeSlice';
+import {IconButton, Typography} from "@mui/material"
+import { CHECKBOX,RADIO } from '../../redux/Slices/SurveyMakeSlice';
 
 import ReplyIcon from '@mui/icons-material/Reply';
 import StepperChild1 from './Stepper/StepperChild1';

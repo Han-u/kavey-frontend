@@ -38,7 +38,7 @@ function SurveyMake() {
                                         borderBottom:'1px solid lightgray',}}>
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
             </div>    
-            <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px'}} >
+            <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px' ,backgroundColor:'#F5F5F5',height:"100%"}} >
                 <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>
                 </div>

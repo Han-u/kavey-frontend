@@ -144,7 +144,7 @@ function Management(){
                     </div>
                     <div style={style.surveyContainer}>
                         <Grid container>
-                            {surveyList.map((m) =>{
+                            {surveyList.length ===0?<Typography fontFamily="NanumSquareB" style={{fontSize:"250px",margin:"auto"}}>텅</Typography>:surveyList.map((m) =>{
                                 if(status==='ALL'){
                                     return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else if(m.status.toUpperCase()===status){
@@ -152,7 +152,6 @@ function Management(){
                                 }else{
                                     return null;
                                 }
-
                             })}
                         </Grid>
                     </div>
