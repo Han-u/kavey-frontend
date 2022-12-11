@@ -2,7 +2,10 @@ import {Button,Typography} from "@mui/material";
 
 function SurveyDurationText(props) {
     const toDateFormat=(date) =>{
-        return date.split('T')[0].replaceAll('-','/')
+        if (!date){
+            return ""
+        }
+        return date.split('T')[0]
     }
 
     const calcDurationDate=(start, end, date)=>{
@@ -13,7 +16,7 @@ function SurveyDurationText(props) {
             fontSize: '3px', fontFamily:'NanumSquareL'
         },
         dateBox : {
-            backgroundColor: '#FAFAFA',
+            backgroundColor: '#F5F5F5',
             fontFamily: 'NanumSquareR',
             fontSize: 14,
             height: 25,

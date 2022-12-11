@@ -35,7 +35,7 @@ function SurveyDatePicker() {
   const ExampleCustomInput = React.forwardRef(({ value, onClick }, ref) => (
     <Tooltip title="시작일 ~ 종료일" placement="top">
       <Button 
-      style={{backgroundColor:"#FAFAFA"}}
+      style={{backgroundColor:"#F5F5F5"}}
       size="large" className="example-custom-input" onClick={onClick} ref={ref}>
         {value}
       </Button>

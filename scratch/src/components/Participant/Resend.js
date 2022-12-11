@@ -8,6 +8,19 @@ import axios  from 'axios'
 import SendIcon from '@mui/icons-material/Send';
 
 export default function Resend() {
+    const toDateFormat=(date) =>{
+        if (!date){
+            return ""
+        }
+        return date.split('T')[0]
+    }
+
+    const status = {
+        RESPONSE: '응답',
+        NONRESPONSE: '미응답',
+        REJECT: '거절'
+    }
+
     const style = {
         header : {
             display: 'flex',
@@ -63,7 +76,7 @@ export default function Resend() {
     }
     const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
-        return axios.get('http://localhost:8081/api/survey/'+sid+'/receiver')
+        return axios.get('/api/survey/'+sid+'/receiver')
     })
     if(isLoading){return <h2>success</h2>}
     if(isError){return <h2>Oops... {error.message}</h2>}
@@ -157,9 +170,9 @@ export default function Resend() {
                                checked={checkItems.includes(ddata.attendID) ? true : false} />
                     </td>
                     <td className='second-row'>{ddata.sendEmail}</td>
-                    <td className='second-row'>{ddata.sendDate}</td>
-                    <td className='second-row'>{ddata.status}</td>
-                    <td className='second-row'>{ddata.responseDate}</td>
+                    <td className='second-row'>{toDateFormat(ddata.sendDate)}</td>
+                    <td className='second-row'>{status[ddata.status]}</td>
+                    <td className='second-row'>{toDateFormat(ddata.responseDate)}</td>
                 </tr>
             ))}
             </tbody>
