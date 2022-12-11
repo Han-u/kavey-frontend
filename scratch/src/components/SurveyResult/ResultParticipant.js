@@ -2,6 +2,7 @@ import {useQuery} from 'react-query'
 import { Button,CircularProgress } from '@mui/material'
 import { ATTEND_NONRESPONSE, ATTEND_RESPONSE, getAttendResult, RESULT_ATTEND} from './other/Query';
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 let filter = "ALL";
@@ -35,7 +36,7 @@ function ResultParticipant({surveyId}) {
                 <Button onClick={()=>filterClick(ATTEND_RESPONSE)}>응답</Button>
                 <Button onClick={()=>filterClick(ATTEND_NONRESPONSE)}>무응답</Button>
             </div>
-            {filter != "ALL"? <ParticipantList participant = {reData} />:<ParticipantList participant = {data} />}
+            {filter != "ALL"? <ParticipantList surveyId={surveyId} participant = {reData} />:<ParticipantList surveyId={surveyId} participant = {data} />}
         </div>
     )
 }
@@ -44,15 +45,11 @@ export default ResultParticipant;
 
 
 
-function ParticipantList({participant}) {
-const handleClick=()=>{
-    Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-        })
-}
+function ParticipantList({surveyId,participant}) {
+    const navigate=useNavigate();
+    const handleClick=(attendId)=>{
+        navigate(`/result/`+surveyId+'/personal/'+attendId);
+    }
 
     let list;
     if(participant!=undefined){
@@ -63,7 +60,7 @@ const handleClick=()=>{
                 <p>{d.status}</p>
                 <p>{d.responseDate}</p>   
                 <p>{d.sendDate}</p>
-                {d.status==ATTEND_RESPONSE? <button onClick={handleClick}>링크맨</button>:null}
+                {d.status==ATTEND_RESPONSE? <button onClick={()=>handleClick(d.attendID)}>링크맨</button>:null}
                 <p>-----------------</p>
             </div>
         )

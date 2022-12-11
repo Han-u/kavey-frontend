@@ -7,7 +7,7 @@ import ResultParticipant from "../components/SurveyResult/ResultParticipant";
 import ResultStatics from "../components/SurveyResult/ResultStatics";
 import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
 import {useParams} from 'react-router-dom'
-import { getSurveyResult, RESULT_SURVEY } from "../components/SurveyResult/other/Query";
+import { getAttendResult, getSurveyResult, RESULT_ATTEND, RESULT_SURVEY } from "../components/SurveyResult/other/Query";
 function SurveyResult(){
     const { surveyId } = useParams();
 
@@ -46,6 +46,7 @@ function SurveyResult(){
     if(isError){
         return <h2>Oops... {error.message}</h2>
     }
+
 
     return (
         <div >

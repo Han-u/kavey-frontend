@@ -7,7 +7,6 @@ export const getSurveyResult = async (surveyId) => {
     return data;
 };
 
-
 export const RESULT_ATTEND = "RESULT_ATTEND";
 export const getAttendResult = async (surveyId) => {
     const { data } = await  axios.get('/api/survey/'+surveyId+'/receiver');

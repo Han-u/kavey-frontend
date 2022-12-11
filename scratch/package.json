@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:8081",
+  "proxy": "http://210.109.60.198:8089",
   "name": "scratch",
   "version": "0.1.0",
   "private": true,
