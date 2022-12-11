@@ -30,15 +30,21 @@ export default function Resend() {
         },
         body : {
             padding: 30,
-            backgroundColor: 'lightgray'
+            backgroundColor: '#F5F5F5',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
         },
         btn : {
-            alignItems: 'center',
-            height: 50,
+            display: 'flex',
+            alignItems: 'center'
         },
         Container: {
-
-            backgroundColor: 'white'
+            padding: 40,
+            backgroundColor: 'white',
+            maxWidth: "1200px",
+            width:"1200px",
+            borderRadius: '0 30px 30px 30px'
         }
 
     };
@@ -128,6 +134,8 @@ export default function Resend() {
     })
     const BootstrapButton1 = styled(Button)({
         backgroundColor: '#FFD701',
+        width: 100,
+        height: 40,
         color: 'black',
         boxShadow: 'none',
         fontFamily: [
