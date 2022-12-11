@@ -33,6 +33,10 @@ function SurveyList(props) {
         setAnchorEl(null);
     }
 
+    const handleChange= (e) =>{
+        console.log(e);
+    }
+
     const status = {
         making: '제작중',
         progress: '진행중',
@@ -106,7 +110,8 @@ function SurveyList(props) {
                                 <MenuItem onClick={handleClose}>설문 발송</MenuItem>
                                 <MenuItem onClick={handleClose}>설문 조기 마감</MenuItem>
                             </> : null}
-                        {props.data.status == 'done' ? <MenuItem component={Link} to="/result">결과 보기</MenuItem> : null}
+
+                        {props.data.status == 'done' ? <MenuItem component={Link} to="/result/" onClick={()=>handleChange(props.data.id)} >결과 보기</MenuItem> : null}
                         {props.data.status == 'done' ? <MenuItem component={Link} to="/report">리포트 작성</MenuItem> : null}
 
                     </Menu>

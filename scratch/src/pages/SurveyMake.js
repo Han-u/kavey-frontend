@@ -26,6 +26,7 @@ const tempStyle={
 
 function SurveyMake() {
   const step=useSelector((state)=>state.surveyOption.step);
+  const test=useSelector((state)=>state.surveyMake.question);
 
     return ( 
         <div style={{height:'100%',width:'100%'}}>
@@ -38,6 +39,7 @@ function SurveyMake() {
                     <HorizontalLinearStepper step={step}></HorizontalLinearStepper>
             </div>    
             <div align="center" style={{display:"flex",width:'100%',paddingTop:'130px'}} >
+              {/* <Button onClick={()=>console.log(test)}>출력</Button> */}
                 <div style={{marginLeft:'auto',marginRight:'auto',width:'50%'}}>
                   <QuestionMakeList/>
                 </div>

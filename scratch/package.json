@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:8081",
+  "proxy": "http://210.109.60.198:8089",
   "name": "scratch",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,9 @@
     "@loadable/component": "^5.15.2",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.11",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
     "@react-pdf/renderer": "^3.0.1",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",

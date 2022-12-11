@@ -13,15 +13,15 @@ import MultipleMake from './QuestionMakeList/MultipleMake';
 
 function QuestionMakeList() {
     const dispatch = useDispatch();
-
+    var questionlist=[]
+    var list=[]
     const data = useSelector((state)=>state.surveyMake.question);
     const handleDragEvent = (e) => {
         dispatch(UPDATE_ORDER({prev:e.oldIndex,next:e.newIndex}));
     }   
 
-    let list = [];
     if(data.length!==0){
-        list = data.map(
+        questionlist = data.map(
             r => {
                 switch (r.type) {
                     case OBJECTIVE:
@@ -35,6 +35,7 @@ function QuestionMakeList() {
                 }
             }
         )
+        list=questionlist.concat();
     }
     const renderData = <ReactDragList
     dataSource={list} 
