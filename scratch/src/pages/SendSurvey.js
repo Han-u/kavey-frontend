@@ -154,7 +154,7 @@ function SendSurvey() {
         color: 'black',
         boxShadow: 'none',
         fontFamily: [
-            'NanumSquare',
+            'NanumSquareR',
         ]
     });
 

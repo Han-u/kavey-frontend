@@ -25,8 +25,8 @@ function StepperChild1(){
       flexDirection: 'row',
       justifyContent:'space-between',
       alignItems: 'center'}}>        
-        <Box sx={{width:"270px",
-        height:"60px",
+        <Box sx={{width:"250px",
+        height:"50px",
         backgroundColor:"white",
         borderRadius:"44px",
         display: 'flex',
@@ -38,22 +38,17 @@ function StepperChild1(){
           marginRight:"12px",alignItems: 'center',display: 'flex',
           justifyContent:'center'
         }}>
-            <Typography style={{color:"white",fontSize:"24px"}}>1</Typography>
+            <Typography style={{color:"white",fontSize:"20px"}}>1</Typography>
           </Box>
-            <Typography style={{fontSize:"26px",fontFamily:"NanumSquare",fontWeight:"700"}}>설문 기본 설정</Typography>
+            <Typography style={{fontSize:"23px",fontFamily:"NanumSquareB"}}>설문 기본 설정</Typography>
         </Box>
-          <Box sx={{width:"55px",height:"55px",backgroundColor:"rgba(255, 255, 255, 0.5)",borderRadius:"44px",alignItems: 'center',display:"flex",
+          <Box sx={{width:"50px",height:"50px",backgroundColor:"rgba(255, 255, 255, 0.5)",borderRadius:"44px",alignItems: 'center',display:"flex",
           justifyContent:'center'}} onClick={MoveSecond}>
-            <Box sx={{width:"30px",height:"30px",borderRadius:"44px",alignItems: 'center',display:"flex",
-          justifyContent:'center',border:"2px solid"}}><Typography style={{fontFamily:"NanumSquare",fontWeight:"700"}}>2</Typography>
-          </Box>
+            <Typography style={{fontFamily:"NanumSquareB",fontWeight:"700"}}>2</Typography>
         </Box>
-        <Box sx={{width:"55px",height:"55px",backgroundColor:"rgba(255, 255, 255, 0.5)",borderRadius:"44px",alignItems: 'center',display:"flex",
+        <Box sx={{width:"50px",height:"50px",backgroundColor:"rgba(255, 255, 255, 0.5)",borderRadius:"44px",alignItems: 'center',display:"flex",
           justifyContent:'center'}} onClick={MoveThird}>
-          <Box sx={{width:"30px",height:"30px",borderRadius:"44px",alignItems: 'center',display:"flex",
-          justifyContent:'center',border:"2px solid"}}>
-            <Typography style={{fontFamily:"NanumSquare",fontWeight:"700"}}>3</Typography>
-          </Box>
+            <Typography style={{fontFamily:"NanumSquareB",fontWeight:"700"}}>3</Typography>
         </Box>
       </Box>
     )

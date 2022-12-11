@@ -24,7 +24,7 @@ function SurveyResult(){
         },
         body : {
             padding: 30,
-            backgroundColor: 'lightgray'
+            backgroundColor: '#F5F5F5'
         },
         btn : {
             padding: 10,
@@ -63,7 +63,7 @@ function SurveyResult(){
                 </Button>
             </div>
             <div align='center' style={{align:'center',
-                backgroundColor:surveyOption.theme,
+                backgroundColor:"#F5F5F5",
                 height:'100vh',
                 width:'100%'}}>
                 <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>

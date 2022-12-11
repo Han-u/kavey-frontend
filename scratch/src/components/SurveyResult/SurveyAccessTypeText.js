@@ -26,7 +26,7 @@ function SurveyAccessTypeText(props) {
                             <Typography fontFamily="NanumSquareR" style={{fontSize: '15px'}}>설문조사 인원 설정</Typography>
                         </label>
                         <br></br>
-                        <input style={{backgroundColor: '#FAFAFA', border: '0px'}} type="number" id="limitPerson" name="limitPerson" value={props.limitPerson} min="0" disabled = {true}/>
+                        <input style={{backgroundColor: '#F5F5F5', border: '0px'}} type="number" id="limitPerson" name="limitPerson" value={props.limitPerson} min="0" disabled = {true}/>
                     </div>
                 </div>
             </div>

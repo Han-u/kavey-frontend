@@ -127,10 +127,10 @@ function HorizontalLinearStepper(props) {
       {props.step===0?<StepperChild1/>:props.step===1?<StepperChild2/>:<StepperChild3/>}
       
       {props.step===2?
-            <IconButton onClick={handleNext} style={{color:"black"}}>
+            <IconButton onClick={handleNext} style={{color:"black", fontFamily: 'NanumSquareR', fontSize: 20}}>
               완료<CheckIcon/>
             </IconButton>:
-            <IconButton onClick={handleNext} style={{color:"white"}}>
+            <IconButton onClick={handleNext} style={{color:"white", fontFamily: 'NanumSquareR', fontSize: 20}}>
               다음으로<ArrowForwardIosIcon/>
             </IconButton>}
     </Box>
