@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import styled from 'styled-components';
 import axios  from 'axios'
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Resend() {
     const style = {
@@ -19,7 +20,8 @@ export default function Resend() {
             backgroundColor: 'lightgray'
         },
         btn : {
-            alignItems: 'center'
+            alignItems: 'center',
+            height: 50,
         },
         Container: {
 
@@ -128,7 +130,7 @@ export default function Resend() {
             <div style={style.Container}>
                 <div style={style.btn}>
                     <TextField style={{width:400, marginLeft:700}} id="standard-basic" label="이메일을 검색하세요🔍" variant="standard" defaultValue="Small" value={search} onChange={onChange}/>
-                    <BootstrapButton1 sx={ { borderRadius: 28 } } style={{marginLeft:40}} disabled={false} variant="contained" size="medium" onClick={onSend}>전송🛫</BootstrapButton1>
+                    <BootstrapButton1 sx={ { borderRadius: 28 } } style={{marginLeft:40}} disabled={false} variant="contained" size="medium" onClick={onSend}>전송 <SendIcon style={{transform: 'scale(0.7)'}}/></BootstrapButton1>
                 </div>
         <StyledTable>
             <thead>
@@ -176,6 +178,8 @@ const StyledTable = styled.table`
         background-color: #F5F5F5;
         color: black;
         font-weight: 700;
+        font-family: 'NanumSquareB';
+        font-size: 15
       }
     }
   }
@@ -184,6 +188,8 @@ const StyledTable = styled.table`
       td{
         padding: 7px 15px;
         border-bottom: 1px solid #eee;
+        font-family: 'NanumSquareR';
+        font-size: 15
       }
     }
   }
