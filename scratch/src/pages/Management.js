@@ -35,7 +35,15 @@ function Management(){
     // });
     
     const surveyList=useSelector((state)=>state.surveyList.value);
-       
+
+    /*
+    axios.get("/api/survey/").then(response => {
+        //console.log(response.data);
+        dispatch(GET_SURVEY({data:response.data}));
+        dispatch(CHECK_ANSWER()); 
+    });
+    */
+
     const handleLogout=()=>{
         Swal.fire({
             title: '로그아웃 하시겠어요?',

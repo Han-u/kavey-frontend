@@ -16,36 +16,37 @@ function SendSurvey() {
         header : {
             display: 'flex',
             alignItems: 'center',
-            paddingTop: 130,
-            paddingLeft:30,
-            paddingBottom:30,
-            paddingRight:30,
+            paddingTop: 100,
             justifyContent: 'space-between'
         },
         body : {
             padding: 80,
+            height: '100vh',
             display: 'flex',
             backgroundColor: '#F5F5F5',
-            flexDirection : 'column'
+            flexDirection : 'column',
+            alignItems: 'center'
         },
         sendList : {
             display: 'flex',
             backgroundColor: 'white',
-            flexDirection : 'row'
+            flexDirection : 'row',
+            maxWidth: 1200,
+            minHeight: 500
         },
         Container1: {
             paddingBottom: 15,
-            backgroundColor: '#F5F5F5'
+            backgroundColor: '#F5F5F5',
         },
         Container2: {
-            padding: 20,
+            padding: 30,
             backgroundColor: 'white'
         },
         Container3: {
             margin:30,
             padding: 40,
             backgroundColor: '#F5F5F5',
-            width:1100
+            width:600
         },
         Container4: {
             paddingTop: 150,
@@ -179,21 +180,24 @@ function SendSurvey() {
             </div>
 
             <div style={style.body}>
-                <div style={style.Container1}>
-                    <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기❒" : "설문 조사 링크 복사 열기❒"}</BootstrapButton2>
-                    {visible && <CopyUrl/>}
-                </div>
-                <div style={style.sendList}>
-                    <div style={style.Container2}>
-                        <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                <div>
+                    <div style={style.Container1}>
+                        <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기❒" : "설문 조사 링크 복사 열기❒"}</BootstrapButton2>
+                        {visible && <CopyUrl/>}
                     </div>
-                    <div style={style.Container3}>
-                        <UserList users={users} onRemove={onRemove} />
+                    <div style={style.sendList}>
+                        <div style={style.Container2}>
+                            <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} onSend={onSend}/>
+                        </div>
+                        <div style={style.Container3}>
+                            <UserList users={users} onRemove={onRemove} />
+                        </div>
+                    </div>
+                    <div style={style.Container4}>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>완료✔</BootstrapButton1>
                     </div>
                 </div>
-                <div style={style.Container4}>
-                    <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>완료✔</BootstrapButton1>
-                </div>
+
             </div>
         </div>
     );

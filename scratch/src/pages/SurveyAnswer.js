@@ -103,7 +103,7 @@ export default SurveyAnswer;
 
 
 
-export function AnswerQuestionResultList(){
+function AnswerQuestionResultList(){
   const question = useSelector((state)=>state.surveyAnswer.question);
   const surveyOption=useSelector((state)=>state.surveyAnswer.option);
 

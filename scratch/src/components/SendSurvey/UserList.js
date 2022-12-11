@@ -4,16 +4,16 @@ import {Button, styled} from "@mui/material";
 function User({ user, onRemove }) {
     const BootstrapButton2 = styled(Button)({
 
-        color: 'black',
+        color: 'red',
         boxShadow: 'none',
         fontFamily: [
-            'NanumSquare',
+            'NanumSquareL',
         ]
     });
 
     return (
         <div>
-            <b>{user.email}</b>
+            <span style={{fontFamily: 'NanumSquareL'}}>{user.email}</span>
             <BootstrapButton2 onClick={() => onRemove(user.id)}>X</BootstrapButton2>
         </div>
     );

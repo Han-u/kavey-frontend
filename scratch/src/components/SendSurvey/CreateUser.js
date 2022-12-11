@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 function CreateUser({ username, email, onChange, onCreate,onSend }) {
     const style = {
         text : {
-            color:'black'
+            color:'black',
+            fontFamily: 'NanumSquareR'
         },
         inputSpace: {
             paddingTop:10
@@ -57,17 +58,19 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
         color: 'black',
         boxShadow: 'none',
         fontFamily: [
-            'NanumSquare',
-        ]
+            'NanumSquareB',
+        ],
+        fontSize: '20px'
     });
 
     return (
         <div>
             <div>
-                <h3 style={style.text}>설문 질의응답자 리스트</h3>
+                <h2 style={style.text}>설문 질의응답자 리스트</h2>
                 <div style={style.inputSpace}>
-                    <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}/>
-                    <BootstrapButton2 size="large" onClick={onCreate}>ADD</BootstrapButton2>
+                    <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}
+                    style={{width: 250}}/>
+                    <BootstrapButton2 size="large" onClick={onCreate}>+</BootstrapButton2>
                 </div>
             </div>
         </div>
