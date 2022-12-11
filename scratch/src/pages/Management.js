@@ -11,29 +11,37 @@ import Swal from 'sweetalert2'
 
 function Management(){
     const navigate=useNavigate();
-
-    // useEffect(async() =>{
-    //     const token=window.localStorage.getItem('token');
-    //     //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
-    //     if(token===null){
-    //         Swal.fire({
-    //             toast: true,
-    //             icon: 'warning',
-    //             title: '로그인을 해주세요!',
-    //             animation: false,
-    //             position: 'top',
-    //             showConfirmButton: false,
-    //             timer: 1200,
-    //             timerProgressBar: false,
-    //             didOpen: (toast) => {
-    //               toast.addEventListener('mouseenter', Swal.stopTimer)
-    //               toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //             }
-    //           });
-    //         navigate('/');
-    //         }
-    // });
+    if(window.localStorage.getItem('profile')){
+        var userData=JSON.parse(window.localStorage.getItem('profile')).data.nickname;
+    }
     
+    useEffect(async() =>{
+        const token=window.localStorage.getItem('token');
+        //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
+        if(token===null){
+            Swal.fire({
+                toast: true,
+                icon: 'warning',
+                title: '로그인을 해주세요!',
+                animation: false,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1200,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              });
+            navigate('/');
+            }else{
+
+            }
+  
+
+    });
+    
+  
     const surveyList=useSelector((state)=>state.surveyList.value);
 
     /*
@@ -118,8 +126,8 @@ function Management(){
         <div>
             <div style={style.header}>
                 <div style={{display: 'flex', alignItems:'center'}}>
-                    <img src='images/Subtract.png' width='35px' height='35px'/>
-                    <span style={{color: 'white', marginLeft: '10px'}}> 한소연 님, <br/> 오늘 하루도 좋-설사 하세요!</span>
+                    <img src='images/Subtract.png' width='35px' height='35px' onClick={handleLogout}/>
+                    <span style={{color: 'white', marginLeft: '10px'}}> {userData} 님, <br/> 오늘 하루도 좋-설사 하세요!</span>
 
                 </div>
                 <Typography variant="h4" fontFamily="NanumSquareB" style={{color: "white"}}>

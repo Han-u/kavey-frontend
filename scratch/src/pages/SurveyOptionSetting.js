@@ -37,7 +37,7 @@ function SurveyOptionSetting() {
 
     return (
         <div>
-            <div style={{position:"absolute",left:"1460px",top:"140px",width:"100px",backgroundColor:"white",paddingTop:"15px",paddingBottom:"15px"}}>
+            <div style={{position:"absolute",left:"80%",top:"20%",width:"100px",backgroundColor:"white",paddingTop:"15px",paddingBottom:"15px"}}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems: 'center',justifyContent:"center"}}>
                         <Typography fontFamily="NanumSquare" style={{fontSize:"16px",fontWeight:"700"}}>테마</Typography>
                         <ThemeButton theme="chunsik" themeName="춘식"  src="/images/icon_chunsik.png"/>
