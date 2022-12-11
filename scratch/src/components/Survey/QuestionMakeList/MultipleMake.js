@@ -8,6 +8,9 @@ import { DeleteButton, PlusButton,RequiredButton } from '../../../pages/SurveyMa
 import {Button,IconButton,TextField,Tooltip} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import TrueFalseResult from '../QuestionResultList/TrueFalseResult';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 const styles = {
     container: {
@@ -34,27 +37,39 @@ function MultipleMake({id,title,required,canMulti,response}) {
 
 
     return(
-        <div style={styles.container} draggable>
-            <div style={{flexDirection: 'row',
-                        display:'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'baseline',
-                        paddingBottom:'10px'}}>
-                <DeleteButton id={id}/>
-                <RequiredButton id={id} required={required}/>
-                <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
-                <PlusButton id={id}/>
-            </div>
-            <div>
-            <MultiButton id={id}canMulti={canMulti}/>
-            <Button onClick={onClickPlus}>보기추가</Button>
-            </div>
+        <div style={{width:"700px",
+        backgroundColor:"white",
+        display: "flex",
+        flexDirection:"column",
+        justifyContent:'space-between',
+        borderRadius: '5px'
+        }}  draggable>
+            <TextField 
+                placeholder={title} 
+                maxLength={50} 
+                onChange={onChange} 
+                style={{width:"640px",
+                height:"57px",marginTop:"30px",marginLeft:"30px"}}></TextField>
+                <Button onClick={onClickPlus}>보기추가</Button>
             <div>
                 <ResponseList id={id} list={response}/>
             </div>
-            <div style={{float:'right'}}>
-                
+            <div style={{display: 'flex',
+            flexDirection:'row',
+            justifyContent:"space-between",marginLeft:"30px",marginBottom:"20px",marginRight:"30px"}}>
+                <DeleteButton id={id}/>
+                <div style={{display: 'flex',
+                    float:"right",
+                    flexDirection:'row',}}>                    
+                        <MultiButton id={id}canMulti={canMulti}/>
+                        <RequiredButton id={id} required={required}/>
+                        <PlusButton id={id}/>
+                </div>
             </div>
+            <div>
+            
+            </div>
+            
         </div>
     );
 }
@@ -70,7 +85,10 @@ function MultiButton({id,canMulti}){
     return (
         <div>
             <Tooltip title="복수응답 허용 여부에요">
-                <Button variant="outlined" size="small" onClick={onClick}>{canMulti.toString()}</Button>
+                {/* <Button variant="outlined" size="small" onClick={onClick}>{canMulti.toString()}</Button> */}
+                <FormGroup>
+                    <FormControlLabel control={<Switch defaultChecked />} label="복수응답" onClick={onClick}></FormControlLabel>
+                </FormGroup>
             </Tooltip>
         </div>
     );

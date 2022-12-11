@@ -56,12 +56,14 @@ function RatingResult({purpose,id,title,required}) {
     };
 
     return (
-        <div style={styles.container}>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-              {required === true && <h1 style={{color: "red"}} >*</h1> }
-              <Typography variant="h4" fontFamily="HallymGothic-Regular">{title}</Typography>
-            </div>
-            <div align="center">
+      <div>
+      <div style={{height:"220px"}}>
+          <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"30px" }}>
+              {required === true && <h2 style={{color: "red"}} >*</h2> }
+              <Typography fontFamily="NanumSquare"
+              style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
+          </div>
+            <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}>
               <Stars align="center">
                   {ARRAY.map(el => {
                       return (
@@ -75,6 +77,8 @@ function RatingResult({purpose,id,title,required}) {
                   })}
               </Stars>
             </div>
+        </div>
+        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
         </div>
     );
 }
@@ -99,7 +103,6 @@ const Stars = styled.div`
   display: flex;
   padding-top: 30px;
   padding-bottom: 5px;
-  margin-left:140px;
 
   & svg {
     color: gray;

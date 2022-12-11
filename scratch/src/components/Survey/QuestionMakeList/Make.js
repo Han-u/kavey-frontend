@@ -7,18 +7,6 @@ import { DeleteButton, PlusButton, RequiredButton } from '../../../pages/SurveyM
 
 import {TextField} from '@mui/material'
 
-const styles = {
-    container: {
-        border:1,
-        borderStyle: "solid",
-        display: "flex",
-        flexDirection: "row",
-        padding: 15,
-        justifyContent: "space-between",
-        alignItems:'baseline'
-        
-    },
-}
 
 function Make({id, title,required}) {
     const dispatch = useDispatch();
@@ -29,15 +17,34 @@ function Make({id, title,required}) {
 
 
     return(
-        <div style={styles.container}  draggable>
-                <div style={{float:'left'}}>
-                    <DeleteButton id={id}/>
-                </div>
-                <RequiredButton id={id} required={required}/>
-                <TextField placeholder={title} maxLength={50} onChange={onChange} size="small"></TextField>
-                <div style={{float:'right'}}>
+        <div style={{width:"700px",
+        height:"200px",
+        backgroundColor:"white",
+        display: "flex",
+        flexDirection:"column",
+        justifyContent:'space-between',
+        borderRadius: '5px'
+        }}  draggable>
+            <div>
+                <TextField 
+                placeholder={title} 
+                maxLength={50} 
+                onChange={onChange} 
+                style={{width:"640px",
+                height:"57px",marginTop:"30px"}}></TextField>
+            </div>
+            <div style={{display: 'flex',
+            flexDirection:'row',
+            justifyContent:"space-between",marginLeft:"30px",marginBottom:"20px",marginRight:"30px"}}>
+                <DeleteButton id={id}/>
+                <div style={{display: 'flex',
+                float:"right",
+                flexDirection:'row',
+                }}>           
+                    <RequiredButton id={id} required={required}/>
                     <PlusButton id={id}/>
                 </div>
+            </div>
         </div>
     );
 }

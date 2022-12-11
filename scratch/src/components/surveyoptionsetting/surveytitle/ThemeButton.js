@@ -5,15 +5,15 @@ import {SET_THEME_TEST} from "../../redux/Slices/SurveyOptionSlice"
 function ThemeButton(props) {
   const dispatch = useDispatch();
   const handleClick=()=>{
-    dispatch(SET_THEME_TEST(props.color));
+    dispatch(SET_THEME_TEST(props.theme));
   }
 
   return (
     <div>      
-      <div style={{backgroundColor:"#FFFFFF",margin:"5px", borderRadius: '50%', width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <Tooltip title={props.theme}>     
+      <div>
+      <Tooltip title={props.themeName} placement="right">     
         <Button>       
-        <img src={props.src} alt={props.theme} onClick={handleClick} style={{width:"40px",height:"40px"}}></img> 
+        <img src={props.src} alt={props.theme} onClick={handleClick} style={{width:"50px",height:"50px"}}></img> 
         </Button>
       </Tooltip>
       </div>
