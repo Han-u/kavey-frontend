@@ -94,13 +94,15 @@ function Management(){
             padding: 20,
             backgroundColor: 'white',
             maxWidth: "1200px",
+            width:"1200px",
             borderRadius: '0 30px 30px 30px'
         }
     }
 
     const [status, setStatus] = useState("ALL");
     const onClick = (e) => {
-        setStatus(e.target.value);
+        console.log(e);
+        setStatus(e);
     }
 
     return (
@@ -127,16 +129,16 @@ function Management(){
                 {/*</div>*/}
                 <div>
                     <div style={{display: 'flex'}}>
-                        <div className={'index-button ' + (status === "ALL" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "ALL" ? 'selected' : null)} onClick={()=>{onClick("ALL")}}>
                             전체
                         </div>
-                        <div className={'index-button ' + (status === "MAKING" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "MAKING" ? 'selected' : null)} onClick={()=>{onClick("MAKING")}}>
                             제작중
                         </div>
-                        <div className={'index-button ' + (status === "PROGRESS" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "PROGRESS" ? 'selected' : null)} onClick={()=>{onClick("PROGRESS")}}>
                             진행중
                         </div>
-                        <div className={'index-button ' + (status === "DONE" ? 'selected' : null)}>
+                        <div className={'index-button ' + (status === "DONE" ? 'selected' : null)} onClick={()=>{onClick("DONE")}}>
                             설문완료
                         </div>
                     </div>
@@ -146,7 +148,7 @@ function Management(){
                                 if(status==='ALL'){
                                     return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else if(m.status.toUpperCase()===status){
-                                    return <Grid item xs={3}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
+                                    return <Grid item xs={3} style={{justifyContent:'center', display: 'flex'}}><SurveyList key={m.id} data={m}></SurveyList> </Grid>;
                                 }else{
                                     return null;
                                 }
