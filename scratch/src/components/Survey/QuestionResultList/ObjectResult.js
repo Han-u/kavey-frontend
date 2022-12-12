@@ -41,7 +41,7 @@ function ObjectResult({purpose,q_id,id, title,required}) {
                 </div>
                 {purpose!=RESULT?  
                 <TextField label="답변을 입력해주세요" onChange={onChange} style={{width:"50%",height:"110px",marginTop:"15px", backgroundColor: '#F5F5F5'}}
-                    sx={{"& fieldset": { border: 'none' }}} disabled={true}></TextField>
+                    sx={{"& fieldset": { border: 'none' }}}></TextField>
                 : 
                 <Typography fontFamily="NanumSquareR"
                 style={{fontSize:"40px"}}>{filter_data[0].answer}</Typography>

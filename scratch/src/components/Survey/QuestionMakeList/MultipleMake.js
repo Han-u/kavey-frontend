@@ -140,8 +140,9 @@ function Response({q_id,r_id,title,canDelete, canMulti}){
     return(
         <div>
             {canMulti?
-                <RadioButtonUncheckedIcon transform='scale(0.6)'/>:
-                <CheckBoxOutlineBlankIcon transform='scale(0.6)'/>
+                <CheckBoxOutlineBlankIcon transform='scale(0.6)'/>:
+                <RadioButtonUncheckedIcon transform='scale(0.6)'/>
+
             }
 
                 <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
