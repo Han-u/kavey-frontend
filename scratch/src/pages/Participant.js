@@ -6,10 +6,11 @@ import {useQuery} from 'react-query'
 import "react-datepicker/dist/react-datepicker.css";
 import Resend from "../components/Participant/Resend";
 import '../Management.css'
-
+import { useParams } from "react-router-dom";
 
 
 function Participant(){
+
     const toDateFormat=(date) =>{
         if (!date){
             return ""

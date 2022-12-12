@@ -45,9 +45,6 @@ function HorizontalLinearStepper(props) {
       dispatch(NEXT_LEVEL(1))
       navigate(`/surveymake`);
     }else if(props.step ===1){
-      dispatch(NEXT_LEVEL(1));
-      navigate(`/sendsurvey`);
-    }else{      
       Swal.fire({
         title: '설문 제작을 완료하시겠어요?',
         icon: 'success',
@@ -90,12 +87,28 @@ function HorizontalLinearStepper(props) {
           })
           
           console.log(newState);
-          axios.post('/api/survey',newState);
-                navigate(`/management`);
-              
-              }
-            })
+          const res = axios.post('/api/survey',newState);
+          res.then(
+            (res) => {
+              console.log("res surveyid값",res.data);
+              dispatch(NEXT_LEVEL(1));
+              navigate(`/sendsurvey/`+res.data); 
+            }
+          );
           }
+        }
+          )
+    }else{      
+      Swal.fire({
+        title: '설문 메일 전송을 완료하시겠어요?',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네',
+        cancelButtonText:'아니요'
+      }).then((result) => {navigate('/management/')})
+    }
 
   };
   const uCantGo=()=>{

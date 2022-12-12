@@ -11,6 +11,7 @@ import axios from "axios";
 function SurveyList(props) {
     const surveyId = props.data.surveyId;
     const resultURL = "/result/"+surveyId;
+    const participantURL = "/participant/"+surveyId;
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -133,10 +134,10 @@ function SurveyList(props) {
                         {props.data.status != 'PROGRESS' ? <MenuItem onClick={()=>handleDelete(props.data.id)}>설문 삭제</MenuItem>:null}
                         {props.data.status=='MAKING' ? <MenuItem onClick={handleClose}>설문 수정</MenuItem>:null}
                         <MenuItem onClick={()=>handleCopy(props.data.id)} >설문 복제</MenuItem>
-                        {props.data.status == 'DONE' ? null: <MenuItem component={Link} to="/participant">설문 참여자 관리</MenuItem>}
+                        {props.data.status == 'DONE' ? null: <MenuItem component={Link} to={participantURL}>설문 참여자 관리</MenuItem>}
                         {props.data.status == 'PROGRESS' ?
                             <>
-                                <MenuItem onClick={handleClose}>설문 발송</MenuItem>
+                                {/*<MenuItem onClick={handleClose}>설문 발송</MenuItem>*/}
                                 <MenuItem onClick={handleEalryClose}>설문 조기 마감</MenuItem>
                             </> : null}
 
