@@ -11,7 +11,7 @@ export const SurveyOptionSlice=createSlice(
             askAge:false,
             askGender:false,
             isPrivate:'FALSE', 
-            limitPerson:null,
+            limitPerson:'',
             startDate:new Date(),
             endDate:new Date(),
             theme:null,

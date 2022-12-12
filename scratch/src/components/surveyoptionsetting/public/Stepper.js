@@ -77,8 +77,11 @@ function HorizontalLinearStepper(props) {
                 delete draftState[i].canMulti;
               })});
           })
-          const newState = produce(optionData,(draftState) => {
-            console.log(optionData);
+          const newState = produce(surveyOption,(draftState) => {
+            console.log(surveyOption);
+            if(draftState.limitPerson===''){
+              draftState.limitPerson=0;
+            }
             draftState.questionNumber = questionData.length;
             draftState.questionList = draftState.questionList.concat(newQuestionList);  
 
