@@ -21,6 +21,7 @@ function SurveyResult(){
             padding: 30,
             justifyContent: 'space-between',
             backgroundColor: '#202225',
+            height:"100px"
         },
         body : {
             padding: 30,

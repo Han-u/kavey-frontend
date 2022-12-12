@@ -42,7 +42,6 @@ function RatingResult({purpose,q_id,id,title,required}) {
     };
 
     if(filter_data!=undefined && purpose==RESULT && FLAG ==-1){
-      console.log("왜 접근하냐?")
       StarClick(filter_data[0].answer-1);
       FLAG=1;
     }
@@ -68,11 +67,12 @@ function RatingResult({purpose,q_id,id,title,required}) {
       <div style={{height:"220px"}}>
           <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"30px" }}>
               {required === true && <h2 style={{color: "red"}} >*</h2> }
-              <Typography fontFamily="NanumSquare"
+              <Typography fontFamily="NanumSquareB"
               style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
           </div>
-            <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}>
+            {/* <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}> */}
               {purpose!=RESULT? 
+              <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}>
                 <Stars align="center">
                 {ARRAY.map(el => {
                       return (
@@ -86,7 +86,9 @@ function RatingResult({purpose,q_id,id,title,required}) {
                     }
                 )}
               </Stars>
+              </div>
               : 
+              <div style={{display:'flex',flexDirection:'column',alignItems: 'center',justifyContent : "center"}}>
                 <StarsResult align="center">
                 {ARRAY.map(el => {
                       return (
@@ -99,9 +101,10 @@ function RatingResult({purpose,q_id,id,title,required}) {
                     }
                 )}
               </StarsResult>
+              </div>
                 
               }
-            </div>
+            {/* </div> */}
         </div>
         <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
         </div>
@@ -152,7 +155,6 @@ const StarsResult = styled.div`
   display: flex;
   padding-top: 30px;
   padding-bottom: 5px;
-  margin-left:140px;
 
   & svg {
     color: gray;

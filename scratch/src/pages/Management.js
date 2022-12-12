@@ -15,31 +15,30 @@ function Management(){
         var userData=JSON.parse(window.localStorage.getItem('profile')).data.nickname;
     }
     
-    useEffect(async() =>{
-        const token=window.localStorage.getItem('token');
-        //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
-        if(token===null){
-            Swal.fire({
-                toast: true,
-                icon: 'warning',
-                title: '로그인을 해주세요!',
-                animation: false,
-                position: 'top',
-                showConfirmButton: false,
-                timer: 1200,
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              });
-            navigate('/');
-            }else{
-
-            }
-  
-
-    });
+    // useEffect(async() =>{
+    //     const token=window.localStorage.getItem('token');
+    //     //토큰 유효 검증해주는 API -> 유효성 없으면 바로 토큰 삭제
+    //     if(token===null){
+    //         Swal.fire({
+    //             toast: true,
+    //             icon: 'warning',
+    //             title: '로그인을 해주세요!',
+    //             animation: false,
+    //             position: 'top',
+    //             showConfirmButton: false,
+    //             timer: 1200,
+    //             timerProgressBar: false,
+    //             didOpen: (toast) => {
+    //               toast.addEventListener('mouseenter', Swal.stopTimer)
+    //               toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //             }
+    //           });
+    //         navigate('/');
+    //         }else{
+    //             const test=JSON.parse(window.localStorage.getItem('profile')).data;
+    //             console.log(test);
+    //         }
+    // });
     
   
     const surveyList=useSelector((state)=>state.surveyList.value);
