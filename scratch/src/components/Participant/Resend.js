@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import axios  from 'axios'
 import SendIcon from '@mui/icons-material/Send';
 
-export default function Resend() {
+export default function Resend({surveyId}) {
     const toDateFormat=(date) =>{
         if (!date){
             return ""
@@ -80,9 +80,8 @@ export default function Resend() {
             setCheckItems([]);
         }
     }
-    const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
-        return axios.get('/api/survey/'+sid+'/receiver')
+        return axios.get('/api/survey/'+surveyId+'/receiver')
     })
     if(isLoading){return <h2>success</h2>}
     if(isError){return <h2>Oops... {error.message}</h2>}
@@ -103,7 +102,7 @@ export default function Resend() {
             if (result.isConfirmed) {
                 console.log("발송완료~~");
                 console.log(checkItems);
-                const url = '/api/survey/1/email-resend';
+                const url = '/api/survey/'+surveyId+'/email-resend';
                 const config = {"Content-Type": 'application/json'};
                 const data = {
                     "attendIdList" : checkItems

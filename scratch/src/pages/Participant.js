@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 
 function Participant(){
-
+    const { surveyId } = useParams();
     const toDateFormat=(date) =>{
         if (!date){
             return ""
@@ -74,9 +74,8 @@ function Participant(){
     const [visible,setVisible] =useState(false);
     const [visible2,setVisible2] =useState(true);
 
-    const sid=1;
     const {isLoading,data,isError,error}=useQuery('SurveyResultInfo',()=>{
-        return axios.get('/api/survey/'+sid+'/receiver')
+        return axios.get('/api/survey/'+surveyId+'/receiver')
     })
     if(isLoading){return <h2>success</h2>}
     if(isError){return <h2>Oops... {error.message}</h2>}
@@ -158,7 +157,7 @@ function Participant(){
                 {/*    <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={addSurveyBack3}>거절</BootstrapButton1>*/}
                 {/*    <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } }onClick={reSendSurvey}>재발송</BootstrapButton1>*/}
                 {/*</div>*/}
-                    {visible && <Resend/>}
+                    {visible && <Resend surveyId={surveyId}/>}
                     {visible2 && <div style={style.Container}>
                         <div style={style.main}>
                             <StyledTable>

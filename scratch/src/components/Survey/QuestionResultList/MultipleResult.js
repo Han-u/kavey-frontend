@@ -24,14 +24,14 @@ function MultipleResult({purpose,q_id,id, title,required,canMulti,type,response}
         <div>
             <div>
                 <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
-                    {required === true && <h2 style={{color: "red"}} >*</h2> }
+                    {required === true && <h2 style={{color: "red"}} >* </h2> }
                     <Typography fontFamily="NanumSquareB"
                     style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
                 </div>
                 <p>{canMulti}</p>
                 <ResponseList purpose={purpose} q_id={q_id} ordering={id} canMulti={canMulti} type ={type} list={response}/>
-            </div> 
-            <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+            </div>
+            <div style={{borderBottom:"1px solid #000000",width:'700px'}}></div>
         </div>
     );
 }
@@ -73,13 +73,16 @@ function ResponseList({purpose,q_id,ordering,canMulti,type,list}) {
         if(purpose!=RESULT){
             responseList = list.map(
                 r => (
-                    <div>
-                        <input name={ordering} 
-                        type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} 
-                        value={r.value} 
-                        id={r.optionId}  
-                        onChange={(e) => onCheckHandler(e)}/> 
-                        <p>{r.value}</p>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'left', padding: 3, width: '50%'}}>
+                        <input name={ordering}
+                               type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"}
+                               value={r.value}
+                               id={r.optionId}
+                               onChange={(e) => onCheckHandler(e)}
+                        />
+                        <div style={{backgroundColor: '#F5F5F5', width: '100%', padding: 4, marginLeft: 10}}>
+                            <span style={{fontFamily: 'NanumSquareR', marginLeft: 10}}>{r.value}</span>
+                        </div>
                     </div>
     
                 )
@@ -90,9 +93,11 @@ function ResponseList({purpose,q_id,ordering,canMulti,type,list}) {
                 r => {
                     let result = filter_data.filter((dd)=>dd.answer==r.optionId);
                     return(
-                        <div>
-                            <input readOnly={true} checked={result.length > 0 ? true :false} name={ordering} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}/> 
-                            <p>{r.value}</p>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'left', padding: 3, width: '50%'}}>
+                            <input readOnly={true} checked={result.length > 0 ? true :false} name={ordering} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}/>
+                            <div style={{backgroundColor: '#F5F5F5', width: '100%', padding: 4, marginLeft: 10}}>
+                                <span style={{fontFamily: 'NanumSquareR', marginLeft: 10}}>{r.value}</span>
+                            </div>
                         </div>
         
                     )
@@ -102,7 +107,7 @@ function ResponseList({purpose,q_id,ordering,canMulti,type,list}) {
     }
 
     return(
-        <div>
+        <div style={{paddingBottom: 30}}>
             {responseList}
         </div>
     )
