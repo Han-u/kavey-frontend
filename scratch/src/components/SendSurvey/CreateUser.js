@@ -30,28 +30,6 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
             }
         })
     }
-    const checkEmail = (e) => {
-        var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
-
-        // 형식에 맞는 경우 true 리턴
-        if (regExp.test(e.target.value)==false)
-        {
-            Swal.fire({
-                icon: 'error',
-                title: '이메일 양식 오류',
-                text: '정확한 피설문자의 이메일을 입력해주세요.'
-            })
-        }
-        if ((e.target.value) == '')
-        {
-            Swal.fire({
-                icon: 'error',
-                title: '비어있는 공간',
-                text: '피설문자의 이메일을 입력해주세요.'
-            })
-        }
-
-    }
 
     const BootstrapButton2 = styled(Button)({
 
@@ -68,7 +46,7 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
             <div>
                 <h2 style={style.text}>설문 질의응답자 리스트</h2>
                 <div style={style.inputSpace}>
-                    <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email} onBlur={checkEmail}
+                    <Input name="email" placeholder="이메일입력해주세요" onChange={onChange} value={email}
                     style={{width: 250}}/>
                     <BootstrapButton2 size="large" onClick={onCreate}>+</BootstrapButton2>
                 </div>

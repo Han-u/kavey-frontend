@@ -106,7 +106,7 @@ function RatingResult({purpose,q_id,id,title,required}) {
               }
             {/* </div> */}
         </div>
-        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+          <div style={{borderBottom:"1px solid #000000",width:'700px'}}></div>
         </div>
     );
 }

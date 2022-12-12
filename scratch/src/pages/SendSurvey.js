@@ -82,13 +82,33 @@ function SendSurvey() {
             username,
             email
         };
-        setUsers(users.concat(user));
+        console.log("여기용",user.email);
+        var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+        if (regExp.test(user.email)==false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: '이메일 양식 오류',
+                text: '정확한 피설문자의 이메일을 입력해주세요.'
+            })
+        }
+        else if ((user.email) == '')
+        {
+            Swal.fire({
+                icon: 'error',
+                title: '비어있는 공간',
+                text: '피설문자의 이메일을 입력해주세요.'
+            })
+        }
+        else{
+            setUsers(users.concat(user));
 
-        setInputs({
-            username: '',
-            email: ''
-        });
-        nextId.current += 1;
+            setInputs({
+                username: '',
+                email: ''
+            });
+            nextId.current += 1;
+        }
     };
 
     const onRemove = id => {
@@ -118,15 +138,31 @@ function SendSurvey() {
                 const data = {
                     "sendEmailList" : user
                 }
-                axios.post(url, data, config)
+                if(data.length>0){
+                    axios.post(url, data, config)
                     .then(response =>  Swal.fire({
                         icon: 'success',
                         title: '설문지 발송에 성공했습니다.'
                     }))
-                    .catch(error =>  Swal.fire({
-                        icon: 'error',
-                        title: '설문지 발송에 실패했습니다.'
-                    }))
+                    .catch(error =>{
+                        const code = error.response.data.code;
+                        const message = error.response.data.message;
+                        console.log(code,message);
+                        return(
+                            Swal.fire({
+                                icon: 'error',
+                                title: message
+                            })
+                        )
+
+                    })
+                }
+                else{
+                    Swal.fire({
+                    icon: 'error',
+                    title: '응답자가 아무도     없어요!!'
+                    })
+                }
             }
         })
     }

@@ -27,7 +27,7 @@ function ResultParticipant({surveyId}) {
             <div style={{paddingBottom: 10, display: 'flex'}}>
                 <Button variant="outlined" style={{width:"70px",height:"30px",marginRight:"10px"}} onClick={()=>filterClick("ALL")}>전체</Button>
                 <Button variant="outlined" style={{width:"70px",height:"30px",marginRight:"10px"}} onClick={()=>filterClick(ATTEND_RESPONSE)}>응답</Button>
-                <Button variant="outlined" style={{width:"70px",height:"30px",marginRight:"10px"}} onClick={()=>filterClick(ATTEND_NONRESPONSE)}>무응답</Button>
+                <Button variant="outlined" style={{width:"70px",height:"30px",marginRight:"10px",fontSize:"12px"}} onClick={()=>filterClick(ATTEND_NONRESPONSE)}>무응답</Button>
             </div>
             <div>
                 {filter !== "ALL"? <ParticipantList surveyId={surveyId} participant = {reData} />:<ParticipantList surveyId={surveyId} participant = {data} />}

@@ -112,10 +112,18 @@ export default function Resend({surveyId}) {
                         icon: 'success',
                         title: '설문지 발송에 성공했습니다.'
                     }))
-                    .catch(error => Swal.fire({
-                        icon: 'error',
-                        title: '설문지 발송에 실패했습니다.'
-                    }))
+                    .catch(error =>{
+                        const code = error.response.data.code;
+                        const message = error.response.data.message;
+                        console.log(code,message);
+                        return(
+                            Swal.fire({
+                                icon: 'error',
+                                title: message
+                            })
+                        )
+
+                    })
 
 
             }

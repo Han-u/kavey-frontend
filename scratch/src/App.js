@@ -22,6 +22,7 @@ import SurveyReject from "./pages/SurveyReject"
 
 import Test from  "./pages/Test";
 import SubmitOK from "./pages/SubmitOK";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
         <Route path="/result/:surveyId/personal/:attendId" element={<ResultPersonalAnswer/>}/>
         <Route path="/answer/submitok" element={<SubmitOK/>}/>
         <Route path="/reject" element={<SurveyReject/>}/>
+        
+
+        <Route path="/ok/submit" element={<SubmitOK/>}/>
+        <Route path="/error/:code" element={<ErrorPage/>}/>
 
 
         <Route path="/atest" element={<Atest/>}/>

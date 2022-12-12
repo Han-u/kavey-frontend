@@ -34,7 +34,13 @@ function SurveyList(props) {
         const res = axios.post("api/survey/"+surveyId+"/early-closing");
         res.then(
           (res) => console.log(surveyId+"설문조기 종료  완료")
-        );
+        )
+        .catch(error => {
+            const code = error.response.data.code;
+            const message = error.response.data.message;
+            console.log(code,message);
+            navigate('/error/'+message);
+          })
         window.location.reload();
     };
 
@@ -42,11 +48,16 @@ function SurveyList(props) {
         const token = window.localStorage.getItem('token');
         const res = axios.delete("api/survey/"+surveyId, 
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
           (res) => console.log(surveyId+"설문삭제 완료")
-        );
+        ).catch(error => {
+            const code = error.response.data.code;
+            const message = error.response.data.message;
+            console.log(code,message);
+            navigate('/error/'+message);
+          })
 
         window.location.reload();
     }
@@ -131,13 +142,14 @@ function SurveyList(props) {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
+                        {/*<MenuItem onClick={handleEalryClose} >설문 확인</MenuItem>*/}
                         {props.data.status != 'PROGRESS' ? <MenuItem onClick={()=>handleDelete(props.data.id)}>설문 삭제</MenuItem>:null}
-                        {props.data.status=='MAKING' ? <MenuItem onClick={handleClose}>설문 수정</MenuItem>:null}
-                        <MenuItem onClick={()=>handleCopy(props.data.id)} >설문 복제</MenuItem>
-                        {props.data.status == 'DONE' ? null: <MenuItem component={Link} to={participantURL}>설문 참여자 관리</MenuItem>}
+                        {/*props.data.status=='MAKING' ? <MenuItem onClick={handleClose}>설문 수정</MenuItem>:null*/}
+                        {/*<MenuItem onClick={()=>handleCopy(props.data.id)} >설문 복제</MenuItem>*/}
                         {props.data.status == 'PROGRESS' ?
                             <>
                                 {/*<MenuItem onClick={handleClose}>설문 발송</MenuItem>*/}
+                                <MenuItem component={Link} to={participantURL}>설문 참여자 관리</MenuItem>
                                 <MenuItem onClick={handleEalryClose}>설문 조기 마감</MenuItem>
                             </> : null}
 

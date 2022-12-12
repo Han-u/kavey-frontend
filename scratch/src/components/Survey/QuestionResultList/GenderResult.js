@@ -47,38 +47,38 @@ function GenderResult({purpose,id,title,required}){
             onClick={()=>setGender("MALE")} 
             style={
                 gender==="MALE"?
-                {width:"160px",
-                height:"60px" ,
+                {width:"130px",
+                height:"50px" ,
                 marginRight:"10px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFD701",
                 border:"1px solid #D9D9D9",
                 color:"black"}
                 :
-                {width:"160px",
-                height:"60px" ,
+                {width:"130px",
+                height:"50px" ,
                 marginRight:"10px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFFFFF",
                 border:"1px solid #D9D9D9",
                 color:"black"}}>남자</Button>
             <Button variant={gender==="FEMALE"?"contained":"outlined"} 
             onClick={()=>setGender("FEMALE")} 
             style={gender==="FEMALE"?
-                {width:"160px",
-                height:"60px"
+                {width:"130px",
+                height:"50px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFD701",
                 border:"1px solid #D9D9D9",
                 color:"black"}
                 :
-                {width:"160px",
-                height:"60px"
+                {width:"130px",
+                height:"50px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFFFFF",
                 border:"1px solid #D9D9D9",
                 color:"black"}}>여자</Button>
@@ -88,40 +88,40 @@ function GenderResult({purpose,id,title,required}){
             <Button variant={data==="MALE"?"contained":"outlined"}  
             style={
                 data==="MALE"?
-                {width:"160px",
-                height:"60px" ,
+                {width:"130px",
+                height:"50px" ,
                 marginRight:"10px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFD701",
                 border:"1px solid #D9D9D9",
                 color:"black",
                 fontFamily:"NanumSquareB"}
                 :
-                {width:"160px",
-                height:"60px" ,
+                {width:"130px",
+                height:"50px" ,
                 marginRight:"10px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFFFFF",
                 border:"1px solid #D9D9D9",
                 color:"black",
                 fontFamily:"NanumSquareR"}}>남자</Button>
             <Button variant={data==="FEMALE"?"contained":"outlined"} 
             style={data==="FEMALE"?
-                {width:"160px",
-                height:"60px"
+                {width:"130px",
+                height:"50px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24px",
                 backgroundColor:"#FFD701",
                 border:"1px solid #D9D9D9",
                 color:"black",
                 fontFamily:"NanumSquareB"}
                 :
-                {width:"160px",
-                height:"60px"
+                {width:"130px",
+                height:"50px"
                 ,borderRadius:"10px",
-                fontSize:"28px",
+                fontSize:"24x",
                 backgroundColor:"#FFFFFF",
                 border:"1px solid #D9D9D9",
                 color:"black",
@@ -135,7 +135,7 @@ function GenderResult({purpose,id,title,required}){
             }          
             </div>
         </div>
-        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+        <div style={{borderBottom:"1px solid #000000",width:'700px'}}></div>
         </div>
     )
 }

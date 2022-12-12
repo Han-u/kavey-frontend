@@ -78,7 +78,7 @@ function HomeComponent1(){
                     >설문 제작하기</Button>
                 </div>
             </div>
-            <div>
+            <div style={{display: 'flex', justifyContent:"center", background: 'linear-gradient(#FFD701 62.3%, #FFFFFF 27.7%)'}}>
                 <img id="kakaoImage" src="images/mainLogoFriends_1920.png" style={{maxWidth: '100%', backgroundColor: '#FFD701'}}/>
             </div>
             <div style={{backgroundColor:'white', display: 'flex', justifyContent: 'center'}}>

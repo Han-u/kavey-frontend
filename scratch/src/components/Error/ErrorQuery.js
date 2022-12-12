@@ -16,17 +16,19 @@ const style = {
         textAlign : "center",
         marginTop: "20px",
         marginBottom: "20px",
+        fontFamily:"NanumSquareB"
     },
 }
 
 
-function ErrorQuery() {
+function ErrorQuery({log}) {
     return ( 
         <div style={style.outer}>
             <div style={style.inner}>
                 <IoIosSad size="100"/>  
-                <div style={{margin:"30px"}}></div>
-                <h1>에러 발새앵앵으애으엉</h1>
+                <div style={{margin:"25x"}}></div>
+                <h1 style={{margin:"5px"}}>에러 발생!</h1>
+                <h4>"{log}"</h4>
             </div>
         </div>
      );

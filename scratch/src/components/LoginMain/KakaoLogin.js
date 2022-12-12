@@ -10,11 +10,13 @@ const KakaoLogin = () => {
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   // 인가코드 받아오기
-   const code =  new URL(window.location.href).searchParams.get("code");
-
+  const code =  new URL(window.location.href).searchParams.get("code");
+  
   // 로그인 성공시 MyPage로 이동시키기위해 useNavigate 사용
   const navigate = useNavigate();
   
+  const sid=window.localStorage.getItem('sid');
+
   useEffect(() => {
     (async () => {
       try {
@@ -82,7 +84,13 @@ const KakaoLogin = () => {
                   toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
               });
-              navigate("../management");
+              if(sid){
+                window.localStorage.removeItem('sid');
+                navigate(`/answer/${sid}`);
+              }else{
+                navigate("../management");
+
+              }
             }
           });
         // console.log(res);
