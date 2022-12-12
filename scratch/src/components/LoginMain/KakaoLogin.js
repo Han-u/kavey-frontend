@@ -7,8 +7,8 @@ import { FRONT_URL } from "../const/Const";
 const KakaoLogin = () => {
   // 카카오 개발자 앱 키 선언
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
-  // const REDIRECT_URI = FRONT_URL+'login';
-  const REDIRECT_URI = 'http://localhost:3000/login';
+  const REDIRECT_URI = 'http://http://210.109.60.59:10158/login';
+  // const REDIRECT_URI = 'http://localhost:3000/login';
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   // 인가코드 받아오기
@@ -26,7 +26,7 @@ const KakaoLogin = () => {
           // 백엔드 주소 뒤에 인가코드 붙여서 GET 설정
           // 백엔드는 이 주소를 통해 뒤에 붙여져있는 인가코드를 전달 받게 된다.
           .get(
-            `/api/oauth/token?code=${code}`
+            `http://210.109.60.59:10156/api/oauth/token?code=${code}`
           )
           // 백엔드 쪽에서 보내준 응답 확인
           .then((response) => {
@@ -49,13 +49,13 @@ const KakaoLogin = () => {
       const token = window.localStorage.getItem("token");
 
       try {
-        console.log("내정보 가져오기")
+        console.log(token)
         const res = await axios
           // 이때, post가 아닌 get으로 접근
           // 접근 주소 = 백엔드에서 설정한 주소
 
           .get(
-            FRONT_URL+"api/me",
+            "http://210.109.60.59:10156/api/me",
             {
               // 헤더값에는 받아온 토큰을 Authorization과 request 에 담아서 전송
               headers: {
