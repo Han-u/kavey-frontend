@@ -207,7 +207,7 @@ function SendSurvey() {
                         </div>
                     </div>
                     <div style={style.Container4}>
-                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>완료✔</BootstrapButton1>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>전송✔</BootstrapButton1>
                     </div>
                 </div>
 
