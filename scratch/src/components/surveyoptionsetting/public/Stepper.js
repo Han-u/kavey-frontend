@@ -47,6 +47,7 @@ function HorizontalLinearStepper(props) {
     }else if(props.step ===1){
       Swal.fire({
         title: '설문 제작을 완료하시겠어요?',
+        text:'지금 완료하면 설문을 수정할 수 없어요!',
         icon: 'success',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -107,7 +108,11 @@ function HorizontalLinearStepper(props) {
         cancelButtonColor: '#d33',
         confirmButtonText: '네',
         cancelButtonText:'아니요'
-      }).then((result) => {navigate('/management/')})
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(`/management`);
+        }
+      })
     }
 
   };
@@ -177,23 +182,24 @@ function HorizontalLinearStepper(props) {
     justifyContent:'space-between',
     alignItems: 'center',
     height:"100%"}} >
-      {props.step===0?
-      <Button
-      color="inherit"
-      onClick={handleCancel}
-      sx={{ mr: 1 }}
-      >
-      <IconButton style={{color:"#202225"}}><ClearIcon fontSize="large"/></IconButton>
-      </Button>
+      {props.step===1?
+        <Box>
+        <Button
+                color="inherit"
+                onClick={handleBack}
+                sx={{ mr: 1 }}
+              >
+                <IconButton style={{color:"#202225"}}><ReplyIcon fontSize="large"/></IconButton>
+        </Button>
+        <Button
+        color="inherit"
+        onClick={handleCancel}
+        sx={{ mr: 1 }}
+        >
+        <IconButton style={{color:"#202225"}}><ClearIcon fontSize="large"/></IconButton>
+        </Button>
+        </Box>
       :
-      <Box>
-      <Button
-              color="inherit"
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              <IconButton style={{color:"#202225"}}><ReplyIcon fontSize="large"/></IconButton>
-      </Button>
       <Button
       color="inherit"
       onClick={handleCancel}
@@ -201,26 +207,25 @@ function HorizontalLinearStepper(props) {
       >
       <IconButton style={{color:"#202225"}}><ClearIcon fontSize="large"/></IconButton>
       </Button>
-      </Box>}
+      }
       
 
       {props.step===0?<StepperChild1/>:props.step===1?<StepperChild2/>:<StepperChild3/>}
       
       {props.step===2?
             <IconButton onClick={handleNext} style={{color:"black", fontFamily: 'NanumSquareR', fontSize: 20}}>
-              완료<CheckIcon/>
+              발송<CheckIcon/>
             </IconButton>:
-            validationNext()?
-            <IconButton 
-            onClick={uCantGo}
-            style={{color:"red", fontFamily: 'NanumSquareR', fontSize: 20}}>
-              다음으로<ArrowForwardIosIcon/>
-            </IconButton>
-              :
+            props.step===1?
               <IconButton 
-              onClick={handleNext} style={{color:"white", fontFamily: 'NanumSquareR', fontSize: 20}}>
+              onClick={handleNext} style={{color:"black", fontFamily: 'NanumSquareR', fontSize: 20}}>
+                제작완료<ArrowForwardIosIcon/>
+              </IconButton>:
+              <IconButton 
+              onClick={validationNext()?uCantGo:handleNext} style={{color:"white", fontFamily: 'NanumSquareR', fontSize: 20}}>
                 다음으로<ArrowForwardIosIcon/>
-              </IconButton>}
+              </IconButton>
+              }
             
     </Box>
   );
