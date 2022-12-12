@@ -34,7 +34,13 @@ function SurveyList(props) {
         const res = axios.post("api/survey/"+surveyId+"/early-closing");
         res.then(
           (res) => console.log(surveyId+"설문조기 종료  완료")
-        );
+        )
+        .catch(error => {
+            const code = error.response.data.code;
+            const message = error.response.data.message;
+            console.log(code,message);
+            navigate('/error/'+message);
+          })
         window.location.reload();
     };
 
@@ -46,7 +52,12 @@ function SurveyList(props) {
         }});
         res.then(
           (res) => console.log(surveyId+"설문삭제 완료")
-        );
+        ).catch(error => {
+            const code = error.response.data.code;
+            const message = error.response.data.message;
+            console.log(code,message);
+            navigate('/error/'+message);
+          })
 
         window.location.reload();
     }

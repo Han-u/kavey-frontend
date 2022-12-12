@@ -45,6 +45,10 @@ function SurveyAnswer() {
       dispatch(SET_THEME_TEST(response.data.theme));
     })
     .catch(error => {
+      const code = error.response.data.code;
+      const message = error.response.data.message;
+      console.log(code,message);
+      navigate('/error/'+message);
     })
     .then(function() {
     });
@@ -81,7 +85,13 @@ function SurveyAnswer() {
         }});
         res.then(
           (res) => console.log(surveyId+"설문응답 완료")
-        );
+        )
+        .catch(error => {
+          const code = error.response.data.code;
+          const message = error.response.data.message;
+          console.log(code,message);
+          navigate('/error/'+message);
+        })
 
 
       //axios.post("/api/survey/"+parseInt(surveyId)+"/submit",finalAnswer).then(response => {});

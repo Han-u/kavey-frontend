@@ -1,8 +1,10 @@
+import { useParams } from "react-router-dom";
 import ErrorQuery from "../components/Error/ErrorQuery";
 
-function ErrorPage({log}) {
+function ErrorPage() {
+    const {code}=useParams();
     return (    
-        <ErrorQuery log={log}/>
+        <ErrorQuery log={code}/>
      );
 }
 

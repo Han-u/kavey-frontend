@@ -45,7 +45,7 @@ function App() {
         <Route path="/answer/submitok" element={<SubmitOK/>}/>
         <Route path="/reject" element={<SurveyReject/>}/>
         
-        <Route path="/error" element={<ErrorPage/>}/>
+        <Route path="/error/:code" element={<ErrorPage/>}/>
 
 
         <Route path="/atest" element={<Atest/>}/>

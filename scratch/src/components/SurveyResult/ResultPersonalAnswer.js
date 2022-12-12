@@ -45,7 +45,7 @@ function AnswerQuestionResultList({surveyId,attendId ,surveyOption,question,them
     return <CircularProgress />
   }
   if(isError){
-      return <h2>Oops... {error.message}</h2>
+    return <ErrorQuery log="값을 읽을 수 없습니다!"/>
   }
 
   console.log(data);
