@@ -43,7 +43,7 @@ function QuestionResultList({purpose,surveyOption,question}) {
 
     return (
         purpose!=RESULT?
-            <div align="center" style={{width:'960px',backgroundColor:"white"}}>
+            <div align="center" style={{width:'960px',backgroundColor:"white", height: '100vh'}}>
                 <div align="center" style={{
                 backgroundImage:theme,
                 backgroundColor:"#D4E8FF",
@@ -83,7 +83,7 @@ function QuestionResultList({purpose,surveyOption,question}) {
                     {list}
             </div>
             :
-            <div align="center" style={{width:"100%",height:"100%",background:"#F5F5F5"}}>
+            <div align="center" style={{width:"100%",height:"100vh",background:"#F5F5F5"}}>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -103,7 +103,7 @@ function QuestionResultList({purpose,surveyOption,question}) {
                 <div>어떻게 알았지</div>
                 
                 </div>
-                <div align="center" style={{width:'960px',backgroundColor:"white"}}>
+                <div align="center" style={{width:'960px',backgroundColor:"white", height: '100vh'}}>
                     <div align="center" style={{
                     backgroundImage:theme,
                     backgroundColor:"#D4E8FF",
