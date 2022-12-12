@@ -55,7 +55,6 @@ function SurveyResult(){
 
     return (
         <div>
-            <ErrorQuery/>
             <div style={style.header}>
                 <Button variant="contained" href="/management" style={{color: 'black', backgroundColor: '#FFD701', borderRadius: '10px'}}>
                     뒤로가기

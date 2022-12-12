@@ -1,13 +1,18 @@
 import {Box, Button, Chip, IconButton, Menu, MenuItem, Typography} from "@mui/material";
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import '../../Management.css'
 import { useDispatch } from 'react-redux'
 import {deleteSurvey} from "../redux/Slices/SuveyListSlice"
 import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
+import {IoIosLock} from "react-icons/io";
+import axios from "axios";
 function SurveyList(props) {
+    const surveyId = props.data.surveyId;
+    const resultURL = "/result/"+surveyId;
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -22,10 +27,27 @@ function SurveyList(props) {
         setAnchorEl(null);
     };
 
-    const handleDelete= (e) =>{
-        dispatch(deleteSurvey(e));   
-        // console.log(설문배열출력);
+    const handleEalryClose = () => {
         setAnchorEl(null);
+
+        const res = axios.post("api/survey/"+surveyId+"/early-closing");
+        res.then(
+          (res) => console.log(surveyId+"설문조기 종료  완료")
+        );
+        window.location.reload();
+    };
+
+    const handleDelete= (e) =>{
+        const token = window.localStorage.getItem('token');
+        const res = axios.delete("api/survey/"+surveyId, 
+        {headers: {
+            Authorization: `Bearer ${token}`
+        }});
+        res.then(
+          (res) => console.log(surveyId+"설문삭제 완료")
+        );
+
+        window.location.reload();
     }
 
     const handleCopy= (e) =>{
@@ -42,6 +64,9 @@ function SurveyList(props) {
         PROGRESS: '진행중',
         DONE: '설문완료'
     }
+    
+
+      
 
     return (
         <div>
@@ -53,6 +78,7 @@ function SurveyList(props) {
                               size="small"
                               color={props.data.status === 'MAKING'? "primary" : props.data.status==='DONE'? "default": "warning"}
                               sx={{float: 'left'}}/>
+                        {props.data.private ? <IoIosLock style={{marginLeft:"5px"}}/> : null}
                     </div>
                     <Typography variant="h6" style={{marginTop: '2px'}}>{props.data.title}</Typography>
                     <div style={{fontSize: 11}}>
@@ -71,22 +97,20 @@ function SurveyList(props) {
                             참여인원
                             {!props.data.private ?
                                 <> {props.data.limitPerson==0?"∞":props.data.limitPerson}</>
-                                :<> {props.data.limitPerson==0?"∞":props.data.limitPerson}</>
-                                //<> {props.data.participation}!?!?@!@#값이없어유오어오 / {props.data.limitPerson}</>}
-                                //참가자수 백에서 갖고오면 가능
-                            }
+                                :<> {props.data.participants} / {props.data.limitPerson==0?"∞":props.data.limitPerson}</>}
+                            
                         </div>
                     }
                 </div>
                 <div style={{position: 'absolute', bottom: '0', right: 0}}>
                     {props.data.status === 'DONE'?
-                        <><Button style={{backgroundColor: "rgba(255, 215, 1, 0.3)", border: '1px solid #FFD701', color: "#202225", width: '110px', height: '30px', fontSize: '13px'}}>
+                        <><Button onClick={()=>navigate(resultURL)} style={{backgroundColor: "rgba(255, 215, 1, 0.3)", border: '1px solid #FFD701', color: "#202225", width: '110px', height: '30px', fontSize: '13px'}}>
                             결과 보기
                         </Button>
-                        <IconButton aria-label="fingerprint" color="primary">
+                        {<IconButton aria-label="fingerprint" color="primary">
                             <DescriptionIcon />
-                        </IconButton></>:
-                        null
+                        </IconButton>}</>
+                        :null
                     }
 
                     <IconButton
@@ -106,18 +130,19 @@ function SurveyList(props) {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={()=>handleDelete(props.data.id)}>설문 삭제</MenuItem>
+                        {props.data.status != 'PROGRESS' ? <MenuItem onClick={()=>handleDelete(props.data.id)}>설문 삭제</MenuItem>:null}
                         {props.data.status=='MAKING' ? <MenuItem onClick={handleClose}>설문 수정</MenuItem>:null}
                         <MenuItem onClick={()=>handleCopy(props.data.id)} >설문 복제</MenuItem>
                         {props.data.status == 'DONE' ? null: <MenuItem component={Link} to="/participant">설문 참여자 관리</MenuItem>}
                         {props.data.status == 'PROGRESS' ?
                             <>
                                 <MenuItem onClick={handleClose}>설문 발송</MenuItem>
-                                <MenuItem onClick={handleClose}>설문 조기 마감</MenuItem>
+                                <MenuItem onClick={handleEalryClose}>설문 조기 마감</MenuItem>
                             </> : null}
 
-                        {props.data.status == 'DONE' ? <MenuItem component={Link} to="/result/" onClick={()=>handleChange(props.data.id)} >결과 보기</MenuItem> : null}
-                        {props.data.status == 'DONE' ? <MenuItem component={Link} to="/report">리포트 작성</MenuItem> : null}
+                        {props.data.status == 'DONE' ? <MenuItem component={Link} to={resultURL} onClick={()=>handleChange(props.data.id)} >결과 보기</MenuItem> : null}
+                        {/*props.data.status == 'DONE' ? <MenuItem component={Link} to="/report/">리포트 작성</MenuItem> : null*/}
+                        
 
                     </Menu>
                 </div>
