@@ -15,7 +15,9 @@ import {SET_THEME_TEST} from "../components/redux/Slices/SurveyOptionSlice"
 
 
 function SurveyAnswer() {
-
+    const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+    const REDIRECT_URI = 'http://localhost:3000/login';
+    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
     const { surveyId } = useParams();
 
     const dispatch = useDispatch();
@@ -26,8 +28,10 @@ function SurveyAnswer() {
 
     useEffect(() => {
       const token = window.localStorage.getItem('token');
-      if(token!=undefined){
+      if(token===null){
         console.log("토큰없다");
+        window.localStorage.setItem('sid',surveyId);
+        window.location.href=KAKAO_AUTH_URI;
       }
     
     }, [])
