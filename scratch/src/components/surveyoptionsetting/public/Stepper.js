@@ -103,7 +103,7 @@ function HorizontalLinearStepper(props) {
       animation: false,
       position: 'top',
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1200,
       timerProgressBar: false,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

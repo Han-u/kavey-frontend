@@ -19,7 +19,10 @@ function SurveyOptionSetting() {
     const navigate=useNavigate();
 
     useEffect(() => {
-        dispatch(SET_USER(JSON.parse(window.localStorage.getItem('profile')).data.id));
+        if(window.localStorage.getItem('profile')){
+            dispatch(SET_USER(JSON.parse(window.localStorage.getItem('profile')).data.id));
+        }
+        
       }, [])
 
 

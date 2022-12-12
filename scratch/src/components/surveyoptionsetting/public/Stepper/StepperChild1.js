@@ -1,7 +1,8 @@
 import { Box,Typography } from "@mui/material"
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { NEXT_LEVEL } from "../../../redux/Slices/SurveyOptionSlice";
+import Swal from 'sweetalert2'
 
 
 function StepperChild1(){
@@ -9,15 +10,47 @@ function StepperChild1(){
 
     const dispatch= useDispatch();
 
+    const surveyOption=useSelector((state)=>state.surveyOption.title);
+
     const MoveSecond=()=>{
-      dispatch(NEXT_LEVEL(1))
-      navigate(`/surveymake`);
+      if(surveyOption===""){
+        Swal.fire({
+          toast: true,
+          icon: 'error',
+          title: '필수 입력을 적어주세요!',
+          animation: false,
+          position: 'top',
+          showConfirmButton: false,
+          timer: 1200,
+          timerProgressBar: false,
+
+        });
+      }else{
+        dispatch(NEXT_LEVEL(1))
+        navigate(`/surveymake`);
+      }
+      
     }
 
     const MoveThird=()=>{
-      dispatch(NEXT_LEVEL(2))
-      navigate(`/sendsurvey`);
+      if(surveyOption===""){
+        Swal.fire({
+          toast: true,
+          icon: 'error',
+          title: '필수 입력을 적어주세요!',
+          animation: false,
+          position: 'top',
+          showConfirmButton: false,
+          timer: 1200,
+          timerProgressBar: false,
+
+        });
+      }else{
+        dispatch(NEXT_LEVEL(2))
+        navigate(`/sendsurvey`);
     }
+      }
+      
 
     return(
         <Box sx={{ width: '420px',height:"80px",
