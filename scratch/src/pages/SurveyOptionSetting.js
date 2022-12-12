@@ -3,12 +3,13 @@ import SurveyTitle from '../components/surveyoptionsetting/SurveyTitle';
 import SurveyAccessType from "../components/surveyoptionsetting/SurveyAccessType";
 import SurveyDuration from "../components/surveyoptionsetting/SurveyDuration";
 import { useSelector,useDispatch } from 'react-redux'
-import { SET_PEOPLE_LIMIT ,NEXT_LEVEL} from "../components/redux/Slices/SurveyOptionSlice";
+import { SET_PEOPLE_LIMIT ,NEXT_LEVEL, SET_USER} from "../components/redux/Slices/SurveyOptionSlice";
 import {Button,Typography} from'@mui/material';
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2'
 import ThemeButton from "../components/surveyoptionsetting/surveytitle/ThemeButton"
+import { useEffect } from "react";
 
 function SurveyOptionSetting() {
     const surveyOption=useSelector((state)=>state.surveyOption);
@@ -16,6 +17,11 @@ function SurveyOptionSetting() {
 
     const dispatch = useDispatch();
     const navigate=useNavigate();
+
+    useEffect(() => {
+        dispatch(SET_USER(JSON.parse(window.localStorage.getItem('profile')).data.id));
+      }, [])
+
 
     const handleClick = ()=>{
         if(surveyOption.limitPerson==null){
@@ -34,6 +40,7 @@ function SurveyOptionSetting() {
             return false;
         }
     }
+    
 
     return (
         <div>
