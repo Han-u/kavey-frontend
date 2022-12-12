@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55] SOSSOSSOSSOSSOSSOSSOSSOSOSSOS">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CopyUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CopyUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/CreateUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/components/SendSurvey/UserList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" beforeDir="false" afterPath="$PROJECT_DIR$/scratch/src/pages/SendSurvey.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="branch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1670599687" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/sc-53" />
+                    <option name="lastUsedInstant" value="1669680882" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/sc-22" />
+                    <option name="lastUsedInstant" value="1668612813" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HiZxrgswSyL6t9eWQQeeH5gNDd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Back-End&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\frontEndd\scratch\src\components\Modal" />
+      <recent name="C:\frontEndd\scratch\src\pages\child" />
+      <recent name="C:\frontEndd\scratch\src\pages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="[SC-55]add 모달추가">
+      <created>1668672334758</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668672334758</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2beab9f6-39a3-46c1-8f6b-41c9e77cb683" name="Changes" comment="[SC-55]add 모달추가" />
+      <created>1668770116957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668770116957</updated>
+      <workItem from="1668770120938" duration="32170000" />
+      <workItem from="1669132528397" duration="7338000" />
+      <workItem from="1669247287743" duration="6853000" />
+      <workItem from="1669479193467" duration="3458000" />
+      <workItem from="1669561404250" duration="16526000" />
+      <workItem from="1669855483448" duration="602000" />
+      <workItem from="1669977287854" duration="6261000" />
+      <workItem from="1670217900933" duration="2211000" />
+      <workItem from="1670301040672" duration="1065000" />
+      <workItem from="1670510301362" duration="5078000" />
+      <workItem from="1670558202287" duration="5933000" />
+      <workItem from="1670666558327" duration="17393000" />
+    </task>
+    <task id="LOCAL-00002" summary="[SC-55]add 백이랑 연결">
+      <created>1669135353138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669135353138</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[SC-55] fix checkbox">
+      <created>1669256379992</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669256379992</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[SC-55] fix sendSurvey">
+      <created>1669573882822</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669573882822</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[SC-55] fix sendSurvey">
+      <created>1669574242095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669574242095</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[SC-55] fix sendSurvey">
+      <created>1669652219280</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669652219280</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[SC-55] fix sendSurvey">
+      <created>1669695426391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669695426391</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[SC-55] fix sendSurvey">
+      <created>1670220111490</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670220111490</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[SC-55] fix sendSurvey">
+      <created>1670515136765</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670515136765</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[SC-55] SOSSOSSOSSOSSOSSOSSOSSOSOSSOS">
+      <created>1670669755389</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670669755389</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[SC-55]add 모달추가" />
+    <MESSAGE value="[SC-55]add 백이랑 연결" />
+    <MESSAGE value="[SC-55] fix checkbox" />
+    <MESSAGE value="[SC-55] fix sendSurvey" />
+    <MESSAGE value="[SC-55] SOSSOSSOSSOSSOSSOSSOSSOSOSSOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="[SC-55] SOSSOSSOSSOSSOSSOSSOSSOSOSSOS" />
+  </component>
+</project>

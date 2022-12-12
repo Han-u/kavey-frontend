@@ -1,0 +1,47 @@
+html, body {
+    height: 100%;
+    background-color: #F5F5F5;
+}
+.fold-right{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #f9f9f9;
+    margin-top: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    display: inline-block;
+}
+.fold-right:before{
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: 0;
+    border-left: 0px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid #ccc;
+}
+.fold-right:after{
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0px;
+    background: #f9f9f9;
+    width: calc(100% - 50px);
+    height: 50px;
+}
+
+.index-button{
+    border-radius: 20px 20px 0 0;
+    width: 70px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.501961);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: "NanumSquareR";
+}
+.selected{
+    background-color: white;
+}
