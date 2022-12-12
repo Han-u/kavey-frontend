@@ -138,7 +138,8 @@ function SendSurvey() {
                 const data = {
                     "sendEmailList" : user
                 }
-                if(data.length>0){
+                console.log(data.sendEmailList);
+                if(data.sendEmailList.length>0){
                     axios.post(url, data, config)
                     .then(response =>  Swal.fire({
                         icon: 'success',
