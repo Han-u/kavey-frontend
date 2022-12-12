@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import {SET_PUBLIC_PRIVATE,SET_PEOPLE_LIMIT} from "../redux/Slices/SurveyOptionSlice"
 
 function SurveyAccessType() {
-    const isPrivate=useSelector((state)=>state.surveyOption.isPrivate);
+    const isPrivate=useSelector((state)=>state.surveyOption.privateSurvey);
     const limitPerson=useSelector((state)=>state.surveyOption.limitPerson);
 
     const dispatch=useDispatch();
