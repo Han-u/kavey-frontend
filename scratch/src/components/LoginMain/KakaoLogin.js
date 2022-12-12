@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { FRONT_URL } from "../const/Const";
 
 const KakaoLogin = () => {
   // 카카오 개발자 앱 키 선언
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
-  const REDIRECT_URI = 'http://localhost:3000/login';
+  const REDIRECT_URI = FRONT_URL+'login';
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   // 인가코드 받아오기
@@ -53,7 +54,7 @@ const KakaoLogin = () => {
           // 접근 주소 = 백엔드에서 설정한 주소
 
           .get(
-            "http://localhost:8081/api/me",
+            FRONT_URL+"api/me",
             {
               // 헤더값에는 받아온 토큰을 Authorization과 request 에 담아서 전송
               headers: {
