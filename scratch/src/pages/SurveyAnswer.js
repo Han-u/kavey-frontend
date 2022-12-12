@@ -84,7 +84,10 @@ function SurveyAnswer() {
             Authorization: token
         }});
         res.then(
-          (res) => console.log(surveyId+"설문응답 완료")
+          (res) => {
+            console.log(surveyId+"설문응답 완료");
+            navigate('/ok/submit');
+          }
         )
         .catch(error => {
           const code = error.response.data.code;
