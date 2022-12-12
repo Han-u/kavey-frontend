@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import {Button, Typography, Menu, MenuItem, Input, styled,TextField} from "@mui/material";
+import { FRONT_URL } from '../const/Const';
 
 function CopyUrl({surveyId}) {
 
-    const sendURL = "http://localhost:3000/answer/"+surveyId
+    const sendURL = FRONT_URL+"answer/"+surveyId
     const textInput = useRef();
 
     const copy = () => {

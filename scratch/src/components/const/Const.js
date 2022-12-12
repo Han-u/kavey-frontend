@@ -1,0 +1,1 @@
+export const FRONT_URL = "http://210.109.60.59:10156/"

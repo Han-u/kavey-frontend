@@ -28,7 +28,7 @@ function HorizontalLinearStepper(props) {
   const optionData = useSelector((state)=>state.surveyOption);
   const questionData = useSelector((state)=>state.surveyMake.question);
   const surveyOption=useSelector((state)=>state.surveyOption);
-
+  const token = window.localStorage.getItem('token')
   
   const validationNext=()=>{
     if(surveyOption.title===""){
@@ -88,9 +88,12 @@ function HorizontalLinearStepper(props) {
           })
           
           console.log(newState);
-          const res = axios.post('/api/survey',newState);
+          const res = axios.post('/api/survey',newState,{headers: {
+            Authorization: token
+        }});
           res.then(
             (res) => {
+              console.log(res)
               console.log("res surveyid값",res.data);
               dispatch(NEXT_LEVEL(1));
               navigate(`/sendsurvey/`+res.data); 

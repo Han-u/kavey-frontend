@@ -5,7 +5,7 @@ import produce from "immer";
 export const OBJECTIVE = "TEXT";
 export const MULTIPLE = "MULTIPLE"  //MULTIPLE 한개만 선택 
 export const RADIO = "RADIO"  //MULTIPLE 한개만 선택 
-export const CHECKBOX = "CHECKBOX" //MULTIPLE 여러개 선택 
+export const  CHECKBOX = "CHECKBOX" //MULTIPLE 여러개 선택 
 export const TRUEFALSE = "TRUEFALSE"
 export const STAR = 'RATING'
 

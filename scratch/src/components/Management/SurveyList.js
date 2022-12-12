@@ -30,8 +30,7 @@ function SurveyList(props) {
 
     const handleEalryClose = () => {
         setAnchorEl(null);
-
-        const res = axios.post("api/survey/"+surveyId+"/early-closing");
+        const res = axios.post("http://210.109.60.59:10156/api/survey/"+surveyId+"/early-closing");
         res.then(
           (res) => console.log(surveyId+"설문조기 종료  완료")
         )
