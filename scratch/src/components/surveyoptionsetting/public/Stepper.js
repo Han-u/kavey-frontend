@@ -88,7 +88,7 @@ function HorizontalLinearStepper(props) {
           })
           
           console.log(newState);
-          const res = axios.post('/api/survey',newState);
+          const res = axios.post('http://210.109.60.59:10156/api/survey',newState);
           res.then(
             (res) => {
               console.log("res surveyid값",res.data);

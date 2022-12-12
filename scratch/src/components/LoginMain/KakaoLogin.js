@@ -7,7 +7,8 @@ import { FRONT_URL } from "../const/Const";
 const KakaoLogin = () => {
   // 카카오 개발자 앱 키 선언
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
-  const REDIRECT_URI = FRONT_URL+'login';
+  // const REDIRECT_URI = FRONT_URL+'login';
+  const REDIRECT_URI = 'http://localhost:3000/login';
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   // 인가코드 받아오기
