@@ -10,6 +10,7 @@ import {useParams} from 'react-router-dom'
 import { getAttendResult, getSurveyResult, RESULT_ATTEND, RESULT_SURVEY } from "../components/SurveyResult/other/Query";
 import {useSelector} from "react-redux";
 import SurveyTitleText from "../components/SurveyResult/SurveyTitleText";
+import ErrorQuery from "../components/Error/ErrorQuery";
 function SurveyResult(){
     const { surveyId } = useParams();
     const surveyOption=useSelector((state)=>state.surveyOption);

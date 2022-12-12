@@ -4,7 +4,8 @@ export const SurveyOptionSlice=createSlice(
     {
         name:'SurveyOption',
         initialState:{
-            userId: 1,
+            userId:undefined,
+            //JSON.parse(window.localStorage.getItem('profile')).data.id,
             title:'이름 없는 설문',
             description:'이름 없는 설문입니다',
             askAge:false,
@@ -20,6 +21,9 @@ export const SurveyOptionSlice=createSlice(
             themeForFront:null,//프론트용22
         },
         reducers:{
+            SET_USER:(state,action)=>{
+                state.userId=action.payload;
+            },
             SET_TITLE:(state,action)=>{
                 state.title=action.payload;
             },
@@ -83,6 +87,7 @@ export const SurveyOptionSlice=createSlice(
 
 
 export const {
+    SET_USER,
     SET_TITLE,
     SET_DESCRIPTION,
     SET_STARTDATE,

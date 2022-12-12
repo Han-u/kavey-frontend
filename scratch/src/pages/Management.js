@@ -1,15 +1,35 @@
 import {Button, Grid, Typography} from "@mui/material";
 import SurveyList from "../components/Management/SurveyList";
 import {useEffect, useState} from "react";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '../Management.css'
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
-
+import axios from "axios";
+import { setSurvey } from "../components/redux/Slices/SuveyListSlice";
 
 
 
 function Management(){
+    const surveyList=useSelector((state)=>state.surveyList.value);
+    const dispatch = useDispatch();
+
+
+    //GET 설문 리스트 
+    useEffect(() => {
+        const token = window.localStorage.getItem('token');
+        const res = axios.get("api/survey/", 
+        {headers: {
+            Authorization: `Bearer ${token}`
+        }});
+        res.then(
+            (res) => {dispatch(setSurvey(res.data))}
+        );
+    }, [])
+      
+
+
+    //USER 쪽 
     const navigate=useNavigate();
     if(window.localStorage.getItem('profile')){
         var userData=JSON.parse(window.localStorage.getItem('profile')).data.nickname;
@@ -40,16 +60,8 @@ function Management(){
     //         }
     // });
     
-  
-    const surveyList=useSelector((state)=>state.surveyList.value);
 
-    /*
-    axios.get("/api/survey/").then(response => {
-        //console.log(response.data);
-        dispatch(GET_SURVEY({data:response.data}));
-        dispatch(CHECK_ANSWER()); 
-    });
-    */
+
 
     const handleLogout=()=>{
         Swal.fire({

@@ -13,7 +13,6 @@ import LinkFloating from "../src/components/Modal/LinkFloating";
 import ModalSearchParticipant from "./components/Modal/ModalSearchParticipant";
 import LoginMain from "./pages/LoginMain";
 import SurveyAnswer from "./pages/SurveyAnswer";
-import ProxyTest from "./components/BackEnd/ProxyTest";
 import MyDocument from "./pages/Report";
 import SurveyResult from "./pages/SurveyResult";
 import ResultParticipant from "./components/SurveyResult/ResultParticipant";
@@ -38,7 +37,6 @@ function App() {
         <Route path="/report" element={<MyDocument/>}/>
         <Route path="/answer/:surveyId" element={<SurveyAnswer/>}/>
         <Route path="/oauth/callback/kakao"></Route>
-        <Route path="/testproxy" element={<ProxyTest/>}/>
         <Route path="/result/:surveyId" element={<SurveyResult/>}/>
         <Route path="/result/:surveyId/personal/:attendId" element={<ResultPersonalAnswer/>}/>
 
