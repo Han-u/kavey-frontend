@@ -8,12 +8,12 @@ import HorizontalLinearStepper from "../components/surveyoptionsetting/public/St
 import axios from "axios";
 import CopyUrl from "../components/SendSurvey/CopyUrl";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-
+import { useParams } from 'react-router-dom';
 
 function SendSurvey() {
-    const step=useSelector((state)=>state.surveyOption.step);
+    const { surveyId } = useParams();
 
-    const [exampleURL, setExampleURL] = useState("this is exampleURLforSurdvey");
+    const step=useSelector((state)=>state.surveyOption.step);
     const surveyAPI = false;
 
     const style = {
@@ -113,7 +113,7 @@ function SendSurvey() {
             cancelButtonText:'아니요'
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = '/api/survey/1/email-send';
+                const url = '/api/survey/'+surveyId+'/email-send';
                 const config = {"Content-Type": 'application/json'};
                 const data = {
                     "sendEmailList" : user
@@ -127,7 +127,6 @@ function SendSurvey() {
                         icon: 'error',
                         title: '설문지 발송에 실패했습니다.'
                     }))
-            
             }
         })
     }
@@ -196,7 +195,7 @@ function SendSurvey() {
                 <div>
                     <div style={style.Container1}>
                         <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : <>설문 조사 링크 복사 열기<ContentCopyIcon style={{transform: 'scale(0.7)'}}/></>}</BootstrapButton2>
-                        {visible && <CopyUrl/>}
+                        {visible && <CopyUrl surveyId={surveyId}/>}
                     </div>
                     <div style={style.sendList}>
                         <div style={style.Container2}>

@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import {SET_PUBLIC_PRIVATE,SET_PEOPLE_LIMIT} from "../redux/Slices/SurveyOptionSlice"
 
 function SurveyAccessType() {
-    const isPrivate=useSelector((state)=>state.surveyOption.isPrivate);
+    const isPrivate=useSelector((state)=>state.surveyOption.privateSurvey);
     const limitPerson=useSelector((state)=>state.surveyOption.limitPerson);
 
     const dispatch=useDispatch();
@@ -12,6 +12,11 @@ function SurveyAccessType() {
     const handleClick = (e) => {
         dispatch(SET_PUBLIC_PRIVATE(e));    
     };   
+    const handleClick_close = (e) => {
+        dispatch(SET_PUBLIC_PRIVATE(e));  
+        dispatch(SET_PEOPLE_LIMIT(''));  
+    };   
+
 
 
     const checkPublic = ()=>{
@@ -43,7 +48,7 @@ function SurveyAccessType() {
                     </Tooltip>    
                     <Tooltip title="참여 요청을 받은 응답자만 접근할 수 있어요!">
                         <Button variant={isPrivate==="TRUE"?"contained":"outlined"}
-                        onClick={(e)=>handleClick(e.target.value)}
+                        onClick={(e)=>handleClick_close(e.target.value)}
                         style={{width:"80px",height:"30px"}}
                         value="TRUE">폐쇄형</Button>
                     </Tooltip>            

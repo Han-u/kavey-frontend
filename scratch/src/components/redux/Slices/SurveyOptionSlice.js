@@ -10,8 +10,8 @@ export const SurveyOptionSlice=createSlice(
             description:'이름 없는 설문입니다',
             askAge:false,
             askGender:false,
-            isPrivate:'FALSE', 
-            limitPerson:null,
+            privateSurvey:'FALSE', 
+            limitPerson:'',
             startDate:new Date(),
             endDate:new Date(),
             theme:null,
@@ -37,7 +37,7 @@ export const SurveyOptionSlice=createSlice(
                 state.endDate=action.payload;
             },
             SET_PUBLIC_PRIVATE:(state,action)=>{
-                state.isPrivate=action.payload;
+                state.privateSurvey=action.payload;
             },
             SET_PEOPLE_LIMIT:(state,action)=>{
                 state.limitPerson=action.payload;

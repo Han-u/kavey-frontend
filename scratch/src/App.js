@@ -32,8 +32,8 @@ function App() {
         <Route path="/surveyoptionsetting" element={<SurveyOptionSetting/>}/>
         <Route path="/management" element={<Management/>}/>
         <Route path="/surveymake" element={<SurveyMake/>}/>
-        <Route path="/participant" element={<Participant/>}/>
-        <Route path="/sendsurvey" element={<SendSurvey/>}/>
+        <Route path="/participant/:surveyId" element={<Participant/>}/>
+        <Route path="/sendsurvey/:surveyId" element={<SendSurvey/>}/>
         <Route path="/linkfloating" element={<LinkFloating/>}/>
         <Route path="/searchparticipant" element={<ModalSearchParticipant/>}/>
         <Route path="/report" element={<MyDocument/>}/>
@@ -46,7 +46,6 @@ function App() {
 
 
         <Route path="/atest" element={<Atest/>}/>
-
         <Route path="/test" element={<Test/>}/>
       </Routes>
     </Router>
