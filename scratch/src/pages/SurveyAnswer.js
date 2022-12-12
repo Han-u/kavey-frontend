@@ -11,6 +11,7 @@ import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResul
 import produce from 'immer';
 import { CHECKBOX } from '../components/redux/Slices/SurveyMakeSlice';
 import { useEffect } from 'react';
+import {SET_THEME_TEST} from "../components/redux/Slices/SurveyOptionSlice"
 
 
 function SurveyAnswer() {
@@ -36,7 +37,8 @@ function SurveyAnswer() {
       console.log(response.data);
       dispatch(GET_SURVEY({data:response.data}));
       dispatch(CHECK_ANSWER());
-
+      console.log(response.data.theme)
+      dispatch(SET_THEME_TEST(response.data.theme));
     })
     .catch(error => {
     })
@@ -70,7 +72,7 @@ function SurveyAnswer() {
       const token = window.localStorage.getItem('token');
         const res = axios.post(url,finalAnswer,
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
           (res) => console.log(surveyId+"설문응답 완료")
@@ -86,6 +88,7 @@ function SurveyAnswer() {
 
 
     const handleClick=()=>{
+      // console.log(window.localStorage.getItem('token'))
       if(status == true){
         Swal.fire({
           title: '제출하시겠어요?',
