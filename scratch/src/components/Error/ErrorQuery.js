@@ -4,7 +4,9 @@ const style = {
     outer : {
         padding: 30,
         backgroundColor: '#F5F5F5',
+        alignItems:"center",
         justifyContent : "center",
+        width:"100%",height:"100%",
     },
     inner : {
         padding: 30,
