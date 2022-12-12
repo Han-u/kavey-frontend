@@ -13,6 +13,9 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
 
+    const [exampleURL, setExampleURL] = useState("this is exampleURLforSurdvey");
+    const surveyAPI = false;
+
     const style = {
         header : {
             display: 'flex',
@@ -162,11 +165,17 @@ function SendSurvey() {
         ]
     });
 
+
+
+
+
     const copy = () => {
         const el = textInput.current
         el.select()
         document.execCommand("copy")
     }
+
+
     return (
         <div>
             <div align='center' style={{backgroundColor:'#FFD701',

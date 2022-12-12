@@ -39,7 +39,7 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
             Swal.fire({
                 icon: 'error',
                 title: '이메일 양식 오류',
-                text: '정확한 피설문자의 이메일을 입력해주세요'
+                text: '정확한 피설문자의 이메일을 입력해주세요.'
             })
         }
         if ((e.target.value) == '')
@@ -47,7 +47,7 @@ function CreateUser({ username, email, onChange, onCreate,onSend }) {
             Swal.fire({
                 icon: 'error',
                 title: '비어있는 공간',
-                text: '비어있지롱 비어있지롱'
+                text: '피설문자의 이메일을 입력해주세요.'
             })
         }
 
