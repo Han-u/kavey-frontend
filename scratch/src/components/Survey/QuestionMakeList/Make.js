@@ -23,15 +23,18 @@ function Make({id, title,required}) {
         display: "flex",
         flexDirection:"column",
         justifyContent:'space-between',
-        borderRadius: '5px'
+        borderRadius: '20px'
         }}  draggable>
             <div>
                 <TextField 
                 placeholder={title} 
                 maxLength={50} 
-                onChange={onChange} 
+                onChange={onChange}
+                sx={{
+                    "& fieldset": { border: 'none' },
+                }}
                 style={{width:"640px",
-                height:"57px",marginTop:"30px"}}></TextField>
+                height:"57px",marginTop:"30px", backgroundColor: '#F5F5F5'}}></TextField>
             </div>
             <div style={{display: 'flex',
             flexDirection:'row',

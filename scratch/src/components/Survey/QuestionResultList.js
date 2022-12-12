@@ -83,7 +83,7 @@ function QuestionResultList({purpose,surveyOption,question}) {
                     {list}
             </div>
             :
-            <div align="center" style={{width:"100%",height:"100%",background:"white"}}>
+            <div align="center" style={{width:"100%",height:"100%",background:"#F5F5F5"}}>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',

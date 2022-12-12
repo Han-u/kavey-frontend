@@ -97,11 +97,11 @@ function SurveyAnswer() {
     };
 
     return ( 
-      <div align="center" style={{backgroundColor:"white"}}>
+      <div align="center" style={{backgroundColor: '#F5F5F5'}}>
         <AnswerQuestionResultList/>
-        <Button variant="contained" 
-        style={{marginTop:"50px"}}
-        onClick={handleClick}>제출하기</Button>
+          <div style={{padding: 50}}>
+              <Button variant="contained" onClick={handleClick}>제출하기</Button>
+          </div>
       </div>
     );
 

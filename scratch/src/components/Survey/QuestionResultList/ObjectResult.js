@@ -32,22 +32,23 @@ function ObjectResult({purpose,q_id,id, title,required}) {
     };
 
     return (  
-        <div>
-            <div style={{height:"230px"}}>
-                <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
+        <div style={{padding:'25px', paddingBottom: 0}}>
+            <div style={{marginBottom: '30px'}}>
+                <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"30px" }}>
                     {required === true && <h2 style={{color: "red"}} >*</h2> }
                     <Typography fontFamily="NanumSquareB"
                     style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
                 </div>
                 {purpose!=RESULT?  
-                <TextField label="답변을 입력해주세요" onChange={onChange} style={{width:"400px",height:"110px",marginTop:"15px"}}></TextField>
+                <TextField label="답변을 입력해주세요" onChange={onChange} style={{width:"50%",height:"110px",marginTop:"15px", backgroundColor: '#F5F5F5'}}
+                    sx={{"& fieldset": { border: 'none' }}}></TextField>
                 : 
                 <Typography fontFamily="NanumSquareR"
                 style={{fontSize:"40px"}}>{filter_data[0].answer}</Typography>
                 // <input type="text" value={filter_data[0].answer} readOnly={true}/>
                 }    
             </div> 
-            <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
+            <div style={{borderBottom:"1px solid #000000",width:'700px'}}></div>
         </div>
     );
 }

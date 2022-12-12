@@ -4,10 +4,12 @@ import {useDispatch} from 'react-redux';
 import { UPDATE_TITLE,UPDATE_MULTIPLE_CANMULTI,UPDATE_MULTIPLE_CREATE_RESPONSE,UPDATE_MULTIPLE_UPDATE_RESPONSE,UPDATE_MULTIPLE_DELETE_RESPONSE } from "../../redux/Slices/SurveyMakeSlice";
 
 import { DeleteButton, PlusButton,RequiredButton } from '../../../pages/SurveyMake';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 import {Button,IconButton,TextField,Tooltip} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import TrueFalseResult from '../QuestionResultList/TrueFalseResult';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -42,17 +44,20 @@ function MultipleMake({id,title,required,canMulti,response}) {
         display: "flex",
         flexDirection:"column",
         justifyContent:'space-between',
-        borderRadius: '5px'
+        borderRadius: '20px'
         }}  draggable>
             <TextField 
                 placeholder={title} 
                 maxLength={50} 
-                onChange={onChange} 
+                onChange={onChange}
+                sx={{
+                    "& fieldset": { border: 'none' },
+                }}
                 style={{width:"640px",
-                height:"57px",marginTop:"30px",marginLeft:"30px"}}></TextField>
-                <Button onClick={onClickPlus}>보기추가</Button>
+                height:"57px",marginTop:"30px",marginLeft:"30px", backgroundColor: '#F5F5F5'}}></TextField>
+                <Button onClick={onClickPlus} style={{color:'#202225', height: 50, fontFamily:'NanumSquareR'}}>보기추가 + </Button>
             <div>
-                <ResponseList id={id} list={response}/>
+                <ResponseList id={id} list={response} canMulti={canMulti}/>
             </div>
             <div style={{display: 'flex',
             flexDirection:'row',
@@ -94,7 +99,7 @@ function MultiButton({id,canMulti}){
     );
 }
 
-function ResponseList({id,list}) {
+function ResponseList({id,list, canMulti}) {
     let canDelete = list.length < 2 ? false : true;
     let responseList;
     if(list!=undefined){
@@ -105,6 +110,7 @@ function ResponseList({id,list}) {
                 r_id = {r.ordering} 
                 title={r.value} 
                 canDelete={canDelete}
+                canMulti={canMulti}
                 />
             )
         )
@@ -118,7 +124,7 @@ function ResponseList({id,list}) {
 }
 
 
-function Response({q_id,r_id,title,canDelete}){
+function Response({q_id,r_id,title,canDelete, canMulti}){
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -132,12 +138,18 @@ function Response({q_id,r_id,title,canDelete}){
 
 
     return(
-        <div>      
+        <div>
+            {canMulti?
+                <CheckBoxOutlineBlankIcon transform='scale(0.6)'/>:
+                <RadioButtonUncheckedIcon transform='scale(0.6)'/>
+
+            }
+
                 <TextField variant="standard" size="small" placeholder={title} onChange={onChange}
-                style={{marginLeft:'10px'}}
+                style={{marginLeft:'10px', marginTop:'5px'}}
                 />
                 {canDelete ? 
-                    <IconButton onClick={onClickDelete}><CloseIcon color="error"/></IconButton>
+                    <IconButton onClick={onClickDelete}><CloseIcon color="error" transform='scale(0.8)'/></IconButton>
                     :
                     <Tooltip title="보기는 하나 이상 필요합니다!">
                         <IconButton><CloseIcon color="error"/></IconButton>
