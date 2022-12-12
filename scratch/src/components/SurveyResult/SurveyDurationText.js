@@ -58,11 +58,6 @@ function SurveyDurationText(props) {
                             </div>
                         </div>
                     </div>
-                    <div style={{marginTop:"20px"}}>
-                        <Button variant="outlined" style={{marginRight:"10px",height:"30px"}}>7일</Button>
-                        <Button variant="outlined" style={{marginRight:"10px",height:"30px"}}>14일</Button>
-                        <Button variant="outlined" style={{marginRight:"10px",height:"30px"}}>30일</Button>
-                    </div>
                 </div>
             </div>
             <div style={{borderBottom:"1px solid #000000",width:'90%'}}></div>

@@ -11,6 +11,7 @@ import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResul
 import produce from 'immer';
 import { CHECKBOX } from '../components/redux/Slices/SurveyMakeSlice';
 import { useEffect } from 'react';
+import {SET_THEME_TEST} from "../components/redux/Slices/SurveyOptionSlice"
 
 
 function SurveyAnswer() {
@@ -29,7 +30,8 @@ function SurveyAnswer() {
       console.log(response.data);
       dispatch(GET_SURVEY({data:response.data}));
       dispatch(CHECK_ANSWER());
-
+      console.log(response.data.theme)
+      dispatch(SET_THEME_TEST(response.data.theme));
     })
     .catch(error => {
     })
