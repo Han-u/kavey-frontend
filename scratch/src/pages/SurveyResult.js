@@ -47,11 +47,14 @@ function SurveyResult(){
         return <CircularProgress />
     }
     if(isError){
-        return <h2>Oops... {error.message}</h2>
+        return <ErrorQuery/>
+     
+        //<h2>Oops... {error.message}</h2>
     }
 
     return (
         <div>
+            <ErrorQuery/>
             <div style={style.header}>
                 <Button variant="contained" href="/management" style={{color: 'black', backgroundColor: '#FFD701', borderRadius: '10px'}}>
                     뒤로가기
