@@ -13,12 +13,12 @@ import { setSurvey } from "../components/redux/Slices/SuveyListSlice";
 function Management(){
     const surveyList=useSelector((state)=>state.surveyList.value);
     const dispatch = useDispatch();
-
+    const url="/api/survey/"
 
     //GET 설문 리스트 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
-        const res = axios.get("api/survey/", 
+        const res = axios.get(url, 
         {headers: {
             Authorization: `Bearer ${token}`
         }});
@@ -137,7 +137,7 @@ function Management(){
         <div>
             <div style={style.header}>
                 <div style={{display: 'flex', alignItems:'center'}}>
-                    <img src='images/Subtract.png' width='35px' height='35px' onClick={handleLogout}/>
+                    <img src="/images/Subtract.png" width='35px' height='35px' onClick={handleLogout}/>
                     <span style={{color: 'white', marginLeft: '10px'}}> {userData} 님, <br/> 오늘 하루도 좋-설사 하세요!</span>
 
                 </div>

@@ -80,7 +80,7 @@ function StepperChild1(){
             <Typography style={{fontFamily:"NanumSquareB",fontWeight:"700"}}>2</Typography>
         </Box>
         <Box sx={{width:"50px",height:"50px",backgroundColor:"rgba(255, 255, 255, 0.5)",borderRadius:"44px",alignItems: 'center',display:"flex",
-          justifyContent:'center'}} onClick={MoveThird}>
+          justifyContent:'center'}} >
             <Typography style={{fontFamily:"NanumSquareB",fontWeight:"700"}}>3</Typography>
         </Box>
       </Box>

@@ -18,8 +18,10 @@ import SurveyResult from "./pages/SurveyResult";
 import ResultParticipant from "./components/SurveyResult/ResultParticipant";
 import ResultPersonalAnswer from "./components/SurveyResult/ResultPersonalAnswer";
 import Atest from "./pages/Atest";
+import SurveyReject from "./pages/SurveyReject"
 
 import Test from  "./pages/Test";
+import SubmitOK from "./pages/SubmitOK";
 
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
         <Route path="/oauth/callback/kakao"></Route>
         <Route path="/result/:surveyId" element={<SurveyResult/>}/>
         <Route path="/result/:surveyId/personal/:attendId" element={<ResultPersonalAnswer/>}/>
+        <Route path="/answer/submitok" element={<SubmitOK/>}/>
+        <Route path="/reject" element={<SurveyReject/>}/>
+
 
         <Route path="/atest" element={<Atest/>}/>
         <Route path="/test" element={<Test/>}/>
