@@ -33,28 +33,109 @@ function GenderResult({purpose,id,title,required}){
 
 
     return (
-        <div style={styles.container}>
-            <div>
-            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center" }}>
-                <h1 style={{color: "red"}} >*</h1>
-                <Typography variant="h4" fontFamily="HallymGothic-Regular" 
-                style={{marginBottom:'20px'}}>당신의 성별은?</Typography>
+        <div>
+        <div style={{height:"210px"}}>
+            <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
+            <h1 style={{color: "red"}} >*</h1>
+                <Typography fontFamily="NanumSquareB"
+                style={{marginBottom:'20px',fontSize:"26px"}}>성별을 선택해주세요!</Typography>
             </div>
-            </div>
-            
             <div>
-            {purpose!=RESULT?   
-                <ButtonGroup varient="outlined" size="large">
-                    <Button variant={gender==="MALE"?"contained":"outlined"} onClick={()=>setGender("MALE")}>남자</Button>
-                    <Button variant={gender==="FEMALE"?"contained":"outlined"} onClick={()=>setGender("FEMALE")}>여자</Button>
-                </ButtonGroup>
+            {purpose!=RESULT? 
+            <div>
+            <Button variant={gender==="MALE"?"contained":"outlined"} 
+            onClick={()=>setGender("MALE")} 
+            style={
+                gender==="MALE"?
+                {width:"160px",
+                height:"60px" ,
+                marginRight:"10px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFD701",
+                border:"1px solid #D9D9D9",
+                color:"black"}
+                :
+                {width:"160px",
+                height:"60px" ,
+                marginRight:"10px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFFFFF",
+                border:"1px solid #D9D9D9",
+                color:"black"}}>남자</Button>
+            <Button variant={gender==="FEMALE"?"contained":"outlined"} 
+            onClick={()=>setGender("FEMALE")} 
+            style={gender==="FEMALE"?
+                {width:"160px",
+                height:"60px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFD701",
+                border:"1px solid #D9D9D9",
+                color:"black"}
+                :
+                {width:"160px",
+                height:"60px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFFFFF",
+                border:"1px solid #D9D9D9",
+                color:"black"}}>여자</Button>
+                </div>
             :
-            <ButtonGroup varient="outlined" size="large">
-                    <Button variant={data==="MALE"?"contained":"outlined"} >남자</Button>
-                    <Button variant={data==="FEMALE"?"contained":"outlined"} >여자</Button>
-            </ButtonGroup>
+            <div>
+            <Button variant={data==="MALE"?"contained":"outlined"}  
+            style={
+                data==="MALE"?
+                {width:"160px",
+                height:"60px" ,
+                marginRight:"10px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFD701",
+                border:"1px solid #D9D9D9",
+                color:"black",
+                fontFamily:"NanumSquareB"}
+                :
+                {width:"160px",
+                height:"60px" ,
+                marginRight:"10px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFFFFF",
+                border:"1px solid #D9D9D9",
+                color:"black",
+                fontFamily:"NanumSquareR"}}>남자</Button>
+            <Button variant={data==="FEMALE"?"contained":"outlined"} 
+            style={data==="FEMALE"?
+                {width:"160px",
+                height:"60px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFD701",
+                border:"1px solid #D9D9D9",
+                color:"black",
+                fontFamily:"NanumSquareB"}
+                :
+                {width:"160px",
+                height:"60px"
+                ,borderRadius:"10px",
+                fontSize:"28px",
+                backgroundColor:"#FFFFFF",
+                border:"1px solid #D9D9D9",
+                color:"black",
+                fontFamily:"NanumSquareR"}}>여자</Button>
+                </div>
+
+            // <ButtonGroup varient="outlined" size="large">
+            //         <Button variant={data==="MALE"?"contained":"outlined"} >남자</Button>
+            //         <Button variant={data==="FEMALE"?"contained":"outlined"} >여자</Button>
+            // </ButtonGroup>
             }          
             </div>
+        </div>
+        <div style={{borderBottom:"1px solid #000000",width:'824px'}}></div>
         </div>
     )
 }

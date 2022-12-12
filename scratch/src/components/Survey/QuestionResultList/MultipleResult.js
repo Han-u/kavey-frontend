@@ -25,7 +25,7 @@ function MultipleResult({purpose,q_id,id, title,required,canMulti,type,response}
             <div>
                 <div style={{ display:'flex',flexDirection:'row' ,justifyContent : "center",paddingTop:"45px" }}>
                     {required === true && <h2 style={{color: "red"}} >*</h2> }
-                    <Typography fontFamily="NanumSquare"
+                    <Typography fontFamily="NanumSquareB"
                     style={{marginBottom:'20px',fontSize:"26px"}}>{title}</Typography>
                 </div>
                 <p>{canMulti}</p>
@@ -74,7 +74,11 @@ function ResponseList({purpose,q_id,ordering,canMulti,type,list}) {
             responseList = list.map(
                 r => (
                     <div>
-                        <input name={ordering} type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} value={r.value} id={r.optionId}  onChange={(e) => onCheckHandler(e)}/> 
+                        <input name={ordering} 
+                        type={ (type == RADIO) || (canMulti==false)  ? "radio":"checkbox"} 
+                        value={r.value} 
+                        id={r.optionId}  
+                        onChange={(e) => onCheckHandler(e)}/> 
                         <p>{r.value}</p>
                     </div>
     

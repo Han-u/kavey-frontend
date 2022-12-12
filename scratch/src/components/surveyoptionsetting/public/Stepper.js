@@ -16,6 +16,7 @@ import StepperChild2 from './Stepper/StepperChild2';
 import StepperChild3 from './Stepper/StepperChild3';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 
 function HorizontalLinearStepper(props) {
   // const [activeStep, setActiveStep] = React.useState(0);
@@ -26,10 +27,21 @@ function HorizontalLinearStepper(props) {
   const dispatch= useDispatch();
   const optionData = useSelector((state)=>state.surveyOption);
   const questionData = useSelector((state)=>state.surveyMake.question);
+  const surveyOption=useSelector((state)=>state.surveyOption);
+
+  
+  const validationNext=()=>{
+    if(surveyOption.title===""){
+        return true;
+    }else{
+        return false;
+    }
+}
 
   const handleNext = () => {
 
     if(props.step ===0){
+
       dispatch(NEXT_LEVEL(1))
       navigate(`/surveymake`);
     }else if(props.step ===1){
@@ -83,6 +95,22 @@ function HorizontalLinearStepper(props) {
           }
 
   };
+  const uCantGo=()=>{
+    Swal.fire({
+      toast: true,
+      icon: 'error',
+      title: '필수 입력을 적어주세요!',
+      animation: false,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    });
+  }
 
 
 
@@ -110,6 +138,22 @@ function HorizontalLinearStepper(props) {
     }
   };
 
+  const handleCancel = () => {
+      Swal.fire({
+        title: '정말 취소하시겠어요?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네',
+        cancelButtonText:'아니오',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            navigate(`/management`);
+        }
+    })
+  };
+
   return (
     <Box sx={{ width: '95%',
     display: 'flex',
@@ -117,22 +161,51 @@ function HorizontalLinearStepper(props) {
     justifyContent:'space-between',
     alignItems: 'center',
     height:"100%"}} >
+      {props.step===0?
+      <Button
+      color="inherit"
+      onClick={handleCancel}
+      sx={{ mr: 1 }}
+      >
+      <IconButton style={{color:"#202225"}}><ClearIcon fontSize="large"/></IconButton>
+      </Button>
+      :
+      <Box>
       <Button
               color="inherit"
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
               <IconButton style={{color:"#202225"}}><ReplyIcon fontSize="large"/></IconButton>
-            </Button>
+      </Button>
+      <Button
+      color="inherit"
+      onClick={handleCancel}
+      sx={{ mr: 1 }}
+      >
+      <IconButton style={{color:"#202225"}}><ClearIcon fontSize="large"/></IconButton>
+      </Button>
+      </Box>}
+      
+
       {props.step===0?<StepperChild1/>:props.step===1?<StepperChild2/>:<StepperChild3/>}
       
       {props.step===2?
             <IconButton onClick={handleNext} style={{color:"black", fontFamily: 'NanumSquareR', fontSize: 20}}>
               완료<CheckIcon/>
             </IconButton>:
-            <IconButton onClick={handleNext} style={{color:"white", fontFamily: 'NanumSquareR', fontSize: 20}}>
+            validationNext()?
+            <IconButton 
+            onClick={uCantGo}
+            style={{color:"red", fontFamily: 'NanumSquareR', fontSize: 20}}>
               다음으로<ArrowForwardIosIcon/>
-            </IconButton>}
+            </IconButton>
+              :
+              <IconButton 
+              onClick={handleNext} style={{color:"white", fontFamily: 'NanumSquareR', fontSize: 20}}>
+                다음으로<ArrowForwardIosIcon/>
+              </IconButton>}
+            
     </Box>
   );
 }
