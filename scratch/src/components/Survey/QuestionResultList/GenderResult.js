@@ -107,7 +107,7 @@ function GenderResult({purpose,id,title,required}){
                 border:"1px solid #D9D9D9",
                 color:"black",
                 fontFamily:"NanumSquareR"}}>남자</Button>
-            <Button variant={data==="MALE"?"contained":"outlined"} 
+            <Button variant={data==="FEMALE"?"contained":"outlined"} 
             style={data==="FEMALE"?
                 {width:"160px",
                 height:"60px"
