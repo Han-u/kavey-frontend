@@ -72,7 +72,7 @@ function SurveyAnswer() {
       const token = window.localStorage.getItem('token');
         const res = axios.post(url,finalAnswer,
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
           (res) => console.log(surveyId+"설문응답 완료")
@@ -88,6 +88,7 @@ function SurveyAnswer() {
 
 
     const handleClick=()=>{
+      // console.log(window.localStorage.getItem('token'))
       if(status == true){
         Swal.fire({
           title: '제출하시겠어요?',

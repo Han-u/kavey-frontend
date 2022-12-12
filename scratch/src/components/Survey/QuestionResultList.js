@@ -1,4 +1,4 @@
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import { ButtonGroup,Button,Typography } from '@mui/material';
 import { OBJECTIVE,MULTIPLE,TRUEFALSE,STAR,RADIO,CHECKBOX } from "../redux/Slices/SurveyMakeSlice";
 import ObjectResult from './QuestionResultList/ObjectResult';
@@ -9,17 +9,24 @@ import GenderResult from './QuestionResultList/GenderResult';
 import AgeResult from './QuestionResultList/AgeResult';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SET_THEME_TEST } from '../redux/Slices/SurveyOptionSlice';
 
 export const MAKE = "MAKE";
 export const RESPONSE = "RESPONSE";
 export const RESULT = "RESULT";
 
 
-function QuestionResultList({purpose,surveyOption,question}) {
+function QuestionResultList({purpose,surveyOption,question,themeResult}) {
     let list = [];
+    const dispatch=useDispatch();
+    console.log(themeResult);
+    if(themeResult){
+        dispatch(SET_THEME_TEST(themeResult));
+    }
+    
     const theme=useSelector((state)=>state.surveyOption.themeForFront);
     const navigate=useNavigate();
-
+    
     if(question!==undefined){
         list = question.map(
             r => {
