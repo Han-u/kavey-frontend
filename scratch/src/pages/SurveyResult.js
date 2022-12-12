@@ -8,13 +8,14 @@ import ResultStatics from "../components/SurveyResult/ResultStatics";
 import ResultSurveyInfo from "../components/SurveyResult/ResultSurveyInfo";
 import {useParams} from 'react-router-dom'
 import { getAttendResult, getSurveyResult, RESULT_ATTEND, RESULT_SURVEY } from "../components/SurveyResult/other/Query";
-import {useSelector} from "react-redux";
+import {useSelector,useDispatch} from "react-redux";
 import SurveyTitleText from "../components/SurveyResult/SurveyTitleText";
 import ErrorQuery from "../components/Error/ErrorQuery";
+import { SET_THEME_TEST } from "../components/redux/Slices/SurveyOptionSlice";
 function SurveyResult(){
     const { surveyId } = useParams();
     const surveyOption=useSelector((state)=>state.surveyOption);
-
+    const dispatch=useDispatch();
     const style = {
         header : {
             display: 'flex',
@@ -42,7 +43,7 @@ function SurveyResult(){
     const {isLoading,data,isError,error} = useQuery(RESULT_SURVEY , ()=>getSurveyResult(parseInt(surveyId)));
 
     const [status, setStatus] = useState("info");
-
+    
 
     if(isLoading){
         return <CircularProgress />
@@ -52,7 +53,7 @@ function SurveyResult(){
      
         //<h2>Oops... {error.message}</h2>
     }
-
+    
     return (
         <div>
             <div style={style.header}>
@@ -70,12 +71,12 @@ function SurveyResult(){
                 backgroundColor:"#F5F5F5",
                 height:'100vh',
                 width:'100%'}}>
-                <div style={{backgroundColor:'white',width:'50%',height:'100%'}}>
+                <div style={{backgroundColor:'#F5F5F5',width:'50%',height:'100%'}}>
                     <div style={{width:'960px',
                         height:'100%',
                         margin:'auto',backgroundColor:'white'}}>
                         <div>
-                            <SurveyTitleText title={data.title} description={data.description}/>
+                            <SurveyTitleText theme={data.theme} title={data.title} description={data.description}/>
                         </div>
                         <div>
                             <div style={{display: 'flex', justifyContent: 'center'}}>

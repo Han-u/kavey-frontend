@@ -26,19 +26,19 @@ function ResultPersonalAnswer() {
     delete draftState.questionList;
   })
   let option = newTmp;
-  
+  console.log(data);
   console.log("qq",questionList);
 
   return (  
         <div>
-            <AnswerQuestionResultList surveyId={surveyId} attendId={attendId}  surveyOption={option} question={questionList}/>
+            <AnswerQuestionResultList surveyId={surveyId} attendId={attendId}  surveyOption={option} question={questionList} theme={data.theme}/>
         </div>
       );  
 }
 
 export default ResultPersonalAnswer;
 
-function AnswerQuestionResultList({surveyId,attendId ,surveyOption,question}){
+function AnswerQuestionResultList({surveyId,attendId ,surveyOption,question,theme}){
   const {isLoading,data,isError,error} =  useQuery(RESULT_PERSONAL , ()=>getPersonalResult(parseInt(surveyId),parseInt(attendId)));
   const dispatch = useDispatch();
   if(isLoading){
@@ -51,7 +51,7 @@ function AnswerQuestionResultList({surveyId,attendId ,surveyOption,question}){
   console.log(data);
   dispatch(GET_RESULT({data:data}));
   return (
-  <QuestionResultList purpose={RESULT} surveyOption={surveyOption} question={question}/>
+  <QuestionResultList purpose={RESULT} surveyOption={surveyOption} question={question} themeResult={theme}/>
   );
 
 }

@@ -11,10 +11,13 @@ import QuestionResultList, { RESPONSE } from "../components/Survey/QuestionResul
 import produce from 'immer';
 import { CHECKBOX } from '../components/redux/Slices/SurveyMakeSlice';
 import { useEffect } from 'react';
+import {SET_THEME_TEST} from "../components/redux/Slices/SurveyOptionSlice"
 
 
 function SurveyAnswer() {
-
+    const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+    const REDIRECT_URI = 'http://localhost:3000/login';
+    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
     const { surveyId } = useParams();
 
     const dispatch = useDispatch();
@@ -22,13 +25,24 @@ function SurveyAnswer() {
 
     const answer = useSelector((state)=>state.surveyAnswer.answer);
     const status = useSelector((state)=>state.surveyAnswer.status);
+
+    useEffect(() => {
+      const token = window.localStorage.getItem('token');
+      if(token===null){
+        console.log("토큰없다");
+        window.localStorage.setItem('sid',surveyId);
+        window.location.href=KAKAO_AUTH_URI;
+      }
+    
+    }, [])
       
     const getPage = async () => { axios.get("/api/survey/"+parseInt(surveyId)+"/page")
     .then(response => {
       console.log(response.data);
       dispatch(GET_SURVEY({data:response.data}));
       dispatch(CHECK_ANSWER());
-
+      console.log(response.data.theme)
+      dispatch(SET_THEME_TEST(response.data.theme));
     })
     .catch(error => {
     })
@@ -79,6 +93,7 @@ function SurveyAnswer() {
 
 
     const handleClick=()=>{
+      // console.log(window.localStorage.getItem('token'))
       if(status == true){
         Swal.fire({
           title: '제출하시겠어요?',
