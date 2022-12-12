@@ -64,12 +64,17 @@ function SurveyList(props) {
                         </div> : null}
                     <hr style={{margin: "2px"}}/>
                     {props.data.status == 'MAKING' ?
-                        null :
+                         <div style={{fontSize: 13}}>
+                         참여인원 <>{props.data.limitPerson==0?"∞":props.data.limitPerson}</>
+                        </div> :
                         <div style={{fontSize: 13}}>
                             참여인원
                             {!props.data.private ?
-                                <> {props.data.limitPerson}</> :
-                                <> {props.data.participation}!?!?@!@#값이없어유오어오 / {props.data.limitPerson}</>}
+                                <> {props.data.limitPerson==0?"∞":props.data.limitPerson}</>
+                                :<> {props.data.limitPerson==0?"∞":props.data.limitPerson}</>
+                                //<> {props.data.participation}!?!?@!@#값이없어유오어오 / {props.data.limitPerson}</>}
+                                //참가자수 백에서 갖고오면 가능
+                            }
                         </div>
                     }
                 </div>
