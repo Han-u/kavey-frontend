@@ -7,10 +7,14 @@ import Swal from "sweetalert2";
 import HorizontalLinearStepper from "../components/surveyoptionsetting/public/Stepper";
 import axios from "axios";
 import CopyUrl from "../components/SendSurvey/CopyUrl";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 
 function SendSurvey() {
     const step=useSelector((state)=>state.surveyOption.step);
+
+    const [exampleURL, setExampleURL] = useState("this is exampleURLforSurdvey");
+    const surveyAPI = false;
 
     const style = {
         header : {
@@ -32,7 +36,8 @@ function SendSurvey() {
             backgroundColor: 'white',
             flexDirection : 'row',
             maxWidth: 1200,
-            minHeight: 500
+            minHeight: 500,
+            borderRadius: 20
         },
         Container1: {
             paddingBottom: 15,
@@ -40,16 +45,18 @@ function SendSurvey() {
         },
         Container2: {
             padding: 30,
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            borderRadius:20
         },
         Container3: {
             margin:30,
             padding: 40,
             backgroundColor: '#F5F5F5',
-            width:600
+            width:600,
+            borderRadius: 20
         },
         Container4: {
-            paddingTop: 150,
+            paddingTop: 100,
             textAlign:'end',
             backgroundColor: '#F5F5F5'
         }
@@ -158,11 +165,17 @@ function SendSurvey() {
         ]
     });
 
+
+
+
+
     const copy = () => {
         const el = textInput.current
         el.select()
         document.execCommand("copy")
     }
+
+
     return (
         <div>
             <div align='center' style={{backgroundColor:'#FFD701',
@@ -182,7 +195,7 @@ function SendSurvey() {
             <div style={style.body}>
                 <div>
                     <div style={style.Container1}>
-                        <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기❒" : "설문 조사 링크 복사 열기❒"}</BootstrapButton2>
+                        <BootstrapButton2 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={() => {setVisible(!visible);}}>{visible ? "설문 조사 링크 복사 닫기" : <>설문 조사 링크 복사 열기<ContentCopyIcon style={{transform: 'scale(0.7)'}}/></>}</BootstrapButton2>
                         {visible && <CopyUrl/>}
                     </div>
                     <div style={style.sendList}>
@@ -194,7 +207,7 @@ function SendSurvey() {
                         </div>
                     </div>
                     <div style={style.Container4}>
-                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>완료✔</BootstrapButton1>
+                        <BootstrapButton1 disabled={false} variant="contained" size="large" sx={ { borderRadius: 28 } } onClick={onSend}>전송✔</BootstrapButton1>
                     </div>
                 </div>
 
