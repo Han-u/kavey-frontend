@@ -42,7 +42,7 @@ function SurveyList(props) {
         const token = window.localStorage.getItem('token');
         const res = axios.delete("api/survey/"+surveyId, 
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
           (res) => console.log(surveyId+"설문삭제 완료")

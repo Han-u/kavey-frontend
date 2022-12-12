@@ -20,7 +20,7 @@ function Management(){
         const token = window.localStorage.getItem('token');
         const res = axios.get(url, 
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
             (res) => {dispatch(setSurvey(res.data))}

@@ -48,7 +48,7 @@ function SurveyResult(){
         return <CircularProgress />
     }
     if(isError){
-        return <ErrorQuery/>
+        return <ErrorQuery log="값을 읽을 수 없습니다!"/>
      
         //<h2>Oops... {error.message}</h2>
     }

@@ -22,14 +22,6 @@ function SurveyAnswer() {
 
     const answer = useSelector((state)=>state.surveyAnswer.answer);
     const status = useSelector((state)=>state.surveyAnswer.status);
-
-    useEffect(() => {
-      const token = window.localStorage.getItem('token');
-      if(token!=undefined){
-        console.log("토큰없다");
-      }
-    
-    }, [])
       
     const getPage = async () => { axios.get("/api/survey/"+parseInt(surveyId)+"/page")
     .then(response => {
@@ -68,9 +60,10 @@ function SurveyAnswer() {
       })
       const url = "/api/survey/"+parseInt(surveyId)+"/submit";
       const token = window.localStorage.getItem('token');
+      console.log(token); 
         const res = axios.post(url,finalAnswer,
         {headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
         }});
         res.then(
           (res) => console.log(surveyId+"설문응답 완료")
